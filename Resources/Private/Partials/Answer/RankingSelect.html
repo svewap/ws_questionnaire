@@ -1,0 +1,37 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+	<div class="keqAnswerWrap keqRankingSelect keqRanking">
+		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
+		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
+		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+    	<ke:rankingTerm answer="{answer}" question="{question}" as="term">
+            <div id="keq{question.uid}ranking{term.order}" class="keqRankingTerm" answer="{term.uid}" question="{question.uid}">
+                <f:alias map="{boxResultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: term.uid)}'}">
+                    <f:form.hidden name="newResult[questions][{question.uid}][answers][{term.uid}][answer]" value="{term.uid}" />
+                    <f:form.select options="{term.selectItems}" name="newResult[questions][{question.uid}][answers][{term.uid}][value]" value="{f:if(condition: boxResultAnswer.value, then: boxResultAnswer.value, else: term.order)}"/>
+                </f:alias>
+                <f:if condition="{term.image}">
+                    <f:then>
+                        <f:image src="uploads/tx_kequestionnaire/{term.image}" alt="{term.title}" width="{f:if(condition: term.width, then: term.width)}" height="{f:if(condition: term.height, then: term.height)}"/>
+                    </f:then>
+                    <f:else>
+                        {term.title}
+                    </f:else>
+                </f:if>                
+            </div>
+        </ke:rankingTerm>
+	</div>
+</f:alias>
+<f:if condition="{question.isMandatory}">
+<ke:JavaScript>
+	/*
+	 * Rankings are always answered
+	 */
+	check_keq{question.uid}a{answer.uid} = function() {
+		/*<![CDATA[*//*]]>*/
+                jQuery("#keqMandatory{question.uid}").val(0);		
+                checkMandatory();
+	}
+	check_keq{question.uid}a{answer.uid}();
+</ke:JavaScript>
+</f:if>

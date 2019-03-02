@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<basics>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:sheet.basics</sheetTitle>
+					<cshFile>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_csh_flexforms.xml</cshFile>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.questionnaires>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.questionnaires</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>tt_content</allowed>
+								<size>10</size>
+								<maxitems>100</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+							</config>
+						</TCEforms>
+					</settings.questionnaires>	                    	
+				</el>
+			</ROOT>
+		</basics>
+		<layout>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:sheet.layout</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>			
+					<settings.listType>
+						<TCEforms>
+							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType</label>
+							<onChange>reload</onChange>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType.all</numIndex>
+										<numIndex index="1">all</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType.used</numIndex>
+										<numIndex index="1">used</numIndex>
+									</numIndex>
+									<numIndex index="2">
+										<numIndex index="0">LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType.unused</numIndex>
+										<numIndex index="1">unused</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.listType>
+                                        <settings.showParticipated>
+						<TCEforms>
+							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.showParticipated</label>
+							<displayCond>FIELD:settings.listType:=:all</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.showParticipated>		
+					<settings.showParticipations>
+						<TCEforms>
+							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.showParticipations</label>
+							<displayCond>FIELD:settings.listType:!=:unused</displayCond>
+							<config>
+								<type>check</type>
+							</config>
+						</TCEforms>
+					</settings.showParticipations>
+                                        <settings.singleView>
+						<TCEforms>
+							<exclude>1</exclude>
+							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.singleView</label>
+							<config>
+								<type>group</type>
+								<internal_type>db</internal_type>
+								<allowed>pages</allowed>
+								<size>1</size>
+								<maxitems>1</maxitems>
+								<minitems>0</minitems>
+								<show_thumbs>1</show_thumbs>
+							</config>
+						</TCEforms>
+					</settings.singleView>	
+                                        <settings.PDFdownload>
+						<TCEforms>
+							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.PDFdownload</label>
+							<config>
+								<type>user</type>		
+								<userFunc>Kennziffer\KeQuestionnaire\Utility\PremiumInfo->showInfo</userFunc>
+							</config>
+						</TCEforms>
+					</settings.PDFdownload>	
+				</el>
+			</ROOT>
+		</layout>
+	</sheets>
+</T3DataStructure>

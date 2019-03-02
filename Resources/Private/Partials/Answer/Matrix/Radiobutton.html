@@ -1,0 +1,45 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultRow: '{ke:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, matrixType: matrixType, radio: 1, clone: clone)}'}">
+	<f:if condition="{type} == 'cloned'">
+		<f:then>
+			<f:form.radio id="keq{question.uid}c{column.uid}r{row.uid}clone{clone}" name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][value]{f:if(condition: '{additional}', then: '[{additional}]', else: '')}[{clone}]" value="{column.uid}" checked="{f:if(condition: '{resultRow.value} == {column.uid}', then: 'true', else: 'false')}" />
+			<label for="keq{question.uid}c{column.uid}r{row.uid}clone{clone}" class="radio_checkbox">&nbsp;</label>
+			<f:if condition="{column.showTextfield}">
+				<f:then>
+					<f:form.textfield name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][additionalValue][{clone}]" disabled="disabled" value="{f:if(condition: resultRow.additionalValue, then: resultRow.additionalValue, else: '')}"/>
+				</f:then>
+				<f:else>
+					<f:if condition="{row.showTextfield}">
+						<f:form.textfield name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][additionalValue][{clone}]" disabled="disabled" value="{f:if(condition: resultRow.additionalValue, then: resultRow.additionalValue, else: '')}"/>
+					</f:if>
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			<f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][answer]" value="{row.uid}" />
+			<f:form.radio id="keq{question.uid}c{column.uid}r{row.uid}" name="newResult[questions][{question.uid}][answers][{row.uid}][value]{f:if(condition: '{additional}', then: '[{additional}]', else: '')}" value="{column.uid}" checked="{f:if(condition: '{resultRow.value} == {column.uid}', then: 'true', else: 'false')}" />
+			<label for="keq{question.uid}c{column.uid}r{row.uid}" class="radio_checkbox">&nbsp;</label>
+			<f:if condition="{column.showTextfield}">
+				<f:then>
+					<f:form.textfield name="newResult[questions][{question.uid}][answers][{row.uid}][additionalValue]" disabled="disabled" value="{f:if(condition: resultRow.additionalValue, then: resultRow.additionalValue, else: '')}"/>
+				</f:then>
+				<f:else>
+					<f:if condition="{row.showTextfield}">
+						<f:form.textfield name="newResult[questions][{question.uid}][answers][{row.uid}][additionalValue]" disabled="disabled" value="{f:if(condition: resultRow.additionalValue, then: resultRow.additionalValue, else: '')}"/>
+					</f:if>
+				</f:else>
+			</f:if>
+		</f:else>
+	</f:if>
+</f:alias>
+<ke:JavaScript>
+/*
+ * Check Input fields on change
+ */
+	var idy = 'keq{question.uid}r{row.uid}';
+	checkMatrixRadioValues(idy);
+	jQuery( "#keq{question.uid}r{row.uid} input:radio" ).on( "change", function() {
+		var idy = 'keq{question.uid}r{row.uid}';
+		checkMatrixRadioValues(idy);
+	});
+</ke:JavaScript>

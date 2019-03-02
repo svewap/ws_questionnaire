@@ -1,0 +1,18 @@
+<div class="keqNavigationTypeNavigate">
+	<ul class="list-group mb-3">
+	<f:for each="{questionnaire.navigationQuestions}" as="question">
+		<f:if condition="{question.page} == {questionnaire.page}">
+			<f:then>
+				<li class="list-group-item" style="font-weight: bold;">
+					{question.numbering} {question.title} <f:translate key="navigation.onPage" /> {question.page}
+				</li>
+			</f:then>
+			<f:else>
+				<li class="list-group-item">
+					<a href="#" onclick="submitToPage({question.page});return false;">{question.numbering} {question.title} <f:translate key="navigation.onPage" /> {question.page}</a>
+				</li>
+			</f:else>
+		</f:if>
+	</f:for>
+	</ul>
+</div>

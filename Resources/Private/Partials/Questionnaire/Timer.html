@@ -1,0 +1,89 @@
+<div class="ke_questionaire_timer_WRAP">
+    <div id="ke_questionaire_totalTime"> Gesamtzeit für die Umfrage: <SPAN> </SPAN>
+    </div>
+    <div class="progress">
+        <div id="ke_questionaire_timer" class="progress-bar progress-bar-success" role="progressbar"
+             aria-valuenow="{started}" aria-valuemin="{started}"
+             aria-valuemax="{f:cObject(typoscriptObjectPath: 'lib.math', data: '{maxSeconds}+{started}' )}" style="width: 0%;">
+            <span>{maxSeconds} sek.</span>
+        </div>
+    </div>
+
+</div>
+
+<ke:pageRenderer.addJsFooterInlineCode name="timer" >
+
+    var started = <f:format.raw value="{started}" />;
+    var maxSeconds = {maxSeconds} ;
+    var totalTime = getLeftTime (parseInt( {maxSeconds})) ;
+    console.log(" totalTime = " + totalTime ) ;
+    jQuery('#ke_questionaire_totalTime SPAN').html( totalTime );
+    var redirectUrl = '#redirectUrl' ;
+    var baseID = '#ke_questionaire_timer' ;
+    jQuery(baseID ).attr("aria-valuenow", parseInt( Date.now() / 1000 ) );
+    jQuery( "#ke_questionaire_now").html( parseInt( Date.now() / 1000 )  );
+
+    jQuery(document).ready(function() {
+
+        window.setTimeout( timeOutCallback , 1000, baseID , started, maxSeconds , redirectUrl ) ;
+    }) ;
+
+    function timeOutCallback( baseID , started, maxSeconds , redirectUrl ) {
+        var minVal = parseInt(jQuery(baseID ).attr("aria-valuemin"));
+        var maxVal = parseInt(jQuery(baseID ).attr("aria-valuemax")) - minVal ;
+
+        var nowVal = parseInt(jQuery(baseID ).attr("aria-valuenow")) + 1 ;
+        jQuery(baseID ).attr('aria-valuenow', nowVal);
+        nowVal = nowVal - minVal ;
+        var proz = parseInt( nowVal / maxVal * 100 ) ;
+
+
+        jQuery(baseID ).css("width", proz  + "%");
+        // console.info( "in Callback: minVal=" + minVal + " | maxVal=" + maxVal + " | nowVal=" + nowVal) ;
+        var leftTime = getLeftTime (parseInt( maxVal - nowVal )) ;
+
+
+        jQuery(baseID + " SPAN").html( leftTime );
+
+        if ( proz > 70) {
+            if (jQuery(baseID ).hasClass("progress-bar-danger")) {
+                if ( proz > 90) {
+                    jQuery(baseID ).removeClass("progress-bar-striped") ;
+                    jQuery(baseID ).addClass("progress-bar-striped") ;
+                }
+            } else {
+                jQuery(baseID ).addClass("progress-bar-danger") ;
+            }
+        }
+        if ( proz > 99) {
+
+            // window.location.replace( jQuery(redirectUrl).text()) ;
+            // window.location.href =  jQuery(redirectUrl).text() ;
+            jQuery(".keq_questionnaire_form").submit() ;
+        } else {
+            window.setTimeout( timeOutCallback , 1000, baseID , started, maxSeconds , redirectUrl ) ;
+        }
+
+    }
+    function getLeftTime( seconds ) {
+        // multiply by 1000 because Date() requires miliseconds
+        var date = new Date(seconds * 1000);
+        var hh = date.getUTCHours();
+        var mm = date.getUTCMinutes();
+        var ss = date.getSeconds();
+
+        if (hh < 10) {hh = "0"+hh;}
+        if (mm < 10) {mm = "0"+mm;}
+        if (ss < 10) {ss = "0"+ss;}
+        var t = ss + " sek" ;
+        if ( hh> 0) {
+            t = hh + ":" + mm + ":" +ss ;
+        } else {
+            if ( mm > 0) {
+                t = mm + ":" +ss + " min";
+            }
+        }
+        return t ;
+    }
+
+</ke:pageRenderer.addJsFooterInlineCode>

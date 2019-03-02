@@ -1,0 +1,53 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+	<div class="keqAnswerWrap keqRankingOrder keqRanking">
+		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
+		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
+		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+        <ul id="sortable_{answer.uid}">
+    	<ke:rankingTerm answer="{answer}" question="{question}" as="term" result="{newResult}">
+            <li id="keq{question.uid}ranking{term.order}" class="ui-state-default keqRankingTerm" answer="{term.uid}" question="{question.uid}">
+                <f:alias map="{boxResultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: term.uid)}'}">
+                    <f:form.hidden name="newResult[questions][{question.uid}][answers][{term.uid}][answer]" value="{term.uid}" />
+                    <f:form.hidden class="keqRangeTermValue" name="newResult[questions][{question.uid}][answers][{term.uid}][value]" value="{f:if(condition: boxResultAnswer.value, then: boxResultAnswer.value, else: term.order)}" />
+                </f:alias>
+                <f:if condition="{term.image}">
+                    <f:then>
+                        <f:image src="uploads/tx_kequestionnaire/{term.image}" alt="{term.title}" width="{f:if(condition: term.width, then: term.width)}" height="{f:if(condition: term.height, then: term.height)}"/>
+                    </f:then>
+                    <f:else>
+                        {term.title}
+                    </f:else>
+                </f:if>                
+            </li>
+        </ke:rankingTerm>
+        </ul>
+	</div>
+    <ke:JavaScript>
+jQuery(function() {
+	var sortable_id = "#sortable_{answer.uid}";
+	jQuery( sortable_id ).sortable({
+		placeholder: "keqRankingOrderPlaceholder",
+		stop: function (event, ui){
+			jQuery.each(jQuery(this).children(), function (index,value){
+				jQuery(this).children('.keqRangeTermValue').val(jQuery(this).index()+1).trigger('change');
+			});                    
+		}
+	});
+	jQuery( "#sortable" ).disableSelection();
+});
+    </ke:JavaScript>
+</f:alias>
+<f:if condition="{question.isMandatory}">
+<ke:JavaScript>
+	/*
+	 * Rankings are always answered
+	 */
+	check_keq{question.uid}a{answer.uid} = function() {
+		/*<![CDATA[*//*]]>*/
+                jQuery("#keqMandatory{question.uid}").val(0);		
+                checkMandatory();
+	}
+	check_keq{question.uid}a{answer.uid}();
+</ke:JavaScript>
+</f:if>

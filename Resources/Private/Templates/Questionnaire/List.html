@@ -1,0 +1,64 @@
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+	<f:flashMessages />
+    <ul>
+    <f:for each="{questionnaires}" as="questionnaire">
+        <li>
+            <f:if condition="{settings.showParticipated}">
+                <f:if condition="{questionnaire.userResults}">
+                    <b>
+                </f:if>
+            </f:if>
+            <f:link.page pageUid="{questionnaire.pid}">{questionnaire.header}</f:link.page><br />
+            <f:if condition="{settings.showParticipated}">
+                <f:if condition="{questionnaire.userResults}">
+                    </b>
+                </f:if>
+            </f:if>
+            <f:if condition="{settings.showParticipations}">
+            <ul>
+                <f:for each="{questionnaire.userResults}" as="result">
+                    <li>
+                        <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:qList.resultFrom" />
+                        <f:if condition="{settings.singleView}">
+                            <f:then>
+                                <f:link.action action="show" controller="Result" pluginName="View" pageUid="{settings.singleView}" arguments="{result:result}">
+                                    <f:format.date format="d.m.y">{result.finished}</f:format.date>
+                                </f:link.action>
+                            </f:then>
+                            <f:else>
+                                <f:format.date format="d.m.y">{result.finished}</f:format.date>
+                            </f:else>
+                        </f:if>
+                        <f:if condition="{settings.PDFdownload}">
+                                <div class="keq_fePDFdownload">
+                                        <f:translate key="PDFdownload.info" />
+                                        <ul>
+                                                <f:for each="{PDFdownload}" as="download">
+                                                        <li>
+                                                                <f:link.action target="_blank" action="downloadPdf" controller="Export" arguments="{questionnaire:questionnaire.uid,pdfType:download,selectedResult:result.uid}"><f:translate key="PDFdownload.{download}" /></f:link.action>
+                                                        </li>
+                                                </f:for>
+                                        </ul>
+                                </div>
+                        </f:if>
+                    </li>
+                </f:for>
+            </ul>
+            </f:if>
+        </li>
+    </f:for>
+    </ul>
+</f:section>

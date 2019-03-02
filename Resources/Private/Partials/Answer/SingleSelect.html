@@ -1,0 +1,24 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+	<div class="keqAnswerWrap keqAnswerSingleInput">
+		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
+		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
+		<f:form.select options="{answer.SelectValuesArray}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{f:if(condition: resultAnswer.value, then: resultAnswer.value, else: '')}"  />
+		<f:format.html>{answer.text}</f:format.html>
+	</div>
+</f:alias>
+<f:if condition="{question.isMandatory}">
+<ke:JavaScript>
+	/*
+	 * Selectboxes are always answered
+	 */
+       
+	check_keq{question.uid}a{answer.uid} = function() {
+                /*<![CDATA[*//*]]>*/	
+		jQuery("#keqMandatory{question.uid}").val(0);	
+                checkMandatory();
+	};
+	check_keq{question.uid}a{answer.uid}();
+        
+</ke:JavaScript>
+</f:if>

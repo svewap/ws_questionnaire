@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>extConf</type>
+		<description>Language labels for the Questionnaire extension in the Ext-Manager</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="saveExtConf">The extConf array is empty. Please go to the extension manager, choose extension "ke_questionnaire", switch to tab "Configuration" and click the button "Update" at the bottom.</label>
+			<label index="mailNoFrom">There is no e-mail address for FROM defined. Please go to extension manager, search for "ke_questionnaire", tab "Configuration", selectbox "Mail" and add an e-mail address for FROM.</label>
+			<label index="mailNoReceivers">There are no recipients defined. Please check configuration. Maybe there is no e-mail address defined for given user.</label>
+			<label index="mailNoSubject">There is no subject defined. Please check configuration or go to extension manager, search for "ke_questionnaire", tab "Configuration", selectbox "Mail" and add a global subject for all mails.</label>
+			<label index="mailNoBody">There is no body defined. Please check configuration. Maybe the templates can't be found.</label>
+			<label index="dataMapperValidation">While mapping an array $row to object "%s" the validation process throws an error on property: %s with following error message: %d - %s</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="saveExtConf">Das extConf Array ist leer. Bitte gehen Sie in den Extensionmanager, wählen Sie die Extension "ke_questionnaire" aus, gehen Sie auf den Tab "Konfiguration" und klicken Sie unten auf den Button "Aktualisieren". Nach einem Clear Cache sollte dieser Fehler nicht mehr auftreten.</label>
+			<label index="mailNoFrom">Es wurde keine E-Mail-Adresse für FROM hinterlegt. Bitte gehen Sie in den Extensionmanager, wählen Sie die Extension "ke_questionnaire" aus, gehen Sie auf den Tab "Konfiguration", wechseln Sie mit Hilfe der Selectbox auf "Mail" und tragen Sie für FROM eine E-Mail-Adresse ein.</label>
+			<label index="mailNoReceivers">Es wurden keine Empfänger gefunden. Bitte überpfüfen Sie die Konfiguration. Möglicherweise wurde dem Benutzerdatensatz keine E-Mail-Adresse hinterlegt.</label>
+			<label index="mailNoSubject">Es wurde kein Betreff angegeben. Bitte überprüfen Sie die Konfiguration oder gehen Sie in den Extensionmanager, wählen Sie die Extension "ke_questionnaire" aus, gehen Sie auf den Tab "Konfiguration", wechseln Sie mit Hilfe der Selectbox auf "Mail" und tragen Sie dort einen globalen Betreff für alle Mailings ein.</label>
+			<label index="mailNoBody">Es wurde kein Mailinhalt gefunden. Bitte überprüfen Sie Ihre Konfiguration. Möglicherweise stimmen die Pfade zu Ihren Templates nicht.</label>
+			<label index="dataMapperValidation">Während dem Abbilden eines Arrays $row auf das Objekt "%s" hat der Validierungsprozess einen Fehler bei der Eigenschaft: %s gefunden. Folgende Fehlermeldung wurde mitgeliefert: %d - %s</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,46 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+	<div class="keqAnswerWrap keqAnswerSlider">
+		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
+		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
+		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+		<f:if condition="{answer.leftLabel"><div class="keqSematicDifferentialLeftLabel" style="{f:if(condition: answer.showSteps, then: 'margin-top: 1.2em;', else: '')}" >{answer.leftLabel}</div></f:if>
+		<div class="keqSematicDifferential" id="keq{question.uid}a{answer.uid}SemanticDifferential" style="width:{f:if(condition: answer.width, then: answer.width, else: '400px')}">
+			<f:for each="{answer.steps}" as="stepValue" key="stepNr">
+				<div class="keqSematicDifferentialStep" style="width: {answer.stepPercentage}%">
+					<f:if condition="{answer.showSteps}">
+						<div class="keqSematicDifferentialStepLabel">
+						<f:if condition="{answer.stepLabelsArray}">
+							<f:then><ke:arrayValue array="{answer.stepLabelsArray}" key="{stepNr}" /></f:then>
+							<f:else>{stepValue}</f:else>
+						</f:if>
+						</div>
+					</f:if>
+                    <f:if condition="{resultAnswer.value}">
+                        <f:then>
+                            <f:form.radio id="keq{question.uid}a{answer.uid}s{stepNr}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{stepValue}" checked="{f:if(condition: '{resultAnswer.value}=={stepValue}', then: 'true', else: 'false')}" />
+                        </f:then>
+                        <f:else>
+                            <f:form.radio id="keq{question.uid}a{answer.uid}s{stepNr}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{stepValue}" checked="{f:if(condition: '{stepNr} == 0', then: 'true', else: 'false')}" />                            
+                        </f:else>                        
+                    </f:if>
+					<label for="keq{question.uid}a{answer.uid}s{stepNr}" class="radio_checkbox">&nbsp;</label>
+				</div>
+			</f:for>
+		</div>
+		<f:if condition="{answer.RightLabel"><div class="keqSematicDifferentialRightLabel" style="{f:if(condition: answer.showSteps, then: 'margin-top: 1.2em;', else: '')}">{answer.rightLabel}</div></f:if>
+	</div>
+</f:alias>
+<f:if condition="{question.isMandatory}">
+<ke:JavaScript>
+	/*
+	 * Semantic Differential are always answered
+	 */
+	check_keq{question.uid}a{answer.uid} = function() {
+		/*<![CDATA[*//*]]>*/
+                jQuery("#keqMandatory{question.uid}").val(0);		
+                checkMandatory();
+	}
+	check_keq{question.uid}a{answer.uid}();
+</ke:JavaScript>
+</f:if>

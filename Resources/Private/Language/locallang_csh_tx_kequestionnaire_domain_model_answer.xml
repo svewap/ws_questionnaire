@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Context Sensitive Help (CSH) for table tx_kequestionnaire_domain_model_answer</description>
+		<type>CSH</type>
+		<csh_table>tx_kequestionnaire_domain_model_answer</csh_table>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="type.description">Choose how to render this answer</label>
+			<label index="title.description">This title is a short description of this answer and is displayed as identifier in the list module by default</label>
+			<label index="points.description">You can set points for this answer, which in the end add up with points of other answers</label>
+			<label index="text.description">This is the answer text the participant sees in the frontend</label>
+			<label index="is_correct_answer.description">Define if this is the correct answer</label>
+			<label index="validation_type.description">You can set a validation type to check the user input</label>
+			<label index="validation_text.description">Text or keywords (comma separated) to compare to the answer of the participant</label>
+			<label index="validation_keys_amount.description">Number of keywords that must be met in the answer. If value is 0, all keywords must be met</label>
+			<label index="cloze_position.description">Count the appearances of the given term and define which one should be replaced. Example: Within the cloze test the term "internet" appears two times. You want the participant to replace the second term only. Thus you set the value to 2. Standard is: 1</label>
+			<label index="coords.description">The answer must be saved with an image before you can use the wizard!!!&lt;br&gt;Coordinates for Baloontext: Coordinates of the input on the image, Coordinates for Drag&amp;Drop: Coordinates for Dropdown Areas&lt;br&gt;If you add a title after the last coordinate in the line, separate it with a comma and it will be shown in the D&amp;D area.</label>
+			<label index="select_values.description">Values for the select box&lt;br&gt;Please use the following format:&lt;br&gt;one select entry per line&lt;br&gt;value:shown text&lt;br&gt;If value and shown text should be the same, you only need to enter the value without following :</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="type.description">Wie soll diese Antwort gerendert werden</label>
+			<label index="title.description">Dieser Titel ist eine Kurzbeschreibung für diese Antwort und wird auch im Listen-Modul angezeigt, um die Antwort schneller auffinden zu können</label>
+			<label index="points.description">Sie können dieser Antwort Punkte zuweisen, die dann am Ende der Umfrage aufaddiert werden</label>
+			<label index="text.description">Diesen Text sieht der Teilnehmer als Antworttext im Frontend</label>
+			<label index="is_correct_answer.description">Handelt es sich bei der aktuellen Antwort um die richtige?</label>
+			<label index="validation_type.description">Sie können einen Validierungstyp auswählen, um die Antwort des Nutzers prüfen zu lassen</label>
+			<label index="validation_text.description">Text oder Schlagwörter (bitte Komma-separiert eingeben) zur Validierung der Antwort</label>
+			<label index="validation_keys_amount.description">Anzahl der Schlagwörter, die in der Antwort vorkommen müssen. Wenn der Wert 0 ist, müssen alle Schlagwörter vorkommen.</label>
+			<label index="cloze_position.description">Zählen Sie die Vorkommen des aktuellen Begriffs und geben Sie an, welcher davon ersetzt werden soll. Beispiel: Im Lückentext kommt zweimal das Wort "Internet" vor, das zweite Vorkommen soll ersetzt werden. Also muss hier der Wert 2 eingetragen werden. Standard ist: 1</label>
+			<label index="coords.description">Die Antwort muss mit einem Bild gespeichert werden, bevor sie den Wizard benutzten können!&lt;br&gt;Koordinaten Ballontext: Koordinaten des Inputfelds auf dem Bild, Koordinaten Drag&amp;Drop: Koordinaten der Dropbereiche&lt;br&gt;Wenn sie nach der letzten Koordinate der Zeile einen Titel nach einem weiteren Komma hinzufügen, wird dieser im D&amp;D Bereich angezeigt.</label>
+			<label index="select_values.description">Werte der Select Box&lt;br&gt;Bitte beachten sie folgendes Format:&lt;br&gt;Ein Select-Eintrag pro Zeile&lt;br&gt;Wert:angezeigter Text&lt;br&gt;Wenn Wert und Anzeige gleich sein sollen, tragen sie nur den Wert ohne folgendes : ein</label>
+		</languageKey>
+	</data>
+</T3locallang>

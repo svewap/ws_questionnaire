@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Questionnaire extension in the FlexForms</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="mlang_tabs_tab">Ke Questionnaire</label>
+
+			<label index="header">Ke Questionnaire Backend Modules</label>
+			<label index="selectOne">Select one of the questionnaires listed in the Ke Questionnaire content tree</label>
+
+			<label index="editPlugin">Edit Questionnaire-plugin-data</label>
+			
+			<label index="imageAreaSelectHeader">Select the Areas</label>
+			<label index="imageAreaSelectInfo">Just draw a rectangle on the image and press the save button to save an area. If you have selected all your areas, close the popup.</label>
+			<label index="imageAreaSelectSave">Save</label>
+			<label index="imageAreaSelectClose">Close</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Ke Questionnaire</label>
+
+			<label index="header">Ke Questionnaire Backend Module</label>
+			<label index="selectOne">Wählen sie einen der Fragebögen im Ke Questionnaire Strukturbaum</label>
+
+			<label index="editPlugin">KeQ Questionnaire-Plugin-Daten bearbeiten</label>
+			
+			<label index="imageAreaSelectHeader">Bereiche auswählen</label>
+			<label index="imageAreaSelectInfo">Zeichne ein Rechteck auf das Bild um einen Bereich zu markieren und drücke den Speichern-Button. Wenn alle Bereiche ausgewählt wurden, schliesse das Popup</label>
+			<label index="imageAreaSelectSave">Speichern</label>
+			<label index="imageAreaSelectClose">Schliessen</label>
+		</languageKey>
+	</data>
+</T3locallang>

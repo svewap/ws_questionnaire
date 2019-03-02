@@ -1,0 +1,36 @@
+<f:layout name="Backend" />
+
+<f:section name="main">
+	<f:be.container
+			pageTitle="Ke Questionnaire Backend Modules"
+			enableClickMenu="false"
+			loadJQuery="true"
+			includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}'}"> 
+		<f:flashMessages />
+		
+		<h2><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:list.header" /></h2>
+		<div class="module_list">
+			<h4><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:list.types" /></h4>
+			<ul>
+				<li>
+					<h5><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.title" /></h5>
+					<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.description" />
+				</li>
+                <li>
+					<h5><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:pdf.title" /></h5>
+					<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:pdf.description" />
+				</li>				
+			</ul>
+		</div>
+		<h4><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:index_list_header" /></h4>
+		<ul class="keq_list">
+		<f:for each="{questionnaires}" as="questionnaire">
+			<li>
+				<f:link.action action="csvRb" controller="Export" arguments="{pluginUid:questionnaire.uid}">{questionnaire.header}&nbsp;
+				(<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:count" />{questionnaire.countFinishedResults}/{questionnaire.countResults})</f:link.action>
+			</li>			
+		</f:for>
+		</ul>
+
+	</f:be.container>
+</f:section>

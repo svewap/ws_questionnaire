@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-02-03T11:47:10Z"
+		  product-name="ke_questionnaire">
+		<header/>
+		<body>
+			<trans-unit id="tx_kequestionnaire_domain_model_question" xml:space="preserve">
+				<target>KeQ Inhaltselement</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.type" xml:space="preserve">
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.title" xml:space="preserve">
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.show_title" xml:space="preserve">
+				<target>Zeige Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.text" xml:space="preserve">
+				<target>Text</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.help_text" xml:space="preserve">
+				<target>Hilfetext</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image" xml:space="preserve">
+				<target>Bild</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position" xml:space="preserve">
+				<target>Bildposition</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.1" xml:space="preserve">
+				<target>Oben</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.2" xml:space="preserve">
+				<target>Rechts</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.3" xml:space="preserve">
+				<target>Links</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.4" xml:space="preserve">
+				<target>Unten</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.is_mandatory" xml:space="preserve">
+				<target>Pflichtfeld</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.must_be_correct" xml:space="preserve">
+				<target>Muss die Frage korrekt beantwortet werden?</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.answers" xml:space="preserve">
+				<target>Antworten</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.conent_id" xml:space="preserve">
+				<target>Typo3 ContentElement</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.dependancies" xml:space="preserve">
+				<target>Abhängigkeiten</target>
+			</trans-unit>
+
+			<trans-unit id="tx_kequestionnaire_domain_model_answer" xml:space="preserve">
+				<target>Antwort</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_answer.type" xml:space="preserve">
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_answer.title" xml:space="preserve">
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_answer.points" xml:space="preserve">
+				<target>Punkte</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_answer.text" xml:space="preserve">
+				<target>Text</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_answer.is_correct_answer" xml:space="preserve">
+				<target>Ist dies die korrekte Antwort?</target>
+			</trans-unit>
+
+			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion" xml:space="preserve">
+				<target>Frageergebnis</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion.answers" xml:space="preserve">
+				<target>Antworten</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion.question" xml:space="preserve">
+				<target>Frage</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion.points" xml:space="preserve">
+				<target>Gesammelte Punkte</target>
+			</trans-unit>
+
+			<trans-unit id="tx_kequestionnaire_domain_model_resultanswer" xml:space="preserve">
+				<target>Antwortergebnis der Fragen</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultanswer.answer" xml:space="preserve">
+				<target>Antwort</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultanswer.value" xml:space="preserve">
+				<target>Wert</target>
+			</trans-unit>
+
+			<trans-unit id="tx_kequestionnaire_domain_model_result" xml:space="preserve">
+				<target>Ergebnis</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_result.finished" xml:space="preserve">
+				<target>Abgeschlossen</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_result.questions" xml:space="preserve">
+				<target>Fragen</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_result.points" xml:space="preserve">
+				<target>Gesammelte Punkte</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_result.max_points" xml:space="preserve">
+				<target>Maximal erreichbare Punkte</target>
+			</trans-unit>
+
+			<trans-unit id="tx_kequestionnaire_domain_model_authcode" xml:space="preserve">
+				<target>Authentication Code</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_authcode.auth_code" xml:space="preserve">
+				<target>Authentication Code</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_authcode.email" xml:space="preserve">
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_authcode.lastreminder" xml:space="preserve">
+				<target>Datum der letzten Erinnerung</target>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_authcode.firstactive" xml:space="preserve">
+				<target>Erster Aufruf des AuthCodes</target>
+			</trans-unit>
+
+			<trans-unit id="flashmessage.Result.mandatory" xml:space="preserve">
+				<target>Eine der Fragen ist eine Pflichtfrage</target>
+			</trans-unit>
+			<trans-unit id="flashmessage.Result.mustBeCorrect" xml:space="preserve">
+				<target>Eine oder mehrere der Fragen müssen korrekt beantwortet werden</target>
+			</trans-unit>
+
+			<trans-unit id="prevPage" xml:space="preserve">
+				<target>Vorige Seite</target>
+			</trans-unit>
+			<trans-unit id="nextPage" xml:space="preserve">
+				<target>Nächste Seite</target>
+			</trans-unit>
+			<trans-unit id="mandatory" xml:space="preserve">
+				<target>Diese Frage muss beantwortet werden.</target>
+			</trans-unit>
+			<trans-unit id="mustBeCorrect" xml:space="preserve">
+				<target>Diese Frage muss korrekt beantwortet werden.</target>
+			</trans-unit>
+			<trans-unit id="submitKeq" xml:space="preserve">
+				<target>Umfrage absenden</target>
+			</trans-unit>
+			<trans-unit id="saveKeq" xml:space="preserve">
+				<target>Umfrage abspeichern</target>
+			</trans-unit>
+			<trans-unit id="maxAnswers" xml:space="preserve">
+				<target>Die maximale Anzahl von möglichen Antworten wurde erreicht:</target>
+			</trans-unit>
+			<trans-unit id="minAnswers" xml:space="preserve">
+				<target>Anzahl der mindestens zu gebenden Antworten:</target>
+			</trans-unit>
+
+			<trans-unit id="answerValidation.numeric" xml:space="preserve">
+				<target>Es sind nur Zahlen erlaubt. Trennzeichen: </target>
+			</trans-unit>
+			<trans-unit id="answerValidation.integer" xml:space="preserve">
+				<target>Es sind nur ganze Zahlen erlaubt.</target>
+			</trans-unit>
+			<trans-unit id="answerValidation.date" xml:space="preserve">
+				<target>Nur Datumsangaben erlaubt. Bitte folgendes Format nutzen: </target>
+			</trans-unit>
+			<trans-unit id="answerValidation.email" xml:space="preserve">
+				<target>Es sind nur Email-Adressen erlaubt. Bitte folgendes Format nutzen: </target>
+			</trans-unit>
+			<trans-unit id="answerValidation.compareText" xml:space="preserve">
+				<target>Bitte geben sie den korrekten Wortlaut ein.</target>
+			</trans-unit>
+			<trans-unit id="answerValidation.keywords" xml:space="preserve">
+				<target>Es müssen bestimmte Schlagwörter im Text verwendet werden.</target>
+			</trans-unit>
+
+			<trans-unit id="wizard.setArea" xml:space="preserve">
+				<target>Bereichs-Koordinaten speichern</target>
+			</trans-unit>
+			<trans-unit id="wizard.closeWizard" xml:space="preserve">
+				<target>Wizard schliessen</target>
+			</trans-unit>
+
+			<trans-unit id="slider.selectedValue" xml:space="preserve">
+				<target>Ausgewählter Wert</target>
+			</trans-unit>
+
+			<trans-unit id="endText.standard" xml:space="preserve">
+				<target>Vielen Dank für ihre Teilnahme!</target>
+			</trans-unit>
+			<trans-unit id="feUserAccess.info" xml:space="preserve">
+				<target>Sie müssen eingeloggt sein, um an diesem Fragebogen teilnehmen zu können.</target>
+			</trans-unit>
+			<trans-unit id="maxParticipations.info" xml:space="preserve">
+				<target>Die maximale Anzahl an Teilnahmen für diesen Fragebogen ist erreicht.</target>
+			</trans-unit>
+			<trans-unit id="authCodeAccess.info" xml:space="preserve">
+				<target>Es wird ein Authentication Code benötigt, um an diesem Fragebogen teilnehmen zu können. Bitte tragen Sie Ihren Authentication Code in dem unten stehenden Eingabefeld ein.</target>
+			</trans-unit>
+			<trans-unit id="authCodeAccess.submit" xml:space="preserve">
+				<target>Authentication Code absenden</target>
+			</trans-unit>
+			<trans-unit id="dependancyAccess.info" xml:space="preserve">
+				<target>Sie müssen erst die folgenden Fragebögen abschliessen: </target>
+			</trans-unit>
+			<trans-unit id="dependancyAccess.infoPoints" xml:space="preserve">
+				<target>Sie müssen erst die folgenden Fragebögen mit entsprechender Punktzahl abschliessen: </target>
+			</trans-unit>
+
+			<trans-unit id="mail.standard.subject" xml:space="preserve">
+				<target>Sie wurden eingeladen!</target>
+			</trans-unit>
+			<trans-unit id="mail.standard.text.before" xml:space="preserve">
+				<target>Sie wurden eingeladen an einem Fragebogen teilzunehmen. Um auf den Fragebogen zugreifen zu können benötigen Sie den folgenden Authentication Code:&lt;br&gt;</target>
+			</trans-unit>
+			<trans-unit id="mail.standard.text.after" xml:space="preserve">
+				<target>&lt;br&gt;Wir freuen uns, Sie bald bei uns begrüßen zu dürfen.&lt;br&gt;&lt;br&gt;Sie können auch den folgenden Link nutzen:&lt;br&gt;</target>
+			</trans-unit>
+			<trans-unit id="mail.reminder.subject" xml:space="preserve">
+				<target>Erinnern Sie sich? Sie wurden eingeladen!</target>
+			</trans-unit>
+			<trans-unit id="mail.reminder.text.before" xml:space="preserve">
+				<target>Sie wurden eingeladen an einem Fragebogen teilzunehmen. Leider haben wir noch keine Teilnahme von Ihnen registrieren können. Um auf den Fragebogen zugreifen zu können benötigen Sie den folgenden Authentication Code:&lt;br&gt;</target>
+			</trans-unit>
+			<trans-unit id="mail.reminder.text.after" xml:space="preserve">
+				<target>&lt;br&gt;Wir freuen uns, Sie bald bei uns begrüßen zu dürfen.&lt;br&gt;&lt;br&gt;Sie können auch den folgenden Link nutzen:&lt;br&gt;</target>
+			</trans-unit>
+
+			<trans-unit id="qList.resultFrom" xml:space="preserve">
+				<target>Abgeschlossene Teilnahmen: </target>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.info" xml:space="preserve">
+				<target>Bitte tragen Sie ihre E-Mail-Adresse ein</target>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.submit" xml:space="preserve">
+				<target>Authentication Code erneut anfordern</target>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.send" xml:space="preserve">
+				<target>Eine E-Mail mit Ihrem Authentication Code wurde an Ihre E-Mail-Adresse versandt</target>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.mailErrorText" xml:space="preserve">
+				<target>Die eingegebene E-Mail-Adresse war nicht korrekt!</target>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.mailErrorTitle" xml:space="preserve">
+				<target>E-Mail-Fehler</target>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.notFoundText" xml:space="preserve">
+				<target>Für diese E-Mail-Adresse ist kein offener/ungenutzter Authentication Code vorhanden!</target>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.notFoundTitle" xml:space="preserve">
+				<target>Authentication Code-Fehler</target>
+			</trans-unit>
+
+			<trans-unit id="participationChart.finished" xml:space="preserve">
+				<target>Abgeschlossen</target>
+			</trans-unit>
+			<trans-unit id="participationChart.all" xml:space="preserve">
+				<target>Alle</target>
+			</trans-unit>
+
+			<trans-unit id="analysis.selectedQ.header" xml:space="preserve">
+				<target>Analyse des Fragebogens</target>
+			</trans-unit>
+			<trans-unit id="analysis.analyseType" xml:space="preserve">
+				<target>Typ der Analyse</target>
+			</trans-unit>
+			<trans-unit id="analysis.analyseType.general" xml:space="preserve">
+				<target>Allgemein</target>
+			</trans-unit>
+			<trans-unit id="analysis.analyseType.questions" xml:space="preserve">
+				<target>Fragen</target>
+			</trans-unit>
+			<trans-unit id="analysis.questionSelect" xml:space="preserve">
+				<target>Frage</target>
+			</trans-unit>
+
+			<trans-unit id="feView.noResultError" xml:space="preserve">
+				<target>Keine Anzeige möglich, Sie müssen das Plugin mit der ID einer Fragebogenteilnahme aufrufen</target>
+			</trans-unit>
+			<trans-unit id="feView.noResultError" xml:space="preserve">
+				<target>Keine Teilnahme ausgewählt</target>
+			</trans-unit>
+
+			<trans-unit id="navigation.onPage" xml:space="preserve">
+				<target>auf Seite </target>
+			</trans-unit>
+			<trans-unit id="navigation.page" xml:space="preserve">
+				<target>Seite</target>
+			</trans-unit>
+
+			<trans-unit id="premiuminfo.standard" xml:space="preserve">
+				<target>Diese Option steht Ihnen in der Premium-Version von ke_questionnaire zur verfügung</target>
+			</trans-unit>
+
+			<trans-unit id="report.fileAccess.title" xml:space="preserve">
+				<target>ke_questionnaire: PDF-Tempordner muss lesegeschützt sein</target>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.ok" xml:space="preserve">
+				<target>OK</target>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.error" xml:space="preserve">
+				<target>PDF-Ordner ist nicht lesegeschützt</target>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.error.explanation" xml:space="preserve">
+				<target>Bitte stellen Sie sicher, dass Dateien des Ordners typo3temp/ke_questionnaire/pdf, sowie sämtlicher Unterordner, nicht von außen gelesen werden können.</target>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.warning" xml:space="preserve">
+				<target>nicht prüfbar</target>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.warning.details" xml:space="preserve">
+				<target>Testdatei konnte im Ordner typo3temp/ke_questionnaire/pdf nicht erstellt werden. Bitte stellen Sie manuell sicher, dass Dateien des Ordners typo3temp/ke_questionnaire/pdf, sowie sämtlicher Unterordner, nicht von außen gelesen werden können.</target>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.warning.unknown" xml:space="preserve">
+				<target>Unbekannter Fehler, bitte stellen Sie manuell sicher, dass die Inhalte des Ordners typo3temp/ke_questionnaire/pdf von außen nicht gelesen werden können.</target>
+			</trans-unit>
+
+			<trans-unit id="points.maxInfo" xml:space="preserve">
+				<target>Maximale Anzahl an Punkten, die in diesem Fragebogen zu erreichen waren: </target>
+			</trans-unit>
+			<trans-unit id="points.yourInfo" xml:space="preserve">
+				<target>Erreichte Punktzahl in diesem Fragebogen: </target>
+			</trans-unit>
+
+			<trans-unit id="list.table.authCode" xml:space="preserve">
+				<target>Authentication Code</target>
+			</trans-unit>
+			<trans-unit id="list.table.email" xml:space="preserve">
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="list.table.sendDate" xml:space="preserve">
+				<target>Mail erhalten</target>
+			</trans-unit>
+			<trans-unit id="list.table.participations" xml:space="preserve">
+				<target>Teilnahmen</target>
+			</trans-unit>
+			<trans-unit id="list.table.startDate" xml:space="preserve">
+				<target>Info gelesen</target>
+			</trans-unit>
+			<trans-unit id="list.table.finishedDate" xml:space="preserve">
+				<target>Teilnahme bestätigt</target>
+			</trans-unit>
+			<trans-unit id="list.table.lastreminder" xml:space="preserve">
+				<target>letzte Erinnerung</target>
+			</trans-unit>
+			<trans-unit id="list.table.firstactive" xml:space="preserve">
+				<target>erster Aufruf</target>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,5 @@
+<f:form action="createAuthCodes" controller="Backend" method="post">
+	<input type="hidden" name="uid" value="{plugin.uid}" /><f:form.hidden name="pluginUid" value="{plugin.uid}" />
+	<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:codes.createLabel" />: <f:form.textfield name="amount" />
+	<f:form.submit value="{f:translate(key: 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:codes.createSubmit')}" />
+</f:form>

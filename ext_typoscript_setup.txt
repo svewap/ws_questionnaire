@@ -1,0 +1,295 @@
+keqAjaxResponse = PAGE
+keqAjaxResponse {
+	typeNum = 2667
+	headerData >
+	config {
+		no_cache = 1
+		disableAllHeaderCode = 1
+		additionalHeaders = Content-type:text/plain; charset=utf-8
+		xhtml_cleaning = 0
+		admPanel = 0
+		debug = 0
+	}
+	10 = USER_INT
+	10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		extensionName = KeQuestionnaire
+		pluginName = Questionnaire
+		vendorName = Kennziffer
+		controller = Ajax
+		action = test
+		switchableControllerActions {
+			Ajax {
+				1 = ajax
+			}
+		}
+		settings =< plugin.tx_kequestionnaire.settings
+		persistence =< plugin.tx_kequestionnaire.persistence
+		#view =< plugin.tx_myextensionname.view
+	}
+}
+
+config.tx_extbase.persistence {
+		classes {
+			# Questiontypes
+			Kennziffer\KeQuestionnaire\Domain\Model\Question {
+				subclasses {
+					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question
+					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PageBreak = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PageBreak
+                    Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\ConditionalJump = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\ConditionalJump
+                    Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PlausiCheck = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PlausiCheck
+					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group
+					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Html = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Html
+					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Text = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Text
+					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Typo3Content = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Typo3Content
+					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScript = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScript
+					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScriptPath = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScriptPath
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_question
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PageBreak {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_question
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PageBreak
+				}
+			}
+            Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\ConditionalJump {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_question
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\ConditionalJump
+				}
+			}
+            Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PlausiCheck {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_question
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PlausiCheck
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_question
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Html {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_question
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Html
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Text {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_question
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Text
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Typo3Content {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_question
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Typo3Content
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScript {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_question
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScript
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScriptPath {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_question
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScriptPath
+				}
+			}
+			# Answertypes
+			Kennziffer\KeQuestionnaire\Domain\Model\Answer {
+				subclasses {
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Radiobutton = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Radiobutton
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Checkbox = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Checkbox
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleInput = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleInput
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MultiInput = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MultiInput
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleSelect = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleSelect
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeText = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeText
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTextDD = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTextDD
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTerm = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTerm
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaImage = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaImage
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSequence = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSequence
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDImage = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDImage
+                    Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingTerm = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingTerm
+                    Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput
+                    Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder
+                    Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingSelect = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingSelect
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixHeader = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixHeader
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixRow = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixRow
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Slider = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Slider
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SemanticDifferential = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SemanticDifferential
+					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DataPrivacy = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DataPrivacy
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\AbstractAnswerType {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Radiobutton {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Radiobutton
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Checkbox {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Checkbox
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleInput {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleInput
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MultiInput {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MultiInput
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleSelect {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleSelect
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeText {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeText
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTextDD {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTextDD
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTerm {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTerm
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaImage {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaImage
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDImage {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDImage
+				}
+			}
+            Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingTerm {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingTerm
+				}
+			}
+            Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput
+				}
+			}
+            Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingSelect {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingSelect
+				}
+			}
+            Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSequence {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSequence
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixHeader {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixHeader
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixRow {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixRow
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Slider {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Slider
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SemanticDifferential {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SemanticDifferential
+				}
+			}
+			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DataPrivacy {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_answer
+					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DataPrivacy
+				}
+			}
+            
+			Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire {
+                mapping {
+                    tableName = tt_content
+                    columns {
+                        uid.mapOnProperty = uid
+                        pid.mapOnProperty = pid
+                        sorting.mapOnProperty = sorting
+                        CType.mapOnProperty = contentType
+                        header.mapOnProperty = header
+                        header_link.mapOnProperty = headerLink
+                        bodytext.mapOnProperty = bodytext
+                        image.mapOnProperty = image
+                        image_link.mapOnProperty = imageLink
+                        colPos.mapOnProperty = colPos
+                        pi_flexform.mapOnProperty = piFlexForm
+                        pages.mapOnProperty = pages
+                    }
+                }
+            }
+
+
+
+			Kennziffer\KeQuestionnaire\Domain\Model\Dependency {
+				mapping {
+					tableName = tx_kequestionnaire_domain_model_dependancy
+				}
+			}
+		}
+}

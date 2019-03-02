@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Questionnaire extension in the FlexForms</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="sheet.basics">Basics</label>
+			<label index="settings.templates">Templates</label>
+                        <label index="settings.questionnaires">Considered questionnaires</label>
+			<label index="settings.redirectTo">Redirect after authentication code reclaim</label>
+                        <label index="settings.singleView">Plug-In where a single participation can be viewed. If set, the shown participations in list will be linked.</label>
+
+			<label index="sheet.access">Access</label>
+			<label index="settings.accessType">Access type</label>
+			<label index="settings.accessType.free">Unlimited</label>
+			<label index="settings.accessType.feUser">Frontend-User</label>
+			<label index="settings.accessType.authCode">Authentication code</label>
+			<label index="settings.participations.max">Number of maximum participations</label>
+			<label index="settings.restart">Users will restart questionnaire with their last, unfinished participation.</label>
+			<label index="settings.neverFinish">Users will have only one participation wich is never finished.</label>
+                        <label index="settings.additionalParameters">Additional Parameters for the URL given to call the questionnaire. Will be exported in CSV</label>
+
+			<label index="sheet.layout">Layout</label>
+			<label index="settings.questionNumbering">Automatic numbering of questions</label>
+			<label index="settings.questionNumbering.none">None</label>
+			<label index="settings.questionNumbering.all">Number all elements</label>
+			<label index="settings.questionNumbering.grouped">Number all elements in groups</label>
+			<label index="settings.questionNumbering.questions">Number all questions</label>
+			<label index="settings.questionNumbering.undependantQuestions">Number only independant questions</label>
+			<label index="settings.questionNumbering.groupedQuestions">Number questions in groups</label>
+			            
+			<label index="settings.navigationType">Additional navigation</label>
+			<label index="settings.navigationType.none">None</label>
+                        <label index="settings.navigationType.display">Display overview</label>
+			<label index="settings.navigationType.displayStatus">Display overview with status</label>
+                        <label index="settings.navigationType.pages">Display page-navigation</label>
+			<label index="settings.navigationType.navigate">Display overview with navigation</label>
+			<label index="settings.navigationType.navigateStatus">Display overview with navigation and status</label>
+			
+			<label index="settings.showProgressBar">Show progress bar</label>	
+                        <label index="settings.showParticipated">Mark if user participated</label>	
+                        <label index="settings.showParticipations">Show participations of user</label>	
+                        
+                        <label index="settings.hidePoints">Hide Points at conclusion page</label>	
+			
+			<label index="settings.listType">List Type</label>
+			<label index="settings.listType.all">All/Selected questionnaires</label>
+			<label index="settings.listType.used">Questionnaires submitted by user</label>
+			<label index="settings.listType.unused">Questionnaires NOT yet submitted by user</label>
+
+			<label index="sheet.texts">Texts</label>
+			<label index="settings.description">Description before questionnaire starts</label>
+			<label index="settings.descriptionlinktext">Text for hyperlink starting the questionnaire</label>
+			<label index="settings.endText">Text after questionnaire was submitted</label>
+
+			<label index="sheet.behaviour">Behaviour</label>
+			<label index="settings.redirectFinished">Redirect-page after submitting the questionnaire</label>
+                        <label index="settings.dependancy.questionnaire">Dependancy: required submitted questionnaire</label>
+                        <label index="settings.dependancy.points">Dependancy: required points in questionnaire, if 0 it only needs to be finished</label>
+			<label index="settings.ajaxAutoSave">Automatic Saving of Answers with Ajax (only for logged-in Fe-User)</label>
+			
+			<label index="sheet.email">E-mail Settings</label>
+			<label index="settings.email.sender.mail">Sender E-mail address</label>	
+			<label index="settings.email.sender.name">Sender name</label>	
+			<label index="settings.email.invite.subject">Invitation: Subject</label>
+			<label index="settings.email.invite.text.before">Invitation: Text before authentication code</label>
+			<label index="settings.email.invite.text.after">Invitation: Text after authentication code</label>
+			<label index="settings.email.invite.emails">Invitation: Standard E-mail adresses of recipients for invitation (comma-separated)</label>			
+
+			<label index="settings.showCorrectQuotaPie">Show a pie chart on the conclusion page of the questionnaire. Showing the ration of correct/incorrect answered questions</label>
+			<label index="settings.showAverage">Show the average reached points of all answered point-giving questions on the conclusion page of the questionnare. Calculation only with answered questions.</label>
+			<label index="settings.PDFdownload">Enable PDF-Downloads at the Conclusion Page of the Questionnaire</label>
+			<label index="settings.email.reminder.subject">Reminder Emails for AuthCode Invitations: Subject</label>
+                        <label index="settings.showGroupPoints">Show the reached points per Assessment Group on the conclusion page</label>
+                        <label index="settings.showGroupCorrectAnswers">Show the correct/incorrect answered Questions per Assessment Group on the conclusion page</label>
+
+			<label index="settings.randomQuestions">
+				Enable random selection of questions for a single Page/Questionaire
+			</label>
+			<label index="settings.randomQuestionsMax">
+				If random is enabled, maximum number of questions for each page
+			</label>
+			<label index="settings.maxSeconds">
+				Enable Timers Feature: Max time for whole Questionaire in seconds
+			</label>
+
+
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="sheet.basics">Basis</label>
+			<label index="settings.templates">Templates</label>
+                        <label index="settings.questionnaires">Zu berücksichtigende Fragebögen</label>
+			<label index="settings.redirectTo">Weiterleitung nach Anforderung eines Authentification Codes</label>
+                        <label index="settings.singleView">Seite, auf der die Teilnahme angesehen werden kann. Wenn gesetzt, werden alle in der Liste aufgeführten Teilnahmen mit dieser Seite verlinkt</label>
+
+			<label index="sheet.access">Zugriff</label>
+			<label index="settings.accessType">Zugriffstyp</label>
+			<label index="settings.accessType.free">Frei</label>
+			<label index="settings.accessType.feUser">Frontend-User</label>
+			<label index="settings.accessType.authCode">Authentication Code</label>
+			<label index="settings.participations.max">Anzahl maximaler Teilnahmen</label>
+			<label index="settings.restart">Bei Neuaufnahme des Fragebogens starten die Teilnehmer mit der letzten, nicht abgeschlossenen Teilnahme.</label>
+			<label index="settings.neverFinish">Die Teilnahme des Nutzer wird nie beendet.</label>
+                        <label index="settings.additionalParameters">Zusätzlicher Parameter, der in der URL mitgegeben werden kann und in CSV exportiert wird</label>
+
+			<label index="sheet.layout">Layout</label>
+			<label index="settings.questionNumbering">Fragen automatisch nummerieren</label>
+			<label index="settings.questionNumbering.none">Nein</label>
+			<label index="settings.questionNumbering.all">Alle Elemente nummerieren</label>
+			<label index="settings.questionNumbering.grouped">Alle Elemente in Gruppen nummerieren</label>
+			<label index="settings.questionNumbering.questions">Alle Fragen Nummerieren</label>
+			<label index="settings.questionNumbering.undependantQuestions">Nur unabhängige Fragen nummerieren</label>
+			<label index="settings.questionNumbering.groupedQuestions">Alle Fragen in Gruppen nummerieren</label>
+			            
+			<label index="settings.navigationType">Zusätzliche Navigation</label>
+			<label index="settings.navigationType.none">Keine</label>
+                        <label index="settings.navigationType.display">Überblick</label>
+			<label index="settings.navigationType.displayStatus">Überblick mit Status</label>
+                        <label index="settings.navigationType.pages">Seitennavigation</label>
+			<label index="settings.navigationType.navigate">Überblick mit Navigation</label>
+			<label index="settings.navigationType.navigateStatus">Überblick mit Navigation und Status</label>
+			
+			<label index="settings.showProgressBar">Fortschrittsbalken anzeigen</label>	
+                        <label index="settings.showParticipated">Markieren, wenn der Nutzer bereits teilgenommen hat</label>	
+                        <label index="settings.showParticipations">Teilnahmen der Nutzer anzeigen</label>	
+                        
+                        <label index="settings.hidePoints">Punkteanzeige auf der Abschlusseite verbergen</label>	
+			
+			<label index="settings.listType">List Typ</label>
+			<label index="settings.listType.all">Alle/Ausgewählte Fragebögen</label>
+			<label index="settings.listType.used">Fragebögen, an denen der Nutzer bereits teilgenommen hat</label>
+			<label index="settings.listType.unused">Fragebögen, an denen der Nutzer NOCH NICHT teilgenommen hat</label>
+
+			<label index="sheet.texts">Texte</label>
+			<label index="settings.description">Beschreibung des Fragebogens vor Beginn der Teilnahme</label>
+			<label index="settings.descriptionlinktext">Linktext zum Fragebogen</label>
+			<label index="settings.endText">Text nach abgeschlossener Teilnahme</label>
+
+			<label index="sheet.behaviour">Verhalten</label>
+			<label index="settings.redirectFinished">Weiterleitung, wenn die Beantwortung beendet wurde</label>
+                        <label index="settings.dependancy.questionnaire">Abhängigkeit: benötigt abgeschlossenen Fragebogen</label>
+                        <label index="settings.dependancy.points">Abhängigkeit: benötigte Anzahl von Punkten im Fragebogen, wenn 0, reicht eine beendete Beantwortung</label>
+			<label index="settings.ajaxAutoSave">Automatische Speicherung der Antworten per Ajax (nur für eingeloggte FE-User möglich)</label>
+			
+			<label index="sheet.email">E-Mail-Einstellungen</label>
+			<label index="settings.email.sender.mail">Absender-Adresse für E-Mails</label>	
+			<label index="settings.email.sender.name">Absender-Name für E-Mails</label>	
+			<label index="settings.email.invite.subject">Einladung: Betreff der Einladungs-Mail</label>
+			<label index="settings.email.invite.text.before">Einladung: Text vor dem Authentication Code</label>
+			<label index="settings.email.invite.text.after">Einladung: Text nach dem Authentication Code</label>
+			<label index="settings.email.invite.emails">Einladung: Standard E-Mail-Adressen der Empfänger, die für der Einladung berücksichtigt werden (komma-separiert)</label>
+
+			<label index="settings.showCorrectQuotaPie">Anzeige eines Tortendiagrams auf der Abschlusseite des Fragebogens, welches das Verhältnis richtig/falsch beantworteter Fragen darstellt</label>
+			<label index="settings.showAverage">Anzeige des Durchschnittswertes der erreichten Punktzahl auf Basis der beantworteten Fragen, mit denen Punkte erzielt werden können. Die Berechnung erfolgt nur mit beantworteten Fragen.</label>			
+			<label index="settings.PDFdownload">PDF-Downloads auf der Abschlussseite des Fragebogens aktivieren</label>
+			<label index="settings.email.reminder.subject">Erinnerungs Emails für AuthCode Einladungen: Subject</label>
+                        <label index="settings.showGroupPoints">Anzeige der erreichten Punktzahl pro Bewertungsgruppe auf der Abschlusseite des Fragebogens</label>
+                        <label index="settings.showGroupCorrectAnswers">Anzeige der korrekt/nicht korrekt beantworteten Fragen auf der Abschlusseite des Fragebogens</label>
+		</languageKey>
+	</data>
+</T3locallang>

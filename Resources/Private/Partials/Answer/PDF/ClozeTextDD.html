@@ -1,0 +1,18 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+	<div class="keqAnswerWrap keqAnswerClozeTextDD">
+		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+		<ke:clozeText answer="{answer}" question="{question}" as="boxAnswer">
+			<f:alias map="{boxResultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: boxAnswer.uid)}'}">
+				<f:form.hidden name="newResult[questions][{question.uid}][answers][{boxAnswer.uid}][answer]" value="{boxAnswer.uid}" />
+				<f:form.textfield name="newResult[questions][{question.uid}][answers][{boxAnswer.uid}][value]" value="{f:if(condition: boxResultAnswer.value, then: boxResultAnswer.value)}" />
+			</f:alias>
+		</ke:clozeText>
+		<br /><br />
+		<div class="keq-moveable-container">
+			<ke:ddClozeTerm answer="{answer}" question="{question}" as="term">
+                <div class="keq-cloze-term">{term.text}</div>
+			</ke:ddClozeTerm>
+		</div>
+	</div>
+</f:alias>

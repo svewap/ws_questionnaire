@@ -1,0 +1,14 @@
+<h3>{question.title}</h3><br />
+	<h4><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:questions.all" /></h4>
+	<f:format.html>{chart.all.div}</f:format.html>
+	<div class="clearer">&nbsp;</div>
+	<h4><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:questions.finished" /></h4>
+	<f:format.html>{chart.finished.div}</f:format.html>
+	<script type="text/javascript">
+		{chart.all.chart}
+		{chart.finished.chart}
+
+		jQuery('#keq_analysis_q_select').change(function() {
+		   jQuery('#keq_analysis').submit();
+		});
+	</script>

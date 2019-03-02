@@ -1,0 +1,10 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+	<f:flashMessages />
+	<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:authCodeAccess.info" /><br />
+	<f:form action="new" controller="Result" method="post">
+		<f:form.textfield name="code"></f:form.textfield>
+		<f:form.submit value="{f:translate(key: 'authCodeAccess.submit')}" />
+	</f:form>
+</f:section>

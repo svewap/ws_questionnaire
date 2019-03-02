@@ -1,0 +1,39 @@
+<link rel="stylesheet" type="text/css" href="{baseUri}../typo3conf/ext/ke_questionnaire/Resources/Public/Css/imgareaselect-animated.css" media="all">
+
+<script src="{baseUri}../typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="{baseUri}../typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+<script src="{baseUri}../typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery-migrate-1.2.1.js" type="text/javascript"></script>
+<script src="{baseUri}../typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery.imgareaselect.min.js" type="text/javascript"></script>
+
+<img id="imageAreaSource" src="{baseUri}../uploads/tx_kequestionnaire/{answer.image}" alt="image" {f:if(condition:'{answer.width}',then:'width="{answer.width}px"')} {f:if(condition:'{answer.height}',then:'height="{answer.height}px"')} />
+<input type="hidden" name="x1" value="" />
+<input type="hidden" name="y1" value="" />
+<input type="hidden" name="x2" value="" />
+<input type="hidden" name="y2" value="" />
+<div>
+	<button id="setArea"><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:wizard.setArea" /></button>
+	<button id="closeWizard" onclick="javascipt:window.close();"><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:wizard.closeWizard" /></button>
+</div>
+
+<script type="text/javascript">
+	var formName = '{P.formName}';
+	var itemName = '{P.itemName}';
+		jQuery('#imageAreaSource').imgAreaSelect({
+			onSelectEnd: function (img, selection) {
+				jQuery('input[name="x1"]').val(selection.x1);
+				jQuery('input[name="y1"]').val(selection.y1);
+				jQuery('input[name="x2"]').val(selection.x2);
+				jQuery('input[name="y2"]').val(selection.y2);
+			}
+		});
+		
+		jQuery('#setArea').click(function(){
+			coords = jQuery('input[name="x1"]').val()+','+jQuery('input[name="y1"]').val()+','+jQuery('input[name="x2"]').val()+','+jQuery('input[name="y2"]').val();
+			//alert(coords);
+			parentForm = window.opener.document.editform;
+			val = jQuery(parentForm).find('[name="'+itemName+'"]').val();
+			if (val.length > 0)	newVal = val+"\n"+coords;
+			else newVal = coords;
+			jQuery(parentForm).find('[name="'+itemName+'"]').val(newVal);
+		});
+</script>

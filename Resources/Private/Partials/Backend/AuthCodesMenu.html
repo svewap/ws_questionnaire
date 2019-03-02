@@ -1,0 +1,10 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<b><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:menu.title" /></b><br />
+<f:be.menus.actionMenu>
+	<f:be.menus.actionMenuItem label="{f:translate(key:'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:menu.list')}" action="authCodes" controller="Backend" arguments="{pluginUid:plugin.uid}"/>
+	<f:be.menus.actionMenuItem label="{f:translate(key:'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:menu.simple')}" action="authCodesSimple" controller="Backend"  arguments="{pluginUid:plugin.uid}"/>
+	<f:be.menus.actionMenuItem label="{f:translate(key:'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:menu.mail')}" action="authCodesMail" controller="Backend"  arguments="{pluginUid:plugin.uid}"/>
+        <f:if condition="{ke:premiumLoaded()}">
+            <f:be.menus.actionMenuItem label="{f:translate(key:'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:menu.remind')}" action="authCodesRemind" controller="Backend"  arguments="{pluginUid:plugin.uid}"/>
+        </f:if>
+</f:be.menus.actionMenu>

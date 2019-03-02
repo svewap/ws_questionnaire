@@ -1,0 +1,163 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+	<div class="keqAnswerWrap keqMatrix">
+		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
+		<f:form.hidden name="answerErrors[]" id="keqAnswerError{question.uid}a{answer.uid}" value="{f:if(condition:'{answer.minAnswers}',then:1,else:0)}" />
+		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+        <table class="keq-matrix" id="keq{question.uid}a{answer.uid}">
+		<thead>
+			<tr>
+				<th>&nbsp;</th>
+				<f:for each="{answer.cols}" as="column">
+					<th>{column.title}</th>
+				</f:for>
+			</tr>
+		</thead>
+		<tbody>
+			<ke:MatrixRow answer="{answer}" question="{question}" as="row">
+				<tr id="keq{question.uid}r{row.uid}">
+					<f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][value]" value="" />
+					<td>{row.title}</td>					
+					<f:for each="{answer.cols}" as="column">
+						<td>
+						<f:if condition="{row.titleLine}">
+							<f:then><f:render partial="Answer/Matrix/TitleLine" arguments="{row: row}" /></f:then>
+							<f:else><f:render partial="Answer/Matrix/{column.shortType}" arguments="{question: question, row: row, column: column, newResult: newResult, clone: 0}" /></f:else>
+						</f:if>
+						</td>
+					</f:for>
+					
+				</tr>
+			</ke:MatrixRow>
+            <f:if condition="{answer.addClones}">
+                <f:alias map="{cloneableRow: '{ke:getCloneableMatrixRow(answer: answer, question: question)}'}">
+					<f:alias map="{clonedAnswers: '{ke:getClonedResultAnswers(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+                        <f:for each="{clonedAnswers}" key="nr" as="clone">
+                            <tr>
+                                <td>
+                                    <f:form.textfield name="newResult[questions][{question.uid}][answers][{cloneableRow.uid}][cloned][title][{nr}]" value="{clone.title}" />
+                                </td>
+                                <f:for each="{answer.cols}" as="column">
+                                <td>
+                                    <f:render partial="Answer/Matrix/{column.shortType}" arguments="{question: question, row: cloneableRow, column: column, newResult: newResult, clone: nr, type:'cloned'}" />
+                                </td>
+                            </f:for>
+                            </tr>
+                        </f:for>
+                    </f:alias>
+                    <tr class="keqClonableRow">
+                        <td>
+                            <f:form.textfield name="newResult[questions][{question.uid}][answers][{cloneableRow.uid}][cloned][title][1000]" value="" />
+                        </td>
+						<f:for each="{answer.cols}" as="column">
+                            <td>
+                                <f:render partial="Answer/Matrix/{column.shortType}" arguments="{question: question, row: cloneableRow, column: column, newResult: newResult, clone:1000, type:'cloned'}" />
+    						</td>
+        				</f:for>
+                    </tr>
+                    <tr>
+                        <td>
+                            <f:image class="keqMatrixAddClone" src="EXT:ke_questionnaire/Resources/Public/Images/add.png" alt="add" title="add" />
+                        </td>
+                    </tr>
+                </f:alias>
+            </f:if>
+		</tbody>
+		</table>
+	</div>    
+</f:alias>
+<!-- Check for Max and Min Answers -->
+<ke:JavaScript>
+<f:if condition="{answer.maxAnswers}">
+/*
+ * When an answer in this matrix is changed, check for max answers
+ */
+ jQuery( "#keq{question.uid}a{answer.uid} input" ).on( "click", function() {
+	 var idy = 'keq{question.uid}a{answer.uid}'; 
+	 var max = {answer.maxAnswers};
+
+	 var counter = 0;
+	 jQuery.each(jQuery( "#"+idy+" input" ),function(index, value){
+		 switch (jQuery(value).prop('type')){
+			case "checkbox": 
+					if (jQuery(value).prop('checked')) counter ++;
+				break;
+			default:
+				break;
+		 }
+	 });
+
+	 if (counter > max) {
+		 switch (jQuery(this).prop('type')){
+			case "checkbox": 
+					jQuery(this).removeAttr('checked');
+					jQuery('#'+idy+"info").html('TO-BE-TRANSLATED: you reached the max answers allowed: '+max);
+				break;
+			default:
+				break;
+		 }
+	 }
+ });
+</f:if>
+<f:if condition="{answer.minAnswers}">
+/*
+ * When an answer in this question is changed, check for max answers
+ */
+ jQuery( "#keq{question.uid} input" ).on( "click", function() {
+	 var idy = '{question.uid}a{answer.uid}'; 
+	 var min = {answer.minAnswers};
+
+	 var counter = 0;
+	 jQuery.each(jQuery( "#keq"+idy+" input" ),function(index, value){
+		 switch (jQuery(value).prop('type')){
+			case "checkbox": 
+					if (jQuery(value).prop('checked')) counter ++;
+				break;
+			default:
+				break;
+		 }
+	 });
+
+	 if (counter < min) {
+		 switch (jQuery(this).prop('type')){
+			case "checkbox": 
+					jQuery("#keqAnswerError"+idy).val(1);
+					jQuery('#keq'+idy+"info").html('TO-BE-TRANSLATED: you must at least give: '+min+' answers');
+					checkAnswerErrors();
+				break;
+			default:
+				break;
+		 }
+	 } else {
+		 jQuery("#keqAnswerError"+idy).val(0);
+		 jQuery('#keq'+idy+"info").html('');
+		 checkAnswerErrors();
+	 }
+ });
+</f:if>
+</ke:JavaScript>
+<f:if condition="{question.isMandatory}">
+<ke:JavaScript>
+	/*
+	 * When the length of all input field values is > 0
+	 */
+	jQuery( "#keq{question.uid}a{answer.uid} input:not([type=hidden])" ).on( "change", function() {
+		check_keq{question.uid}a{answer.uid}();
+	});
+	check_keq{question.uid}a{answer.uid} = function() {
+		var length = 0;
+		jQuery("#keq{question.uid}a{answer.uid} input:not([type=hidden])").each(function(){
+			var type= jQuery(this).attr('type');
+			if (type == 'radio' || type == 'checkbox'){
+				if (jQuery(this).is(':checked')) length ++;
+			} else {
+				length += jQuery(this).val().length;
+			}
+		});
+		if (length > 0) jQuery("#keqMandatory{question.uid}").val(0);
+		else jQuery("#keqMandatory{question.uid}").val(1);		
+		checkMandatory();
+	}
+	check_keq{question.uid}a{answer.uid}();
+</ke:JavaScript>
+</f:if>

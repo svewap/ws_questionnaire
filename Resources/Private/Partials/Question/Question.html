@@ -1,0 +1,112 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<ke:checkDependancies question="{question}" result="{newResult}">
+    <div class="keqQuestion" id="keq{question.uid}">
+        <f:form.hidden property="questions.{question.uid}.question" value="{question.uid}" />
+        <f:form.hidden name="answerErrors[]" id="keqAnswerErrorQ{question.uid}" value="{f:if(condition:'{question.minAnswers}',then:1,else:0)}" />
+        <f:render partial="Question/QuestionTitle" arguments="{question: question}" />
+        <div class="answerInfo" id="keq{question.uid}info"></div>
+        <div class="keqAnswerBox">
+        <f:render partial="Question/QuestionMandatory" arguments="{question: question}" />
+	    <f:for each="{question.answers}" as="answer">
+                <f:if condition="{question.columnCount} > 0">
+                    <div class="keqAnswerColumns" style="width:{question.columnPercent}%;">
+                </f:if>			
+                <f:if condition="{answer.template}">
+                    <f:then>
+                        <ke:renderPartial partial="{answer.template}" arguments="{question: question, answer: answer, newResult: newResult}" />
+                    </f:then>
+                    <f:else>
+						<f:render partial="Answer/{answer.shortType}" arguments="{question: question, answer: answer, newResult: newResult}" />
+                    </f:else>
+                </f:if>
+                <f:if condition="{question.columnCount} > 0">
+                    </div>
+                </f:if>
+            </f:for>		
+        </div>
+        <div class="clearer">&nbsp;</div>
+    </div>
+</ke:checkDependancies>
+<!-- Check for Max and Min Answers -->
+<ke:JavaScript>
+	<f:if condition="{question.maxAnswers}">
+/*
+ * When an answer in this question is changed, check for max answers
+ */
+ jQuery( "#keq{question.uid} input" ).on( "click", function() {
+	 check_keqmax{question.uid}(this);
+ });
+ check_keqmax{question.uid} = function(answer) {
+        var idy = 'keq{question.uid}'; 
+	var max = {question.maxAnswers};
+
+	var counter = 0;
+	jQuery.each(jQuery( "#"+idy+" input" ),function(index, value){
+		 switch (jQuery(value).prop('type')){
+			case "checkbox": 
+			case "radio": 
+					if (jQuery(value).prop('checked')) counter ++;
+				break;
+			default:
+				break;
+		 }
+	});
+
+	if (counter > max) {
+            switch (jQuery(answer).prop('type')){
+                   case "checkbox": 
+                   case "radio": 
+					jQuery(answer).removeAttr('checked');
+                    jQuery('#'+idy+"info").html('<f:translate key="maxAnswers" /> '+max);
+				break;
+				default:
+                           break;
+            }
+	}
+ };
+ check_keqmax{question.uid}();
+	</f:if>
+	<f:if condition="{question.minAnswers}">
+/*
+ * When an answer in this question is changed, check for max answers
+ */
+ jQuery( "#keq{question.uid} input" ).on( "click", function() {
+	check_keqmin{question.uid}();
+ });
+ 
+ check_keqmin{question.uid}  = function() {
+	var idy = '{question.uid}'; 
+	 var min = {question.minAnswers};
+
+	 var counter = 0;
+	 jQuery.each(jQuery( "#keq"+idy+" input" ),function(index, value){
+		 switch (jQuery(value).prop('type')){
+			case "checkbox": 
+			case "radio": 
+					if (jQuery(value).prop('checked')) counter ++;
+				break;
+			default:
+				break;
+		 }
+	 });
+	 
+	 if (counter < min) {
+		 switch (jQuery(this).prop('type')){
+			case "checkbox": 
+			case "radio": 
+					jQuery("#keqAnswerErrorQ"+idy).val(1);
+					jQuery('#keq'+idy+"info").html('<f:translate key="minAnswers" /> '+min);
+					checkAnswerErrors();
+				break;
+			default:
+				break;
+		 }
+	 } else {
+		 jQuery("#keqAnswerErrorQ"+idy).val(0);
+		 jQuery('#keq'+idy+"info").html('');
+		 checkAnswerErrors();
+	 }
+};
+check_keqmin{question.uid}();
+	</f:if>	
+</ke:JavaScript>

@@ -1,0 +1,111 @@
+/* 
+    Document   : Backend
+    Created on : 19.03.2013, 13:47:22
+    Author     : schwingler
+    Description:
+        Backend CSS for the Modules
+*/
+body {
+	background: #fff;
+}
+
+/* tx-ke-questionnaire */
+/* clearer */
+.tx-ke-questionnaire .clearer {
+	height: 1px;
+	line-height: 1px;
+	font-size: 1px;
+	clear: both;
+}
+
+.tx-ke-questionnaire { 
+    padding: 20px 5px 0 30px;
+}
+
+.tx-ke-questionnaire .module_list {
+	padding: 10px;
+}
+
+.tx-ke-questionnaire .module_list ul{
+	list-style: square;
+	margin-left: 5px;
+}
+
+.tx-ke-questionnaire table {
+	font-size: 11px;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.tx-ke-questionnaire table td,
+.tx-ke-questionnaire table th {
+	border: 1px solid black;
+	padding: 2px;
+}
+
+.tx-ke-questionnaire .jqplot-point-label{
+    font-size: 12px;
+}
+
+.tx-ke-questionnaire .jqplot-highlighter-tooltip{
+    font-size: 10px;
+	background: none repeat scroll 0 0 rgba(208, 208, 208, 0.8);
+}
+
+.tx-ke-questionnaire table .jqplot-table-legend td{
+	border: 1px solid #ddd;
+}
+
+.tx-ke-questionnaire .mailPreview{
+	background: #ddd;
+	padding: 5px;
+}
+
+.tx-ke-questionnaire form.csvDownload ul {
+	list-style: inside;
+	padding: 5px;
+}
+
+.tx-ke-questionnaire form.csvDownload ul li {
+	margin: 2px;
+	padding: 2px;
+}
+
+.tx-ke-questionnaire form.csvDownload input{
+	text-align: center;
+}
+
+.tx-ke-questionnaire .resultCounter ul li span{
+	display: block;
+	float: left;
+	width: 100px;
+}
+
+.tx-ke-questionnaire .keqLineAnalysis li{
+	padding: 2px;
+	border: 1px solid #ddd;
+}
+
+.tx-ke-questionnaire .finishedParticipation a{
+	color: #3B8F11;
+}
+
+.tx-ke-questionnaire .openParticipation a{
+	color: #CF3E0C;
+}
+
+.tx-ke-questionnaire .openParticipation a:hover {
+	font-weight: bold;
+}
+
+.tx-ke-questionnaire .finishedParticipation a:hover {
+	font-weight: bold;
+}
+
+.tx-ke-questionnaire .keq_authCodes_exportlink {
+	float: right;
+}
+
+.tx-ke-questionnaire ul.keq_list {
+	list-style-image:url("../../../ext_icon.gif");
+}

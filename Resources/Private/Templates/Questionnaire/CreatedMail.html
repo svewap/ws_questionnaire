@@ -1,0 +1,10 @@
+<f:layout name="Backend" />
+
+<f:section name="main">
+	<f:format.html>{text.before}</f:format.html>
+	{authCode.authCode}
+	<f:format.html>{text.after}</f:format.html>
+	<f:link.action action="new" controller="Result" pluginName="Questionnaire" pageUid="{plugin.pid}" target="_blank" extensionName="KeQuestionnaire" absolute="TRUE" arguments="{code:authCode.authCode}">
+		<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authCode.xml:mail.directLink" />
+	</f:link.action>
+</f:section>

@@ -1,0 +1,58 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultRow: '{ke:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, clone: clone)}'}">
+	<f:if condition="{type} == 'cloned'">
+		<f:then>
+			<f:form.checkbox id="keq{question.uid}c{column.uid}r{row.uid}clone{clone}" name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][{column.uid}][value][{clone}]" value="{column.uid}" checked="{f:if(condition: '{resultRow.value} == {column.uid}', then: 'true', else: 'false')}" />
+			<label for="keq{question.uid}c{column.uid}r{row.uid}clone{clone}" class="radio_checkbox">&nbsp;</label>
+			<f:if condition="{column.showTextfield}">
+				<f:then>
+					<f:form.textfield name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][{column.uid}][additionalValue][{clone}]" disabled="disabled" value="{f:if(condition: resultRow.additionalValue, then: resultRow.additionalValue, else: '')}"/>
+				</f:then>
+				<f:else>
+					<f:if condition="{row.showTextfield}">
+						<f:form.textfield name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][{column.uid}][additionalValue][{clone}]" disabled="disabled" value="{f:if(condition: resultRow.additionalValue, then: resultRow.additionalValue, else: '')}"/>
+					</f:if>
+				</f:else>
+			</f:if>
+		</f:then>
+		<f:else>
+			<f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][answer]" value="{row.uid}" />
+			<f:form.checkbox id="keq{question.uid}c{column.uid}r{row.uid}" name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][value]" value="{column.uid}" checked="{f:if(condition: '{resultRow.value} == {column.uid}', then: 'true', else: 'false')}" />
+			<label for="keq{question.uid}c{column.uid}r{row.uid}" class="radio_checkbox">&nbsp;</label>			
+			<f:if condition="{column.showTextfield}">
+				<f:then>
+					<f:form.textfield name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][additionalValue]" disabled="disabled" value="{f:if(condition: resultRow.additionalValue, then: resultRow.additionalValue, else: '')}"/>
+				</f:then>
+				<f:else>
+					<f:if condition="{row.showTextfield}">
+						<f:form.textfield name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][additionalValue]" disabled="disabled" value="{f:if(condition: resultRow.additionalValue, then: resultRow.additionalValue, else: '')}"/>
+					</f:if>
+				</f:else>
+			</f:if>
+		</f:else>
+	</f:if>
+</f:alias>
+<ke:JavaScript>
+	var idy = 'keq{question.uid}c{column.uid}r{row.uid}';
+	checkMatrixCheckboxValues(jQuery('#'+idy));
+<f:if condition="{column.showTextfield}">
+	<f:then>
+/*
+ * Check Input fields on change
+ */
+jQuery( "#keq{question.uid}c{column.uid}r{row.uid}" ).on( "change", function() {
+	checkMatrixCheckboxValues(this);
+});
+	</f:then>
+	<f:else>
+		<f:if condition="{row.showTextfield}">
+/*
+ * Check Input fields on change
+ */
+jQuery( "#keq{question.uid}c{column.uid}r{row.uid}" ).on( "change", function() {
+   checkMatrixCheckboxValues(this);
+});
+		</f:if>
+	</f:else>
+</f:if>
+</ke:JavaScript>

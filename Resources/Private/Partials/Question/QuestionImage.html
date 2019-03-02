@@ -1,0 +1,17 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:if condition="{question.image}">
+	<div class="keqImage keqImage{position}">
+		<f:if condition="{0: question.imagePosition} == {0: 'top'}">
+			<f:image src="uploads/tx_kequestionnaire/{question.image}" alt="{question.image}" width="{settings.question.image.top.width}" height="{settings.question.image.top.height}" minWidth="{settings.question.image.top.minWidth}" minHeight="{settings.question.image.top.minHeight}" maxWidth="{settings.question.image.top.maxWidth}" maxHeight="{settings.question.image.top.maxHeight}" />
+		</f:if>
+		<f:if condition="{0: question.imagePosition} == {0: 'right'}">
+			<f:image src="uploads/tx_kequestionnaire/{question.image}" alt="{question.image}" width="{settings.question.image.right.width}" height="{settings.question.image.right.height}" minWidth="{settings.question.image.right.minWidth}" minHeight="{settings.question.image.right.minHeight}" maxWidth="{settings.question.image.right.maxWidth}" maxHeight="{settings.question.image.right.maxHeight}" />
+		</f:if>
+		<f:if condition="{0: question.imagePosition} == {0: 'left'}">
+			<f:image src="uploads/tx_kequestionnaire/{question.image}" alt="{question.image}" width="{settings.question.image.left.width}" height="{settings.question.image.left.height}" minWidth="{settings.question.image.left.minWidth}" minHeight="{settings.question.image.left.minHeight}" maxWidth="{settings.question.image.left.maxWidth}" maxHeight="{settings.question.image.left.maxHeight}" />
+		</f:if>
+		<f:if condition="{0: question.imagePosition} == {0: 'bottom'}">
+			<f:image src="uploads/tx_kequestionnaire/{question.image}" alt="{question.image}" width="{settings.question.image.bottom.width}" height="{settings.question.image.bottom.height}" minWidth="{settings.question.image.bottom.minWidth}" minHeight="{settings.question.image.bottom.minHeight}" maxWidth="{settings.question.image.bottom.maxWidth}" maxHeight="{settings.question.image.bottom.maxHeight}" />
+		</f:if>
+	</div>
+</f:if>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Questionnaire extension in the FlexForms</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="mlang_tabs_tab">Export</label>
+			
+			<label index="header">Export data for the questionnaire </label>
+			<label index="index_list_header">Please select a questionnaire for the Export Module</label>
+			<label index="count">Finished/Total Participations: </label>
+
+			<label index="list.header">Export data from the questionnaires</label>
+			<label index="list.select">Select a questionnaire and an export type to download the data</label>
+			<label index="list.types">Export types:</label>
+
+			<label index="csvRb.title">CSV / Table (Result Lines)</label>
+			<label index="csvRb.description">
+				Export the data as CSV (Comma-separated values) file. It can be used to import data into multiple programs like Libre Office Calc and MS Excel
+			</label>            
+			<label index="csv.title">CSV / Table (Question Lines)</label>
+			<label index="csv.description">
+				Export the data as CSV (Comma-separated values) file. It can be used to import data into multiple programs like Libre Office Calc and MS Excel
+			</label>            
+            <label index="pdf.title">PDF</label>
+			<label index="pdf.description">
+				Export the questionnaire as PDF.
+			</label>
+            
+            <label index="menu.title">Export actions:</label>
+			<label index="menu.csvRb">CSV Export (Result Lines)</label>
+			<label index="menu.csv">CSV Export (Question Lines)</label>
+			<label index="menu.pdf">PDF Export</label>
+
+			<label index="csv.download">Download CSV</label>
+			<label index="csv.options.title">CSV-Download-Options</label>
+			<label index="csv.options.separator">Field separator</label>
+			<label index="csv.options.text">Text separator</label>
+			<label index="csv.options.finished">Export only finished participations</label>
+			<label index="csv.options.totalPoints">Export total reached points of participation</label>
+			<label index="csv.options.questionPoints">Export reached points of each question in participation</label>
+			<label index="csv.options.singleMarker">Marker for RadioButton and CheckBoxes answers</label>
+			<label index="csv.options.showQText">Export the question-text</label>
+			<label index="csv.options.showAText">Export the answer-text</label>
+			<label index="csv.options.encoding">Charset-Encoding of the CSV-Data (Best use for Excel: latin1 / You can change the standard-encoding with typoscript)</label>
+			<label index="csv.options.exportInterval">Export Interval</label>
+			<label index="csv.exportInterval.start">Start generation of the CSV file</label>
+			<label index="csv.exportInterval.partInfo">Processed Participations:</label>
+            
+            <label index="pdf.download">Download PDF</label>
+            <label index="pdf.options.empty">Empty questionnaire</label>
+            <label index="pdf.options.filled">Filled questionnaire, you need to select a result to export</label>
+            <label index="pdf.options.compared">Filled questionnaire with a comparison of the user-result with given values, you need to select a result to export</label>
+
+			<label index="results.counter.title">Participations</label>
+			<label index="results.counter.all">All</label>
+			<label index="results.counter.finished">Finished</label>
+			<label index="results.counter.not">Unfinished</label>
+            <label index="results.counter.connected">Connected</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Export</label>
+			
+			<label index="header">Export der Daten für den Fragebogen </label>
+			<label index="index_list_header">Bitte einen Fragebogen für das Export Modul auswählen</label>
+			<label index="count">Abgeschlossene/Gesamt Teilnahmen: </label>
+
+			<label index="list.header">Export der Daten von den Fragebögen</label>
+			<label index="list.select">Wählen Sie den Fragebogen und den Export-Typ aus, um die Daten herunterzuladen</label>
+			<label index="list.types">Export-Typen:</label>
+
+			<label index="csvRb.title">CSV / Tabelle (Ergebnis Zeilen)</label>
+			<label index="csvRb.description">
+				Export der Daten als CSV (Comma-separated values)-Datei. Dieses Format kann genutzt werden, um die Daten in verschiedene Programme wie Libre Office Calc oder MS Excel zu importieren.
+			</label>            
+			<label index="csv.title">CSV / Tabelle (Fragen Zeilen)</label>
+			<label index="csv.description">
+				Export der Daten als CSV (Comma-separated values)-Datei. Dieses Format kann genutzt werden, um die Daten in verschiedene Programme wie Libre Office Calc oder MS Excel zu importieren.
+			</label>            
+            <label index="pdf.title">PDF</label>
+			<label index="pdf.description">
+				Export des Fragebogens als PDF.
+			</label>
+            
+            <label index="menu.title">Export-Arten:</label>
+			<label index="menu.csvRb">CSV-Export (Ergebnis Zeilen)</label>
+			<label index="menu.csv">CSV-Export (Fragen Zeilen)</label>
+			<label index="menu.pdf">PDF-Export</label>
+
+			<label index="csv.download">CSV herunterladen</label>
+			<label index="csv.options.title">CSV-Download-Optionen</label>
+			<label index="csv.options.separator">Feld-Trenner</label>
+			<label index="csv.options.text">Text-Marker</label>
+			<label index="csv.options.finished">Nur abgeschlossene Teilnahmen exportieren</label>
+			<label index="csv.options.totalPoints">Erreichte Gesamtpunktzahl exportieren</label>
+			<label index="csv.options.questionPoints">Erreichte Punktzahl pro Frage exportieren</label>
+			<label index="csv.options.singleMarker">Markierung für RadioButton- oder Checkbox-Antworten</label>
+			<label index="csv.options.showQText">Den Fragetext mit exportieren</label>
+			<label index="csv.options.showAText">Den Antworttext mit exportieren</label>
+			<label index="csv.options.encoding">Charset-Encoding für die CSV-Daten (Für Excel am besten: latin1 / Der Standard kann per TypoScript abgeändert werden)</label>
+			<label index="csv.options.exportInterval">Export Interval</label>
+			<label index="csv.exportInterval.start">Erstellung der CSV Datei beginnen</label>
+			<label index="csv.exportInterval.partInfo">Abgearbeitete Datensätze:</label>
+            
+            <label index="pdf.download">PDF herunterladen</label>
+            <label index="pdf.options.empty">Unausgefüllter Fragebogen</label>
+            <label index="pdf.options.filled">Ausgefüllter Fragebogen, hierfür müssen Sie eine Teilnahme auswählen</label>
+            <label index="pdf.options.compared">Ausgefüllter Fragebogen mit Vergleich der vorgegebenen Werte, Sie müssen eine Teilnahme auswählen</label>
+
+			<label index="results.counter.title">Teilnahmen</label>
+			<label index="results.counter.all">Alle</label>
+			<label index="results.counter.finished">Abgeschlossen</label>
+			<label index="results.counter.not">Offen</label>
+            <label index="results.counter.connected">Verbunden</label>
+		</languageKey>
+	</data>
+</T3locallang>

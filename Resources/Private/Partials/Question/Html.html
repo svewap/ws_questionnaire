@@ -1,0 +1,8 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<ke:checkDependancies question="{question}" result="{newResult}">
+	<f:render partial="Question/QuestionTitleOnly" arguments="{question: question}" />
+	<div class="keqTextElement">
+		<f:form.hidden property="questions.{question.uid}.question" value="{question.uid}" />
+		<f:format.raw>{question.text}</f:format.raw>
+	</div>
+</ke:checkDependancies>

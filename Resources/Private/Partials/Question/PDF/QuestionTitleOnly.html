@@ -1,0 +1,18 @@
+<f:if condition="{question.numbering}">{question.numbering}</f:if>
+<f:if condition="{question.showTitle}">
+	<div class="keqQuestionTitle">
+		<f:if condition="{0: question.imagePosition} == {0: 'top'}">
+			<f:render partial="Question/QuestionImage" arguments="{question: question, position: 'Top'}" />
+		</f:if>
+		<f:if condition="{0: question.imagePosition} == {0: 'right'}">
+			<f:render partial="Question/QuestionImage" arguments="{question: question, position: 'Right'}" />
+		</f:if>
+		<f:if condition="{0: question.imagePosition} == {0: 'left'}">
+			<f:render partial="Question/QuestionImage" arguments="{question: question, position: 'Left'}" />
+		</f:if>	
+		<f:if condition="{question.showTitle}">{question.title}<br /></f:if>
+		<f:if condition="{0: question.imagePosition} == {0: 'bottom'}">
+			<f:render partial="Question/QuestionImage" arguments="{question: question, position: 'Bottom'}" />
+		</f:if>
+	</div>
+</f:if>

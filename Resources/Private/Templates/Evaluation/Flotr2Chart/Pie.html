@@ -1,0 +1,13 @@
+<f:format.raw>{variables}</f:format.raw>
+var containerId = "{containerId}";
+var chartData = <f:format.raw>{chartData}</f:format.raw>;
+
+/* <![CDATA[ */
+jQuery(document).ready(function() {
+	(function basic_pie(container) {
+		var graph;
+
+		graph = Flotr.draw(container, ' . $this->getData() . ', chartOptions);
+	})(document.getElementById(containerId));
+});
+/* ]]> */

@@ -1,0 +1,18 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<div class="keqRangeWrap">
+	<div class="keqRangeTitle">{range.title}</div>
+	<div class="keqRangeContent">
+		<f:if condition="{range.assessmentgroup}">
+			<div class="keqRangeTitle">{range.assessmentgroup.title}</div>
+			<f:format.html>{range.assessmentgroup.text}</f:format.html>
+		</f:if>
+		<f:if condition="{range.text}">
+			<f:format.html>{range.text}</f:format.html>
+		</f:if>
+		<f:if condition="{range.content}">
+			<f:for each="{range.content}" as="element">
+				<ke:ContentElement uid="{element.uid}" />
+			</f:for>
+		</f:if>
+	</div>
+</div>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>extConf</type>
+		<description>Language labels for the Questionnaire extension in the Ext-Manager</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="enableFeUserMarker">Enable Frontent-User Marker: If this feature is enabled an additional marker {feUser} will be available in all templates to access to current or given feUser-Record.</label>
+
+			<label index="emailAddress">Sender e-mail address: This is the e-mail address defined in the FROM part. You can overwrite it within the submodules.</label>
+			<label index="emailSender">Sender name: Define a contact person here instead of "Webmaster". You can overwrite this within the submodules.</label>
+			<label index="emailSubject">Subject: This is a global subject. If required, you can overwrite it. It is used in case you forget to define a subject in submodules.</label>
+
+			<label index="csvExportInterval">Interval for Export: Amount of participations for the export. If the amount is higher than this, the export will be generated with ajax.</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="enableFeUserMarker">Aktiviere Frontend-User Platzhalter: Wenn dieses Feature aktiviert ist, steht Ihnen innerhalb aller Templates ein zusätzlicher Platzhalter {feUser} mit den Daten des aktuellen oder gegebenen FeUser-Datensatzes zur Verfügung.</label>
+
+			<label index="emailAddress">Absender E-Mail-Adresse: Diese E-Mail-Adresse wird für den FROM-Part innerhalb von Mailings verwendet. Sie können diese Adresse innerhalb der Untermodule überschreiben.</label>
+			<label index="emailSender">Absender Name: Es ist immer besser, hier einen direkten Ansprechpartner zu definieren, statt "Webmaster" zu verwenden. Sie können diesen Namen innerhalb der Untermodule überschreiben.</label>
+			<label index="emailSubject">Betreff: Hierbei handelt es sich um einen globalen Betreff, der verwendet wird, falls Sie in einem der Untermodule vergessen haben sollten, einen Betreff anzugeben.</label>
+
+			<label index="csvExportInterval">Interval für Export: Anzahl der Teilnahmen, die mit einem Export abgearbeitet werden. Wird die Zahl überschritten wird die Datei mittels Ajax generiert.</label>
+		</languageKey>
+	</data>
+</T3locallang>

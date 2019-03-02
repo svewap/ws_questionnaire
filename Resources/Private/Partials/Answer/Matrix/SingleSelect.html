@@ -1,0 +1,17 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultCol: '{ke:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, clone: clone)}'}">
+	<div class="keqAnswerWrap keqAnswerSingleInput">
+		<f:if condition="{type} == 'cloned'">
+            <f:then>
+				<f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][{column.uid}][text][{clone}]" value="1" />
+				<f:form.select options="{column.SelectValuesArray}" name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][{column.uid}][value][{clone}]" value="{f:if(condition: resultCol.value, then: resultCol.value, else: '')}"  />
+            </f:then>
+            <f:else>
+				<f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][answer]" value="{row.uid}" />
+				<f:form.hidden name="answerErrors[]" id="keqAnswerErrorc{colum.uid}r{row.uid}" value="0" />
+				<f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][text]" value="1" />
+				<f:form.select options="{column.SelectValuesArray}" name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][value]" value="{f:if(condition: resultCol.value, then: resultCol.value, else: '')}"  />
+			</f:else>
+		</f:if>
+	</div>
+</f:alias>

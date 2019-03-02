@@ -1,0 +1,18 @@
+<f:format.raw>{variables}</f:format.raw>
+var containerId = "{containerId}";
+var chartData = <f:format.raw>{chartData}</f:format.raw>;
+
+/* <![CDATA[ */
+google.load("visualization", "1", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart);
+function drawChart() {
+	var data = google.visualization.arrayToDataTable(chartData);
+
+	var options = {
+		title: title
+	};
+
+	var chart = new google.visualization.PieChart(document.getElementById(containerId));
+	chart.draw(data, options);
+}
+/* ]]> */

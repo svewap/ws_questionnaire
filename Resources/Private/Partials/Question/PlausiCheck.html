@@ -1,0 +1,6 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<ke:checkPlausi question="{question}" result="{newResult}">
+    <div class="keqPlausiCheck" id="keq{question.uid}">
+        <f:format.html>{question.text}</f:format.html>
+    </div>
+</ke:checkPlausi>

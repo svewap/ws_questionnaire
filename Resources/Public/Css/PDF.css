@@ -1,0 +1,40 @@
+#keqViewResult .keq-dd-area-container .keq-placeholder{
+	background-color: #ddd;
+	border: 1px solid black;
+	float: left;
+	margin-right: 20px;
+}
+
+#keqViewResult .keq-cloze-term{
+	padding: 2px;
+	border: 1px solid black;
+	margin-right: 20px;
+	float: left;
+	width: 100px;
+}
+
+div.csc-textpic-intext-right .csc-textpic-imagewrap {
+	float: right;
+}
+
+div.csc-textpic .csc-textpic-imagewrap figure, div.csc-textpic figure.csc-textpic-imagewrap {
+    display: table;
+    margin: 0;
+}
+
+#keqViewResult .keqPdfAvatarImageParts .items div{
+	float: left;
+	width: auto;
+}
+
+#keqViewResult .keqPdfAvatarImageParts {
+	clear: right;
+}
+
+#keqViewResult .keqPdfAvatarImageParts {
+	clear: right;
+}
+
+#keqViewResult .compareQuestion {
+	border: 1px solid #ff0000;
+}

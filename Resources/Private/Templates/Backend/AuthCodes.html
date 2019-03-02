@@ -1,0 +1,62 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+{namespace kep=Kennziffer\KeQuestionnairePremium\ViewHelpers}
+<f:layout name="Backend" />
+
+<f:section name="main">
+	<f:be.container
+			pageTitle="Ke Questionnaire Backend Modules"
+			enableClickMenu="false"
+			loadJQuery="true"
+			includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}'}"> 
+		<f:flashMessages />
+		<h3><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:header" /> "{plugin.header}"</h3>
+		<hr />
+		<f:render partial="Backend/AuthCodesMenu" arguments="{plugin:plugin}"/>
+		<hr />
+		<f:if condition="{authCodes}">
+			<f:then>
+				<div class="keq_authCodes_exportlink">
+					<f:link.action action="downloadAuthCodesCsv" controller="Export" arguments="{pluginUid:plugin.uid}"><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:codes.exportCSV" /></f:link.action>
+				</div>				
+				<b><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:codes.existing" /></b><br />
+				<br />
+				<table>                                    
+                                <f:if condition="{ke:premiumLoaded()}">
+                                    <f:then>
+                                       <kep:authCodesTtAddressList arguments="{authCodes:authCodes}"/> 
+                                    </f:then>
+                                    <f:else>
+					<tr>
+						<th style="width:200px"><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:list.table.authCode" /></th>
+						<th style="width:200px"><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:list.table.email" /></th>
+						<th><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:list.table.participations" /></th>
+					</tr>                                
+                                        <f:for each="{authCodes}" as="code">
+					<tr>
+						<td>{code.authCode}</td>
+						<td>{code.email}</td>
+						<td>
+							<f:for each="{code.AndLoadParticipations}" as="participation">
+								<f:if condition="{participation.finished}">
+									<f:then>
+										<span class="finishedParticipation"><f:link.action action="downloadPdf" controller="Export" arguments="{pdfType:'filled',selectedResult:participation.uid, pluginUid:plugin.uid}">{participation.uid}</f:link.action></span>
+									</f:then>
+									<f:else>
+										<span class="openParticipation"><f:link.action action="downloadPdf" controller="Export" arguments="{pdfType:'filled',selectedResult:participation.uid, pluginUid:plugin.uid}">{participation.uid}</f:link.action></span>
+									</f:else>
+								</f:if>
+							</f:for>
+						</td>
+					</tr>
+                                        </f:for>
+                                    </f:else>
+                                </f:if>
+				</table>
+			</f:then>
+			<f:else>
+				<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:codes.none" />
+			</f:else>
+		</f:if>		
+		<hr />
+	</f:be.container>
+</f:section>

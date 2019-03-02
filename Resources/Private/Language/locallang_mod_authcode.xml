@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the Questionnaire extension in the FlexForms</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="mlang_tabs_tab">Authentication codes</label>
+						
+			<label index="index_list_header">Please select a questionnaire for the AuthenticationCode Module</label>
+			<label index="header">Authentication codes for the questionnaire </label>
+			<label index="count">Already existent: </label>
+
+			<label index="list.header">Authentication code creation for the questionnaires</label>
+			<label index="list.select">Select a questionnaire, select a creation type and create authentication codes</label>
+			<label index="list.types">Authentication code creation types:</label>
+
+			<label index="simple.title">Create</label>
+			<label index="simple.description">
+				Create authentification codes for the participants of a questionnaire.
+			</label>
+			<label index="mail.title">Create and Mail</label>
+			<label index="mail.description">
+				Create and send E-mails with authentification codes directly to potential participants.
+			</label>
+			
+			<label index="menu.title">Authentication code actions:</label>
+			<label index="menu.list">List authentication codes</label>
+			<label index="menu.simple">Create authentication codes</label>
+			<label index="menu.mail">Create and mail authentication codes</label>
+            <label index="menu.remind">Send reminder mails for authentication codes</label>
+
+			<label index="codes.existing">The following authentication codes are stored for this questionnaire</label>
+			<label index="codes.none">No authentication codes found</label>
+			<label index="codes.create">Create new authentication codes for this questionnaire</label>
+			<label index="codes.createLabel">Number of authentication codes</label>
+			<label index="codes.createSubmit">Create authentication codes</label>
+			<label index="codes.exportCSV">Export authentication codes as CSV</label>
+
+			<label index="mail.create">Create and E-mail authentication codes for this questionnaire</label>
+			<label index="mail.createLabel">You can enter a comma-separated Email-List or select from the registered Fe-Users / tt_address-entries (if tt_address is installed) </label>
+			<label index="mail.createSubmit">Create and mail authentication codes</label>
+			<label index="mail.viewMail">This E-mail will be sent</label>
+			<label index="mail.directLink">Direct link to questionnaire</label>
+			<label index="mail.tabEmail">Email-List</label>
+			<label index="mail.emailLabel">use a comma-separated list / there will be one authentication codes for each E-mail address</label>
+			<label index="mail.tabFeUser">FeUser</label>
+			<label index="mail.feuserLabel">please select the feUsers to be invited / there will be one authentication codes for each E-mail address. Only entries with email-adresses are selectable</label>
+			<label index="mail.tabFeUserGroup">FeUser Groups</label>
+			<label index="mail.feuserGroupLabel">please select the feUser-Group to be invited / there will be one authentication codes for each E-mail address. Only members of the group with valid e-mail-addresses will receive an invitation</label>
+			<label index="mail.tabTtAddress">ttAddress</label>
+			<label index="mail.ttaddressLabel">please select the tt_address entries to be invited / there will be one authentication codes for each E-mail address. Only entries with email-adresses are selectable</label>
+			<label index="mail.noTtaddresses">Sorry, no tt_address-entries found.</label>
+            <label index="mail.remind">Send reminder Emails for AuthCodes</label>
+            <label index="mail.remindSubmit">send reminder mail</label>
+
+			<label index="list.table.authCode">Authentication code</label>
+			<label index="list.table.email">E-mail</label>
+                        <label index="list.table.sendDate">send Date</label>
+			<label index="list.table.participations">Participations</label>
+                        <label index="list.table.startDate">Date started</label>
+                        <label index="list.table.finishedDate">Date finished</label>
+                        <label index="list.table.lastreminder">last reminder</label>
+                        <label index="list.table.firstactive">first use</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Authentication Codes</label>
+			
+			<label index="header">Authentication Codes für den Fragebogen </label>
+			<label index="index_list_header">Bitte einen Fragebogen für das Authentication Codes Modul auswählen</label>
+			<label index="count">Bereits angelegt: </label>
+
+			<label index="list.header">Authentication Code-Erstellung für Fragebögen</label>
+			<label index="list.select">Wählen Sie einen Fragebogen und eine Bearbeitungstyp aus, um die Authentication Codes zu generieren</label>
+			<label index="list.types">Authentication Code Bearbeitungstypen:</label>
+
+			<label index="simple.title">Erstellen</label>
+			<label index="simple.description">
+				Erstellen Sie Authentifizierungs-Codes für die Teilnahme an einem Fragebogen.
+			</label>
+			<label index="mail.title">Erstellen und versenden</label>
+			<label index="mail.description">
+				Erstellen Sie Authentifizierungs-Codes und versenden Sie diese direkt per E-Mail.
+			</label>
+			
+			<label index="menu.title">Authentication Code Bearbeitung:</label>
+			<label index="menu.list">Authentication Codes auflisten</label>
+			<label index="menu.simple">Authentication Codes erstellen</label>
+			<label index="menu.mail">Authentication Codes erstellen und versenden</label>
+            <label index="menu.remind">Erinnerungs-Emails für Authentication Codes versenden</label>
+
+			<label index="codes.existing">Die folgenden Authentication Codes sind für diesen Fragebogen gespeichert</label>
+			<label index="codes.none">Keine Authentication Codes gefunden</label>
+			<label index="codes.create">Erstellen Sie neue Authentication Codes für diesen Fragebogen</label>
+			<label index="codes.createLabel">Anzahl der Authentication Codes</label>
+			<label index="codes.createSubmit">Authentication Codes erstellen</label>
+			<label index="codes.exportCSV">Authentication Codes als CSV exportieren</label>
+
+			<label index="mail.create">Erstellen und Versenden von Authentication Codes für diesen Fragebogen</label>
+			<label index="mail.createLabel">Es kann eine komma-separierte Liste von Emails eingetragen werden. Ebenso können Einträge aus den Bereichen FeUser und tt-Address(falls installiert) ausgewählt werden.</label>
+			<label index="mail.createSubmit">Authentication Codes erstellen und versenden</label>
+			<label index="mail.viewMail">Dieser E-Mail-Text wird verschickt</label>
+			<label index="mail.directLink">Direkter Link zum Fragebogen</label>
+			<label index="mail.tabEmail">Email-List</label>
+			<label index="mail.emailLabel">Komma-Separierte Liste von Emails / Es wird ein AuthCode pro Email-Adresse generiert</label>
+			<label index="mail.tabFeUser">FeUser</label>
+			<label index="mail.feuserLabel">Bitte FeUser auswählen / Es wird ein AuthCode pro Email generiert. Sie können nur Einträge mit hinterlegten Email-Adressen auswählen</label>
+			<label index="mail.tabFeUserGroup">FeUser Groups</label>
+			<label index="mail.feuserGroupLabel">Bitte FeUser auswählen / Es wird ein AuthCode pro Email generiert. Nur die Mitglieder der UserGroup, die eine Email hinterlegt haben bekommen eine Einladung zugesendet</label>
+			<label index="mail.tabTtAddress">ttAddress</label>
+			<label index="mail.ttaddressLabel">Bitte tt-Address-Datensätze auswählen / Es wird ein AuthCode pro Email generiert. Sie können nur Einträge mit hinterlegten Email-Adressen auswählen</label>
+            <label index="mail.remind">Erinnerungs-Emails für AuthCodes versenden</label>
+            <label index="mail.remindSubmit">Erinnerungs-Email abschicken</label>
+
+			<label index="list.table.authCode">Authentication Code</label>
+			<label index="list.table.email">E-Mail</label>
+                        <label index="list.table.sendDate">Mail erhalten</label>
+			<label index="list.table.participations">Teilnahmen</label>
+                        <label index="list.table.startDate">Info gelesen</label>
+                        <label index="list.table.finishedDate">Teilnahme bestätigt</label>
+                        <label index="list.table.lastreminder">letzte Erinnerung</label>
+                        <label index="list.table.firstactive">erster Aufruf</label>
+		</languageKey>
+	</data>
+</T3locallang>

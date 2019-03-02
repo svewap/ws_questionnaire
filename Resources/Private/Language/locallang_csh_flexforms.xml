@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Context Sensitive Help (CSH) for FF</description>
+		<type>CSH</type>
+		<csh_table></csh_table>
+		<fileId>EXT:ke_questionnaire/Resources/Private/Language/locallang_csh_flexforms.xml</fileId>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index=".alttitle">ke_questionnaire Options</label>
+
+			<label index="view.partialRootPath.alttitle">Template-partials to be used</label>
+			<label index="view.partialRootPath.description">
+				Select a folder where your fluid-template-partials for this questionnaire are located&lt;br&gt;
+				You need to maintain the folder-structure of the "Partial"-directory. If a partial is not located in the given directory, the original ke_questionnaire-parital is used
+			</label>
+			
+			<label index="settings.accessType.alttitle">Access type granted to the questionnaire</label>
+			<label index="settings.accessType.description">
+				- "Unlimited" => no access restriction&lt;br&gt;
+				- "Frontend-User" => Only logged in users are allowed to access the questionnaire &lt;br&gt;
+				- "Authentication Code" => Access with a generated Authentication Code allowed only &lt;br&gt;
+			</label>
+			<label index="settings.participations.max.alttitle">Number of maximum participations for this questionnaire</label>
+			<label index="settings.participations.max.description">
+				- Value of 0 means no maximum of submissions&lt;br&gt;
+				- If the access-type is "Unlimited", this option will limit the total number of participations&lt;br&gt;
+				- If the access-Type is "Frontend-User" or "Authentication Code" it will limit the number of participations for each participant&lt;br&gt;
+			</label>
+			<label index="settings.restart.alttitle">Allow restart of the questionnaire</label>
+			<label index="settings.restart.description">
+				Allow the participant to restart the questionnaire, if he returns after aborting the participation.
+			</label>
+			
+			<label index="settings.redirectFinished.alttitle">Redirect to</label>
+			<label index="settings.redirectFinished.description">
+				If flag is set, the participant won't see the text after submission of the questionnaire. He will be redirected to the selected page instead.
+			</label>
+			<label index="settings.navigationType.alttitle">Navigation type</label>
+			<label index="settings.navigationType.description">
+				- Standard => the user can navigate forwards and backwards through the questionnaire&lt;br&gt;
+			</label>
+			<label index="settings.showProgressBar.alttitle">Progress Bar</label>	
+			<label index="settings.showProgressBar.description">
+				Displays a progress bar within the template of the questionnaire
+			</label>	
+
+			<label index="settings.email.sender.mail.alttitle">Sender E-Mail-address</label>	
+			<label index="settings.email.sender.mail.description">
+				Sender E-Mail-address used for invitations send via questionnaire
+			</label>	
+			<label index="settings.email.sender.name.alttitle">Sender name</label>	
+			<label index="settings.email.sender.name.description">
+				Displayed name of sender for E-Mails send via questionnaire
+			</label>	
+			<label index="settings.email.invite.subbject.alttitle">Subject for E-Mail-invitations</label>
+			<label index="settings.email.invite.subject.description">
+				Customize the subject of E-Mail-invitations
+			</label>
+			<label index="settings.email.invite.text.before.alttitle">Invitation: Text before authentication code</label>
+			<label index="settings.email.invite.text.before.description">
+				Text inserted in the E-Mail. The authentication code appears after this text
+			</label>
+			<label index="settings.email.invite.text.after.alttitle">Invitation: Text after authentication code</label>
+			<label index="settings.email.invite.text.after.description">
+				Text inserted in the E-Mail. The authentication code appears before this Text
+			</label>
+			<label index="settings.email.invite.emails.alttitle">E-Mail-adresses of recipients of invitation</label>
+			<label index="settings.email.invite.emails.description">
+				List the E-Mail-addresses of the recipients in a comma-separated way to invite to the questionnaire&lt;br&gt;
+				The E-Mail-addresses are stored here and are used in the backend module for invitations
+			</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index=".alttitle">ke_questionnaire Optionen</label>
+
+			<label index="view.partialRootPath.alttitle">Zu nutzende Template-Partials</label>
+			<label index="view.partialRootPath.description">
+				Wählen Sie einen Ordner aus, in dem die Fluid-Partials für diesen Fragebogen abgelegt wurden&lt;br&gt;
+				Es ist notwendig, dass Sie die Ordner-Struktur des "Partial"-Ordners der Extension aufrecht erhalten. Ist ein Partial im angegebenen Verzeichnis nicht zu finden, wird das original ke_questionnaire-Partial verwendet
+			</label>
+			
+			<label index="settings.accessType.alttitle">Zugriffstyp für den Fragebogen</label>
+			<label index="settings.accessType.description">
+				- "Frei" => keine Zugriffsbeschränkung&lt;br&gt;
+				- "Frontend-User" => Nur eingeloggte Frontend-User erhalten Zugriff zum Fragebogen &lt;br&gt;
+				- "Authentication Code" => nur mit einem durch das System generierten Authentication Code kann auf den Fragebogen zugegriffen werden &lt;br&gt;
+			</label>
+			<label index="settings.participations.max.alttitle">Maximale Teilnahmen am Fragebogen</label>
+			<label index="settings.participations.max.description">
+				- Der Wert 0 bedeutet, dass die Anzahl unbeschränkt ist. &lt;br&gt;
+				- Falls der Zugriffstyp "Frei" ist, ist die Anzahl aller Teilnahmen auf den eingegebenen Wert beschränkt. &lt;br&gt;
+				- Bei Auswahl der Zugriffstypen "Frontend-User" oder "Authentication Code" wird die Anzahl der Teilnahmen für den einzelnen Frontend-User bzw. Authentications Code beschränkt. &lt;br&gt;
+			</label>
+			<label index="settings.restart.alttitle">Neustart des Fragebogens erlauben</label>
+			<label index="settings.restart.description">
+				Erlaubt es dem Nutzer, die Beantwortung des Fragebogens neu zu beginnen, wenn er nach einer abgebrochenen Teilnahme zurückkehrt.
+			</label>
+			
+			<label index="settings.redirectFinished.alttitle">Umleiten nach</label>
+			<label index="settings.redirectFinished.description">
+				Wird an dieser Stelle eine Seite angegeben, wird dem Teilnehmer nach Beendigung des Fragebogens auf die ausgewählte Seite umgeleitet. Die Abschlusstextes wird dem Teilnehmer nicht angezeigt.
+			</label>
+			<label index="settings.navigationType.alttitle">Navigationstyp</label>
+			<label index="settings.navigationType.description">
+				- Keine => Es wird keine zusätzliche Navigation angezeigt&lt;br&gt;
+				- Übersicht => Es wird eine Übersicht zur besseren Orientierung angezeigt.&lt;br&gt;
+				- Übersicht mit Status => Es wird eine Übersicht zur Orientierung angezeigt, zusätzlich sind bereits beantwortete Fragen markiert&lt;br&gt;
+				- Seiten => Es wird eine Seitenübersicht mit Verlinkung zur jeweiligen Seite angezeigt&lt;br&gt;
+				- Navigation => Es wird eine Übersicht mit Verlinkung zu den jeweiligen Fragebogenseiten angezeigt&lt;br&gt;
+				- Navigation mit Status => Es wird eine Übersicht mit Verlinkung zu den jeweiligen Fragebogenseiten angezeigt, zusätzlich sind bereits beantwortete Fragen markiert&lt;br&gt;
+			</label>
+			<label index="settings.showProgressBar.alttitle">Fortschrittsbalken</label>	
+			<label index="settings.showProgressBar.description">
+				Anzeige eines Fortschrittsbalkens
+			</label>	
+
+			<label index="settings.email.sender.mail.alttitle">Absender E-Mail-Adresse</label>	
+			<label index="settings.email.sender.mail.description">
+				E-Mail-Adresse, die als Absender für die Einladungs-E-Mails angezeigt werden soll.
+			</label>	
+			<label index="settings.email.sender.name.alttitle">Name des Absenders</label>	
+			<label index="settings.email.sender.name.description">
+				Name, der als Absender für die Einladungs-E-Mails an die Teilnehmer genutzt werden soll.
+			</label>	
+			<label index="settings.email.invite.subbject.alttitle">Betreff der Einladungs-E-Mails</label>
+			<label index="settings.email.invite.subject.description">
+				Geben Sie den Text der Betreff-Zeile der Einladungs-E-Mail an
+			</label>
+			<label index="settings.email.invite.text.before.alttitle">Einladung: Text VOR dem Authentication Code</label>
+			<label index="settings.email.invite.text.before.description">
+				Dieser Text wird vor dem generierten Authentication Code in der Einladungs-E-Mail ausgegeben
+			</label>
+			<label index="settings.email.invite.text.after.alttitle">Einladung: Text NACH dem Authentication Code</label>
+			<label index="settings.email.invite.text.after.description">
+				Dieser Text wird nach dem generierten Authentication Code in der Einladungs-E-Mail ausgegeben
+			</label>
+			<label index="settings.email.invite.emails.alttitle">E-Mail-Adressen, die eingeladen werden sollen</label>
+			<label index="settings.email.invite.emails.description">
+				Geben Sie hier die E-Mail-Adressen kommasepariert ein, die bei der Einladung berücksichtig werden sollen&lt;br&gt;
+				Die E-Mail-Adressen werden hier gespeichert und im entsprechenden Backend-Modul verarbeitet.
+			</label>
+		</languageKey>
+	</data>
+</T3locallang>

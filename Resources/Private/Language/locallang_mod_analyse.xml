@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the questionnaire extension in the FlexForms</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="mlang_tabs_tab">Analysis</label>
+			
+			<label index="index_list_header">Please select a questionnaire for the Analyse Module</label>
+			<label index="header">Analyse data of the questionnaire </label>
+			<label index="count">Finished/Total Participations: </label>
+
+			<label index="list.header">Analyse data for the questionnaires</label>
+			<label index="list.select">Select a questionnaire and an analysis type</label>
+			<label index="list.types">Analysis types:</label>
+
+			<label index="questions.title">Questions</label>
+			<label index="questions.description">
+				Analyse the answers to single questions
+			</label>
+			<label index="general.title">General</label>
+			<label index="general.description">
+				Analyse the participations in general
+			</label>
+            
+            <label index="menu.title">Analyse actions:</label>
+			<label index="menu.questions">Question based</label>
+			<label index="menu.general">General</label>
+            
+            <label index="selectQuestions.title">Select a question to be analysed: </label>
+            
+            <label index="questions.all">Analysis of all participations</label>
+            <label index="questions.finished">Analysis of finished participations only</label>
+			<label index="questionnaire.participations">Analysis of participations</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Auswertung</label>
+			
+			<label index="header">Auswertung der Daten des Fragebogens </label>
+			<label index="index_list_header">Bitte einen Fragebogen für das Auswertungs Modul auswählen</label>
+			<label index="count">Abgeschlossene/Gesamt Teilnahmen: </label>
+
+			<label index="list.header">Datenanalyse für Fragebögen</label>
+			<label index="list.select">Wählen Sie einen Fragebogen und einen Auswertungstyp</label>
+			<label index="list.types">Auswertungstypen:</label>
+
+			<label index="questions.title">Fragen</label>
+			<label index="questions.description">
+				Antworten einer einzelnen Frage analysieren
+			</label>
+			<label index="general.title">Allgemein</label>
+			<label index="general.description">
+				Auswertung der Teilnahmen im Allgemeinen
+			</label>
+			<label index="points.title">Erreichte Punktzahlen</label>
+			<label index="points.description">
+				Auswertung der Teilnahmen nach erreichten Punktzahlen
+			</label>
+            
+            <label index="menu.title">Auswertungstypen:</label>
+			<label index="menu.questions">Fragen</label>
+			<label index="menu.general">Allgemein</label>
+            
+            <label index="selectQuestions.title">Wählen sie eine Frage für die Auswertung aus: </label>
+            
+            <label index="questions.all">Auswertung aller Teilnahmen</label>
+            <label index="questions.finished">Auswertung nur abgeschlossener Teilnahmen</label>
+			<label index="questionnaire.participations">Auswertung von Teilnahmen</label>
+		</languageKey>
+	</data>
+</T3locallang>

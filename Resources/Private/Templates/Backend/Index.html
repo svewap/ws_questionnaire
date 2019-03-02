@@ -1,0 +1,37 @@
+<f:layout name="Backend" />
+
+<f:section name="main">
+	<f:be.container
+			pageTitle="Ke Questionnaire Backend Modules"
+			enableClickMenu="false"
+			loadExtJs="true"
+			loadExtJsTheme="false"
+			enableExtJsDebug="false"
+			includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}'}"> 
+		<f:flashMessages />
+		
+		<h2><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:list.header" /></h2>
+		<div class="module_list">
+			<h4><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:list.types" /></h4>
+			<ul>
+				<li>
+					<h5><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:simple.title" /></h5>
+					<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:simple.description" />
+				</li>
+				<li>
+					<h5><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:mail.title" /></h5>
+					<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:mail.description" />
+				</li>
+			</ul>
+		</div>
+		<h4><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:index_list_header" /></h4>
+		<ul class="keq_list">
+		<f:for each="{questionnaires}" as="questionnaire">
+			<li>
+				<f:link.action action="authCodes" controller="Backend" arguments="{pluginUid:questionnaire.uid}">{questionnaire.header}&nbsp;
+				(<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:count" />{questionnaire.countAuthCodes})</f:link.action>
+			</li>
+		</f:for>
+		</ul>
+	</f:be.container>
+</f:section>

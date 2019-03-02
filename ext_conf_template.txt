@@ -1,0 +1,24 @@
+# cat=basic/enable/20; type=boolean; label=LLL:EXT:ke_questionnaire/Resources/Private/Language/extConf.xml:enableFeUserMarker
+enableFeUserMarker = 1
+
+# cat=email//10; type=string; label=LLL:EXT:ke_questionnaire/Resources/Private/Language/extConf.xml:emailAddress
+emailAddress =
+# cat=email//20; type=string; label=LLL:EXT:ke_questionnaire/Resources/Private/Language/extConf.xml:emailSender
+emailSender = Webmaster
+# cat=email//30; type=string; label=LLL:EXT:ke_questionnaire/Resources/Private/Language/extConf.xml:emailSubject
+emailSubject = Infomail from ke_questionnaire
+
+# cat=csvExport//10; type=int; label=LLL:EXT:ke_questionnaire/Resources/Private/Language/extConf.xml:csvExportInterval
+csvExportInterval = 100
+
+# cat=basic/enable/20; type=boolean; label=Modifications see: SEE https://www.pivotaltracker.com/story/show/132754271
+dummy = 1
+
+# cat=basic/enable/20; type=boolean; label=List all FeUSER when sending AUTH Codes : (activate this only if you do not have many fe Users)
+enableAuthCode2feUser = 0
+
+# cat=basic/enable/20; type=boolean; label=List all FeUSERGROUPS when sending AUTH Codes : (activate this only if you do not have many fe groups )
+enableAuthCode2feGroups = 0
+
+# cat=basic/enable/20; type=boolean; label=List all TT Address entries when sending AUTH Codes : (activate this only if you do not have many tt Address)
+enableAuthCode2ttAddress = 0

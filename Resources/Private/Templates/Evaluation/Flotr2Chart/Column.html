@@ -1,0 +1,11 @@
+<f:format.raw>{variables}</f:format.raw>
+var containerId = "{containerId}";
+var chartData = <f:format.raw>{chartData}</f:format.raw>;
+
+/* <![CDATA[ */
+jQuery(document).ready(function() {
+	(function basic_bars(container, horizontal) {
+		Flotr.draw(container, chartData, chartOptions);
+	})(document.getElementById(containerId));
+});
+/* ]]> */

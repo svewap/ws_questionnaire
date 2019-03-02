@@ -1,0 +1,47 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+	<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
+	<div class="keqAnswerWrap keqAnswerCheckbox">	
+		<f:form.checkbox id="keq{question.uid}a{answer.uid}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{answer.uid}" checked="{f:if(condition: '{resultAnswer.value}=={answer.uid}', then: 'true', else: 'false')}" />
+		<label for="keq{question.uid}a{answer.uid}" class="radio_checkbox">&nbsp;</label>
+		<f:if condition="{answer.text}">
+			<f:then><f:format.html>{answer.text}</f:format.html></f:then>
+			<f:else>{answer.title}</f:else>
+		</f:if>
+		<f:if condition="{answer.showTextfield}">
+			<f:form.textfield name="newResult[questions][{question.uid}][answers][{answer.uid}][additionalValue]" disabled="{f:if(condition: '{resultAnswer.value}=={answer.uid}', then: '', else: 'disabled')}" value="{f:if(condition: resultAnswer.additionalValue, then: resultAnswer.additionalValue, else: '')}"/>
+		</f:if>
+	</div>
+</f:alias>
+<!-- Javascript to check mandatory in Checkbox -->
+<ke:JavaScript>
+	<f:if condition="{question.isMandatory}">
+/*
+ * As soon as a Radio Button on clicked mandatory is fullfilled
+ */
+jQuery( "#keq{question.uid}a{answer.uid}" ).on( "click", function() {
+	check_keq{question.uid}a{answer.uid}();
+});
+check_keq{question.uid}a{answer.uid} = function() {
+	if ( jQuery("#keq{question.uid} input[type=checkbox]:checked").length > 0) jQuery("#keqMandatory{question.uid}").val(0);
+	else jQuery("#keqMandatory{question.uid}").val(1);		
+	checkMandatory();
+}
+check_keq{question.uid}a{answer.uid}();
+	</f:if>
+	<f:if condition="{answer.showTextfield}">
+/*
+ * Check Input fields on change
+ */
+
+jQuery( "#keq{question.uid}a{answer.uid}" ).on( "change", function() {
+
+	if (jQuery(this).prop('checked')){
+		jQuery(this).parent().children('input:text').removeAttr('disabled');
+	} else {
+		jQuery(this).parent().children('input:text').val('');
+		jQuery(this).parent().children('input:text').prop('disabled','disabled');
+	}
+});
+	</f:if>
+</ke:JavaScript>

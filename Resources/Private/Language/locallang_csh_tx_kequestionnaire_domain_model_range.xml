@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Context Sensitive Help (CSH) for table tx_kequestionnaire_domain_model_range</description>
+		<type>CSH</type>
+		<csh_table>tx_kequestionnaire_domain_model_range</csh_table>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title.description">This title is a short description of this answer and will be displayed as identifier in list module by default</label>
+			<label index="text.description">This is the answer text the customer sees in the frontend</label>
+			<label index="points_from.description">Minimum of points to show this text</label>
+			<label index="points_until.description">Maximum of points to show this text</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="title.description">Dieser Titel ist eine Kurzbeschreibung dieser Antwort und wird auch im Listen-Modul angezeigt, um die Antwort schneller auffinden zu können</label>
+			<label index="text.description">Diesen Text sieht der Teilnehmer als Antworttext im Frontend</label>
+			<label index="points_from.description">Minimale zu erreichende Punktzahl um den Text anzuzeigen.</label>
+			<label index="points_until.description">Maximal zu erreichende Punktzahl um den Text anzuzeigen.</label>
+		</languageKey>
+	</data>
+</T3locallang>

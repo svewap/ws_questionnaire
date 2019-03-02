@@ -1,0 +1,7 @@
+<f:form action="clearResults" controller="Backend" method="post">
+	<input type="hidden" name="uid" value="{plugin.uid}" /><f:form.hidden name="pluginUid" value="{plugin.uid}" />
+    <div>
+        <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_admin.xml:clear.explanation" />
+    </div>
+	<f:form.submit value="{f:translate(key: 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_admin.xml:clear.submit')}" />
+</f:form>

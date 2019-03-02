@@ -1,0 +1,13 @@
+<f:for each='{assessmentGroups}' as='group'>
+    <tr>
+        <td colspan="2">
+            <f:translate key="groupCorrectAnswers.info1" />
+            &nbsp;"{group.group.title}"&nbsp;
+            <f:translate key="groupCorrectAnswers.info2" />
+            &nbsp;{group.correctAnswers.correct}&nbsp;
+            <f:translate key="groupCorrectAnswers.info3" />
+            &nbsp;{group.correctAnswers.incorrect}&nbsp;
+            <f:translate key="groupCorrectAnswers.info4" />
+        </td>
+    </tr>
+</f:for>	

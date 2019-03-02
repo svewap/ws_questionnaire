@@ -1,0 +1,109 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:layout name="Backend" />
+
+<f:section name="main">
+	<f:be.container
+			pageTitle="Ke Questionnaire Backend Modules"
+			enableClickMenu="false"
+			loadJQuery="true"
+			includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}'}"> 
+		<f:flashMessages />
+		<h3><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:header" /> "{plugin.header}"</h3>		
+		<hr />
+        <f:render partial="Backend/ExportMenu" arguments="{plugin:plugin}"/>
+		<hr />
+		<f:render partial="Backend/ResultCounter" arguments="{counter:counter}" />
+		<hr />        
+		<f:form id="csvExportForm" class="csvDownload" action="downloadCsv" controller="Export" method="post">
+			<f:form.hidden id="pluginUid" name="pluginUid" value="{plugin.uid}" />
+			<h5><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.title" /></h5>
+			<ul>	
+				<f:if condition="{counter.all} > {csvExportInterval}"><li><f:form.textfield size="3" id="exportInterval" name="interval" value="{csvExportInterval}" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.exportInterval" /></li></f:if>
+				<li><f:form.textfield size="3" name="separator" value="{plugin.ffdata.settings.export.csv.separator}" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.separator" /></li>
+				<li><f:form.textfield size="3" name="text" value="{plugin.ffdata.settings.export.csv.text}" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.text" /></li>
+				<li><f:form.textfield size="3" name="singleMarker" value="{plugin.ffdata.settings.export.csv.singleMarker}" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.singleMarker" /></li>
+				<li><f:form.textfield size="10" name="encoding" value="{plugin.ffdata.settings.export.csv.encoding}" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.encoding" /></li>
+				<li><f:form.checkbox name="showQText" value="1" checked="{plugin.ffdata.settings.export.csv.showQText}" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.showQText" /></li>
+				<li><f:form.checkbox name="showAText" value="1" checked="{plugin.ffdata.settings.export.csv.showAText}" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.showAText" /></li>
+				<li><f:form.checkbox name="totalPoints" value="1" checked="{plugin.ffdata.settings.export.csv.totalPoints}" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.totalPoints" /></li>
+				<li><f:form.checkbox name="questionPoints" value="1" checked="{plugin.ffdata.settings.export.csv.questionPoints}" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.questionPoints" /></li>
+				<f:if condition="{ke:premiumLoaded()}">
+					<li><f:form.checkbox name="averagePoints" value="1" checked="{plugin.ffdata.settings.export.csv.averagePoints}" /> <f:translate key="LLL:EXT:ke_questionnaire_premium/Resources/Private/Language/locallang_mod_export.xml:csv.options.averagePoints" /></li>
+					<li><f:form.checkbox name="averagePointsAll" value="1" checked="{plugin.ffdata.settings.export.csv.averagePointsAll}" /> <f:translate key="LLL:EXT:ke_questionnaire_premium/Resources/Private/Language/locallang_mod_export.xml:csv.options.averagePointsAll" /></li>
+                                        <li><f:form.checkbox name="additionalParameter" value="1" checked="{plugin.ffdata.settings.export.csv.additionalParameter}" /> <f:translate key="LLL:EXT:ke_questionnaire_premium/Resources/Private/Language/locallang_mod_export.xml:csv.options.additionalParameter" /></li>
+				</f:if>
+				<li><f:form.checkbox id="finished" name="finished" value="finished" checked="{plugin.ffdata.settings.export.csv.finished}" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.options.finished" /></li>
+			</ul>
+			<br />
+			<f:if condition="{counter.all} > {csvExportInterval}">
+			<script>
+                            var all = {counter.all};
+                            var finished = {counter.finished};
+                            	TYPO3.jQuery(document).ready(function () {                                    
+					function getStatus() {
+						interval = TYPO3.jQuery('#exportInterval').val();
+						uid = TYPO3.jQuery('#pluginUid').val();
+                                                if (TYPO3.jQuery('#finished').attr('checked')){
+                                                    max = finished;
+                                                } else {
+                                                    max = all;
+                                                }
+						TYPO3.jQuery.ajax({
+							url: '<f:uri.action action="csvCheckInterval" />',
+							type: 'get',
+							data: TYPO3.jQuery('#csvExportForm').serialize(),
+							dataType: 'json',							
+							cache: false,
+							async: false,
+							success: function (data) {
+								console.log(data);
+								var percentage = parseInt(data);
+								TYPO3.jQuery("#intervalInfo").html(percentage);
+								if (percentage < max) {
+									// Recheck status until completed
+									getStatus();
+								} else {
+									TYPO3.jQuery("#startInterval").removeAttr('disabled');
+								}
+							}
+						});
+					}
+					TYPO3.jQuery("#startInterval").click(function (event) {
+                                                interval = TYPO3.jQuery('#exportInterval').val();
+						uid = TYPO3.jQuery('#pluginUid').val();
+                                                console.log("Started");
+						TYPO3.jQuery("#startInterval").attr("disabled", "disabled");
+						TYPO3.jQuery.ajax({
+							url: '<f:uri.action action="csvInterval" />',
+							type: 'get',
+							data: TYPO3.jQuery('#csvExportForm').serialize(),
+							dataType: 'json',
+							cache: false,
+							async: true,
+							success: function (data) {
+								console.log("Finished");
+								console.log("startLongProcess returned:" + data);
+								window.location.href = '<f:uri.action action="downloadCsvInterval" />&tx_kequestionnaire_kequestionnairebe_kequestionnaireexport[fileName]='+data;
+							}
+						});
+						getStatus();
+					});
+				});
+				</script>
+				</f:if>
+			<br />
+			<div>
+				<f:if condition="{counter.all} > {csvExportInterval}"><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.exportInterval.partInfo" /> <span id="intervalInfo">0</span></f:if>
+			</div>
+			<br />
+			<f:if condition="{counter.all} > {csvExportInterval}">
+				<f:then>
+					<f:form.button onclick="return false;" id="startInterval">{f:translate(key:'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.exportInterval.start')}</f:form.button>
+				</f:then>
+				<f:else>
+					<f:form.submit value="{f:translate(key:'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:csv.download')}" />
+				</f:else>
+			</f:if>
+		</f:form>
+	</f:be.container>
+</f:section>

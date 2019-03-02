@@ -1,0 +1,8 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:form.hidden class="{question.uid}_originalRequestedPage" name="originalRequestedPage" value="" />
+<ke:JavaScript>
+    jQuery('.{question.uid}_originalRequestedPage').val(jQuery('.requestedPage').val());
+</ke:JavaScript>
+<ke:conditionalJump question="{question}" result="{newResult}">
+    {question.javascript}
+</ke:conditionalJump>

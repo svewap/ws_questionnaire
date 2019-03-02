@@ -1,0 +1,316 @@
+/* 
+    Document   : Backend-tabs.css
+    Created on : 25.03.2015, 09:50:36
+    Author     : schwingler
+    Description:
+        Backend CSS for the Module-tabs
+*/
+
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-bottom-right-radius: 4px;
+}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+    border-bottom-left-radius: 4px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    border-top-right-radius: 4px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    border-top-left-radius: 4px;
+}
+.ui-widget-content {
+    background: url("images/ui-bg_flat_75_ffffff_40x100.png") repeat-x scroll 50% 50% #ffffff;
+    border: 1px solid #aaaaaa;
+    color: #222222;
+}
+.ui-widget {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+}
+.ui-tabs {
+    padding: 0.2em;
+    position: relative;
+	background: url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50% #cccccc;
+}
+
+.ui-widget-header {
+    background: url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50% #cccccc;
+    border: 1px solid #aaaaaa;
+    color: #222222;
+    font-weight: bold;
+}
+.ui-helper-clearfix {
+    min-height: 0;
+}
+.ui-helper-reset {
+    border: 0 none;
+    font-size: 100%;
+    line-height: 1.3;
+    list-style: outside none none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    text-decoration: none;
+}
+
+.ui-tabs .ui-tabs-nav li {
+    border-bottom-width: 0;
+    float: left;
+    list-style: outside none none;
+    margin: 1px 0.2em 0 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    white-space: nowrap;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: url("images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #e6e6e6;
+    border: 1px solid #d3d3d3;
+    color: #555555;
+    font-weight: normal;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: url("images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #e6e6e6;
+    border: 1px solid #d3d3d3;
+    color: #555555;
+    font-weight: normal;
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+    float: left;
+    padding: 0.5em 1em;
+    text-decoration: none;
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+    color: #212121;
+    text-decoration: none;
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+    color: #555555;
+    text-decoration: none;
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+    color: #212121;
+    text-decoration: none;
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+    color: #555555;
+    text-decoration: none;
+}
+.ui-widget-header a {
+    color: #222222;
+}
+.ui-widget-content a {
+    color: #222222;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+    margin-bottom: -1px;
+    padding-bottom: 1px;
+	background-color: #fff;
+}
+.ui-tabs .ui-tabs-nav li {
+	border: 1px solid black;
+    border-bottom-width: 0;
+    float: left;
+    list-style: outside none none;
+    margin: 1px 0.2em 0 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    white-space: nowrap;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    background: url("images/ui-bg_glass_65_ffffff_1x400.png") repeat-x scroll 50% 50% #ffffff;
+    border: 1px solid #aaaaaa;
+    color: #212121;
+    font-weight: normal;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    background: url("images/ui-bg_glass_65_ffffff_1x400.png") repeat-x scroll 50% 50% #ffffff;
+    border: 1px solid #aaaaaa;
+    color: #212121;
+    font-weight: normal;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: url("images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #e6e6e6;
+    border: 1px solid #d3d3d3;
+    color: #555555;
+    font-weight: normal;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: url("images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #e6e6e6;
+    border: 1px solid #d3d3d3;
+    color: #555555;
+    font-weight: normal;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    border-top-right-radius: 4px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    border-top-left-radius: 4px;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    background: url("images/ui-bg_glass_65_ffffff_1x400.png") repeat-x scroll 50% 50% #ffffff;
+    border: 1px solid #aaaaaa;
+    color: #212121;
+    font-weight: normal;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: #e6e6e6;
+    border: 1px solid #d3d3d3;
+    color: #555555;
+    font-weight: normal;
+}
+
+.ui-tabs .ui-tabs-panel {
+    background: #fff;
+    border-width: 0;
+    display: block;
+    padding: 1em 1.4em;
+}
+
+.ui-helper-clearfix:before, .ui-helper-clearfix:after {
+    border-collapse: collapse;
+    content: "";
+    display: table;
+}
+.ui-helper-clearfix:after {
+    clear: both;
+}
+.ui-helper-clearfix:before, .ui-helper-clearfix:after {
+    border-collapse: collapse;
+    content: "";
+    display: table;
+}
+.ui-tabs .ui-tabs-nav {
+    margin: 0;
+    padding: 0.2em 0.2em 0;
+}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-bottom-right-radius: 4px;
+}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+    border-bottom-left-radius: 4px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    border-top-right-radius: 4px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    border-top-left-radius: 4px;
+}
+.ui-widget-header {
+    background: url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") repeat-x scroll 50% 50% #cccccc;
+    border: 1px solid #aaaaaa;
+    color: #222222;
+    font-weight: bold;
+}
+.ui-helper-clearfix {
+    min-height: 0;
+}
+.ui-helper-reset {
+    border: 0 none;
+    font-size: 100%;
+    line-height: 1.3;
+    list-style: outside none none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    text-decoration: none;
+}
+
+.keq-be-50-list li{
+	width: 50%;
+	float: left;
+	height: 1.7em;
+}
+
+#tabs hr {
+	border-width: 1px 0 0;
+	border-style: solid none none;
+}
+
+.tabs {
+    max-width: 900px;
+    float: none;
+    list-style: none;
+    padding: 0;
+    margin: 25px;
+    border-bottom: 2px solid #ccc;
+}
+.tabs:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+.tabs input[type=radio] {
+    display:none;
+}
+.tabs label {
+    display: block;
+    float: left;
+    width: 25%;
+    color: #000;
+    font-size: 15px;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    line-height: 2;
+    cursor: pointer;
+    box-shadow: inset 0 4px #ccc;
+    border-bottom: 4px solid #ccc;
+    -webkit-transition: all 0.5s; /* Safari 3.1 to 6.0 */
+    transition: all 0.5s;
+}
+.tabs label span {
+    display: none;
+}
+.tabs label i {
+    padding: 5px;
+    margin-right: 0;
+}
+.tabs label:hover {
+    color: #333;
+    box-shadow: inset 0 4px #000;
+    border-bottom: 4px solid #000;
+}
+.tab-content {
+    display: none;
+    width: 100%;
+    float: left;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color:#ffffff;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+    }
+  50% {
+    transform: scale(1.01);
+    opacity: 0.5;
+    }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.tabs [id^="tab"]:checked + label {
+    background: #FFF;
+    box-shadow: inset 0 4px #333;
+    border-bottom: 4px solid #333;
+    color: #333;
+}
+#tab1:checked ~ #tab-content1,
+#tab2:checked ~ #tab-content2,
+#tab3:checked ~ #tab-content3,
+#tab4:checked ~ #tab-content4 {
+    display: block;
+}
+
+.keq-be-50-list input[type="checkbox"]{
+    margin: 4px 4px 0 0;
+}

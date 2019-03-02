@@ -1,0 +1,10 @@
+<!--
+	TYPE: Checkbox
+	In case of checkboxes the col "value" will be filled with the answer uid of the checked checkbox
+	So if a checkbox was not checked it is good to remove this checkbox from result list
+//-->
+<f:if condition="{answer.value}">
+	<f:if condition="{wrap}"><{wrap}></f:if>
+	{answer.answer.title}
+	<f:if condition="{wrap}"></{wrap}></f:if>
+</f:if>

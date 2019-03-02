@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-06-02T11:47:10Z"
+		  product-name="ke_questionnaire">
+		<header/>
+		<body>
+
+			<trans-unit id="tx_kequestionnaire_domain_model_question" xml:space="preserve">
+				<source>KeQ Content</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.type" xml:space="preserve">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.title" xml:space="preserve">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.show_title" xml:space="preserve">
+				<source>Show title</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.text" xml:space="preserve">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.help_text" xml:space="preserve">
+				<source>Help text</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image" xml:space="preserve">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position" xml:space="preserve">
+				<source>Image position</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.1" xml:space="preserve">
+				<source>Top</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.2" xml:space="preserve">
+				<source>Right</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.3" xml:space="preserve">
+				<source>Left</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.4" xml:space="preserve">
+				<source>Bottom</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.is_mandatory" xml:space="preserve">
+				<source>Is mandatory</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.must_be_correct" xml:space="preserve">
+				<source>Should the question be answered correctly?</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.answers" xml:space="preserve">
+				<source>Answers</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.conent_id" xml:space="preserve">
+				<source>TYPO3 ContentElement</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_question.dependancies" xml:space="preserve">
+				<source>Dependancies</source>
+			</trans-unit>
+
+			<trans-unit id="tx_kequestionnaire_domain_model_answer" xml:space="preserve">
+				<source>Answers</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_answer.type" xml:space="preserve">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_answer.title" xml:space="preserve">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_answer.points" xml:space="preserve">
+				<source>Points</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_answer.text" xml:space="preserve">
+				<source>Text</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_answer.is_correct_answer" xml:space="preserve">
+				<source>Correct answer</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion" xml:space="preserve">
+				<source>Resultquestions</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion.answers" xml:space="preserve">
+				<source>Answers</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion.question" xml:space="preserve">
+				<source>Question</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion.points" xml:space="preserve">
+				<source>Collected points</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultanswer" xml:space="preserve">
+				<source>Resultanswers</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultanswer.answer" xml:space="preserve">
+				<source>Answer</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_resultanswer.value" xml:space="preserve">
+				<source>Value</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_result" xml:space="preserve">
+				<source>Results</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_result.finished" xml:space="preserve">
+				<source>Finished</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_result.questions" xml:space="preserve">
+				<source>Questions</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_result.points" xml:space="preserve">
+				<source>Collected points</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_result.max_points" xml:space="preserve">
+				<source>Maximum of reachable points</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_authcode" xml:space="preserve">
+				<source>Authentication Code</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_authcode.auth_code" xml:space="preserve">
+				<source>Authentication Code</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_authcode.email" xml:space="preserve">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_authcode.lastreminder" xml:space="preserve">
+				<source>Last time a reminder mail was send</source>
+			</trans-unit>
+			<trans-unit id="tx_kequestionnaire_domain_model_authcode.firstactive" xml:space="preserve">
+				<source>First time the authCode was used</source>
+			</trans-unit>
+
+			<trans-unit id="flashmessage.Result.mandatory" xml:space="preserve">
+				<source>One of the questions was mandatory</source>
+			</trans-unit>
+			<trans-unit id="flashmessage.Result.mustBeCorrect" xml:space="preserve">
+				<source>One or more questions have to be answered correctly</source>
+			</trans-unit>
+
+			<trans-unit id="prevPage" xml:space="preserve">
+				<source>Previous page</source>
+			</trans-unit>
+			<trans-unit id="nextPage" xml:space="preserve">
+				<source>Next page</source>
+			</trans-unit>
+			<trans-unit id="mandatory" xml:space="preserve">
+				<source>This question must be answered.</source>
+			</trans-unit>
+			<trans-unit id="mustBeCorrect" xml:space="preserve">
+				<source>This question must be answered correctly.</source>
+			</trans-unit>
+			<trans-unit id="submitKeq" xml:space="preserve">
+				<source>Submit questionnaire</source>
+			</trans-unit>
+			<trans-unit id="saveKeq" xml:space="preserve">
+				<source>Save questionnaire</source>
+			</trans-unit>
+			<trans-unit id="maxAnswers" xml:space="preserve">
+				<source>You reached the max answers allowed:</source>
+			</trans-unit>
+			<trans-unit id="minAnswers" xml:space="preserve">
+				<source>Minimum answers needed:</source>
+			</trans-unit>
+
+			<trans-unit id="answerValidation.numeric" xml:space="preserve">
+				<source>Only numeric values allowed. Number divider: </source>
+			</trans-unit>
+			<trans-unit id="answerValidation.integer" xml:space="preserve">
+				<source>Only integer values allowed</source>
+			</trans-unit>
+			<trans-unit id="answerValidation.date" xml:space="preserve">
+				<source>Only date values allowed. Please use the following format:</source>
+			</trans-unit>
+			<trans-unit id="answerValidation.email" xml:space="preserve">
+				<source>Only valid e-mail addresses allowed</source>
+			</trans-unit>
+			<trans-unit id="answerValidation.compareText" xml:space="preserve">
+				<source>Please enter the correct text</source>
+			</trans-unit>
+			<trans-unit id="answerValidation.keywords" xml:space="preserve">
+				<source>You need to match different keywords in your text</source>
+			</trans-unit>
+
+			<trans-unit id="wizard.setArea" xml:space="preserve">
+				<source>Save area-coordinates</source>
+			</trans-unit>
+			<trans-unit id="wizard.closeWizard" xml:space="preserve">
+				<source>Close Wizard</source>
+			</trans-unit>
+
+			<trans-unit id="slider.selectedValue" xml:space="preserve">
+				<source>Selected value</source>
+			</trans-unit>
+
+			<trans-unit id="endText.standard" xml:space="preserve">
+				<source>Thank you for participating!</source>
+			</trans-unit>
+			<trans-unit id="feUserAccess.info" xml:space="preserve">
+				<source>You need to be logged in to access this questionnaire.</source>
+			</trans-unit>
+			<trans-unit id="maxParticipations.info" xml:space="preserve">
+				<source>The maximum number of participations for this questionnaire is reached.</source>
+			</trans-unit>
+			<trans-unit id="authCodeAccess.info" xml:space="preserve">
+				<source>You need an Authentication Code to access this questionnaire. Please enter the Authentication Code in the input-field below.</source>
+			</trans-unit>
+			<trans-unit id="authCodeAccess.submit" xml:space="preserve">
+				<source>Submit Authentication Code</source>
+			</trans-unit>
+			<trans-unit id="dependancyAccess.info" xml:space="preserve">
+				<source>You need to finish the following questionnaire: </source>
+			</trans-unit>
+			<trans-unit id="dependancyAccess.infoPoints" xml:space="preserve">
+				<source>You need to finish the following questionnaire with a certain amount of points: </source>
+			</trans-unit>
+
+			<trans-unit id="mail.standard.subject" xml:space="preserve">
+				<source>You were invited!</source>
+			</trans-unit>
+			<trans-unit id="mail.standard.text.before" xml:space="preserve">
+				<source>You were invited to answer a questionnaire. For access you will need the following Authentication Code:&lt;br&gt;</source>
+			</trans-unit>
+			<trans-unit id="mail.standard.text.after" xml:space="preserve">
+				<source>&lt;br&gt;We would love to see you soon.&lt;br&gt;</source>
+			</trans-unit>
+			<trans-unit id="mail.reminder.subject" xml:space="preserve">
+				<source>Do you remember? You were invited!</source>
+			</trans-unit>
+			<trans-unit id="mail.reminder.text.before" xml:space="preserve">
+				<source>You were invited to answer a questionnaire but we found no participation, yet. For access you will need the following Authentication Code:&lt;br&gt;</source>
+			</trans-unit>
+			<trans-unit id="mail.reminder.text.after" xml:space="preserve">
+				<source>&lt;br&gt;We would love to see you soon.&lt;br&gt;</source>
+			</trans-unit>
+
+			<trans-unit id="qList.resultFrom" xml:space="preserve">
+				<source>Participation finished: </source>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.info" xml:space="preserve">
+				<source>Please enter your E-mail address</source>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.submit" xml:space="preserve">
+				<source>Reclaim Authentication Code</source>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.send" xml:space="preserve">
+				<source>An Authentication Code has been sent to your E-mail address</source>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.mailErrorText" xml:space="preserve">
+				<source>The E-mail address was not valid!</source>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.mailErrorTitle" xml:space="preserve">
+				<source>E-mail error</source>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.notFoundText" xml:space="preserve">
+				<source>There is no open/unused Authentication Code for this E-mail!</source>
+			</trans-unit>
+			<trans-unit id="reclaimAuthcode.notFoundTitle" xml:space="preserve">
+				<source>Authentication Code error</source>
+			</trans-unit>
+
+			<trans-unit id="participationChart.finished" xml:space="preserve">
+				<source>Finished</source>
+			</trans-unit>
+			<trans-unit id="participationChart.all" xml:space="preserve">
+				<source>All</source>
+			</trans-unit>
+
+			<trans-unit id="analysis.selectedQ.header" xml:space="preserve">
+				<source>Analysis of Questionnaire</source>
+			</trans-unit>
+			<trans-unit id="analysis.analyseType" xml:space="preserve">
+				<source>Type of analysis</source>
+			</trans-unit>
+			<trans-unit id="analysis.analyseType.general" xml:space="preserve">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="analysis.analyseType.questions" xml:space="preserve">
+				<source>Questions</source>
+			</trans-unit>
+			<trans-unit id="analysis.questionSelect" xml:space="preserve">
+				<source>Question</source>
+			</trans-unit>
+
+			<trans-unit id="feView.noResultError" xml:space="preserve">
+				<source>No display possible, you need to call this plug-in with a ParticipationId</source>
+			</trans-unit>
+			<trans-unit id="feView.noResultError" xml:space="preserve">
+				<source>No Participation selected</source>
+			</trans-unit>
+
+			<trans-unit id="navigation.onPage" xml:space="preserve">
+				<source>on page</source>
+			</trans-unit>
+			<trans-unit id="navigation.page" xml:space="preserve">
+				<source>page</source>
+			</trans-unit>
+
+			<trans-unit id="premiuminfo.standard" xml:space="preserve">
+				<source>This is a premium option of ke_questionnaire</source>
+			</trans-unit>
+
+			<trans-unit id="report.fileAccess.title" xml:space="preserve">
+				<source>ke_questionnaire: deny direct access to pdf-temp folder</source>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.ok" xml:space="preserve">
+				<source>OK</source>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.error" xml:space="preserve">
+				<source>pdf-temp folder is accessible</source>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.error.explanation" xml:space="preserve">
+				<source>Please deny access to folder typo3temp/ke_questionnaire/pdf and its subfolders from the outside.</source>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.warning" xml:space="preserve">
+				<source>not testable due to permissions</source>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.warning.details" xml:space="preserve">
+				<source>Could not create testfile in folder typo3temp/ke_questionnaire/pdf . Please deny access to folder typo3temp/ke_questionnaire/pdf and its subfolders from the outside manually.</source>
+			</trans-unit>
+			<trans-unit id="report.fileAccess.warning.unknown" xml:space="preserve">
+				<source>Unknown error. Please make sure typo3temp/ke_questionnaire/pdf cannot be accessed from the outside.</source>
+			</trans-unit>
+
+			<trans-unit id="points.maxInfo" xml:space="preserve">
+				<source>Maximum Points you could have achieved in this questionnaire: </source>
+			</trans-unit>
+			<trans-unit id="points.yourInfo" xml:space="preserve">
+				<source>Points achieved in this questionnaire: </source>
+			</trans-unit>
+
+			<trans-unit id="list.table.authCode" xml:space="preserve">
+				<source>Authentication code</source>
+			</trans-unit>
+			<trans-unit id="list.table.email" xml:space="preserve">
+				<source>E-mail</source>
+			</trans-unit>
+			<trans-unit id="list.table.sendDate" xml:space="preserve">
+				<source>send Date</source>
+			</trans-unit>
+			<trans-unit id="list.table.participations" xml:space="preserve">
+				<source>Participations</source>
+			</trans-unit>
+			<trans-unit id="list.table.startDate" xml:space="preserve">
+				<source>Date started</source>
+			</trans-unit>
+			<trans-unit id="list.table.finishedDate" xml:space="preserve">
+				<source>Date finished</source>
+			</trans-unit>
+			<trans-unit id="list.table.lastreminder" xml:space="preserve">
+				<source>last reminder</source>
+			</trans-unit>
+			<trans-unit id="list.table.firstactive" xml:space="preserve">
+				<source>first use</source>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

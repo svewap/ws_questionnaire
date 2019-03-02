@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Context Sensitive Help (CSH) for table tx_kequestionnaire_domain_model_resultquestion</description>
+		<type>CSH</type>
+		<csh_table>tx_kequestionnaire_domain_model_resultquestion</csh_table>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="answers.description">Answers</label>
+			<label index="question.description">Question</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="answers.description">Antworten</label>
+			<label index="question.description">Frage</label>
+		</languageKey>
+	</data>
+</T3locallang>

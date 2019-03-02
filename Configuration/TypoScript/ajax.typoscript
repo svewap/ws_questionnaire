@@ -1,0 +1,30 @@
+keqAjaxResponse = PAGE
+keqAjaxResponse {
+	typeNum = 2667
+	headerData >
+	config {
+		no_cache = 1
+		disableAllHeaderCode = 1
+		additionalHeaders = Content-type:text/plain; charset=utf-8
+		xhtml_cleaning = 0
+		admPanel = 0
+		debug = 0
+	}
+	10 = USER_INT
+	10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		extensionName = KeQuestionnaire
+		pluginName = Questionnaire
+		vendorName = Kennziffer
+		controller = Ajax
+		action = test
+		switchableControllerActions {
+			Ajax {
+				1 = ajax
+			}
+		}
+		settings =< plugin.tx_kequestionnaire.settings
+		persistence =< plugin.tx_kequestionnaire.persistence
+		#view =< plugin.tx_myextensionname.view
+	}
+}

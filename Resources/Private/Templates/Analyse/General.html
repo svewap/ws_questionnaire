@@ -1,0 +1,25 @@
+<f:layout name="Backend" />
+
+<f:section name="main">
+	<f:be.container
+			pageTitle="Ke Questionnaire Backend Modules"
+			enableClickMenu="false"
+			includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}'}"
+			includeJsFiles="{0: '{f:uri.resource(path:\'jqPlot/jquery.min.js\')}'}"> 
+		<f:flashMessages />
+		<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'jqPlot/jquery.jqplot.css')}">
+		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/jquery.jqplot.min.js')}"></script>
+        <script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.dateAxisRenderer.min.js')}"></script>
+		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.canvasTextRenderer.min.js')}"></script>
+		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.canvasAxisTickRenderer.min.js')}"></script>
+		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.cursor.min.js')}"></script>
+		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.highlighter.min.js')}"></script>
+		<h3><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:header" /> "{plugin.header}"</h3>		
+		<hr />
+        <f:render partial="Backend/AnalyseMenu" arguments="{plugin:plugin}"/>
+		<hr />
+		<f:render partial="Backend/ResultCounter" arguments="{counter:counter}" />
+		<hr />
+		<f:render partial="Analyse/General" arguments="{questionnaire:plugin,chart:chart}" />        		
+	</f:be.container>
+</f:section>

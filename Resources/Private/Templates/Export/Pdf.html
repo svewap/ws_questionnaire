@@ -1,0 +1,32 @@
+<f:layout name="Backend" />
+
+<f:section name="main">
+	<f:be.container
+			pageTitle="Ke Questionnaire Backend Modules"
+			enableClickMenu="false"
+			loadJQuery="true"
+			includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}'}"> 			
+		<f:flashMessages />
+		<h3><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:header" /> "{plugin.header}"</h3>		
+		<hr />
+        <f:render partial="Backend/ExportMenu" arguments="{plugin:plugin}"/>
+		<hr />
+		<f:render partial="Backend/ResultCounter" arguments="{counter:counter}" />
+		<hr />
+        <f:form class="pdfDownload" action="downloadPdf" controller="Export" method="post">
+			<f:form.hidden name="uid" value="{plugin.uid}" />
+			<f:form.hidden name="pluginUid" value="{plugin.uid}" />
+			<f:form.hidden name="storagePid" value="{plugin.storagePid}" />
+			<h5><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:pdf.options.title" /></h5>
+			<ul>
+				<li><f:form.radio checked="true" name="pdfType" value="empty" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:pdf.options.empty" /></li>
+                <li><f:form.radio name="pdfType" value="filled" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:pdf.options.filled" /></li>
+                <li><f:form.radio name="pdfType" value="compared" /> <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:pdf.options.compared" /></li>
+			</ul>
+			<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:pdf.resultSelect" /> <f:form.select name="selectedResult" options="{results}" optionValueField="uid" optionLabelField="selectLabel" />
+			<br />
+			<br />
+			<f:form.submit value="{f:translate(key:'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_export.xml:pdf.download')}" />								
+		</f:form>
+	</f:be.container>
+</f:section>

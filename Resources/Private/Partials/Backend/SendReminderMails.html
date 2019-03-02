@@ -1,0 +1,66 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+{namespace kep=Kennziffer\KeQuestionnairePremium\ViewHelpers}
+<f:if condition="{authCodes}">
+        <f:then>
+            <f:form action="remindAndMailAuthCodes" controller="Backend" method="post">
+                <input type="hidden" name="uid" value="{plugin.uid}" /><f:form.hidden name="pluginUid" value="{plugin.uid}" />
+                <b><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:codes.existing" /></b><br />
+                <br />
+                <table>
+                    <f:if condition="{ke:premiumLoaded()}">
+                        <f:then>
+                           <kep:authCodesTtAddressList arguments="{authCodes:authCodes,type:'mailer'}"/> 
+                        </f:then>
+                        <f:else>
+                            <tr>
+                                <th style="width:10px;text-align: center"></th>
+                                <th style="width:200px"><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:list.table.authCode" /></th>
+                                <th style="width:200px"><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:list.table.email" /></th>
+                                <th><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:list.table.participations" /></th>
+                            </tr>
+                            <f:for each="{authCodes}" as="code">
+                            <tr>
+                                <td>
+                                    <f:if condition="{code.email}"><f:form.checkbox name="reminder[]" value="{code.uid}" checked="{f:if(condition:'{code.AndLoadParticipations}',then:'false',else:'true')}" /></f:if>
+                                </td>
+                                <td>{code.authCode}</td>
+                                <td>{code.email}</td>
+                                <td>
+                                        <f:for each="{code.participations}" as="participation">
+                                                <f:if condition="{participation.finished}">
+                                                        <f:then>
+                                                                <span class="finishedParticipation"><f:link.action action="downloadPdf" controller="Export" arguments="{pdfType:'filled',selectedResult:participation.uid, pluginUid:plugin.uid}">{participation.uid}</f:link.action></span>
+                                                        </f:then>
+                                                        <f:else>
+                                                                <span class="openParticipation"><f:link.action action="downloadPdf" controller="Export" arguments="{pdfType:'filled',selectedResult:participation.uid, pluginUid:plugin.uid}">{participation.uid}</f:link.action></span>
+                                                        </f:else>
+                                                </f:if>
+                                        </f:for>
+                                </td>
+                            </tr>
+                            </f:for>
+                        </f:else>
+                    </f:if>
+                </table>
+                <br />
+                <f:form.submit value="{f:translate(key: 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:mail.remindSubmit')}" />
+                <hr />
+                <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:mail.viewMail" />: <br />
+                <br />
+                <div class="mailPreview">
+                        <b>Subject:</b> {preview.subject}<br /><br />
+                        <b>Mail-Text:</b><br />
+                        <f:format.raw>{preview.body}</f:format.raw>	
+                </div>
+                <hr />
+                <b><a title="Edit record" onclick="window.location.href='alt_doc.php?returnUrl='+T3_THIS_LOCATION+'&edit[tt_content][{plugin.uid}]=edit'; return false;" href="#">
+                        <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod.xml:editPlugin" />
+                        <br> (todo: This Link need to be fixed!)
+                        </a>
+                </b>
+            </f:form>
+        </f:then>
+        <f:else>
+                <f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:codes.none" />
+        </f:else>
+</f:if>		

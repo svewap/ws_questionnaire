@@ -1,0 +1,23 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:render partial="Question/QuestionTitle" arguments="{question: question}" xmlns:f="http://www.w3.org/1999/html"/>
+<div class="keqAnswerBox">
+    <f:for each="{question.answers}" as="answer">
+        <f:if condition="{answer.template}">
+            <f:then>
+                <f:comment> eigenlich ke:renderPartial </f:comment>
+                <f:renderPartial partial="{answer.template}" arguments="{question: question, answer: answer, newResult: newResult}" />
+            </f:then>
+            <f:else>
+				<f:if condition="{answer.pdfType} == 'special'">
+					<f:then>
+						<f:render partial="Answer/PDF/{answer.shortType}" arguments="{question: question, answer: answer, newResult: newResult}" />
+					</f:then>
+					<f:else>
+						<f:render partial="Answer/{answer.shortType}" arguments="{question: question, answer: answer, newResult: newResult}" />
+					</f:else>
+				</f:if>                
+            </f:else>
+        </f:if>
+    </f:for>
+</div>
+<div style="clear:both;line-height: 1px;">&nbsp;</div>

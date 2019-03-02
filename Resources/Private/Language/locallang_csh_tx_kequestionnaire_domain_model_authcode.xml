@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Context Sensitive Help (CSH) for table tx_kequestionnaire_domain_model_authcode</description>
+		<type>CSH</type>
+		<csh_table>tx_kequestionnaire_domain_model_authcode</csh_table>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="auth_code.description">Generated Authentication Code for the participation</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="auth_code.description">Generierter Authentication Code für die Teilnahme</label>
+		</languageKey>
+	</data>
+</T3locallang>

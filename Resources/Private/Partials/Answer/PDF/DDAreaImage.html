@@ -1,0 +1,22 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+	<div class="keqAnswerWrap keqDDArea">
+		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+		<div class="keq-dd-area-container">
+			<ke:ddAreaExport answer="{answer}" question="{question}" result="{newResult}" as="exportImage">
+				<f:image src="typo3temp/ke_questionnaire/{exportImage}" alt="test" />
+			</ke:ddAreaExport>
+		</div>
+		<div class="keq-moveable-container" style="min-height:{f:if(condition: answer.height, then: answer.height, else: '100')}px">
+            <ke:ddImage answer="{answer}" question="{question}" as="dd">
+				<f:alias map="{boxResultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: dd.image.uid)}'}">
+					<f:if condition="{boxResultAnswer.value}">
+						<f:then>&nbsp;</f:then>
+						<f:else><f:image src="uploads/tx_kequestionnaire/{dd.image.image}" alt="{dd.image.title}" width="{f:if(condition: dd.image.width, then: dd.image.width)}" height="{f:if(condition: dd.image.height, then: dd.image.height)}"/></f:else>
+					</f:if>
+				</f:alias> 
+			</ke:ddImage>
+		</div>
+		
+	</div>
+</f:alias>

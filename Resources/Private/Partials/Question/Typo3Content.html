@@ -1,0 +1,5 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<ke:checkDependancies question="{question}" result="{newResult}">
+    <f:render partial="Question/QuestionTitleOnly" arguments="{question: question}" />
+    <ke:ContentElement uid="{question.contentId}" />
+</ke:checkDependancies>

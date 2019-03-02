@@ -1,0 +1,16 @@
+<f:layout name="PDF" />
+
+<f:section name="main">
+<div id="keqViewResult">
+	<f:for each="{questionnaire.questions}" as="question">
+		<f:render partial="Question/PDF/{question.shortType}" arguments="{question: question, newResult: result}" />		
+		<f:if condition="{compare}">
+			<f:if condition="{question.shortType} == 'Question'">
+				<div class="compareQuestion">
+					<f:render partial="Question/PDF/{question.shortType}" arguments="{question: question, newResult: compare}" />		
+				</div>
+			</f:if>
+		</f:if>
+	</f:for>
+</div>
+</f:section>

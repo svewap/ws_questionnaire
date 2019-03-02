@@ -1,0 +1,4 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<ke:checkDependancies question="{question}" result="{newResult}">
+    <f:cObject typoscriptObjectPath="{question.text}" data="{question}" currentValueKey="uid" />
+</ke:checkDependancies>

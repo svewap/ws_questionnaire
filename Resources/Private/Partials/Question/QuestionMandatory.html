@@ -1,0 +1,9 @@
+<f:if condition="{question.isMandatory}">
+	<div class="keqMandatory" id="keqMandatory{question.uid}show">
+		<f:form.hidden name="questionMandatory[]" id="keqMandatory{question.uid}" value="1" />
+		<f:if condition="{question.mustBeCorrect}">
+			<f:then>{f:translate(key: 'mustBeCorrect')}</f:then>
+			<f:else>{f:translate(key: 'mandatory')}</f:else>
+		</f:if>
+	</div>
+</f:if>

@@ -1,0 +1,45 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+	<div class="keqAnswerWrap keqAnswerClozeTextDD" id="keq{question.uid}a{answer.uid}">
+		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
+		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
+		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+		<ke:clozeText answer="{answer}" question="{question}" as="boxAnswer">
+            <span id="keq{question.uid}placeholder{boxAnswer.uid}parent">
+            <f:alias map="{boxResultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: boxAnswer.uid)}'}">
+                <f:form.hidden name="newResult[questions][{question.uid}][answers][{boxAnswer.uid}][answer]" value="{boxAnswer.uid}" />
+				<f:form.hidden name="newResult[questions][{question.uid}][answers][{boxAnswer.uid}][value]" value="{f:if(condition: boxResultAnswer.value, then: boxResultAnswer.value)}" />
+				<span id="keq{question.uid}placeholder{boxAnswer.uid}" class="keq-placeholder cloze-text ui-droppable" answer="{boxAnswer.uid}" question="{question.uid}"></span>
+			</f:alias>
+            </span>
+		</ke:clozeText>
+		<div class="keq-moveable-container">
+			<ke:ddClozeTerm answer="{answer}" question="{question}" as="term">
+                <div id="keq{question.uid}moveable{term.counter}" class="keq-moveable moveable-text ui-draggable">{term.text}</div>
+			</ke:ddClozeTerm>
+		</div>
+	</div>
+</f:alias>
+<ke:JavaScriptFile key="DDCloze" filename="typo3conf/ext/ke_questionnaire/Resources/Public/Script/DDQuestions.js"/>
+<f:if condition="{question.isMandatory}">
+<ke:JavaScript>
+	/*
+	 * When the length of all input field values is > 0
+	 */
+	jQuery( "#keq{question.uid}a{answer.uid} input[type=hidden]" ).on( "change", function() {
+		check_keq{question.uid}a{answer.uid}();
+	});
+	check_keq{question.uid}a{answer.uid} = function() {
+		var length = 0;
+		jQuery("#keq{question.uid}a{answer.uid} input[type=hidden]").each(function(){
+			if (!jQuery.isNumeric(jQuery(this).val())) {
+				length += jQuery(this).val().length;
+			}
+		});
+		if (length > 0) jQuery("#keqMandatory{question.uid}").val(0);
+		else jQuery("#keqMandatory{question.uid}").val(1);		
+		checkMandatory();
+	}
+	check_keq{question.uid}a{answer.uid}();
+</ke:JavaScript>
+</f:if>

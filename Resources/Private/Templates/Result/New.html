@@ -1,0 +1,19 @@
+<f:layout name="Default" />
+
+
+<f:section name="main">
+
+	<f:flashMessages />
+
+	<div id="keq_loadingDiv">Lädt!</div>
+
+	<f:if condition="{questionnaire.page} == 0">
+		<f:then>
+			<f:format.html>{settings.description}</f:format.html>
+			<f:link.action action="new" arguments="{requestedPage:1,authCode:newResult.authCode}">{settings.descriptionlinktext}</f:link.action>
+		</f:then>
+		<f:else>
+			<f:render partial="Result/Form" arguments="{questionnaire: questionnaire, newResult: newResult, questions: questions}" />
+		</f:else>
+	</f:if>
+</f:section>

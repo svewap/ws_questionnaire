@@ -1,0 +1,85 @@
+{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+	<div class="keqAnswerWrap keqAnswerSingleInput">
+		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
+		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
+		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+
+		<f:if condition="{answer.preText}"><label>{answer.preText}</label></f:if>
+		<div><f:form.textfield id="keq{question.uid}a{answer.uid}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{f:if(condition: resultAnswer.value, then: resultAnswer.value, else: answer.inText)}" style="width:{f:if(condition: answer.width, then: answer.width, else: '30')}em" maxlength="{f:if(condition: answer.maxChars, then: answer.maxChars, else: '255')}" /></div>
+		<f:if condition="{answer.postText}"><div class="postText">{answer.postText}</div></f:if>
+	</div>
+</f:alias>
+<ke:JavaScript>
+	/*
+	 * Checks the Answer for the inside Text and replaces it with zero if focused
+	 */
+	jQuery("#keq{question.uid}a{answer.uid}").focus( function() {
+		if(this.value=='{answer.inText}') this.value='';
+	});
+</ke:JavaScript>
+<f:if condition="{question.isMandatory}">
+<ke:JavaScript>
+	/*
+	 * When the length of all input field values is > 0
+	 */
+	jQuery( "#keq{question.uid}a{answer.uid}" ).on( "change", function() {
+		check_keq{question.uid}a{answer.uid}();
+	});
+	check_keq{question.uid}a{answer.uid} = function() {
+		var length = 0;
+		jQuery("#keq{question.uid} input[type=text]").each(function(){
+			length += jQuery(this).val().length;
+		});
+		if (length > 0) jQuery("#keqMandatory{question.uid}").val(0);
+		else jQuery("#keqMandatory{question.uid}").val(1);		
+		checkMandatory();
+	}
+	check_keq{question.uid}a{answer.uid}();
+</ke:JavaScript>
+</f:if>
+<!-- Javascript to check the Validationtypes for the InputField-->
+<f:if condition="{answer.validationType}">
+	<ke:JavaScript>
+	/*
+	 * Checks the Answer for the type of the chosen validation
+	 */
+	jQuery("#keq{question.uid}a{answer.uid}").blur( function() {
+		var a_id = {answer.uid};
+		var q_id = {question.uid}
+		var val = jQuery(this).val();
+		var this_id = jQuery(this).attr('id');
+		jQuery.ajax({
+			type: "GET",
+			url: window.location.pathname,
+			data: 'type=2667&tx_kequestionnaire_questionnaire[type]=AnswerValidation&tx_kequestionnaire_questionnaire[arguments][answerUid]='+a_id+'&tx_kequestionnaire_questionnaire[arguments][value]='+val,
+			async: false,
+			success: function(data){
+				xdata = jQuery.parseJSON(jQuery.trim(data));
+
+				jQuery("#keqAnswerError"+a_id).val(xdata.error);
+				jQuery("#"+this_id+"info").html(xdata.info);
+				if(jQuery("#keqAnswerError"+a_id).length > 0) {
+					jQuery("html, body").animate({
+						scrollTop: jQuery("#"+this_id+"info").offset().top -100
+					}, 700);
+				}
+
+				/*
+				 *	if question property "must_be_correct" was set additionally,
+				 *	there will be a second "error"-marker-field (related to the question),
+				 *	which has to be adjusted.
+				 */
+				if(jQuery("#keqAnswerErrorQ"+q_id).length > 0) {
+					jQuery("#keqAnswerErrorQ"+q_id).val(xdata.error);
+				}
+
+				checkAnswerErrors();
+			},
+			error: function(x,y,z){
+				alert('An error has occurred:\n' + x + '\n' + y + '\n' + z);
+			}
+		});
+	});
+	</ke:JavaScript>
+</f:if>

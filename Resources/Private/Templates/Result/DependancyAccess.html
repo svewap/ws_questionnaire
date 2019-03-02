@@ -1,0 +1,10 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+	<f:flashMessages />
+	<f:if condition="{settings.dependancy.points">
+		<f:then><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:dependancyAccess.infoPoints" /></f:then>
+		<f:else><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:dependancyAccess.info" /></f:else>
+	</f:if>
+    <f:link.page pageUid="{questionnaire.pid}">{questionnaire.header}</f:link.page>
+</f:section>

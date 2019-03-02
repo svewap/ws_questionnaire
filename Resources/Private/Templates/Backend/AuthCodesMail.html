@@ -1,0 +1,19 @@
+<f:layout name="Backend" />
+
+<f:section name="main">
+	<f:be.container
+			pageTitle="Ke Questionnaire Backend Modules"
+			enableClickMenu="false"
+			loadJQuery='true'
+			includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}',1: '{f:uri.resource(path:\'Css/Backend-tabs.css\')}'}"
+			includeJsFiles="{1: '{f:uri.resource(path:\'Script/jquery-ui-1.11.4.min.js\')}'}"> 
+		<f:flashMessages />
+		<h3><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:header" /> "{plugin.header}"</h3>
+		<hr />
+		<f:render partial="Backend/AuthCodesMenu" arguments="{plugin:plugin}"/>
+		<hr />
+		<b><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:mail.create" /></b><br />
+		<f:render partial="Backend/CreateAndMailAuthCodes" arguments="{plugin:plugin,preview:preview, text:text, fegroups:fegroups, authCode:authCode , feusers:feusers,ttaddresses:ttaddresses}"/>
+		<hr />
+	</f:be.container>
+</f:section>
