@@ -2,6 +2,7 @@
 
 namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
 use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
 
 /***************************************************************
@@ -38,8 +39,6 @@ use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
  */
 class GetClonedResultAnswersViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 {
-
-
     /**
      * @var boolean
      */
@@ -50,16 +49,15 @@ class GetClonedResultAnswersViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\
      */
     protected $escapeOutput = false;
 
-
     /**
      * Returns a requested question from result record
      *
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
+     * @param Result $result
      * @param int $questionUid
      * @param int $answerUid
      * @return null|ResultAnswer[]
      */
-    public function render($result, $questionUid, $answerUid)
+    public function render(Result $result, $questionUid, $answerUid)
     {
         $resultQuestions = $result->getQuestions();
         /* @var $resultQuestion \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion */

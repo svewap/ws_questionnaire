@@ -159,7 +159,7 @@ class Dependency extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * creates the JS to be used in the CheckDependanciesViewHelper
+     * creates the JS to be used in the CheckDependenciesViewHelper
      *
      * @param integer $nr
      * @return string
@@ -198,7 +198,7 @@ class Dependency extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * creates the Condition-Check to be used in the CheckDependanciesViewHelper
+     * creates the Condition-Check to be used in the CheckDependenciesViewHelper
      *
      * @return array
      */

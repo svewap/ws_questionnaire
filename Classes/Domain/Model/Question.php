@@ -2,6 +2,8 @@
 
 namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -130,7 +132,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $answers;
 
     /**
-     * Dependancies
+     * Dependencies
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Dependency>
      * @lazy
@@ -546,9 +548,9 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Sets the dependancies
+     * Sets the dependencies
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $dependancies
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $dependencies
      * @return void
      */
     public function setDependencies(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $dependencies)
@@ -557,18 +559,18 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Checks the dependancies
+     * Checks the dependencies
      *
      * @return boolean
      */
-    public function isDependant()
+    public function isDependent() : bool
     {
-        return (boolean)$this->getIsDependant();
+        return $this->getIsDependent();
     }
 
-    public function getIsDependant()
+    public function getIsDependent() : bool
     {
-        return count($this->dependancies) > 0;
+        return count($this->dependencies) > 0;
     }
 
     /**
@@ -615,16 +617,16 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      *
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
+     * @param Result $result
      * @return boolean
      */
-    public function fullfillsDependancies(\WapplerSystems\WsQuestionnaire\Domain\Model\Result $result)
+    public function fullfillsDependencies(Result $result)
     {
-        if ($this->isDependant()) {
+        if ($this->isDependent()) {
             $full = false;
             $fullcount = 0;
-            //check all dependancies
-            foreach ($this->getDependancies() as $id => $dependency) {
+            //check all dependencies
+            foreach ($this->getDependencies() as $id => $dependency) {
                 //get the resultQuestion
                 $rQuestion = $result->getResultQuestionForQuestion($dependency->getQuestion());
                 if ($rQuestion) {

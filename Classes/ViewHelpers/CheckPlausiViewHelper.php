@@ -71,7 +71,7 @@ class CheckPlausiViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
 
         $depJs = [];
         $if = 'if (';
-        foreach ($question->getDependancies() as $id => $dependency) {
+        foreach ($question->getDependencies() as $id => $dependency) {
             $depJs[$id] = 'jQuery("#keq' . $dependency->getQuestion()->getUid() . '").on( "change", function() {' . "\n";
             $if .= $dependency->getRelationJs(count($depJs));
         }

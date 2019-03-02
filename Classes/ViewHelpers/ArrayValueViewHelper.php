@@ -2,6 +2,8 @@
 
 namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -34,7 +36,7 @@ namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class ArrayValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class ArrayValueViewHelper extends AbstractViewHelper
 {
 
     /**

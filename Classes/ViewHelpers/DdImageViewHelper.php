@@ -2,8 +2,10 @@
 
 namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
+use WapplerSystems\WsQuestionnaire\Domain\Model\Answer;
 use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaImage;
 use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDImage;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Question;
 use WapplerSystems\WsQuestionnaire\Domain\Repository\AnswerRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -57,12 +59,12 @@ class DdImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHel
     /**
      * Adds the needed Javascript-File to Additional Header Data
      *
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer Answer to be rendered
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question the images are in
+     * @param Answer $answer Answer to be rendered
+     * @param Question $question the images are in
      * @param string $as The name of the iteration variable
      * @return string
      */
-    public function render($answer, $question, $as)
+    public function render(Answer $answer,Question $question, $as)
     {
         $images = $this->getImages($question, $answer);
 
@@ -87,11 +89,11 @@ class DdImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHel
     /**
      * Gets the Images
      *
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
+     * @param Question $question the terms are in
      * @param $header
      * @return array
      */
-    public function getImages($question, $header)
+    public function getImages(Question $question, $header)
     {
         $terms = [];
 

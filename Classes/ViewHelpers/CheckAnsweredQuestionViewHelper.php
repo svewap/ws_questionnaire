@@ -2,6 +2,9 @@
 
 namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
 use WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion;
 
 /***************************************************************
@@ -36,7 +39,7 @@ use WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class CheckAnsweredQuestionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class CheckAnsweredQuestionViewHelper extends AbstractViewHelper
 {
 
     /**
@@ -50,13 +53,13 @@ class CheckAnsweredQuestionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
     protected $escapeOutput = false;
 
     /**
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
+     * @param Question $question
+     * @param Result $result
      * @return mixed The finally rendered child nodes.
      */
     public function render(
-        \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question,
-        \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
+        Question $question,
+        Result $result
     ) {
         /** @var ResultQuestion $rQuestion */
         foreach ($result->getQuestions() as $rQuestion) {

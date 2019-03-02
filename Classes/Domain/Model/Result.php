@@ -423,8 +423,9 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $rep = $objectManager->get(ResultQuestionRepository::class);
         $rQuestion = $rep->findByQuestionAndResult($question->getQuestion(), $this);
         if ($rQuestion[0] && $this->getQuestions()->contains($rQuestion[0])) {
+            /** @var ResultQuestion $rq */
             $rq = $rQuestion[0];
-            if ($rq->getQuestion()->fullfillsDependancies($this)) {
+            if ($rq->getQuestion()->fullfillsDependencies($this)) {
                 $rq->checkAnswers($question->getAnswers());
             } else {
                 $rq->clearAnswers();

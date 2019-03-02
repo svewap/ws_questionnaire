@@ -2,6 +2,7 @@
 
 namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
 use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
 
@@ -37,7 +38,7 @@ use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class GetResultAnswerViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class GetResultAnswerViewHelper extends AbstractViewHelper
 {
 
 
@@ -60,7 +61,7 @@ class GetResultAnswerViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstrac
      * @param int $answerUid
      * @return null|ResultAnswer
      */
-    public function render($result, $questionUid, $answerUid)
+    public function render(Result $result, $questionUid, $answerUid)
     {
         $resultQuestions = $result->getQuestions();
         /* @var $resultQuestion \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion */

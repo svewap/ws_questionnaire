@@ -2,6 +2,9 @@
 
 namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
+use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixHeader;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -50,13 +53,13 @@ class GetCloneableMatrixRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
     /**
      * Adds the needed Javascript-File to Additional Header Data
      *
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixHeader $answer Answer to be rendered
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question the images are in
+     * @param MatrixHeader $answer Answer to be rendered
+     * @param Question $question the images are in
      * @return \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixRow
      */
     public function render(
-        \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixHeader $answer,
-        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question
+        MatrixHeader $answer,
+        Question $question
     ) {
         return $answer->getCloneableRow($question);
     }

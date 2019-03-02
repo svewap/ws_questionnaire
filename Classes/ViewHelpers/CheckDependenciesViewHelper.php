@@ -2,6 +2,10 @@
 
 namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -34,7 +38,7 @@ namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class CheckDependanciesViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class CheckDependenciesViewHelper extends AbstractViewHelper
 {
 
 
@@ -55,19 +59,19 @@ class CheckDependanciesViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstr
     public $jsViewhelper;
 
     /**
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
+     * @param Question $question
+     * @param Result $result
      * @return string
      */
     public function render(
-        \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question,
-        \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
+        Question $question,
+        Result $result
     ) {
         /*var $output string*/
         $output = $this->renderChildren();
 
-        if ($question->isDependant()) {
-            if ($question->fullfillsDependancies($result)) {
+        if ($question->isDependent()) {
+            if ($question->fullfillsDependencies($result)) {
                 $dependant = '<div id="depKeq' . $question->getUid() . '">';
             } else {
                 $dependant = '<div id="depKeq' . $question->getUid() . '" style="display: none;">';
@@ -77,7 +81,7 @@ class CheckDependanciesViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstr
 
             $depJs = [];
             $if = '    if (';
-            foreach ($question->getDependancies() as $id => $dependency) {
+            foreach ($question->getDependencies() as $id => $dependency) {
                 $depJs[$id] = 'jQuery("#keq' . $dependency->getQuestion()->getUid() . '").on( "change", function() {' . "\n";
                 $if .= $dependency->getRelationJs(count($depJs));
             }

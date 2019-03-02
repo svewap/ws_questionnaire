@@ -367,7 +367,7 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
                 }
 
                 // check if question is mandatory
-                if ($resultQuestion->getQuestion()->getIsMandatory() && !$resultQuestion->getQuestion()->IsDependant()) {
+                if ($resultQuestion->getQuestion()->getIsMandatory() && !$resultQuestion->getQuestion()->isDependent()) {
                     if (!$resultQuestion->isAnswered()) {
                         $this->moveToAction('new', $result, $requestedPage, 'mandatory');
                     }

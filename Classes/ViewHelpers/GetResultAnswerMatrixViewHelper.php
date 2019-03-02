@@ -2,6 +2,8 @@
 
 namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -52,17 +54,17 @@ class GetResultAnswerMatrixViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
     /**
      * Returns a requested question from result record
      *
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
-     * @param integer $questionUid
-     * @param integer $rowUid
-     * @param integer $columnUid
+     * @param Result $result
+     * @param int $questionUid
+     * @param int $rowUid
+     * @param int $columnUid
      * @param string $matrixType
      * @param boolean $radio
-     * @param integer $clone
+     * @param int $clone
      * @return
      */
     public function render(
-        $result,
+        Result $result,
         $questionUid,
         $rowUid,
         $columnUid,

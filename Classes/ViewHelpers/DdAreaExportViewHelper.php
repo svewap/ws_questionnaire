@@ -2,6 +2,7 @@
 
 namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaImage;
 use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDImage;
 use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question;
@@ -41,7 +42,7 @@ use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class DdAreaExportViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class DdAreaExportViewHelper extends AbstractViewHelper
 {
 
 
