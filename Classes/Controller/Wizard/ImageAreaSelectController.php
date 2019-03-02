@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller\Wizard;
+namespace WapplerSystems\WsQuestionnaire\Controller\Wizard;
 
 /***************************************************************
  *  Copyright notice
@@ -36,7 +36,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * This Class renders the ImageAreaSelectWizard
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -107,7 +107,7 @@ class ImageAreaSelectController extends \TYPO3\CMS\Backend\Controller\Wizard\Abs
     public function __construct()
     {
         parent::__construct();
-        $this->getLanguageService()->includeLLFile('EXT:ke_questionnaire/Resources/Private/Language/locallang_mod.xml');
+        $this->getLanguageService()->includeLLFile('EXT:ws_questionnaire/Resources/Private/Language/locallang_mod.xml');
         $GLOBALS['SOBE'] = $this;
 
         $this->init();
@@ -180,17 +180,17 @@ class ImageAreaSelectController extends \TYPO3\CMS\Backend\Controller\Wizard\Abs
             return $this->closeWindow;
         }
             // Putting together the items into a form:
-            $this->content .= '<link rel="stylesheet" type="text/css" href="' . $baseurl . 'typo3conf/ext/ke_questionnaire/Resources/Public/Css/imgareaselect-animated.css" media="all">';
-            $this->content .= '<script src="' . $baseurl . 'typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery-1.11.3.min.js" type="text/javascript"></script>
-								<script src="' . $baseurl . 'typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
-								<script src="' . $baseurl . 'typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery-migrate-1.2.1.js" type="text/javascript"></script>
-								<script src="' . $baseurl . 'typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery.imgareaselect.min.js" type="text/javascript"></script>
+            $this->content .= '<link rel="stylesheet" type="text/css" href="' . $baseurl . 'typo3conf/ext/ws_questionnaire/Resources/Public/Css/imgareaselect-animated.css" media="all">';
+            $this->content .= '<script src="' . $baseurl . 'typo3conf/ext/ws_questionnaire/Resources/Public/Script/jquery-1.11.3.min.js" type="text/javascript"></script>
+								<script src="' . $baseurl . 'typo3conf/ext/ws_questionnaire/Resources/Public/Script/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+								<script src="' . $baseurl . 'typo3conf/ext/ws_questionnaire/Resources/Public/Script/jquery-migrate-1.2.1.js" type="text/javascript"></script>
+								<script src="' . $baseurl . 'typo3conf/ext/ws_questionnaire/Resources/Public/Script/jquery.imgareaselect.min.js" type="text/javascript"></script>
 								';
-            $this->content .= '<div class=ke_questionnaire" style="padding: 5px;">';
+            $this->content .= '<div class=ws_questionnaire" style="padding: 5px;">';
             $this->content .= '<h2>' . $this->getLanguageService()->getLL('imageAreaSelectHeader', true) . '</h2>';
             $this->content .= '<p>' . $this->getLanguageService()->getLL('imageAreaSelectInfo', true) . '</p>';
             $this->content .= '<hr /><br/>';
-            $this->content .= '<img id="imageAreaSource" src="' . $baseurl . 'uploads/tx_kequestionnaire/' . $this->areaImage . '" alt="areaImage" title="areaImage" ';
+            $this->content .= '<img id="imageAreaSource" src="' . $baseurl . 'uploads/tx_wsquestionnaire/' . $this->areaImage . '" alt="areaImage" title="areaImage" ';
             if ($this->answer['width']) {
                 $this->content .= ' width="' . $this->answer['width'] . 'px" ';
             }

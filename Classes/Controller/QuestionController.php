@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Controller;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -40,18 +40,18 @@ class QuestionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * questionRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository
      */
     protected $questionRepository;
 
     /**
      * injectQuestionRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
      * @return void
      */
     public function injectQuestionRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
     ) {
         $this->questionRepository = $questionRepository;
     }

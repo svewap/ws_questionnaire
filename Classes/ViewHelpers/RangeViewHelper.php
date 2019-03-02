@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
-use Kennziffer\KeQuestionnaire\Domain\Repository\RangeRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\RangeRepository;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -34,7 +34,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -78,8 +78,8 @@ class RangeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
     /**
      * Checks for the right Range Texts and stuff to be shown
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire $questionnaire
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire $questionnaire
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
      * @param string $as The name of the iteration variable
      * @return string
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException
@@ -120,7 +120,7 @@ class RangeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
     {
         $all_ranges = $this->getRanges();
         if (is_object($all_ranges) || is_array($all_ranges)) {
-            /** @var \Kennziffer\KeQuestionnaire\Domain\Model\Range $range */
+            /** @var \WapplerSystems\WsQuestionnaire\Domain\Model\Range $range */
             foreach ($all_ranges as $range) {
                 if ($this->result->getPoints() >= $range->getPointsFrom() && $this->result->getPoints() <= $range->getPointsUntil()) {
                     $this->ranges[$range->getUid()] = $range;
@@ -148,7 +148,7 @@ class RangeViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelpe
         $uid = $this->contentObj->data['uid'];
 
         $this->questionnaire = $this->questionnaire->loadFullObject($this->contentObj->data['uid']);
-        /** @var \Kennziffer\KeQuestionnaire\Domain\Repository\RangeRepository $rep */
+        /** @var \WapplerSystems\WsQuestionnaire\Domain\Repository\RangeRepository $rep */
         $rep = $this->objectManager->get(RangeRepository::class);
 
         $ranges = $rep->findForPid($this->questionnaire->getStoragePid());

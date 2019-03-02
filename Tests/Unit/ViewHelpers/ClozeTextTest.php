@@ -28,22 +28,22 @@
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_KeQuestionnaire_ViewHelpers_ClozeTextTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+class Tx_WsQuestionnaire_ViewHelpers_ClozeTextTest extends Tx_Extbase_Tests_Unit_BaseTestCase
 {
 
     /**
-     * @var Tx_KeQuestionnaire_ViewHelpers_ClozeTextViewHelper
+     * @var Tx_WsQuestionnaire_ViewHelpers_ClozeTextViewHelper
      */
     protected $clozeText;
 
 
     public function setUp()
     {
-        $this->clozeText = new Tx_KeQuestionnaire_ViewHelpers_ClozeTextViewHelper();
+        $this->clozeText = new Tx_WsQuestionnaire_ViewHelpers_ClozeTextViewHelper();
     }
 
     public function tearDown()

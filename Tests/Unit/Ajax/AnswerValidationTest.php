@@ -1,8 +1,8 @@
 <?php
 
-use Kennziffer\KeQuestionnaire\Ajax\AnswerValidation;
-use Kennziffer\KeQuestionnaire\Domain\Repository\AnswerRepository;
-use Kennziffer\KeQuestionnaire\Utility\Localization;
+use WapplerSystems\WsQuestionnaire\Ajax\AnswerValidation;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\AnswerRepository;
+use WapplerSystems\WsQuestionnaire\Utility\Localization;
 
 /***************************************************************
  *  Copyright notice
@@ -32,15 +32,15 @@ use Kennziffer\KeQuestionnaire\Utility\Localization;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_KeQuestionnaire_Ajax_AnswerValidationTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+class Tx_WsQuestionnaire_Ajax_AnswerValidationTest extends Tx_Extbase_Tests_Unit_BaseTestCase
 {
 
     /**
-     * @var Tx_KeQuestionnaire_Ajax_AnswerValidation
+     * @var Tx_WsQuestionnaire_Ajax_AnswerValidation
      */
     protected $answerValidation;
 
@@ -61,7 +61,7 @@ class Tx_KeQuestionnaire_Ajax_AnswerValidationTest extends Tx_Extbase_Tests_Unit
      */
     public function testProcessAjaxRequestTrue()
     {
-        $answer = $this->getMock('Tx_KeQuestionnaire_Domain_Model_Answer', ['getValidationType', 'isValid'], [], '',
+        $answer = $this->getMock('Tx_WsQuestionnaire_Domain_Model_Answer', ['getValidationType', 'isValid'], [], '',
             false);
         $answer
             ->expects($this->any())
@@ -94,7 +94,7 @@ class Tx_KeQuestionnaire_Ajax_AnswerValidationTest extends Tx_Extbase_Tests_Unit
      */
     public function testProcessAjaxRequestFalseNumeric()
     {
-        $answer = $this->getMock('Tx_KeQuestionnaire_Domain_Model_Answer', ['getValidationType', 'isValid'], [], '',
+        $answer = $this->getMock('Tx_WsQuestionnaire_Domain_Model_Answer', ['getValidationType', 'isValid'], [], '',
             false);
         $answer
             ->expects($this->any())

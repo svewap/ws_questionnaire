@@ -26,7 +26,7 @@
  ***************************************************************/
 
 /**
- * Test case for class Tx_KeQuestionnaire_Domain_Model_ResultAnswer.
+ * Test case for class Tx_WsQuestionnaire_Domain_Model_ResultAnswer.
  *
  * @version $Id$
  * @copyright Copyright belongs to the respective authors
@@ -38,16 +38,16 @@
  * @author Stefan froemken <froemken@kennziffer.com>
  * @author Fabian Friedrich <friedrich@kennziffer.com>
  */
-class Tx_KeQuestionnaire_Domain_Model_ResultAnswerTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+class Tx_WsQuestionnaire_Domain_Model_ResultAnswerTest extends Tx_Extbase_Tests_Unit_BaseTestCase
 {
     /**
-     * @var Tx_KeQuestionnaire_Domain_Model_ResultAnswer
+     * @var Tx_WsQuestionnaire_Domain_Model_ResultAnswer
      */
     protected $fixture;
 
     public function setUp()
     {
-        $this->fixture = new Tx_KeQuestionnaire_Domain_Model_ResultAnswer();
+        $this->fixture = new Tx_WsQuestionnaire_Domain_Model_ResultAnswer();
     }
 
     public function tearDown()
@@ -58,14 +58,14 @@ class Tx_KeQuestionnaire_Domain_Model_ResultAnswerTest extends Tx_Extbase_Tests_
     /**
      * @test
      */
-    public function getAnswerReturnsInitialValueForTx_KeQuestionnaire_Domain_Model_Answer()
+    public function getAnswerReturnsInitialValueForTx_WsQuestionnaire_Domain_Model_Answer()
     {
     }
 
     /**
      * @test
      */
-    public function setAnswerForTx_KeQuestionnaire_Domain_Model_AnswerSetsAnswer()
+    public function setAnswerForTx_WsQuestionnaire_Domain_Model_AnswerSetsAnswer()
     {
     }
 

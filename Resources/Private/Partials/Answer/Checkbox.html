@@ -1,5 +1,5 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
-<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
 	<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
 	<div class="keqAnswerWrap keqAnswerCheckbox">	
 		<f:form.checkbox id="keq{question.uid}a{answer.uid}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{answer.uid}" checked="{f:if(condition: '{resultAnswer.value}=={answer.uid}', then: 'true', else: 'false')}" />
@@ -14,7 +14,7 @@
 	</div>
 </f:alias>
 <!-- Javascript to check mandatory in Checkbox -->
-<ke:JavaScript>
+<qu:JavaScript>
 	<f:if condition="{question.isMandatory}">
 /*
  * As soon as a Radio Button on clicked mandatory is fullfilled
@@ -44,4 +44,4 @@ jQuery( "#keq{question.uid}a{answer.uid}" ).on( "change", function() {
 	}
 });
 	</f:if>
-</ke:JavaScript>
+</qu:JavaScript>

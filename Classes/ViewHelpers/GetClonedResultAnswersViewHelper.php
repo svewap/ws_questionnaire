@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer;
 /**
  * get the cloned result-part
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -54,7 +54,7 @@ class GetClonedResultAnswersViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\
     /**
      * Returns a requested question from result record
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
      * @param int $questionUid
      * @param int $answerUid
      * @return null|ResultAnswer[]
@@ -62,10 +62,10 @@ class GetClonedResultAnswersViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\
     public function render($result, $questionUid, $answerUid)
     {
         $resultQuestions = $result->getQuestions();
-        /* @var $resultQuestion \Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion */
+        /* @var $resultQuestion \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion */
         foreach ($resultQuestions as $resultQuestion) {
             if ($questionUid === $resultQuestion->getQuestion()->getUid()) {
-                /* @var $resultAnswer \Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer */
+                /* @var $resultAnswer \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer */
                 return $resultQuestion->getClonedAnswers();
             }
         }

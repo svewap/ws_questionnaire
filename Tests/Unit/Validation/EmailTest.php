@@ -28,22 +28,22 @@
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_KeQuestionnaire_Validation_EmailTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+class Tx_WsQuestionnaire_Validation_EmailTest extends Tx_Extbase_Tests_Unit_BaseTestCase
 {
 
     /**
-     * @var Tx_KeQuestionnaire_Validation_Email
+     * @var Tx_WsQuestionnaire_Validation_Email
      */
     protected $validator;
 
 
     public function setUp()
     {
-        $this->validator = new Tx_KeQuestionnaire_Validation_Email();
+        $this->validator = new Tx_WsQuestionnaire_Validation_Email();
         $this->validator->injectObjectManager(new \TYPO3\CMS\Extbase\Object\ObjectManager());
     }
 

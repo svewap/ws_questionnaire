@@ -4,16 +4,16 @@
 		<description>Context Sensitive Help (CSH) for FF</description>
 		<type>CSH</type>
 		<csh_table></csh_table>
-		<fileId>EXT:ke_questionnaire/Resources/Private/Language/locallang_csh_flexforms.xml</fileId>
+		<fileId>EXT:ws_questionnaire/Resources/Private/Language/locallang_csh_flexforms.xml</fileId>
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index=".alttitle">ke_questionnaire Options</label>
+			<label index=".alttitle">ws_questionnaire Options</label>
 
 			<label index="view.partialRootPath.alttitle">Template-partials to be used</label>
 			<label index="view.partialRootPath.description">
 				Select a folder where your fluid-template-partials for this questionnaire are located&lt;br&gt;
-				You need to maintain the folder-structure of the "Partial"-directory. If a partial is not located in the given directory, the original ke_questionnaire-parital is used
+				You need to maintain the folder-structure of the "Partial"-directory. If a partial is not located in the given directory, the original ws_questionnaire-parital is used
 			</label>
 			
 			<label index="settings.accessType.alttitle">Access type granted to the questionnaire</label>
@@ -73,12 +73,12 @@
 			</label>
 		</languageKey>
 		<languageKey index="de" type="array">
-			<label index=".alttitle">ke_questionnaire Optionen</label>
+			<label index=".alttitle">ws_questionnaire Optionen</label>
 
 			<label index="view.partialRootPath.alttitle">Zu nutzende Template-Partials</label>
 			<label index="view.partialRootPath.description">
 				Wählen Sie einen Ordner aus, in dem die Fluid-Partials für diesen Fragebogen abgelegt wurden&lt;br&gt;
-				Es ist notwendig, dass Sie die Ordner-Struktur des "Partial"-Ordners der Extension aufrecht erhalten. Ist ein Partial im angegebenen Verzeichnis nicht zu finden, wird das original ke_questionnaire-Partial verwendet
+				Es ist notwendig, dass Sie die Ordner-Struktur des "Partial"-Ordners der Extension aufrecht erhalten. Ist ein Partial im angegebenen Verzeichnis nicht zu finden, wird das original ws_questionnaire-Partial verwendet
 			</label>
 			
 			<label index="settings.accessType.alttitle">Zugriffstyp für den Fragebogen</label>

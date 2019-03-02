@@ -1,11 +1,11 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Utility;
+namespace WapplerSystems\WsQuestionnaire\Utility;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
-use Kennziffer\KeQuestionnaire\Domain\Model\Question;
-use Kennziffer\KeQuestionnaire\Domain\Model\Result;
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Answer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion;
 
 /***************************************************************
  *  Copyright notice
@@ -35,7 +35,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -74,28 +74,28 @@ class CsvExport
     /**
      * questionRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository
      */
     protected $questionRepository;
 
     /**
      * resultRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository
      */
     protected $resultRepository;
 
     /**
      * resultQuestionRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository
      */
     protected $resultQuestionRepository;
 
     /**
      * resultAnswerRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\ResultAnswerRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultAnswerRepository
      */
     protected $resultAnswerRepository;
 
@@ -138,11 +138,11 @@ class CsvExport
     /**
      * injectQuestionRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
      * @return void
      */
     public function injectQuestionRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
     ) {
         $this->questionRepository = $questionRepository;
     }
@@ -150,11 +150,11 @@ class CsvExport
     /**
      * injectResultRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository $resultRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository $resultRepository
      * @return void
      */
     public function injectResultRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository $resultRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository $resultRepository
     ) {
         $this->resultRepository = $resultRepository;
     }
@@ -162,11 +162,11 @@ class CsvExport
     /**
      * injectResultQuestionRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository $resultQuestionRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository $resultQuestionRepository
      * @return void
      */
     public function injectResultQuestionRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository $resultQuestionRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository $resultQuestionRepository
     ) {
         $this->resultQuestionRepository = $resultQuestionRepository;
     }
@@ -174,11 +174,11 @@ class CsvExport
     /**
      * injectResultAnswerRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\ResultAnswerRepository $resultAnswerRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultAnswerRepository $resultAnswerRepository
      * @return void
      */
     public function injectResultAnswerRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\ResultAnswerRepository $resultAnswerRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultAnswerRepository $resultAnswerRepository
     ) {
         $this->resultAnswerRepository = $resultAnswerRepository;
     }
@@ -617,7 +617,7 @@ class CsvExport
                 $questionLine = implode($this->separator, $qL) . $this->newline;
                 $lines .= $questionLine;
 
-                /** @var \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer */
+                /** @var \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer */
                 foreach ($question->getAnswers() as $answer) {
                     if ($answer->exportInCsv()) {
                         $options = [];

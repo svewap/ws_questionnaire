@@ -1,4 +1,4 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <div class="keqRangeWrap">
 	<div class="keqRangeTitle">{range.title}</div>
 	<div class="keqRangeContent">
@@ -11,7 +11,7 @@
 		</f:if>
 		<f:if condition="{range.content}">
 			<f:for each="{range.content}" as="element">
-				<ke:ContentElement uid="{element.uid}" />
+				<qu:ContentElement uid="{element.uid}" />
 			</f:for>
 		</f:if>
 	</div>

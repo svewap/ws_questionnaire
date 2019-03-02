@@ -1,9 +1,9 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Result;
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -41,21 +41,21 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class ResultController extends \Kennziffer\KeQuestionnaire\Controller\AbstractController
+class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\AbstractController
 {
 
     /**
      * injectQuestionnaireRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
      * @return void
      */
     public function injectQuestionnaireRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
     ) {
         $this->questionnaireRepository = $questionnaireRepository;
     }
@@ -83,7 +83,7 @@ class ResultController extends \Kennziffer\KeQuestionnaire\Controller\AbstractCo
         $jsKey = substr($GLOBALS['TSFE']->fe_user->id, 0, 10) . '_keqjs';
         $GLOBALS['TSFE']->fe_user->setKey('ses', 'keq_jskey', $jsKey);
         //maybe better to erase the js file every time
-        $pathname = 'typo3temp/ke_questionnaire';
+        $pathname = 'typo3temp/ws_questionnaire';
         $filename = $pathname . '/' . $jsKey . '.js';
         if (file_exists(PATH_site . $filename)) {
             unlink($filename);
@@ -120,8 +120,8 @@ class ResultController extends \Kennziffer\KeQuestionnaire\Controller\AbstractCo
                 $newResult->setAuthCode($this->authCode);
                 break;
         }
-        //check questionnaire-dependancy
-        $this->checkDependancy();
+        //check questionnaire-dependency
+        $this->checkDependency();
         //check for restart
         $newResult = $this->checkRestart($newResult);
         //check if the max participations are reached
@@ -518,7 +518,7 @@ class ResultController extends \Kennziffer\KeQuestionnaire\Controller\AbstractCo
 
         /** @var ResultQuestion $fQuestion */
         foreach ($formQuestions as $fQuestion) {
-            if ($fQuestion->getQuestion() && $fQuestion->getQuestion()->getType() === 'Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question') {
+            if ($fQuestion->getQuestion() && $fQuestion->getQuestion()->getType() === 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question') {
                 $dbResult->addOrUpdateQuestion($fQuestion);
             }
         }
@@ -550,20 +550,20 @@ class ResultController extends \Kennziffer\KeQuestionnaire\Controller\AbstractCo
     }
 
     /**
-     * checkes the dependancy of the Questionnaire
+     * checkes the dependency of the Questionnaire
      */
-    public function checkDependancy()
+    public function checkDependency()
     {
-        $this->signalSlotDispatcher->dispatch(__CLASS__, 'checkDependancy', [$this]);
+        $this->signalSlotDispatcher->dispatch(__CLASS__, 'checkDependency', [$this]);
     }
 
     /**
      * Action to show the FeUser-Access Error
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire $questionnaire
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire $questionnaire
      * @return void
      */
-    public function dependancyAccessAction(\Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire $questionnaire)
+    public function dependencyAccessAction(\WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire $questionnaire)
     {
         $this->view->assign('questionnaire', $questionnaire);
     }
@@ -708,7 +708,7 @@ class ResultController extends \Kennziffer\KeQuestionnaire\Controller\AbstractCo
 
     /**
      * @author joergVelletti <jvelletti@allplan.com>
-     * @param \Kennziffer\KeQuestionnaire\Controller\ResultController
+     * @param \WapplerSystems\WsQuestionnaire\Controller\ResultController
      */
     public function shuffleQuestions()
     {
@@ -718,7 +718,7 @@ class ResultController extends \Kennziffer\KeQuestionnaire\Controller\AbstractCo
             $pages = [];
             // seperate all questions for each page
             foreach ($questions as $question) {
-                if ($question instanceof \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PageBreak) {
+                if ($question instanceof \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak) {
                     $page++;
                     continue;
                 }

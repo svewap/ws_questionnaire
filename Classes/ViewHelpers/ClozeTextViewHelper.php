@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\ViewHelpers;
 /**
  * check the text and create the cloze-text display
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -51,8 +51,8 @@ class ClozeTextViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewH
     /**
      * Adds the needed Javascript-File to Additional Header Data
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeText $answer Answer to be rendered
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeText $answer Answer to be rendered
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
      * @param string $as The name of the iteration variable
      * @return string
      */

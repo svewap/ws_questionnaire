@@ -26,7 +26,7 @@
  ***************************************************************/
 
 /**
- * Test case for class Tx_KeQuestionnaire_Domain_Model_Answer.
+ * Test case for class Tx_WsQuestionnaire_Domain_Model_Answer.
  *
  * @version $Id$
  * @copyright Copyright belongs to the respective authors
@@ -38,16 +38,16 @@
  * @author Stefan froemken <froemken@kennziffer.com>
  * @author Fabian Friedrich <friedrich@kennziffer.com>
  */
-class Tx_KeQuestionnaire_Domain_Model_AnswerTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+class Tx_WsQuestionnaire_Domain_Model_AnswerTest extends Tx_Extbase_Tests_Unit_BaseTestCase
 {
     /**
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\Answer
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Answer
      */
     protected $fixture;
 
     public function setUp()
     {
-        $this->fixture = new \Kennziffer\KeQuestionnaire\Domain\Model\Answer();
+        $this->fixture = new \WapplerSystems\WsQuestionnaire\Domain\Model\Answer();
     }
 
     public function tearDown()

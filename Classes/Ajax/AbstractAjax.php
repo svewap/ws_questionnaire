@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Ajax;
+namespace WapplerSystems\WsQuestionnaire\Ajax;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Ajax;
 /**
  * Abstract Class to process Ajax Actions in Questionnaires
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */

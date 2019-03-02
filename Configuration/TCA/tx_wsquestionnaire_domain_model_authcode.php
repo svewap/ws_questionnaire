@@ -2,17 +2,16 @@
 if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
-
 return [
     'ctrl' => [
-        'title'	=> 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_range',
-        'label' => 'title',
+        'title'	=> 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_authcode',
+        'label' => 'auth_code',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
         'fe_cruser_id' => 'fe_cruser_id',
         'dividers2tabs' => TRUE,
-        'versioningWS' => TRUE,
+        'versioningWS' => 2,
         'versioning_followPages' => TRUE,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
@@ -24,14 +23,15 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'text,',
-        'iconfile' => 'EXT:ke_questionnaire/Resources/Public/Icons/range.svg'
+        'searchFields' => 'auth_code,',
+        'iconfile' => 'EXT:ws_questionnaire/Resources/Public/Icons/authcode.svg'
     ],
+
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, text, points_from, points_until',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, auth_code, email, lastreminder, firstactive',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, text, points_from, points_until,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, auth_code, email, lastreminder,firstactive,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
     ],
     'palettes' => [],
     'columns' => [
@@ -62,8 +62,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_kequestionnaire_domain_model_range',
-                'foreign_table_where' => 'AND tx_kequestionnaire_domain_model_range.pid=###CURRENT_PID### AND tx_kequestionnaire_domain_model_range.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_wsquestionnaire_domain_model_authcode',
+                'foreign_table_where' => 'AND tx_wsquestionnaire_domain_model_authcode.pid=###CURRENT_PID### AND tx_wsquestionnaire_domain_model_authcode.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -116,49 +116,68 @@ return [
                 ],
             ],
         ],
-        'title' => [
+        'auth_code' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_range.title',
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_authcode.auth_code',
+            'config' => [
+                'type'	 => 'input',
+                'size'	 => '100',
+                'max'	  => '255'
+            ]
+        ],
+        'email' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_authcode.email',
+            'config' => [
+                'type'	 => 'input',
+                'size'	 => '100',
+                'max'	  => '255'
+            ]
+        ],
+        'fe_user' => [
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
+        'tt_address' => [
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
+        'lastreminder' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_authcode.lastreminder',
             'config' => [
                 'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required',
+                'size' => 13,
+                'max' => 20,
+                'eval' => 'datetime',
+                'checkbox' => 0,
+                'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true ,
+                ],
             ],
         ],
-        'text' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_range.text',
+        'firstactive' => [
+            'exclude' => 1,
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_authcode.firstactive',
             'config' => [
-                'type' => 'text',
-                'cols' => 40,
-                'rows' => 15,
-                'eval' => 'trim' ,
-                'enableRichtext' => true
+                'type' => 'input',
+                'size' => 13,
+                'max' => 20,
+                'eval' => 'datetime',
+                'checkbox' => 0,
+                'default' => 0,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true ,
+                ],
             ],
         ],
-        'points_from' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_range.points_from',
+        'crdate' => [
             'config' => [
-                'type'	 => 'input',
-                'size'	 => '8',
-                'max'	  => '8',
-                'eval'	 => 'int',
-                'checkbox' => '0',
-                'default' => 0
-            ]
-        ],
-        'points_until' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_range.points_until',
-            'config' => [
-                'type'	 => 'input',
-                'size'	 => '8',
-                'max'	  => '8',
-                'eval'	 => 'int',
-                'checkbox' => '0',
-                'default' => 0
-            ]
+                'type' => 'passthrough',
+            ],
         ],
     ],
 ];

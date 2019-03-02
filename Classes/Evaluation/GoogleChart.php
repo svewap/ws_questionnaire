@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Evaluation;
+namespace WapplerSystems\WsQuestionnaire\Evaluation;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Evaluation;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -103,11 +103,11 @@ class GoogleChart extends AbstractChart
                     'Average points of all participations'
                 ];
                 $results = $this->resultRepository->findAll();
-                /* @var $userResultQuestion \Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion */
+                /* @var $userResultQuestion \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion */
                 foreach ($this->result->getQuestions() as $userResultQuestion) {
                     $resultQuestions = $this->resultQuestionRepository->findByQuestion($userResultQuestion->getQuestion());
                     $sumPoints = 0;
-                    /* @var $resultQuestion \Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion */
+                    /* @var $resultQuestion \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion */
                     foreach ($resultQuestions as $resultQuestion) {
                         $sumPoints += $resultQuestion->getPoints();
                     }

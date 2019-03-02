@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-03-02T11:47:18Z" product-name="ws_questionnaire">
+		<header/>
+		<body>
+			<trans-unit id="default_title" xml:space="preserve">
+				<target>Fügt eine Umfrage ein</target>
+			</trans-unit>
+			<trans-unit id="list_title" xml:space="preserve">
+				<target>Liste von Umfragen</target>
+			</trans-unit>
+			<trans-unit id="view_title" xml:space="preserve">
+				<target>Anzeige von Teilnehmern</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

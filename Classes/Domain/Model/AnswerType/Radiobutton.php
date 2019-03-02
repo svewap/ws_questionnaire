@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Answer;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -68,11 +68,11 @@ class Radiobutton extends Answer
 
     /**
      * return the Value shown in the Csv Export
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer $rAnswer
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $rAnswer
      * @param array $options
      * @return string
      */
-    public function getCsvValue(\Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer $rAnswer, $options = [])
+    public function getCsvValue(\WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $rAnswer, $options = [])
     {
         if ($rAnswer->getValue() == $this->getUid()) {// || $rAnswer->getCol() == $this->getUid()){
             return $options['marker'];

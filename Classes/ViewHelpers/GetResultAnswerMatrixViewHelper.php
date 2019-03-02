@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\ViewHelpers;
 /**
  * get the result answer for the matrix
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -52,7 +52,7 @@ class GetResultAnswerMatrixViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
     /**
      * Returns a requested question from result record
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
      * @param integer $questionUid
      * @param integer $rowUid
      * @param integer $columnUid

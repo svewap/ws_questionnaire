@@ -7,15 +7,15 @@
 		<basics>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:sheet.basics</sheetTitle>
-					<cshFile>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_csh_flexforms.xml</cshFile>
+					<sheetTitle>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:sheet.basics</sheetTitle>
+					<cshFile>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_csh_flexforms.xml</cshFile>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<settings.questionnaires>
 						<TCEforms>
 							<exclude>1</exclude>
-							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.questionnaires</label>
+							<label>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.questionnaires</label>
 							<config>
 								<type>group</type>
 								<internal_type>db</internal_type>
@@ -33,27 +33,27 @@
 		<layout>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:sheet.layout</sheetTitle>
+					<sheetTitle>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:sheet.layout</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>			
 					<settings.listType>
 						<TCEforms>
-							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType</label>
+							<label>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType</label>
 							<onChange>reload</onChange>
 							<config>
 								<type>select</type>
 								<items>
 									<numIndex index="0">
-										<numIndex index="0">LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType.all</numIndex>
+										<numIndex index="0">LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType.all</numIndex>
 										<numIndex index="1">all</numIndex>
 									</numIndex>
 									<numIndex index="1">
-										<numIndex index="0">LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType.used</numIndex>
+										<numIndex index="0">LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType.used</numIndex>
 										<numIndex index="1">used</numIndex>
 									</numIndex>
 									<numIndex index="2">
-										<numIndex index="0">LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType.unused</numIndex>
+										<numIndex index="0">LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.listType.unused</numIndex>
 										<numIndex index="1">unused</numIndex>
 									</numIndex>
 								</items>
@@ -62,7 +62,7 @@
 					</settings.listType>
                                         <settings.showParticipated>
 						<TCEforms>
-							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.showParticipated</label>
+							<label>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.showParticipated</label>
 							<displayCond>FIELD:settings.listType:=:all</displayCond>
 							<config>
 								<type>check</type>
@@ -71,7 +71,7 @@
 					</settings.showParticipated>		
 					<settings.showParticipations>
 						<TCEforms>
-							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.showParticipations</label>
+							<label>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.showParticipations</label>
 							<displayCond>FIELD:settings.listType:!=:unused</displayCond>
 							<config>
 								<type>check</type>
@@ -81,7 +81,7 @@
                                         <settings.singleView>
 						<TCEforms>
 							<exclude>1</exclude>
-							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.singleView</label>
+							<label>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.singleView</label>
 							<config>
 								<type>group</type>
 								<internal_type>db</internal_type>
@@ -95,10 +95,10 @@
 					</settings.singleView>	
                                         <settings.PDFdownload>
 						<TCEforms>
-							<label>LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.PDFdownload</label>
+							<label>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.PDFdownload</label>
 							<config>
 								<type>user</type>		
-								<userFunc>Kennziffer\KeQuestionnaire\Utility\PremiumInfo->showInfo</userFunc>
+								<userFunc>WapplerSystems\WsQuestionnaire\Utility\PremiumInfo->showInfo</userFunc>
 							</config>
 						</TCEforms>
 					</settings.PDFdownload>	

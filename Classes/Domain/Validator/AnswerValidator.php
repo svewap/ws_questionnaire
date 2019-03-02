@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Validator;
+namespace WapplerSystems\WsQuestionnaire\Domain\Validator;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Answer;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -47,7 +47,7 @@ class AnswerValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVa
     public function isValid($result) : bool
     {
         if (!$result instanceof Answer) {
-            $this->addError('The given Object is not a KeQ-Answer.', 1262341470);
+            $this->addError('The given Object is not of type Answer.', 1551562560);
             return false;
         }
         return true;

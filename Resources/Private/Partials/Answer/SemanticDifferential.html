@@ -1,5 +1,5 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
-<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
 	<div class="keqAnswerWrap keqAnswerSlider">
 		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
 		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
@@ -11,7 +11,7 @@
 					<f:if condition="{answer.showSteps}">
 						<div class="keqSematicDifferentialStepLabel">
 						<f:if condition="{answer.stepLabelsArray}">
-							<f:then><ke:arrayValue array="{answer.stepLabelsArray}" key="{stepNr}" /></f:then>
+							<f:then><qu:arrayValue array="{answer.stepLabelsArray}" key="{stepNr}" /></f:then>
 							<f:else>{stepValue}</f:else>
 						</f:if>
 						</div>
@@ -32,7 +32,7 @@
 	</div>
 </f:alias>
 <f:if condition="{question.isMandatory}">
-<ke:JavaScript>
+<qu:JavaScript>
 	/*
 	 * Semantic Differential are always answered
 	 */
@@ -42,5 +42,5 @@
                 checkMandatory();
 	}
 	check_keq{question.uid}a{answer.uid}();
-</ke:JavaScript>
+</qu:JavaScript>
 </f:if>

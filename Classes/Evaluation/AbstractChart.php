@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Evaluation;
+namespace WapplerSystems\WsQuestionnaire\Evaluation;
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
@@ -32,7 +32,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -49,33 +49,33 @@ class AbstractChart implements RenderChartInterface
     /**
      * the current result of the user
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\Result
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Result
      */
     protected $result = null;
 
     /**
      * resultRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository
      */
     protected $resultRepository;
 
     /**
      * resultQuestionRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository
      */
     protected $resultQuestionRepository;
 
     /**
      * resultAnswerRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\ResultAnswerRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultAnswerRepository
      */
     protected $resultAnswerRepository;
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\View\Chart
+     * @var \WapplerSystems\WsQuestionnaire\View\Chart
      */
     protected $view = null;
 
@@ -139,11 +139,11 @@ class AbstractChart implements RenderChartInterface
     /**
      * injectResultRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository $resultRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository $resultRepository
      * @return void
      */
     public function injectResultRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository $resultRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository $resultRepository
     ) {
         $this->resultRepository = $resultRepository;
     }
@@ -151,11 +151,11 @@ class AbstractChart implements RenderChartInterface
     /**
      * injectResultQuestionRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository $resultQuestionRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository $resultQuestionRepository
      * @return void
      */
     public function injectResultQuestionRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository $resultQuestionRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository $resultQuestionRepository
     ) {
         $this->resultQuestionRepository = $resultQuestionRepository;
     }
@@ -163,11 +163,11 @@ class AbstractChart implements RenderChartInterface
     /**
      * injectResultAnswerRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\ResultAnswerRepository $resultAnswerRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultAnswerRepository $resultAnswerRepository
      * @return void
      */
     public function injectResultAnswerRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\ResultAnswerRepository $resultAnswerRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultAnswerRepository $resultAnswerRepository
     ) {
         $this->resultAnswerRepository = $resultAnswerRepository;
     }
@@ -175,10 +175,10 @@ class AbstractChart implements RenderChartInterface
     /**
      * injectView
      *
-     * @param \Kennziffer\KeQuestionnaire\Evaluation\View\Chart $view
+     * @param \WapplerSystems\WsQuestionnaire\Evaluation\View\Chart $view
      * @return void
      */
-    public function injectView(\Kennziffer\KeQuestionnaire\Evaluation\View\Chart $view)
+    public function injectView(\WapplerSystems\WsQuestionnaire\Evaluation\View\Chart $view)
     {
         $this->view = $view;
     }
@@ -231,7 +231,7 @@ class AbstractChart implements RenderChartInterface
     /**
      * Get the result
      *
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
      */
     public function getResult()
     {
@@ -241,10 +241,10 @@ class AbstractChart implements RenderChartInterface
     /**
      * Set the result
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
      * @return void
      */
-    public function setResult(\Kennziffer\KeQuestionnaire\Domain\Model\Result $result)
+    public function setResult(\WapplerSystems\WsQuestionnaire\Domain\Model\Result $result)
     {
         $this->result = $result;
     }
@@ -409,7 +409,7 @@ class AbstractChart implements RenderChartInterface
      */
     public function getHeaderJs()
     {
-        $extPath = ExtensionManagementUtility::extPath('ke_questionnaire');
+        $extPath = ExtensionManagementUtility::extPath('ws_questionnaire');
         $path = 'Resources/Private/Templates/Evaluation/' . $this->getLibraryName() . '/' . $this->getChartType() . '.html';
         $this->view->setTemplatePathAndFilename($extPath . $path);
         $this->view->assign('containerId', $this->getContainerId());

@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Validator;
+namespace WapplerSystems\WsQuestionnaire\Domain\Validator;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /***************************************************************
@@ -33,7 +33,7 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -46,7 +46,7 @@ class ResultQuestionValidator extends AbstractValidator
     public function isValid($result)
     {
         if (!$result instanceof ResultQuestion) {
-            $this->addError('The given Object is not a KeQ-ResultQuestion.', 1262341470);
+            $this->addError('The given Object is not if type ResultQuestion.', 1551563953);
             return false;
         }
         return true;

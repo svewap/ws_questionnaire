@@ -40,13 +40,13 @@
 class Tx_Ke_questionnaire_Controller_QuestionControllerTest extends Tx_Extbase_Tests_Unit_BaseTestCase
 {
     /**
-     * @var Tx_KeQuestionnaire_Domain_Model_Question
+     * @var Tx_WsQuestionnaire_Domain_Model_Question
      */
     protected $fixture;
 
     public function setUp()
     {
-        $this->fixture = new Tx_KeQuestionnaire_Domain_Model_Question();
+        $this->fixture = new Tx_WsQuestionnaire_Domain_Model_Question();
     }
 
     public function tearDown()

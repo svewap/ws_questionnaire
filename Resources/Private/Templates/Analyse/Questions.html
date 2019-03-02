@@ -13,7 +13,7 @@
 		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.categoryAxisRenderer.min.js')}"></script>
 		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.pointLabels.min.js')}"></script>
         <f:flashMessages />
-		<h3><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:header" /> "{plugin.header}"</h3>		
+		<h3><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:header" /> "{plugin.header}"</h3>
 		<hr />
         <f:render partial="Backend/AnalyseMenu" arguments="{plugin:plugin}"/>
 		<hr />
@@ -23,7 +23,7 @@
 			<f:form.hidden name="uid" value="{plugin.uid}" />
 			<f:form.hidden name="pluginUid" value="{plugin.uid}" />
 			<f:form.hidden name="storagePid" value="{plugin.storagePid}" />
-			<f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:selectQuestions.title" /><f:form.select id="keq_analysis_q_select" name="question" options="{plugin.selectQuestions}" optionValueField="uid" optionLabelField="title" value="{question.uid}"/>
+			<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:selectQuestions.title" /><f:form.select id="keq_analysis_q_select" name="question" options="{plugin.selectQuestions}" optionValueField="uid" optionLabelField="title" value="{question.uid}"/>
         </f:form>
         <hr />
         <f:render partial="Analyse/Question" arguments="{question:question, chart:chart}" />        

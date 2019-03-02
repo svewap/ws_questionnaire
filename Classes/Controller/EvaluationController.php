@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
-use Kennziffer\KeQuestionnaire\Evaluation\GoogleChart;
+use WapplerSystems\WsQuestionnaire\Evaluation\GoogleChart;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Evaluation\GoogleChart;
 /**
  * This Class renders the valuation charts
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -40,7 +40,7 @@ class EvaluationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 {
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Evaluation\AbstractChart
+     * @var \WapplerSystems\WsQuestionnaire\Evaluation\AbstractChart
      */
     protected $chartClass;
 
@@ -54,7 +54,7 @@ class EvaluationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     {
         $class = $this->settings['chart']['class'];
         $this->chartClass = $this->objectManager->get($class);
-        if (!$this->chartClass instanceof \Kennziffer\KeQuestionnaire\Evaluation\AbstractChart) {
+        if (!$this->chartClass instanceof \WapplerSystems\WsQuestionnaire\Evaluation\AbstractChart) {
             $this->chartClass = $this->objectManager->get(GoogleChart::class);
         }
         $this->chartClass->setSettings($this->settings);
@@ -66,10 +66,10 @@ class EvaluationController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     /**
      * action show
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result A fresh new result object
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result A fresh new result object
      * @return void
      */
-    public function showAction(\Kennziffer\KeQuestionnaire\Domain\Model\Result $result)
+    public function showAction(\WapplerSystems\WsQuestionnaire\Domain\Model\Result $result)
     {
         $this->chartClass->setResult($result);
         $this->chartClass->setRenderChart($this->settings['chart']['renderChart']);

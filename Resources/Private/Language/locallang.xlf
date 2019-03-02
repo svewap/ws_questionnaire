@@ -1,129 +1,129 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
 	<file source-language="en" datatype="plaintext" original="messages" date="2014-06-02T11:47:10Z"
-		  product-name="ke_questionnaire">
+		  product-name="ws_questionnaire">
 		<header/>
 		<body>
 
-			<trans-unit id="tx_kequestionnaire_domain_model_question" xml:space="preserve">
-				<source>KeQ Content</source>
+			<trans-unit id="tx_wsquestionnaire_domain_model_question" xml:space="preserve">
+				<source>Content element</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.type" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.type" xml:space="preserve">
 				<source>Type</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.title" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.title" xml:space="preserve">
 				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.show_title" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.show_title" xml:space="preserve">
 				<source>Show title</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.text" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.text" xml:space="preserve">
 				<source>Text</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.help_text" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.help_text" xml:space="preserve">
 				<source>Help text</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.image" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.image" xml:space="preserve">
 				<source>Image</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.image_position" xml:space="preserve">
 				<source>Image position</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.1" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.image_position.I.1" xml:space="preserve">
 				<source>Top</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.2" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.image_position.I.2" xml:space="preserve">
 				<source>Right</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.3" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.image_position.I.3" xml:space="preserve">
 				<source>Left</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.image_position.I.4" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.image_position.I.4" xml:space="preserve">
 				<source>Bottom</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.is_mandatory" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.is_mandatory" xml:space="preserve">
 				<source>Is mandatory</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.must_be_correct" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.must_be_correct" xml:space="preserve">
 				<source>Should the question be answered correctly?</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.answers" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.answers" xml:space="preserve">
 				<source>Answers</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.conent_id" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.conent_id" xml:space="preserve">
 				<source>TYPO3 ContentElement</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_question.dependancies" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.dependancies" xml:space="preserve">
 				<source>Dependancies</source>
 			</trans-unit>
 
-			<trans-unit id="tx_kequestionnaire_domain_model_answer" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_answer" xml:space="preserve">
 				<source>Answers</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_answer.type" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_answer.type" xml:space="preserve">
 				<source>Type</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_answer.title" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_answer.title" xml:space="preserve">
 				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_answer.points" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_answer.points" xml:space="preserve">
 				<source>Points</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_answer.text" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_answer.text" xml:space="preserve">
 				<source>Text</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_answer.is_correct_answer" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_answer.is_correct_answer" xml:space="preserve">
 				<source>Correct answer</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_resultquestion" xml:space="preserve">
 				<source>Resultquestions</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion.answers" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_resultquestion.answers" xml:space="preserve">
 				<source>Answers</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion.question" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_resultquestion.question" xml:space="preserve">
 				<source>Question</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_resultquestion.points" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_resultquestion.points" xml:space="preserve">
 				<source>Collected points</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_resultanswer" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_resultanswer" xml:space="preserve">
 				<source>Resultanswers</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_resultanswer.answer" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_resultanswer.answer" xml:space="preserve">
 				<source>Answer</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_resultanswer.value" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_resultanswer.value" xml:space="preserve">
 				<source>Value</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_result" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_result" xml:space="preserve">
 				<source>Results</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_result.finished" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_result.finished" xml:space="preserve">
 				<source>Finished</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_result.questions" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_result.questions" xml:space="preserve">
 				<source>Questions</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_result.points" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_result.points" xml:space="preserve">
 				<source>Collected points</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_result.max_points" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_result.max_points" xml:space="preserve">
 				<source>Maximum of reachable points</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_authcode" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_authcode" xml:space="preserve">
 				<source>Authentication Code</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_authcode.auth_code" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_authcode.auth_code" xml:space="preserve">
 				<source>Authentication Code</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_authcode.email" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_authcode.email" xml:space="preserve">
 				<source>E-Mail</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_authcode.lastreminder" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_authcode.lastreminder" xml:space="preserve">
 				<source>Last time a reminder mail was send</source>
 			</trans-unit>
-			<trans-unit id="tx_kequestionnaire_domain_model_authcode.firstactive" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_authcode.firstactive" xml:space="preserve">
 				<source>First time the authCode was used</source>
 			</trans-unit>
 
@@ -204,10 +204,10 @@
 			<trans-unit id="authCodeAccess.submit" xml:space="preserve">
 				<source>Submit Authentication Code</source>
 			</trans-unit>
-			<trans-unit id="dependancyAccess.info" xml:space="preserve">
+			<trans-unit id="dependencyAccess.info" xml:space="preserve">
 				<source>You need to finish the following questionnaire: </source>
 			</trans-unit>
-			<trans-unit id="dependancyAccess.infoPoints" xml:space="preserve">
+			<trans-unit id="dependencyAccess.infoPoints" xml:space="preserve">
 				<source>You need to finish the following questionnaire with a certain amount of points: </source>
 			</trans-unit>
 
@@ -293,11 +293,11 @@
 			</trans-unit>
 
 			<trans-unit id="premiuminfo.standard" xml:space="preserve">
-				<source>This is a premium option of ke_questionnaire</source>
+				<source>This is a premium option of ws_questionnaire</source>
 			</trans-unit>
 
 			<trans-unit id="report.fileAccess.title" xml:space="preserve">
-				<source>ke_questionnaire: deny direct access to pdf-temp folder</source>
+				<source>ws_questionnaire: deny direct access to pdf-temp folder</source>
 			</trans-unit>
 			<trans-unit id="report.fileAccess.ok" xml:space="preserve">
 				<source>OK</source>
@@ -306,16 +306,16 @@
 				<source>pdf-temp folder is accessible</source>
 			</trans-unit>
 			<trans-unit id="report.fileAccess.error.explanation" xml:space="preserve">
-				<source>Please deny access to folder typo3temp/ke_questionnaire/pdf and its subfolders from the outside.</source>
+				<source>Please deny access to folder typo3temp/ws_questionnaire/pdf and its subfolders from the outside.</source>
 			</trans-unit>
 			<trans-unit id="report.fileAccess.warning" xml:space="preserve">
 				<source>not testable due to permissions</source>
 			</trans-unit>
 			<trans-unit id="report.fileAccess.warning.details" xml:space="preserve">
-				<source>Could not create testfile in folder typo3temp/ke_questionnaire/pdf . Please deny access to folder typo3temp/ke_questionnaire/pdf and its subfolders from the outside manually.</source>
+				<source>Could not create testfile in folder typo3temp/ws_questionnaire/pdf . Please deny access to folder typo3temp/ws_questionnaire/pdf and its subfolders from the outside manually.</source>
 			</trans-unit>
 			<trans-unit id="report.fileAccess.warning.unknown" xml:space="preserve">
-				<source>Unknown error. Please make sure typo3temp/ke_questionnaire/pdf cannot be accessed from the outside.</source>
+				<source>Unknown error. Please make sure typo3temp/ws_questionnaire/pdf cannot be accessed from the outside.</source>
 			</trans-unit>
 
 			<trans-unit id="points.maxInfo" xml:space="preserve">

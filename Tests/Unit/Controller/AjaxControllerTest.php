@@ -1,6 +1,6 @@
 <?php
 
-use Kennziffer\KeQuestionnaire\Controller\AjaxController;
+use WapplerSystems\WsQuestionnaire\Controller\AjaxController;
 
 /***************************************************************
  *  Copyright notice
@@ -43,7 +43,7 @@ class Tx_Ke_questionnaire_Controller_AjaxControllerTest extends UnitTestCase
 {
 
     /**
-     * @var  \Kennziffer\KeQuestionnaire\Controller\AjaxController
+     * @var  \WapplerSystems\WsQuestionnaire\Controller\AjaxController
      */
     protected $ajaxController;
 

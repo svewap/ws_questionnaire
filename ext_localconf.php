@@ -4,10 +4,10 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Kennziffer.' . $_EXTKEY,
+    'WapplerSystems.' . $_EXTKEY,
     'Questionnaire',
     [
-        'Result' => 'new,create,show,feUserAccess,maxParticipations,authCodeAccess,dependancyAccess,end',
+        'Result' => 'new,create,show,feUserAccess,maxParticipations,authCodeAccess,dependencyAccess,end',
         'Mailing' => 'mail',
         'Evaluation' => 'show',
         'PointRange' => 'showText',
@@ -29,7 +29,7 @@ if (!defined('TYPO3_MODE')) {
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Kennziffer.' . $_EXTKEY,
+    'WapplerSystems.' . $_EXTKEY,
     'QList',
     [
         'Questionnaire' => 'list',
@@ -43,7 +43,7 @@ if (!defined('TYPO3_MODE')) {
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-    'Kennziffer.' . $_EXTKEY,
+    'WapplerSystems.' . $_EXTKEY,
     'View',
     [
         'Result' => 'show',

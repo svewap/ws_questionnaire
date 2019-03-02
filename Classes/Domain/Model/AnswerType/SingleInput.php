@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType;
 
 /***************************************************************
  *  Copyright notice
@@ -30,11 +30,11 @@ namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class SingleInput extends \Kennziffer\KeQuestionnaire\Domain\Model\Answer
+class SingleInput extends \WapplerSystems\WsQuestionnaire\Domain\Model\Answer
 {
 
     /**
@@ -299,12 +299,12 @@ class SingleInput extends \Kennziffer\KeQuestionnaire\Domain\Model\Answer
     public function isValid($value)
     {
         if ($value) {
-            $class = 'Kennziffer\\KeQuestionnaire\\Validation\\' . ucfirst($this->getValidationType());
+            $class = 'WapplerSystems\\WsQuestionnaire\\Validation\\' . ucfirst($this->getValidationType());
             if (class_exists($class)) {
                 $objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager;
                 $validator = $objectManager->get($class);
-                if ($validator instanceof \Kennziffer\KeQuestionnaire\Validation\AbstractValidation) {
-                    /* @var $validator \Kennziffer\KeQuestionnaire\Validation\AbstractValidation */
+                if ($validator instanceof \WapplerSystems\WsQuestionnaire\Validation\AbstractValidation) {
+                    /* @var $validator \WapplerSystems\WsQuestionnaire\Validation\AbstractValidation */
                     return $validator->isValid($value, $this);
                 } else {
                     return false;

@@ -1,9 +1,9 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Utility;
+namespace WapplerSystems\WsQuestionnaire\Utility;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
-use Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Answer;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /***************************************************************
@@ -32,13 +32,13 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
  ***************************************************************/
 
 /**
- * creates the Select-Values for the Dependancy-Select in Backend
+ * creates the Select-Values for the Dependency-Select in Backend
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class AddActivatorsToDependancy
+class AddActivatorsToDependency
 {
 
     /**
@@ -49,7 +49,7 @@ class AddActivatorsToDependancy
     /**
      * questionRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository
      */
     protected $questionRepository;
 

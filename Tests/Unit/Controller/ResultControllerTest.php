@@ -1,4 +1,4 @@
-<?php use Kennziffer\KeQuestionnaire\Controller\ResultController;
+<?php use WapplerSystems\WsQuestionnaire\Controller\ResultController;
 
 /***************************************************************
  *  Copyright notice
@@ -42,17 +42,17 @@ class Tx_Ke_questionnaire_Controller_ResultControllerTest extends Tx_Extbase_Tes
 {
 
     /**
-     * @var Tx_KeQuestionnaire_Domain_Model_Result
+     * @var Tx_WsQuestionnaire_Domain_Model_Result
      */
     protected $formResult;
 
     /**
-     * @var Tx_KeQuestionnaire_Domain_Model_Result
+     * @var Tx_WsQuestionnaire_Domain_Model_Result
      */
     protected $dbResult;
 
     /**
-     * @var  \Kennziffer\KeQuestionnaire\Controller\ResultController
+     * @var  \WapplerSystems\WsQuestionnaire\Controller\ResultController
      */
     protected $resultController;
 
@@ -62,13 +62,13 @@ class Tx_Ke_questionnaire_Controller_ResultControllerTest extends Tx_Extbase_Tes
         $this->resultController = $this->getAccessibleMock(ResultController::class);
 
         // set up some answers
-        $answer1 = new Tx_KeQuestionnaire_Domain_Model_Answer();
+        $answer1 = new Tx_WsQuestionnaire_Domain_Model_Answer();
         $answer1->setIsCorrectAnswer(true);
         $answer1->setPid(75);
         $answer1->setPoints(10);
         $answer1->setText('Text of answer 1');
         $answer1->setTitle('Answer 1');
-        $answer1->setType('Tx_KeQuestionnaire_Domain_Model_AnswerType_Radiobutton');
+        $answer1->setType('Tx_WsQuestionnaire_Domain_Model_AnswerType_Radiobutton');
         $answer2 = $answer1;
         $answer2->setText('Text of Answer 2');
         $answer2->setTitle('Answer 2');
@@ -78,17 +78,17 @@ class Tx_Ke_questionnaire_Controller_ResultControllerTest extends Tx_Extbase_Tes
         $answers->attach($answer1);
 
         // set up a question
-        $question = new Tx_KeQuestionnaire_Domain_Model_Question();
+        $question = new Tx_WsQuestionnaire_Domain_Model_Question();
         $question->setAnswers($answers);
         $question->setHelpText('Help Text');
         $question->setPid(75);
         $question->setShowTitle(false);
         $question->setText('Text of Question 1');
         $question->setTitle('Question 1');
-        $question->setType('Tx_KeQuestionnaire_Domain_Model_QuestionType_Question');
+        $question->setType('Tx_WsQuestionnaire_Domain_Model_QuestionType_Question');
 
         // set up a result answer
-        $resultAnswer = new Tx_KeQuestionnaire_Domain_Model_ResultAnswer();
+        $resultAnswer = new Tx_WsQuestionnaire_Domain_Model_ResultAnswer();
         $resultAnswer->setAnswer($answer1);
         $resultAnswer->setFeCruserId(12);
         $resultAnswer->setPid(75);
@@ -99,7 +99,7 @@ class Tx_Ke_questionnaire_Controller_ResultControllerTest extends Tx_Extbase_Tes
         $resultAnswers->attach($resultAnswer);
 
         // set up a result question
-        $resultQuestion = new Tx_KeQuestionnaire_Domain_Model_ResultQuestion();
+        $resultQuestion = new Tx_WsQuestionnaire_Domain_Model_ResultQuestion();
         $resultQuestion->setAnswers($resultAnswers);
         $resultQuestion->setFeCruserId(12);
         $resultQuestion->setPid(75);
@@ -107,11 +107,11 @@ class Tx_Ke_questionnaire_Controller_ResultControllerTest extends Tx_Extbase_Tes
         $resultQuestion->setQuestion($question);
 
         // set up a new form result
-        $this->formResult = new Tx_KeQuestionnaire_Domain_Model_Result();
+        $this->formResult = new Tx_WsQuestionnaire_Domain_Model_Result();
         $this->formResult->setFinished(time());
         $this->formResult->addQuestion($resultQuestion);
 
-        $this->dbResult = new Tx_KeQuestionnaire_Domain_Model_Result();
+        $this->dbResult = new Tx_WsQuestionnaire_Domain_Model_Result();
         $this->dbResult->addQuestion($resultQuestion);
     }
 

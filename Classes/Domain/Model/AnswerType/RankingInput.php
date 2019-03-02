@@ -1,14 +1,14 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Question;
-use Kennziffer\KeQuestionnaire\Domain\Model\Result;
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer;
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion;
-use Kennziffer\KeQuestionnaire\Domain\Repository\AnswerRepository;
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultAnswerRepository;
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\AnswerRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultAnswerRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 
@@ -40,7 +40,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -77,7 +77,7 @@ class RankingInput extends DDAreaSequence
     /**
      * Gets the Images
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
      * @param Result $result
      * @return array
      */
@@ -121,18 +121,18 @@ class RankingInput extends DDAreaSequence
         foreach ($answers as $answer) {
             //Add only after the correct Header is found, only following rows will be added.
             if ((
-                    get_class($answer) === 'Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput' ||
-                    $answer instanceof \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingSelect ||
-                    $answer instanceof \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder
+                    get_class($answer) === 'WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingInput' ||
+                    $answer instanceof \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingSelect ||
+                    $answer instanceof \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingOrder
                 ) && $answer === $this) {
                 $addIt = true;
                 $type = get_class($answer);
-            } elseif (get_class($answer) === 'Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput' ||
-                $answer instanceof \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingSelect ||
-                $answer instanceof \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder) {
+            } elseif (get_class($answer) === 'WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingInput' ||
+                $answer instanceof \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingSelect ||
+                $answer instanceof \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingOrder) {
                 $addIt = false;
             }
-            if ($addIt && $answer instanceof \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingTerm) {
+            if ($addIt && $answer instanceof \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingTerm) {
                 $counter++;
                 if ($answer->getOrder() == 0) {
                     $answer->setOrder($counter);

@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Utility;
+namespace WapplerSystems\WsQuestionnaire\Utility;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Question;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\Question;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */

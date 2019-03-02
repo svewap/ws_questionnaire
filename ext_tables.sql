@@ -1,18 +1,18 @@
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_question'
+# Table structure for table 'tx_wsquestionnaire_domain_model_question'
 #
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_questionnaire' Unused ??
+# Table structure for table 'tx_wsquestionnaire_domain_model_questionnaire' Unused ??
 #
-# CREATE TABLE tx_kequestionnaire_domain_model_questionnaire (
+# CREATE TABLE tx_wsquestionnaire_domain_model_questionnaire (
 #	uid int(11) NOT NULL auto_increment,
 #	pid int(11) default 0 ,
 #  PRIMARY KEY (uid)
 #);
 
 
-CREATE TABLE tx_kequestionnaire_domain_model_question
+CREATE TABLE tx_wsquestionnaire_domain_model_question
 (
 
   uid              int(11)                         NOT NULL auto_increment,
@@ -33,7 +33,7 @@ CREATE TABLE tx_kequestionnaire_domain_model_question
   max_answers      int(11)             DEFAULT '0' NOT NULL,
   min_answers      int(11)             DEFAULT '0' NOT NULL,
   content_id       int(11) unsigned    DEFAULT '0' NOT NULL,
-  dependancies     int(11) unsigned    DEFAULT '0' NOT NULL,
+  dependencies     int(11) unsigned    DEFAULT '0' NOT NULL,
   to_page          int(11) unsigned    DEFAULT '0' NOT NULL,
   direct_jump      tinyint(4) unsigned DEFAULT '0' NOT NULL,
   javascript       text                            NULL,
@@ -73,9 +73,9 @@ CREATE TABLE tx_kequestionnaire_domain_model_question
 );
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_answer'
+# Table structure for table 'tx_wsquestionnaire_domain_model_answer'
 #
-CREATE TABLE tx_kequestionnaire_domain_model_answer
+CREATE TABLE tx_wsquestionnaire_domain_model_answer
 (
 
   uid                    int(11)                              NOT NULL auto_increment,
@@ -159,9 +159,9 @@ CREATE TABLE tx_kequestionnaire_domain_model_answer
 );
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_result'
+# Table structure for table 'tx_wsquestionnaire_domain_model_result'
 #
-CREATE TABLE tx_kequestionnaire_domain_model_result
+CREATE TABLE tx_wsquestionnaire_domain_model_result
 (
 
   uid              int(11)                         NOT NULL auto_increment,
@@ -207,9 +207,9 @@ CREATE TABLE tx_kequestionnaire_domain_model_result
 );
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_resultquestion'
+# Table structure for table 'tx_wsquestionnaire_domain_model_resultquestion'
 #
-CREATE TABLE tx_kequestionnaire_domain_model_resultquestion
+CREATE TABLE tx_wsquestionnaire_domain_model_resultquestion
 (
 
   uid              int(11)                         NOT NULL auto_increment,
@@ -254,9 +254,9 @@ CREATE TABLE tx_kequestionnaire_domain_model_resultquestion
 );
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_resultanswer'
+# Table structure for table 'tx_wsquestionnaire_domain_model_resultanswer'
 #
-CREATE TABLE tx_kequestionnaire_domain_model_resultanswer
+CREATE TABLE tx_wsquestionnaire_domain_model_resultanswer
 (
 
   uid              int(11)                         NOT NULL auto_increment,
@@ -304,9 +304,9 @@ CREATE TABLE tx_kequestionnaire_domain_model_resultanswer
 );
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_range'
+# Table structure for table 'tx_wsquestionnaire_domain_model_range'
 #
-CREATE TABLE tx_kequestionnaire_domain_model_range
+CREATE TABLE tx_wsquestionnaire_domain_model_range
 (
 
   uid              int(11)                         NOT NULL auto_increment,
@@ -349,9 +349,9 @@ CREATE TABLE tx_kequestionnaire_domain_model_range
 );
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_answer'
+# Table structure for table 'tx_wsquestionnaire_domain_model_answer'
 #
-CREATE TABLE tx_kequestionnaire_domain_model_answer
+CREATE TABLE tx_wsquestionnaire_domain_model_answer
 (
 
   question int(11) unsigned DEFAULT '0' NOT NULL
@@ -359,9 +359,9 @@ CREATE TABLE tx_kequestionnaire_domain_model_answer
 );
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_resultanswer'
+# Table structure for table 'tx_wsquestionnaire_domain_model_resultanswer'
 #
-CREATE TABLE tx_kequestionnaire_domain_model_resultanswer
+CREATE TABLE tx_wsquestionnaire_domain_model_resultanswer
 (
 
   resultquestion int(11) unsigned DEFAULT '0' NOT NULL
@@ -369,9 +369,9 @@ CREATE TABLE tx_kequestionnaire_domain_model_resultanswer
 );
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_resultquestion'
+# Table structure for table 'tx_wsquestionnaire_domain_model_resultquestion'
 #
-CREATE TABLE tx_kequestionnaire_domain_model_resultquestion
+CREATE TABLE tx_wsquestionnaire_domain_model_resultquestion
 (
 
   result int(11) unsigned DEFAULT '0' NOT NULL
@@ -380,9 +380,9 @@ CREATE TABLE tx_kequestionnaire_domain_model_resultquestion
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_authcode'
+# Table structure for table 'tx_wsquestionnaire_domain_model_authcode'
 #
-CREATE TABLE tx_kequestionnaire_domain_model_authcode
+CREATE TABLE tx_wsquestionnaire_domain_model_authcode
 (
 
   uid              int(11)                         NOT NULL auto_increment,
@@ -427,9 +427,9 @@ CREATE TABLE tx_kequestionnaire_domain_model_authcode
 );
 
 #
-# Table structure for table 'tx_kequestionnaire_domain_model_dependancy'
+# Table structure for table 'tx_wsquestionnaire_domain_model_dependency'
 #
-CREATE TABLE tx_kequestionnaire_domain_model_dependancy
+CREATE TABLE tx_wsquestionnaire_domain_model_dependency
 (
 
   uid              int(11)                         NOT NULL auto_increment,

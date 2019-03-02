@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType;
 
 /***************************************************************
  *  Copyright notice
@@ -30,11 +30,11 @@ namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class SemanticDifferential extends \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Slider
+class SemanticDifferential extends \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Slider
 {
 
     /**
@@ -228,10 +228,10 @@ class SemanticDifferential extends \Kennziffer\KeQuestionnaire\Domain\Model\Answ
     /**
      * Returns the points
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer $resultAnswer
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $resultAnswer
      * @return string $points
      */
-    public function getPoints(\Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer $resultAnswer = null)
+    public function getPoints(\WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $resultAnswer = null)
     {
         $points = 0;
         if ($this->getPointsIncrease() > 0) {

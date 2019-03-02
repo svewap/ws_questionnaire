@@ -1,9 +1,9 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Result;
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
 
 /***************************************************************
  *  Copyright notice
@@ -33,7 +33,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer;
 /**
  * get normal resultanswer
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -63,10 +63,10 @@ class GetResultAnswerViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstrac
     public function render($result, $questionUid, $answerUid)
     {
         $resultQuestions = $result->getQuestions();
-        /* @var $resultQuestion \Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion */
+        /* @var $resultQuestion \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion */
         foreach ($resultQuestions as $resultQuestion) {
             if ($resultQuestion->getQuestion() && $questionUid === $resultQuestion->getQuestion()->getUid()) {
-                /* @var $resultAnswer \Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer */
+                /* @var $resultAnswer \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer */
                 foreach ($resultQuestion->getAnswers()->toArray() as $resultAnswer) {
                     if ($resultAnswer->getAnswer() && $answerUid === $resultAnswer->getAnswer()->getUid()) {
                         return $resultAnswer;

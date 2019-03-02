@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\ViewHelpers;
 /**
  * get the cloned row
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -50,13 +50,13 @@ class GetCloneableMatrixRowViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
     /**
      * Adds the needed Javascript-File to Additional Header Data
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixHeader $answer Answer to be rendered
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question $question the images are in
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixRow
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixHeader $answer Answer to be rendered
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question the images are in
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixRow
      */
     public function render(
-        \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixHeader $answer,
-        \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question $question
+        \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixHeader $answer,
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question
     ) {
         return $answer->getCloneableRow($question);
     }

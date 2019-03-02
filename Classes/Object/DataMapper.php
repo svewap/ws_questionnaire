@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Object;
+namespace WapplerSystems\WsQuestionnaire\Object;
 
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -32,7 +32,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -110,7 +110,7 @@ class DataMapper
      * @param string $className The name of the class
      * @param array $rows An array of arrays with field_name => value pairs
      * @return array An array of objects of the given class
-     * @throws \Kennziffer\KeQuestionnaire\Exception
+     * @throws \WapplerSystems\WsQuestionnaire\Exception
      * @throws \TYPO3\CMS\Extbase\Validation\Exception\InvalidTypeHintException
      * @throws \TYPO3\CMS\Extbase\Validation\Exception\InvalidValidationConfigurationException
      * @throws \TYPO3\CMS\Extbase\Validation\Exception\NoSuchValidatorException
@@ -131,7 +131,7 @@ class DataMapper
      * @param string $className The name of the target class
      * @param array $row A single array with field_name => value pairs
      * @return object An object of the given class
-     * @throws \Kennziffer\KeQuestionnaire\Exception
+     * @throws \WapplerSystems\WsQuestionnaire\Exception
      * @throws \TYPO3\CMS\Extbase\Validation\Exception\InvalidTypeHintException
      * @throws \TYPO3\CMS\Extbase\Validation\Exception\InvalidValidationConfigurationException
      * @throws \TYPO3\CMS\Extbase\Validation\Exception\NoSuchValidatorException
@@ -160,7 +160,7 @@ class DataMapper
      * @param $object The object to set properties on
      * @param array $row
      * @return object
-     * @throws \Kennziffer\KeQuestionnaire\Exception
+     * @throws \WapplerSystems\WsQuestionnaire\Exception
      * @throws \TYPO3\CMS\Extbase\Validation\Exception\InvalidTypeHintException
      * @throws \TYPO3\CMS\Extbase\Validation\Exception\InvalidValidationConfigurationException
      * @throws \TYPO3\CMS\Extbase\Validation\Exception\NoSuchValidatorException
@@ -210,7 +210,7 @@ class DataMapper
                             'code' => $error->getFirstError()->getCode(),
                             'message' => $error->getFirstError()->getMessage(),
                         ];
-                        throw new \Kennziffer\KeQuestionnaire\Exception('dataMapperValidation', 1354704589,
+                        throw new \WapplerSystems\WsQuestionnaire\Exception('dataMapperValidation', 1354704589,
                             $errorMessage);
                     }
                 }

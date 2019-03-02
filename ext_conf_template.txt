@@ -1,14 +1,14 @@
-# cat=basic/enable/20; type=boolean; label=LLL:EXT:ke_questionnaire/Resources/Private/Language/extConf.xml:enableFeUserMarker
+# cat=basic/enable/20; type=boolean; label=LLL:EXT:ws_questionnaire/Resources/Private/Language/extConf.xml:enableFeUserMarker
 enableFeUserMarker = 1
 
-# cat=email//10; type=string; label=LLL:EXT:ke_questionnaire/Resources/Private/Language/extConf.xml:emailAddress
+# cat=email//10; type=string; label=LLL:EXT:ws_questionnaire/Resources/Private/Language/extConf.xml:emailAddress
 emailAddress =
-# cat=email//20; type=string; label=LLL:EXT:ke_questionnaire/Resources/Private/Language/extConf.xml:emailSender
+# cat=email//20; type=string; label=LLL:EXT:ws_questionnaire/Resources/Private/Language/extConf.xml:emailSender
 emailSender = Webmaster
-# cat=email//30; type=string; label=LLL:EXT:ke_questionnaire/Resources/Private/Language/extConf.xml:emailSubject
-emailSubject = Infomail from ke_questionnaire
+# cat=email//30; type=string; label=LLL:EXT:ws_questionnaire/Resources/Private/Language/extConf.xml:emailSubject
+emailSubject = Infomail from ws_questionnaire
 
-# cat=csvExport//10; type=int; label=LLL:EXT:ke_questionnaire/Resources/Private/Language/extConf.xml:csvExportInterval
+# cat=csvExport//10; type=int; label=LLL:EXT:ws_questionnaire/Resources/Private/Language/extConf.xml:csvExportInterval
 csvExportInterval = 100
 
 # cat=basic/enable/20; type=boolean; label=Modifications see: SEE https://www.pivotaltracker.com/story/show/132754271

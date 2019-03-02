@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
@@ -32,7 +32,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -49,7 +49,7 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Answers
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer>
      * @cascade remove
      */
     protected $answers;
@@ -57,7 +57,7 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * question
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\Question
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Question
      */
     protected $question;
 
@@ -123,7 +123,7 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Checks the ResultAnswers if existent
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer> $answers
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer> $answers
      * @return void
      */
     public function checkAnswers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $answers)
@@ -155,7 +155,7 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * the saveType dertermines if the answers is replaced or the value is replaced. Matrix Answers are worked differently
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $answers
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer $resultAnswer
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $resultAnswer
      */
     public function checkAnswer($answers, &$resultAnswer)
     {
@@ -199,10 +199,10 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Adds a ResultAnswer
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer $answer
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $answer
      * @return void
      */
-    public function addAnswer(\Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer $answer)
+    public function addAnswer(\WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $answer)
     {
         $this->answers->attach($answer);
     }
@@ -210,10 +210,10 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Removes a ResultAnswer
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer $answerToRemove The ResultAnswer to be removed
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $answerToRemove The ResultAnswer to be removed
      * @return void
      */
-    public function removeAnswer(\Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer $answerToRemove)
+    public function removeAnswer(\WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $answerToRemove)
     {
         $this->answers->detach($answerToRemove);
     }
@@ -221,7 +221,7 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the answers
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer> $answers
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer> $answers
      */
     public function getAnswers()
     {
@@ -267,7 +267,7 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the answers
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer> $answers
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer> $answers
      * @return void
      */
     public function setAnswers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $answers)
@@ -278,7 +278,7 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the question
      *
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\Question $question
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
      */
     public function getQuestion()
     {
@@ -288,10 +288,10 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the question
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Question $question
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
      * @return void
      */
-    public function setQuestion(\Kennziffer\KeQuestionnaire\Domain\Model\Question $question)
+    public function setQuestion(\WapplerSystems\WsQuestionnaire\Domain\Model\Question $question)
     {
         $this->question = $question;
     }
@@ -395,7 +395,7 @@ class ResultQuestion extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function canBeAnsweredCorrectly()
     {
         $canBe = false;
-        if ($this->getQuestion()->getType() == 'Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question') {
+        if ($this->getQuestion()->getType() == 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question') {
             if (count($this->getAnswers())) {
                 foreach ($this->getAnswers() as $answer) {
                     if ($answer->canBeAnsweredCorrectly()) {

@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Result;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\Result;
 /**
  * Backend Controller
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -40,46 +40,46 @@ class ExportController extends BackendController
 {
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Utility\CsvExport
+     * @var \WapplerSystems\WsQuestionnaire\Utility\CsvExport
      */
     protected $csvExport;
 
     /**
      * inject csvExport
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\CsvExport $csvExport
+     * @param \WapplerSystems\WsQuestionnaire\Utility\CsvExport $csvExport
      */
-    public function injectCsvExport(\Kennziffer\KeQuestionnaire\Utility\CsvExport $csvExport)
+    public function injectCsvExport(\WapplerSystems\WsQuestionnaire\Utility\CsvExport $csvExport)
     {
         $this->csvExport = $csvExport;
     }
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Utility\PdfExport
+     * @var \WapplerSystems\WsQuestionnaire\Utility\PdfExport
      */
     protected $pdfExport;
 
     /**
      * inject pdfExport
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\PdfExport $pdfExport
+     * @param \WapplerSystems\WsQuestionnaire\Utility\PdfExport $pdfExport
      */
-    public function injectPdfExport(\Kennziffer\KeQuestionnaire\Utility\PdfExport $pdfExport)
+    public function injectPdfExport(\WapplerSystems\WsQuestionnaire\Utility\PdfExport $pdfExport)
     {
         $this->pdfExport = $pdfExport;
     }
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Utility\BackendTsfe
+     * @var \WapplerSystems\WsQuestionnaire\Utility\BackendTsfe
      */
     protected $backendTsfe;
 
     /**
      * inject backendTsfe
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\BackendTsfe $backendTsfe
+     * @param \WapplerSystems\WsQuestionnaire\Utility\BackendTsfe $backendTsfe
      */
-    public function injectBackendTsfe(\Kennziffer\KeQuestionnaire\Utility\BackendTsfe $backendTsfe)
+    public function injectBackendTsfe(\WapplerSystems\WsQuestionnaire\Utility\BackendTsfe $backendTsfe)
     {
         $this->backendTsfe = $backendTsfe;
     }
@@ -136,7 +136,7 @@ class ExportController extends BackendController
     public function csvIntervalAction($pluginUid, $interval)
     {
         //standard path for interval-file
-        $pathName = 'typo3temp/ke_questionnaire';
+        $pathName = 'typo3temp/ws_questionnaire';
         //initialize the export data
         $this->iniCsvExport();
         //get the questionnaire-data from tt_content element
@@ -329,7 +329,7 @@ class ExportController extends BackendController
     public function csvRbIntervalAction($pluginUid, $interval)
     {
         //standard path for interval-file
-        $pathName = 'typo3temp/ke_questionnaire';
+        $pathName = 'typo3temp/ws_questionnaire';
         //initialize the export data
         $this->iniCsvExport();
         //get the questionnaire-data from tt_content element
@@ -595,8 +595,8 @@ class ExportController extends BackendController
     {
         $csvdata = '';
 
-        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('ke_questionnaire_premium')) {
-            $this->csvExport = $this->objectManager->get('Kennziffer\KeQuestionnairePremium\Utility\CsvExport');
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('ws_questionnaire_premium')) {
+            $this->csvExport = $this->objectManager->get('WapplerSystems\WsQuestionnairePremium\Utility\CsvExport');
 
             if ($this->request->hasArgument('averagePoints')) {
                 $this->csvExport->setAveragePoints($this->request->getArgument('averagePoints'));
@@ -736,7 +736,7 @@ class ExportController extends BackendController
         }
 
         //load the css-data for the pdf
-        $css_filename = PATH_site . 'typo3conf/ext/' . $this->request->getControllerExtensionKey() . '/Resources/Public/Css/KeQuestionnaire.css';
+        $css_filename = PATH_site . 'typo3conf/ext/' . $this->request->getControllerExtensionKey() . '/Resources/Public/Css/WsQuestionnaire.css';
         $css_filename2 = PATH_site . 'typo3conf/ext/' . $this->request->getControllerExtensionKey() . '/Resources/Public/Css/PDF.css';
         $css = '<style>' . file_get_contents($css_filename) . "\n" . file_get_contents($css_filename2) . '</style>';
         //render the pdf-html-data

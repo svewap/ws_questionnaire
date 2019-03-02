@@ -1,12 +1,12 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaImage;
-use Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDImage;
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question;
-use Kennziffer\KeQuestionnaire\Domain\Model\Result;
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaImage;
+use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDImage;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
 
 /***************************************************************
  *  Copyright notice
@@ -37,7 +37,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer;
  * ViewHelper for the image in pdf-export of ddarea-image
  * creates an image-file with the drag-images positioned inside the areas
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -81,7 +81,7 @@ class DdAreaExportViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVi
 
         //create the temp-image
         $image = $this->createExportImage($main, $images, $result, $question, $answer);
-        //image to be rendered => $as should be the filename in the typo3temp/ke_questionnaire folder
+        //image to be rendered => $as should be the filename in the typo3temp/ws_questionnaire folder
         $templateVariableContainer->add($as, $image);
         $output = $this->renderChildren();
         $templateVariableContainer->remove($as);
@@ -109,17 +109,17 @@ class DdAreaExportViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVi
         $main_infos = [];
 
         //get image size of main image
-        $size = getimagesize(PATH_site . 'uploads/tx_kequestionnaire/' . $main, $main_infos);
+        $size = getimagesize(PATH_site . 'uploads/tx_wsquestionnaire/' . $main, $main_infos);
         $mainImage = null;
         switch ($size[2]) {
             case 1: //IMAGETYPE_GIF
-                $mainImage = imagecreatefromgif(PATH_site . 'uploads/tx_kequestionnaire/' . $main);
+                $mainImage = imagecreatefromgif(PATH_site . 'uploads/tx_wsquestionnaire/' . $main);
                 break;
             case 2: //IMAGETYPE_JPEG
-                $mainImage = imagecreatefromjpeg(PATH_site . 'uploads/tx_kequestionnaire/' . $main);
+                $mainImage = imagecreatefromjpeg(PATH_site . 'uploads/tx_wsquestionnaire/' . $main);
                 break;
             case 3: //IMAGETYPE_PNG
-                $mainImage = imagecreatefrompng(PATH_site . 'uploads/tx_kequestionnaire/' . $main);
+                $mainImage = imagecreatefrompng(PATH_site . 'uploads/tx_wsquestionnaire/' . $main);
                 break;
         }
         if (!$mainImage) {
@@ -129,16 +129,16 @@ class DdAreaExportViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVi
         $ddImage = null;
         foreach ($images as $image) {
             $resultAnswer = $this->getResultAnswer($result, $question->getUid(), $image->getUid());
-            $info = getimagesize(PATH_site . 'uploads/tx_kequestionnaire/' . $image->getImage());
+            $info = getimagesize(PATH_site . 'uploads/tx_wsquestionnaire/' . $image->getImage());
             switch ($info[2]) {
                 case 1: //IMAGETYPE_GIF
-                    $ddImage = imagecreatefromgif(PATH_site . 'uploads/tx_kequestionnaire/' . $image->getImage());
+                    $ddImage = imagecreatefromgif(PATH_site . 'uploads/tx_wsquestionnaire/' . $image->getImage());
                     break;
                 case 2: //IMAGETYPE_JPEG
-                    $ddImage = imagecreatefromjpeg(PATH_site . 'uploads/tx_kequestionnaire/' . $image->getImage());
+                    $ddImage = imagecreatefromjpeg(PATH_site . 'uploads/tx_wsquestionnaire/' . $image->getImage());
                     break;
                 case 3: //IMAGETYPE_PNG
-                    $ddImage = imagecreatefrompng(PATH_site . 'uploads/tx_kequestionnaire/' . $image->getImage());
+                    $ddImage = imagecreatefrompng(PATH_site . 'uploads/tx_wsquestionnaire/' . $image->getImage());
                     break;
             }
             if ($resultAnswer !== null && $resultAnswer->getValue() && $ddImage) {
@@ -176,7 +176,7 @@ class DdAreaExportViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVi
             imagedestroy($ddImage);
         }
 
-        $save_file = PATH_site . 'typo3temp/ke_questionnaire/' . $filename;
+        $save_file = PATH_site . 'typo3temp/ws_questionnaire/' . $filename;
         imagepng($mainImage, $save_file);
         imagedestroy($mainImage);
 
@@ -194,10 +194,10 @@ class DdAreaExportViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVi
     public function getResultAnswer($result, $questionUid, $answerUid)
     {
         $resultQuestions = $result->getQuestions();
-        /* @var $resultQuestion \Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion */
+        /* @var $resultQuestion \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion */
         foreach ($resultQuestions as $resultQuestion) {
             if ($resultQuestion->getQuestion() && $questionUid === $resultQuestion->getQuestion()->getUid()) {
-                /* @var $resultAnswer \Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer */
+                /* @var $resultAnswer \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer */
                 foreach ($resultQuestion->getAnswers()->toArray() as $resultAnswer) {
                     if ($resultAnswer->getAnswer() && $answerUid === $resultAnswer->getAnswer()->getUid()) {
                         return $resultAnswer;

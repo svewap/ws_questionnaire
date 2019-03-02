@@ -1,9 +1,9 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
 
-use Kennziffer\KeQuestionnaire\Domain\Model\AuthCode;
+use WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
@@ -42,7 +42,7 @@ use TYPO3\TtAddress\Domain\Repository\AddressRepository;
 /**
  * Backend Controller
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -66,7 +66,7 @@ class BackendController extends AbstractController
     protected $pluginFF;
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Utility\Mail
+     * @var \WapplerSystems\WsQuestionnaire\Utility\Mail
      */
     var $mailSender;
 
@@ -88,9 +88,9 @@ class BackendController extends AbstractController
     /**
      * inject mailSender
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\Mail $mail
+     * @param \WapplerSystems\WsQuestionnaire\Utility\Mail $mail
      */
-    public function injectMail(\Kennziffer\KeQuestionnaire\Utility\Mail $mail)
+    public function injectMail(\WapplerSystems\WsQuestionnaire\Utility\Mail $mail)
     {
         $this->mailSender = $mail;
     }

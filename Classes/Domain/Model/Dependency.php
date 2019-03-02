@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
-use Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -34,7 +34,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -44,21 +44,21 @@ class Dependency extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * answer
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\Answer
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Answer
      */
     protected $answer;
 
     /**
      * question
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\Question
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Question
      */
     protected $question;
 
     /**
      * dquestion
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\Question
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Question
      */
     protected $dquestion;
 
@@ -72,7 +72,7 @@ class Dependency extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the answer
      *
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer
      */
     public function getAnswer()
     {
@@ -82,7 +82,7 @@ class Dependency extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the answer
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer
      * @return void
      */
     public function setAnswer($answer)
@@ -93,7 +93,7 @@ class Dependency extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the question
      *
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\Question $question
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
      */
     public function getQuestion()
     {
@@ -108,7 +108,7 @@ class Dependency extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the question
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Question $question
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
      * @return void
      */
     public function setQuestion($question)
@@ -119,7 +119,7 @@ class Dependency extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the dQuestion
      *
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\Question $dQuestion
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\Question $dQuestion
      */
     public function getDQuestion()
     {
@@ -129,7 +129,7 @@ class Dependency extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the dQuestion
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Question $dQuestion
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $dQuestion
      * @return void
      */
     public function setDQuestion($dQuestion)
@@ -186,10 +186,10 @@ class Dependency extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
         switch ($this->getAnswer()->getShortType()) {
             case 'Radiobutton':
-                $js .= 'jQuery("input[name=\'tx_kequestionnaire_questionnaire[newResult][questions][' . $this->getQuestion()->getUid() . '][answers][' . $this->getQuestion()->getUid() . '][answer]\']:checked").val() == ' . $this->getAnswer()->getUid();
+                $js .= 'jQuery("input[name=\'tx_wsquestionnaire_questionnaire[newResult][questions][' . $this->getQuestion()->getUid() . '][answers][' . $this->getQuestion()->getUid() . '][answer]\']:checked").val() == ' . $this->getAnswer()->getUid();
                 break;
             default:
-                $js .= 'jQuery("input[name=\'tx_kequestionnaire_questionnaire[newResult][questions][' . $this->getQuestion()->getUid() . '][answers][' . $this->getAnswer()->getUid() . '][value]\']:checked").val() == ' . $this->getAnswer()->getUid();
+                $js .= 'jQuery("input[name=\'tx_wsquestionnaire_questionnaire[newResult][questions][' . $this->getQuestion()->getUid() . '][answers][' . $this->getAnswer()->getUid() . '][value]\']:checked").val() == ' . $this->getAnswer()->getUid();
                 break;
         }
         $js .= ')';

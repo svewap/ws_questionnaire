@@ -1,5 +1,5 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
-<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
 	<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
 	<dl class="keqAnswer input">
 		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
@@ -9,16 +9,16 @@
 		<f:if condition="{answer.postText}"><dt>&nbsp;{answer.postText}</dt></f:if>
 	</dl>
 </f:alias>
-<ke:JavaScript>
+<qu:JavaScript>
 	/*
 	 * Checks the Answer for the inside Text and replaces it with zero if focused
 	 */
 	jQuery("#keq{question.uid}a{answer.uid}").focus( function() {
 		if(this.value=='{answer.inText}') this.value='';
 	});
-</ke:JavaScript>
+</qu:JavaScript>
 <f:if condition="{question.isMandatory}">
-<ke:JavaScript>
+<qu:JavaScript>
 	/*
 	 * As soon as a Radio Button on clicked mandatory is fullfilled
 	 */
@@ -35,11 +35,11 @@
 		checkMandatory();
 	}
 	check_keq{question.uid}a{answer.uid}();
-</ke:JavaScript>
+</qu:JavaScript>
 </f:if>
 <!-- Javascript to check the Validationtypes for the InputField-->
 <f:if condition="{answer.validationType}">
-	<ke:JavaScript>
+	<qu:JavaScript>
 	/*
 	 * Checks the Answer for the type of the chosen validation
 	 */
@@ -50,7 +50,7 @@
 		jQuery.ajax({
 			type: "GET",
 			url: window.location.pathname,
-			data: 'type=2667&tx_kequestionnaire_questionnaire[type]=AnswerValidation&tx_kequestionnaire_questionnaire[arguments][answerUid]='+a_id+'&tx_kequestionnaire_questionnaire[arguments][value]='+val,
+			data: 'type=2667&tx_wsquestionnaire_questionnaire[type]=AnswerValidation&tx_wsquestionnaire_questionnaire[arguments][answerUid]='+a_id+'&tx_wsquestionnaire_questionnaire[arguments][value]='+val,
 			async: false,
 			success: function(data){
 				xdata = jQuery.parseJSON(jQuery.trim(data));
@@ -64,5 +64,5 @@
 			}
 		});
 	});
-	</ke:JavaScript>
+	</qu:JavaScript>
 </f:if>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers\PageRenderer;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers\PageRenderer;
 
 /**
  * This file is part of the TYPO3 CMS project.

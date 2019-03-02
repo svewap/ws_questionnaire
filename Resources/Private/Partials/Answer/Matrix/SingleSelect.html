@@ -1,5 +1,5 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
-<f:alias map="{resultCol: '{ke:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, clone: clone)}'}">
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
+<f:alias map="{resultCol: '{qu:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, clone: clone)}'}">
 	<div class="keqAnswerWrap keqAnswerSingleInput">
 		<f:if condition="{type} == 'cloned'">
             <f:then>

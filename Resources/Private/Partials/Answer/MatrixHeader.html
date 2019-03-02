@@ -1,5 +1,5 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
-<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
 	<div class="keqAnswerWrap keqMatrix">
 		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
 		<f:form.hidden name="answerErrors[]" id="keqAnswerError{question.uid}a{answer.uid}" value="{f:if(condition:'{answer.minAnswers}',then:1,else:0)}" />
@@ -14,7 +14,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<ke:MatrixRow answer="{answer}" question="{question}" as="row">
+			<qu:MatrixRow answer="{answer}" question="{question}" as="row">
 				<tr id="keq{question.uid}r{row.uid}">
 					<f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][value]" value="" />
 					<td>{row.title}</td>					
@@ -28,10 +28,10 @@
 					</f:for>
 					
 				</tr>
-			</ke:MatrixRow>
+			</qu:MatrixRow>
             <f:if condition="{answer.addClones}">
-                <f:alias map="{cloneableRow: '{ke:getCloneableMatrixRow(answer: answer, question: question)}'}">
-					<f:alias map="{clonedAnswers: '{ke:getClonedResultAnswers(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+                <f:alias map="{cloneableRow: '{qu:getCloneableMatrixRow(answer: answer, question: question)}'}">
+					<f:alias map="{clonedAnswers: '{qu:getClonedResultAnswers(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
                         <f:for each="{clonedAnswers}" key="nr" as="clone">
                             <tr>
                                 <td>
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <f:image class="keqMatrixAddClone" src="EXT:ke_questionnaire/Resources/Public/Images/add.png" alt="add" title="add" />
+                            <f:image class="keqMatrixAddClone" src="EXT:ws_questionnaire/Resources/Public/Images/add.png" alt="add" title="add" />
                         </td>
                     </tr>
                 </f:alias>
@@ -67,7 +67,7 @@
 	</div>    
 </f:alias>
 <!-- Check for Max and Min Answers -->
-<ke:JavaScript>
+<qu:JavaScript>
 <f:if condition="{answer.maxAnswers}">
 /*
  * When an answer in this matrix is changed, check for max answers
@@ -135,9 +135,9 @@
 	 }
  });
 </f:if>
-</ke:JavaScript>
+</qu:JavaScript>
 <f:if condition="{question.isMandatory}">
-<ke:JavaScript>
+<qu:JavaScript>
 	/*
 	 * When the length of all input field values is > 0
 	 */
@@ -159,5 +159,5 @@
 		checkMandatory();
 	}
 	check_keq{question.uid}a{answer.uid}();
-</ke:JavaScript>
+</qu:JavaScript>
 </f:if>

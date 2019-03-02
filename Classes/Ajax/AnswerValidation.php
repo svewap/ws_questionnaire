@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Ajax;
+namespace WapplerSystems\WsQuestionnaire\Ajax;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Ajax;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -40,14 +40,14 @@ class AnswerValidation extends AbstractAjax
     /**
      * answerRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\AnswerRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\AnswerRepository
      */
     protected $answerRepository;
 
     /**
      * lokalization
      *
-     * @var \Kennziffer\KeQuestionnaire\Utility\Localization
+     * @var \WapplerSystems\WsQuestionnaire\Utility\Localization
      */
     protected $localization;
 
@@ -55,11 +55,11 @@ class AnswerValidation extends AbstractAjax
     /**
      * injectAnswerRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\answerRepository $answerRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\answerRepository $answerRepository
      * @return void
      */
     public function injectAnswerRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\AnswerRepository $answerRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\AnswerRepository $answerRepository
     ) {
         $this->answerRepository = $answerRepository;
     }
@@ -67,10 +67,10 @@ class AnswerValidation extends AbstractAjax
     /**
      * injectAnswerRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\Localization $localization
+     * @param \WapplerSystems\WsQuestionnaire\Utility\Localization $localization
      * @return void
      */
-    public function injectLocalization(\Kennziffer\KeQuestionnaire\Utility\Localization $localization)
+    public function injectLocalization(\WapplerSystems\WsQuestionnaire\Utility\Localization $localization)
     {
         $this->localization = $localization;
     }
@@ -83,7 +83,7 @@ class AnswerValidation extends AbstractAjax
      */
     public function processAjaxRequest(array $arguments)
     {
-        /* @var $answer \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleInput */
+        /* @var $answer \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SingleInput */
         $answer = $this->answerRepository->findByUid($arguments['answerUid']);
         if ($answer === null) {
             return '';

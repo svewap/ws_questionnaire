@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion;
 /**
  * check if the question is answered
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -50,18 +50,18 @@ class CheckAnsweredQuestionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\A
     protected $escapeOutput = false;
 
     /**
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Question $question
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
      * @return mixed The finally rendered child nodes.
      */
     public function render(
-        \Kennziffer\KeQuestionnaire\Domain\Model\Question $question,
-        \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+        \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question,
+        \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
     ) {
         /** @var ResultQuestion $rQuestion */
         foreach ($result->getQuestions() as $rQuestion) {
             if ($rQuestion->getQuestion() === $question) {
-                /** @var \Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer $rAnswer */
+                /** @var \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $rAnswer */
                 foreach ($rQuestion->getAnswers() as $rAnswer) {
                     if ($rAnswer->getValue() !== '') {
                         return $this->renderChildren();

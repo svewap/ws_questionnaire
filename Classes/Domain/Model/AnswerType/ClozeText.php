@@ -1,11 +1,11 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question;
-use Kennziffer\KeQuestionnaire\Domain\Repository\AnswerRepository;
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Answer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\AnswerRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
@@ -39,7 +39,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -49,7 +49,7 @@ class ClozeText extends Answer
     /**
      * Terms
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\Answer>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Answer>
      * @lazy
      */
     protected $terms;
@@ -113,7 +113,7 @@ class ClozeText extends Answer
      */
     public function getWordPositions(Question $question)
     {
-        /* @var $answer \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTerm */
+        /* @var $answer \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTerm */
         foreach ($this->getTerms($question, true) as $answer) {
             $pos = $answer->getWordPosition($this->getText());
             $this->wordPositions[$pos[0]] = $pos;
@@ -129,13 +129,13 @@ class ClozeText extends Answer
     /**
      *
      * @param array $resultAnswers
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Question $question
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
      * @param boolean $withHTML
      * @return string $line
      */
     public function getUserText(
         $resultAnswers,
-        \Kennziffer\KeQuestionnaire\Domain\Model\Question $question,
+        \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question,
         $withHTML = true
     ) {
         $line = '';
@@ -194,13 +194,13 @@ class ClozeText extends Answer
     /**
      * Create the whole Csv Line
      * @param array $results
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Question $question
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
      * @param array options
      * @return string
      */
     public function getCsvLine(
         array $results,
-        \Kennziffer\KeQuestionnaire\Domain\Model\Question $question,
+        \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question,
         $options = []
     ) {
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);

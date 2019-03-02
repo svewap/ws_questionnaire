@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Controller;
 /**
  * This Class renders the valuation charts
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -47,7 +47,7 @@ class AjaxController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function ajaxAction($type, $arguments = [])
     {
-        $requestedClassName = 'Kennziffer\\KeQuestionnaire\\Ajax\\' . $type;
+        $requestedClassName = 'WapplerSystems\\WsQuestionnaire\\Ajax\\' . $type;
         if (class_exists($requestedClassName)) {
             $object = $this->objectManager->get($requestedClassName);
             $object->settings = $this->settings;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\View;
+namespace WapplerSystems\WsQuestionnaire\View;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\View;
 /**
  *    Changes the TemplateView-Handling to allow that only some partials are present in the user defined partial-directory
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -60,7 +60,7 @@ class TemplateView extends \TYPO3\CMS\Fluid\View\TemplateView
      *
      * @return array Path(s) to partial root directory
      */
-    public function getKeQPartialRootPaths()
+    public function getWsQPartialRootPaths()
     {
         if ($this->partialRootPaths !== null) {
             return $this->partialRootPaths;
@@ -90,7 +90,7 @@ class TemplateView extends \TYPO3\CMS\Fluid\View\TemplateView
             if (@file_exists($partialPathAndFilename)) {
                 return $partialPathAndFilename;
             } else {
-                $premiumPartialPathAndFilename = str_replace('ext/ke_questionnaire', 'ext/ke_questionnaire_premium',
+                $premiumPartialPathAndFilename = str_replace('ext/ws_questionnaire', 'ext/ws_questionnaire_premium',
                     $partialPathAndFilename);
                 if (@file_exists($premiumPartialPathAndFilename)) {
                     return $premiumPartialPathAndFilename;
@@ -108,7 +108,7 @@ class TemplateView extends \TYPO3\CMS\Fluid\View\TemplateView
      */
     protected function getPartialRootPaths()
     {
-        $base = 'EXT:ke_questionnaire/Resources/Private/Partials/';
+        $base = 'EXT:ws_questionnaire/Resources/Private/Partials/';
         if ($this->partialRootPaths !== null) {
             if (!in_array($base, $this->partialRootPaths)) {
                 $this->partialRootPaths[] = $base;

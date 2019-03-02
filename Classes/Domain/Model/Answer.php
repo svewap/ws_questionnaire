@@ -1,9 +1,9 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultAnswerRepository;
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultAnswerRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -35,7 +35,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 /**
  * base Type for answers
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */

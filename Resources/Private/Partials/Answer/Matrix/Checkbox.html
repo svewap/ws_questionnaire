@@ -1,5 +1,5 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
-<f:alias map="{resultRow: '{ke:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, clone: clone)}'}">
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
+<f:alias map="{resultRow: '{qu:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, clone: clone)}'}">
 	<f:if condition="{type} == 'cloned'">
 		<f:then>
 			<f:form.checkbox id="keq{question.uid}c{column.uid}r{row.uid}clone{clone}" name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][{column.uid}][value][{clone}]" value="{column.uid}" checked="{f:if(condition: '{resultRow.value} == {column.uid}', then: 'true', else: 'false')}" />
@@ -32,7 +32,7 @@
 		</f:else>
 	</f:if>
 </f:alias>
-<ke:JavaScript>
+<qu:JavaScript>
 	var idy = 'keq{question.uid}c{column.uid}r{row.uid}';
 	checkMatrixCheckboxValues(jQuery('#'+idy));
 <f:if condition="{column.showTextfield}">
@@ -55,4 +55,4 @@ jQuery( "#keq{question.uid}c{column.uid}r{row.uid}" ).on( "change", function() {
 		</f:if>
 	</f:else>
 </f:if>
-</ke:JavaScript>
+</qu:JavaScript>

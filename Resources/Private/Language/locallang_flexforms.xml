@@ -57,8 +57,8 @@
 
 			<label index="sheet.behaviour">Behaviour</label>
 			<label index="settings.redirectFinished">Redirect-page after submitting the questionnaire</label>
-                        <label index="settings.dependancy.questionnaire">Dependancy: required submitted questionnaire</label>
-                        <label index="settings.dependancy.points">Dependancy: required points in questionnaire, if 0 it only needs to be finished</label>
+                        <label index="settings.dependency.questionnaire">Dependency: required submitted questionnaire</label>
+                        <label index="settings.dependency.points">Dependency: required points in questionnaire, if 0 it only needs to be finished</label>
 			<label index="settings.ajaxAutoSave">Automatic Saving of Answers with Ajax (only for logged-in Fe-User)</label>
 			
 			<label index="sheet.email">E-mail Settings</label>
@@ -140,8 +140,8 @@
 
 			<label index="sheet.behaviour">Verhalten</label>
 			<label index="settings.redirectFinished">Weiterleitung, wenn die Beantwortung beendet wurde</label>
-                        <label index="settings.dependancy.questionnaire">Abhängigkeit: benötigt abgeschlossenen Fragebogen</label>
-                        <label index="settings.dependancy.points">Abhängigkeit: benötigte Anzahl von Punkten im Fragebogen, wenn 0, reicht eine beendete Beantwortung</label>
+                        <label index="settings.dependency.questionnaire">Abhängigkeit: benötigt abgeschlossenen Fragebogen</label>
+                        <label index="settings.dependency.points">Abhängigkeit: benötigte Anzahl von Punkten im Fragebogen, wenn 0, reicht eine beendete Beantwortung</label>
 			<label index="settings.ajaxAutoSave">Automatische Speicherung der Antworten per Ajax (nur für eingeloggte FE-User möglich)</label>
 			
 			<label index="sheet.email">E-Mail-Einstellungen</label>

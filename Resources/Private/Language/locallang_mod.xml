@@ -6,10 +6,10 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="mlang_tabs_tab">Ke Questionnaire</label>
+			<label index="mlang_tabs_tab">Questionnaire</label>
 
-			<label index="header">Ke Questionnaire Backend Modules</label>
-			<label index="selectOne">Select one of the questionnaires listed in the Ke Questionnaire content tree</label>
+			<label index="header">Questionnaire Backend Modules</label>
+			<label index="selectOne">Select one of the questionnaires listed in the Questionnaire content tree</label>
 
 			<label index="editPlugin">Edit Questionnaire-plugin-data</label>
 			
@@ -19,12 +19,12 @@
 			<label index="imageAreaSelectClose">Close</label>
 		</languageKey>
 		<languageKey index="de" type="array">
-			<label index="mlang_tabs_tab">Ke Questionnaire</label>
+			<label index="mlang_tabs_tab">Fragebogen</label>
 
-			<label index="header">Ke Questionnaire Backend Module</label>
-			<label index="selectOne">Wählen sie einen der Fragebögen im Ke Questionnaire Strukturbaum</label>
+			<label index="header">Fragebogen Backend Module</label>
+			<label index="selectOne">Wählen sie einen der Fragebögen im Questionnaire Strukturbaum</label>
 
-			<label index="editPlugin">KeQ Questionnaire-Plugin-Daten bearbeiten</label>
+			<label index="editPlugin">Questionnaire-Plugin-Daten bearbeiten</label>
 			
 			<label index="imageAreaSelectHeader">Bereiche auswählen</label>
 			<label index="imageAreaSelectInfo">Zeichne ein Rechteck auf das Bild um einen Bereich zu markieren und drücke den Speichern-Button. Wenn alle Bereiche ausgewählt wurden, schliesse das Popup</label>

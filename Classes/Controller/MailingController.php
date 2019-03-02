@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Controller;
 /**
  * This Class renders the valuation charts
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -38,21 +38,21 @@ class MailingController extends AbstractController
 {
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\Result
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Result
      */
     protected $result;
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Utility\Mail
+     * @var \WapplerSystems\WsQuestionnaire\Utility\Mail
      */
     protected $mail;
 
     /**
      * inject mail
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\Mail $mail
+     * @param \WapplerSystems\WsQuestionnaire\Utility\Mail $mail
      */
-    public function injectMail(\Kennziffer\KeQuestionnaire\Utility\Mail $mail)
+    public function injectMail(\WapplerSystems\WsQuestionnaire\Utility\Mail $mail)
     {
         $this->mail = $mail;
     }
@@ -60,10 +60,10 @@ class MailingController extends AbstractController
     /**
      * action mail
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result A fresh new result object
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result A fresh new result object
      * @return void
      */
-    public function mailAction(\Kennziffer\KeQuestionnaire\Domain\Model\Result $result)
+    public function mailAction(\WapplerSystems\WsQuestionnaire\Domain\Model\Result $result)
     {
         $this->result = $result;
         $this->nextStep($result);

@@ -26,7 +26,7 @@
  ***************************************************************/
 
 /**
- * Test case for class Tx_KeQuestionnaire_Domain_Model_Result.
+ * Test case for class Tx_WsQuestionnaire_Domain_Model_Result.
  *
  * @version $Id$
  * @copyright Copyright belongs to the respective authors
@@ -38,16 +38,16 @@
  * @author Stefan froemken <froemken@kennziffer.com>
  * @author Fabian Friedrich <friedrich@kennziffer.com>
  */
-class Tx_KeQuestionnaire_Domain_Model_ResultTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+class Tx_WsQuestionnaire_Domain_Model_ResultTest extends Tx_Extbase_Tests_Unit_BaseTestCase
 {
     /**
-     * @var Tx_KeQuestionnaire_Domain_Model_Result
+     * @var Tx_WsQuestionnaire_Domain_Model_Result
      */
     protected $fixture;
 
     public function setUp()
     {
-        $this->fixture = new Tx_KeQuestionnaire_Domain_Model_Result();
+        $this->fixture = new Tx_WsQuestionnaire_Domain_Model_Result();
     }
 
     public function tearDown()
@@ -82,7 +82,7 @@ class Tx_KeQuestionnaire_Domain_Model_ResultTest extends Tx_Extbase_Tests_Unit_B
     /**
      * @test
      */
-    public function getQuestionsReturnsInitialValueForObjectStorageContainingTx_KeQuestionnaire_Domain_Model_ResultQuestion(
+    public function getQuestionsReturnsInitialValueForObjectStorageContainingTx_WsQuestionnaire_Domain_Model_ResultQuestion(
     )
     {
         $newObjectStorage = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ObjectStorage::class);
@@ -95,9 +95,9 @@ class Tx_KeQuestionnaire_Domain_Model_ResultTest extends Tx_Extbase_Tests_Unit_B
     /**
      * @test
      */
-    public function setQuestionsForObjectStorageContainingTx_KeQuestionnaire_Domain_Model_ResultQuestionSetsQuestions()
+    public function setQuestionsForObjectStorageContainingTx_WsQuestionnaire_Domain_Model_ResultQuestionSetsQuestions()
     {
-        $question = new Tx_KeQuestionnaire_Domain_Model_ResultQuestion();
+        $question = new Tx_WsQuestionnaire_Domain_Model_ResultQuestion();
         $objectStorageHoldingExactlyOneQuestions = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ObjectStorage::class);
         $objectStorageHoldingExactlyOneQuestions->attach($question);
         $this->fixture->setQuestions($objectStorageHoldingExactlyOneQuestions);
@@ -113,7 +113,7 @@ class Tx_KeQuestionnaire_Domain_Model_ResultTest extends Tx_Extbase_Tests_Unit_B
      */
     public function addQuestionToObjectStorageHoldingQuestions()
     {
-        $question = new Tx_KeQuestionnaire_Domain_Model_ResultQuestion();
+        $question = new Tx_WsQuestionnaire_Domain_Model_ResultQuestion();
         $objectStorageHoldingExactlyOneQuestion = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ObjectStorage::class);
         $objectStorageHoldingExactlyOneQuestion->attach($question);
         $this->fixture->addQuestion($question);
@@ -129,7 +129,7 @@ class Tx_KeQuestionnaire_Domain_Model_ResultTest extends Tx_Extbase_Tests_Unit_B
      */
     public function removeQuestionFromObjectStorageHoldingQuestions()
     {
-        $question = new Tx_KeQuestionnaire_Domain_Model_ResultQuestion();
+        $question = new Tx_WsQuestionnaire_Domain_Model_ResultQuestion();
         $localObjectStorage = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ObjectStorage::class);
         $localObjectStorage->attach($question);
         $localObjectStorage->detach($question);

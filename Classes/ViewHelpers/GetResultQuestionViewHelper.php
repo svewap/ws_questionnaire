@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Question;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\Question;
 /**
  * get the result question for display
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -54,14 +54,14 @@ class GetResultQuestionViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstr
     /**
      * Returns a requested question from result record
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
      * @param int $questionUid
      * @return null|Question
      */
     public function render($result, $questionUid)
     {
         $questions = $result->getQuestions();
-        /* @var $question \Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion */
+        /* @var $question \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion */
         foreach ($questions as $key => $question) {
             if ($questionUid === $question->getQuestion()->getUid()) {
                 return $question->getQuestion();

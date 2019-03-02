@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Utility;
+namespace WapplerSystems\WsQuestionnaire\Utility;
 
 /***************************************************************
  *  Copyright notice
@@ -27,32 +27,32 @@ namespace Kennziffer\KeQuestionnaire\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
-use Kennziffer\KeQuestionnaire\Domain\Model\Question;
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer;
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultAnswerRepository;
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Answer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultAnswerRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
 class Analysis
 {
     /**
-     * @var \Kennziffer\KeQuestionnaire\Utility\jqPlot
+     * @var \WapplerSystems\WsQuestionnaire\Utility\jqPlot
      */
     protected $jqPlot;
 
     /**
      * lokalization
      *
-     * @var \Kennziffer\KeQuestionnaire\Utility\Localization
+     * @var \WapplerSystems\WsQuestionnaire\Utility\Localization
      */
     protected $localization;
 
@@ -79,9 +79,9 @@ class Analysis
     /**
      * inject jqPlot
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\JqPlot $jqPlot
+     * @param \WapplerSystems\WsQuestionnaire\Utility\JqPlot $jqPlot
      */
-    public function injectJqPlot(\Kennziffer\KeQuestionnaire\Utility\JqPlot $jqPlot)
+    public function injectJqPlot(\WapplerSystems\WsQuestionnaire\Utility\JqPlot $jqPlot)
     {
         $this->jqPlot = $jqPlot;
     }
@@ -89,10 +89,10 @@ class Analysis
     /**
      * inject Localization
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\Localization $localization
+     * @param \WapplerSystems\WsQuestionnaire\Utility\Localization $localization
      * @return void
      */
-    public function injectLocalization(\Kennziffer\KeQuestionnaire\Utility\Localization $localization)
+    public function injectLocalization(\WapplerSystems\WsQuestionnaire\Utility\Localization $localization)
     {
         $this->localization = $localization;
     }
@@ -113,12 +113,12 @@ class Analysis
      * create Participation Analysis
      *
      * @param array $results
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire $questionnaire
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire $questionnaire
      * @return string
      */
     public function createParticipationAnalysis(
         $results,
-        \Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire $questionnaire
+        \WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire $questionnaire
     ): string {
         $data = $this->createParticipationData($results);
         return $this->jqPlot->createLineChart('participation_chart_' . $questionnaire->getUid(), $data);

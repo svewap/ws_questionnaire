@@ -1,20 +1,20 @@
-plugin.tx_kequestionnaire {
+plugin.tx_wsquestionnaire {
 	view {
-		# cat=plugin.tx_kequestionnaire/file; type=string; label=Path to template root (FE)
-		templateRootPath = EXT:ke_questionnaire/Resources/Private/Templates/
-		# cat=plugin.tx_kequestionnaire/file; type=string; label=Path to template partials (FE)
-		partialRootPath = EXT:ke_questionnaire/Resources/Private/Partials/
-		# cat=plugin.tx_kequestionnaire/file; type=string; label=Path to template layouts (FE)
-		layoutRootPath = EXT:ke_questionnaire/Resources/Private/Layouts/
+		# cat=plugin.tx_wsquestionnaire/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:ws_questionnaire/Resources/Private/Templates/
+		# cat=plugin.tx_wsquestionnaire/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:ws_questionnaire/Resources/Private/Partials/
+		# cat=plugin.tx_wsquestionnaire/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:ws_questionnaire/Resources/Private/Layouts/
 	}
 	persistence {
-		# cat=plugin.tx_kequestionnaire//a; type=string; label=Default storage PID
+		# cat=plugin.tx_wsquestionnaire//a; type=string; label=Default storage PID
 		storagePid =
 	}
 	settings {
-		# cat=plugin.tx_kequestionnaire//a; type=options[Compare points=comparePoints,Finished=finished]; label=How to render the chart
+		# cat=plugin.tx_wsquestionnaire//a; type=options[Compare points=comparePoints,Finished=finished]; label=How to render the chart
 		chart.renderChart = comparePoints
-		# cat=plugin.tx_kequestionnaire//b; type=options[Pie Chart=Pie,Column Chart=Column]; label=Choose chart type
+		# cat=plugin.tx_wsquestionnaire//b; type=options[Pie Chart=Pie,Column Chart=Column]; label=Choose chart type
 		chart.chartType = Pie
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Controller;
 /**
  * This Class renders the valuation charts
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -38,17 +38,17 @@ class PointRangeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 {
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\RangeRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\RangeRepository
      */
     protected $rangeRepository;
 
     /**
      * inject range repository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\RangeRepository $rangeRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\RangeRepository $rangeRepository
      * @return void
      */
-    public function injectRangeRepository(\Kennziffer\KeQuestionnaire\Domain\Repository\RangeRepository $rangeRepository
+    public function injectRangeRepository(\WapplerSystems\WsQuestionnaire\Domain\Repository\RangeRepository $rangeRepository
     ) {
         $this->rangeRepository = $rangeRepository;
     }
@@ -56,14 +56,14 @@ class PointRangeController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
     /**
      * action show text for range
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result A fresh new result object
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result A fresh new result object
      * @return void
      */
-    public function showTextAction(\Kennziffer\KeQuestionnaire\Domain\Model\Result $result)
+    public function showTextAction(\WapplerSystems\WsQuestionnaire\Domain\Model\Result $result)
     {
         $ranges = $this->rangeRepository->findAll();
         if ($ranges !== null) {
-            /* @var $range \Kennziffer\KeQuestionnaire\Domain\Model\Range */
+            /* @var $range \WapplerSystems\WsQuestionnaire\Domain\Model\Range */
             foreach ($ranges as $range) {
                 if ($result->getPoints() >= $range->getPointsFrom() && $result->getPoints() <= $range->getPointsUntil()) {
                     $resultText = $range->getText();

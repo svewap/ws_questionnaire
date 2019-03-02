@@ -13,7 +13,7 @@ keqAjaxResponse {
 	10 = USER_INT
 	10 {
 		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-		extensionName = KeQuestionnaire
+		extensionName = WsQuestionnaire
 		pluginName = Questionnaire
 		vendorName = Kennziffer
 		controller = Ajax
@@ -23,8 +23,8 @@ keqAjaxResponse {
 				1 = ajax
 			}
 		}
-		settings =< plugin.tx_kequestionnaire.settings
-		persistence =< plugin.tx_kequestionnaire.persistence
+		settings =< plugin.tx_wsquestionnaire.settings
+		persistence =< plugin.tx_wsquestionnaire.persistence
 		#view =< plugin.tx_myextensionname.view
 	}
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput;
-use Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder;
-use Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingTerm;
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question;
-use Kennziffer\KeQuestionnaire\Domain\Model\Result;
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion;
-use Kennziffer\KeQuestionnaire\Domain\Repository\AnswerRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingInput;
+use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingOrder;
+use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingTerm;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\AnswerRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -40,7 +40,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -61,7 +61,7 @@ class RankingTermViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
     /**
      * Adds the needed Javascript-File to Additional Header Data
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer Answer to be rendered
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer Answer to be rendered
      * @param Question $question the images are in
      * @param string $as The name of the iteration variable
      * @param Result $result

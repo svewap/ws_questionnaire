@@ -1,4 +1,4 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:if condition="{settings.showProgressBar}">
 	<f:render partial="Questionnaire/ProgressBar" arguments="{questionnaire: questionnaire}"/>
 </f:if>
@@ -20,7 +20,7 @@
 	<f:for each="{questions}" as="question">
 		<f:if condition="{question.template}">
 			<f:then>
-				<ke:renderPartial partial="{question.template}" arguments="{question: question, newResult: newResult}"/>
+				<qu:renderPartial partial="{question.template}" arguments="{question: question, newResult: newResult}"/>
 			</f:then>
 			<f:else>
 				<f:render partial="Question/{question.shortType}"

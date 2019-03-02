@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Controller;
 /**
  * Analyse Controller
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -38,16 +38,16 @@ class AnalyseController extends BackendController
 {
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Utility\Analysis
+     * @var \WapplerSystems\WsQuestionnaire\Utility\Analysis
      */
     protected $analysis;
 
     /**
      * inject analysis
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\Analysis $analysis
+     * @param \WapplerSystems\WsQuestionnaire\Utility\Analysis $analysis
      */
-    public function injectAnalysis(\Kennziffer\KeQuestionnaire\Utility\Analysis $analysis)
+    public function injectAnalysis(\WapplerSystems\WsQuestionnaire\Utility\Analysis $analysis)
     {
         $this->analysis = $analysis;
     }

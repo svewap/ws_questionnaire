@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire;
+namespace WapplerSystems\WsQuestionnaire;
 
-use Kennziffer\KeQuestionnaire\Utility\Localization;
+use WapplerSystems\WsQuestionnaire\Utility\Localization;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Utility\Localization;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -53,7 +53,7 @@ class Exception extends \TYPO3\CMS\Core\Exception
     {
         $objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager;
         $localization = $objectManager->get(Localization::class);
-        /* @var $localization \Kennziffer\KeQuestionnaire\Utility\Localization */
+        /* @var $localization \WapplerSystems\WsQuestionnaire\Utility\Localization */
         $message = $localization->translate($key, 'exception.xml', $arguments);
         if (empty($message)) {
             $message = $key;

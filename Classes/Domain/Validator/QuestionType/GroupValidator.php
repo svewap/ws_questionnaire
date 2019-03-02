@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Validator\QuestionType;
+namespace WapplerSystems\WsQuestionnaire\Domain\Validator\QuestionType;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -47,7 +47,7 @@ class GroupValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractVal
     public function isValid($result) : bool
     {
         if (!$result instanceof Group) {
-            $this->addError('The given Object is not a KeQ-QuestionType-Group.', 1262341470);
+            $this->addError('The given Object is not of type Group.', 1551562706);
             return false;
         }
         return true;

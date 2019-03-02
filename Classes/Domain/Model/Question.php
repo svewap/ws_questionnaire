@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Domain\Model;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -61,7 +61,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Group
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group
      */
     protected $group;
 
@@ -123,7 +123,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Answers
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\Answer>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Answer>
      * @lazy
      * @cascade remove
      */
@@ -132,7 +132,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Dependancies
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\Dependency>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Dependency>
      * @lazy
      * @cascade remove
      */
@@ -264,7 +264,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the group
      *
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group $group
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group $group
      */
     public function getGroup()
     {
@@ -274,7 +274,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the group
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group $group
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group $group
      * @return void
      */
     public function setGroup($group)
@@ -473,10 +473,10 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Adds a Answer
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer
      * @return void
      */
-    public function addAnswer(\Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer)
+    public function addAnswer(\WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer)
     {
         $this->answers->attach($answer);
     }
@@ -484,10 +484,10 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Removes a Answer
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answerToRemove The Answer to be removed
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answerToRemove The Answer to be removed
      * @return void
      */
-    public function removeAnswer(\Kennziffer\KeQuestionnaire\Domain\Model\Answer $answerToRemove)
+    public function removeAnswer(\WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answerToRemove)
     {
         $this->answers->detach($answerToRemove);
     }
@@ -514,25 +514,25 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a Dependancy
+     * Adds a Dependency
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Dependency $dependancy
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Dependency $dependency
      * @return void
      */
-    public function addDependancy(\Kennziffer\KeQuestionnaire\Domain\Model\Dependency $dependancy)
+    public function addDependency(\WapplerSystems\WsQuestionnaire\Domain\Model\Dependency $dependency)
     {
-        $this->dependancies->attach($dependancy);
+        $this->dependancies->attach($dependency);
     }
 
     /**
-     * Removes a Dependancy
+     * Removes a Dependency
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Dependency $dependancyToRemove The Dependancy to be removed
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Dependency $dependencyToRemove The Dependency to be removed
      * @return void
      */
-    public function removeDependancy(\Kennziffer\KeQuestionnaire\Domain\Model\Dependency $dependancyToRemove)
+    public function removeDependency(\WapplerSystems\WsQuestionnaire\Domain\Model\Dependency $dependencyToRemove)
     {
-        $this->dependancies->detach($dependancyToRemove);
+        $this->dependancies->detach($dependencyToRemove);
     }
 
     /**
@@ -615,21 +615,21 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
      * @return boolean
      */
-    public function fullfillsDependancies(\Kennziffer\KeQuestionnaire\Domain\Model\Result $result)
+    public function fullfillsDependancies(\WapplerSystems\WsQuestionnaire\Domain\Model\Result $result)
     {
         if ($this->isDependant()) {
             $full = false;
             $fullcount = 0;
             //check all dependancies
-            foreach ($this->getDependancies() as $id => $dependancy) {
+            foreach ($this->getDependancies() as $id => $dependency) {
                 //get the resultQuestion
-                $rQuestion = $result->getResultQuestionForQuestion($dependancy->getQuestion());
+                $rQuestion = $result->getResultQuestionForQuestion($dependency->getQuestion());
                 if ($rQuestion) {
                     //get the conditions
-                    $relConditions = $dependancy->getRelationCondition();
+                    $relConditions = $dependency->getRelationCondition();
                     //check the conditions for all given answers of this resultQuestion
                     foreach ($rQuestion->getAnswers() as $rAnswer) {
                         $fullcount++;

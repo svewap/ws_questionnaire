@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Reports;
+namespace WapplerSystems\WsQuestionnaire\Reports;
 
 /***************************************************************
  *  Copyright notice
@@ -34,7 +34,7 @@ use TYPO3\CMS\Reports\StatusProviderInterface;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -92,32 +92,32 @@ class FileAccessReport implements StatusProviderInterface
      */
     protected function init()
     {
-        $this->tmpFileAndPath = PATH_site . 'typo3temp/ke_questionnaire/pdf/TEST';
+        $this->tmpFileAndPath = PATH_site . 'typo3temp/ws_questionnaire/pdf/TEST';
         $this->siteUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 
         $this->staticStateResponseData = [
             'ok' => [
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.title'),
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.ok'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.title'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.ok'),
                 '',
                 Status::OK
             ],
             'writeFail' => [
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.title'),
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.warning'),
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.warning.details'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.title'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.warning'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.warning.details'),
                 Status::WARNING
             ],
             'tmpFileReadable' => [
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.title'),
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.error'),
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.error.explanation'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.title'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.error'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.error.explanation'),
                 Status::ERROR
             ],
             'unknownErrorCheckingTmpFile' => [
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.title'),
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.warning'),
-                $GLOBALS['LANG']->sL('LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.warning.unknown'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.title'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.warning'),
+                $GLOBALS['LANG']->sL('LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:report.fileAccess.warning.unknown'),
                 Status::WARNING
             ]
         ];
@@ -146,8 +146,8 @@ class FileAccessReport implements StatusProviderInterface
      */
     protected function createAndCheckTmpFile()
     {
-        if (!is_dir(PATH_site . 'typo3temp/ke_questionnaire/pdf')) {
-            @mkdir(PATH_site . 'typo3temp/ke_questionnaire/pdf');
+        if (!is_dir(PATH_site . 'typo3temp/ws_questionnaire/pdf')) {
+            @mkdir(PATH_site . 'typo3temp/ws_questionnaire/pdf');
         }
         //create htaccess file
         $htaccess = '
@@ -159,8 +159,8 @@ Allow from 127.0.0.1
 	Order Allow,Deny
 	Allow from all
 </FilesMatch>';
-        $htaccessFileAndPath = PATH_site . 'typo3temp/ke_questionnaire/.htaccess';
-        //$htaccessFileAndPath = PATH_site . 'typo3temp/ke_questionnaire/pdf/.htaccess';
+        $htaccessFileAndPath = PATH_site . 'typo3temp/ws_questionnaire/.htaccess';
+        //$htaccessFileAndPath = PATH_site . 'typo3temp/ws_questionnaire/pdf/.htaccess';
         $writeHtaccess = GeneralUtility::writeFileToTypo3tempDir($htaccessFileAndPath, $htaccess);
         if ($writeHtaccess !== null) {
             return 'writeFail';
@@ -185,7 +185,7 @@ Allow from 127.0.0.1
         $responseHeaders = [];
 
         //try to read test file
-        $readTestFile = GeneralUtility::getUrl($this->siteUrl . 'typo3temp/ke_questionnaire/pdf/TEST', 1, false,
+        $readTestFile = GeneralUtility::getUrl($this->siteUrl . 'typo3temp/ws_questionnaire/pdf/TEST', 1, false,
             $responseHeaders);
         @unlink($this->tmpFileAndPath);
 

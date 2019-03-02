@@ -1,6 +1,6 @@
 <?php
 // Deprecated since 7.6, needed for 6.2, will be removed with 8
-namespace Kennziffer\KeQuestionnaire\Controller\Wizard\ImageAreaSelectWizard;
+namespace WapplerSystems\WsQuestionnaire\Controller\Wizard\ImageAreaSelectWizard;
 
 /**
  * Image Area Select Wizard
@@ -52,8 +52,8 @@ class ImageAreaSelectWizard
     protected function indexAction()
     {
         /** @var $view tx_form_View_Wizard_Wizard */
-        $view = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Kennziffer\KeQuestionnaire\View\ImageAreaSelectWizard::class);
-        $extPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('ke_questionnaire');
+        $view = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\WapplerSystems\WsQuestionnaire\View\ImageAreaSelectWizard::class);
+        $extPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('ws_questionnaire');
         $path = 'Resources/Private/Templates/Wizards/ImageAreaSelect.html';
         $view->setTemplatePathAndFilename($extPath . $path);
         $view->setLayoutRootPath($extPath . 'Resources/Private/Layouts');
@@ -67,5 +67,5 @@ class ImageAreaSelectWizard
     }
 }
 
-$wizard = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\Kennziffer\KeQuestionnaire\Controller\Wizard\ImageAreaSelectWizard\ImageAreaSelectWizard::class);
+$wizard = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\WapplerSystems\WsQuestionnaire\Controller\Wizard\ImageAreaSelectWizard\ImageAreaSelectWizard::class);
 $wizard->dispatch();

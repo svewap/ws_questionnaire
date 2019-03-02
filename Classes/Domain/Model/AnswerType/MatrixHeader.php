@@ -1,10 +1,10 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
-use Kennziffer\KeQuestionnaire\Domain\Model\Question;
-use Kennziffer\KeQuestionnaire\Domain\Repository\AnswerRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Answer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\AnswerRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -36,7 +36,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -45,7 +45,7 @@ class MatrixHeader extends Answer
     /**
      * Cols
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\Answer>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Answer>
      * @lazy
      */
     protected $cols;
@@ -105,7 +105,7 @@ class MatrixHeader extends Answer
     /**
      * Returns the cols
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\Answer> $cols
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Answer> $cols
      */
     public function getCols()
     {
@@ -115,7 +115,7 @@ class MatrixHeader extends Answer
     /**
      * Sets the cols
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\Answer> $cols
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Answer> $cols
      * @return void
      */
     public function setCols(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $cols)

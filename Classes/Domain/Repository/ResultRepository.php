@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Repository;
+namespace WapplerSystems\WsQuestionnaire\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Domain\Repository;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -315,10 +315,10 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all results for pid
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\AuthCode $authCode
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode $authCode
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
-    public function findForAuthCode(\Kennziffer\KeQuestionnaire\Domain\Model\AuthCode $authCode)
+    public function findForAuthCode(\WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode $authCode)
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -332,7 +332,7 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function clearRATable()
     {
-        $GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_kequestionnaire_domain_model_resultanswer', 'resultquestion = 0');
+        $GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_wsquestionnaire_domain_model_resultanswer', 'resultquestion = 0');
     }
 
     /**
@@ -343,18 +343,18 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function collectRAnswersForCSVRBExport($resultId)
     {
         $query = $this->createQuery();
-        $query->statement('SELECT tx_kequestionnaire_domain_model_resultquestion.uid as rq_uid, tx_kequestionnaire_domain_model_resultanswer.uid as ra_uid,
-tx_kequestionnaire_domain_model_resultanswer.value as ra_value,
-tx_kequestionnaire_domain_model_resultanswer.additional_value as ra_add_value,
-(SELECT tx_kequestionnaire_domain_model_question.uid FROM tx_kequestionnaire_domain_model_question WHERE tx_kequestionnaire_domain_model_resultquestion.question = tx_kequestionnaire_domain_model_question.uid) as q_uid,
-(SELECT tx_kequestionnaire_domain_model_answer.uid FROM tx_kequestionnaire_domain_model_answer WHERE tx_kequestionnaire_domain_model_resultanswer.answer = tx_kequestionnaire_domain_model_answer.uid) as a_uid
+        $query->statement('SELECT tx_wsquestionnaire_domain_model_resultquestion.uid as rq_uid, tx_wsquestionnaire_domain_model_resultanswer.uid as ra_uid,
+tx_wsquestionnaire_domain_model_resultanswer.value as ra_value,
+tx_wsquestionnaire_domain_model_resultanswer.additional_value as ra_add_value,
+(SELECT tx_wsquestionnaire_domain_model_question.uid FROM tx_wsquestionnaire_domain_model_question WHERE tx_wsquestionnaire_domain_model_resultquestion.question = tx_wsquestionnaire_domain_model_question.uid) as q_uid,
+(SELECT tx_wsquestionnaire_domain_model_answer.uid FROM tx_wsquestionnaire_domain_model_answer WHERE tx_wsquestionnaire_domain_model_resultanswer.answer = tx_wsquestionnaire_domain_model_answer.uid) as a_uid
 FROM 
-tx_kequestionnaire_domain_model_resultanswer 
+tx_wsquestionnaire_domain_model_resultanswer 
 Left join
-tx_kequestionnaire_domain_model_resultquestion on
-tx_kequestionnaire_domain_model_resultanswer.resultquestion = tx_kequestionnaire_domain_model_resultquestion.uid
+tx_wsquestionnaire_domain_model_resultquestion on
+tx_wsquestionnaire_domain_model_resultanswer.resultquestion = tx_wsquestionnaire_domain_model_resultquestion.uid
 where 
-tx_kequestionnaire_domain_model_resultquestion.result =' . $resultId);
+tx_wsquestionnaire_domain_model_resultquestion.result =' . $resultId);
         return $query->execute(true);
     }
 }

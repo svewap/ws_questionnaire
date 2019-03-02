@@ -17,17 +17,17 @@ jQuery(document).ready(function() {
 	});
 	
 	jQuery( ".keqButtons input.prev" ).on( "click", function() {
-		$currentPage = jQuery( ".tx-ke-questionnaire input.currentPage" ).val();
-		jQuery( ".tx-ke-questionnaire input.requestedPage" ).val( $currentPage - 1 );
-		jQuery( ".tx-ke-questionnaire form" ).submit();
+		$currentPage = jQuery( ".tx-ws-questionnaire input.currentPage" ).val();
+		jQuery( ".tx-ws-questionnaire input.requestedPage" ).val( $currentPage - 1 );
+		jQuery( ".tx-ws-questionnaire form" ).submit();
 	});
 	
 	/*
 	 * Submit the Form to a defined page
 	 */
 	window.submitToPage = function($page){
-		jQuery( ".tx-ke-questionnaire input.requestedPage" ).val($page);
-		jQuery( ".tx-ke-questionnaire form" ).submit();
+		jQuery( ".tx-ws-questionnaire input.requestedPage" ).val($page);
+		jQuery( ".tx-ws-questionnaire form" ).submit();
 	}
 
 	/*
@@ -92,7 +92,7 @@ jQuery(document).ready(function() {
 	/*
 	 * Checks on submit if the Questionnaire Page is valid and should be allowed to be submitted
 	 */
-	jQuery( ".tx-ke-questionnaire form" ).on( "submit", function() {
+	jQuery( ".tx-ws-questionnaire form" ).on( "submit", function() {
 		if(!checkMandatorySubmit()) {
 			return false;
 		}

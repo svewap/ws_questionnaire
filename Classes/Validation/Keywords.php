@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Validation;
+namespace WapplerSystems\WsQuestionnaire\Validation;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Validation;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -46,7 +46,7 @@ class Keywords extends AbstractValidation
      */
     public function isValid($value, $model)
     {
-        /* @var $additionalInformations \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleInput */
+        /* @var $additionalInformations \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SingleInput */
         $keywords = \TYPO3\CMS\Core\Utility\GeneralUtility::trimExplode(',', $model->getValidationText());
         $keyword_counter = 0;
         $to_match = $model->getValidationKeysAmount();

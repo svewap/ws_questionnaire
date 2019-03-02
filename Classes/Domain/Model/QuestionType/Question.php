@@ -1,10 +1,10 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model\QuestionType;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
-use Kennziffer\KeQuestionnaire\Domain\Model\Question as BaseQuestion;
-use Kennziffer\KeQuestionnaire\Domain\Repository\AnswerRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Answer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Question as BaseQuestion;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\AnswerRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -36,7 +36,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -88,7 +88,7 @@ class Question extends BaseQuestion
     /**
      * Answers
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\Answer>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Answer>
      * @lazy
      */
     protected $answers;
@@ -282,10 +282,10 @@ class Question extends BaseQuestion
     /**
      * Adds a Answer
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer
      * @return void
      */
-    public function addAnswer(\Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer)
+    public function addAnswer(\WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer)
     {
         $this->answers->attach($answer);
     }
@@ -293,10 +293,10 @@ class Question extends BaseQuestion
     /**
      * Removes a Answer
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answerToRemove The Answer to be removed
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answerToRemove The Answer to be removed
      * @return void
      */
-    public function removeAnswer(\Kennziffer\KeQuestionnaire\Domain\Model\Answer $answerToRemove)
+    public function removeAnswer(\WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answerToRemove)
     {
         $this->answers->detach($answerToRemove);
     }
@@ -304,7 +304,7 @@ class Question extends BaseQuestion
     /**
      * Returns the answers
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\Answer> $answers
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Answer> $answers
      */
     public function getAnswers()
     {
@@ -319,7 +319,7 @@ class Question extends BaseQuestion
     /**
      * Sets the answers
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\Answer> $answers
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Answer> $answers
      * @return void
      */
     public function setAnswers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $answers)

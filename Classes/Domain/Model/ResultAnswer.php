@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Domain\Model;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -47,14 +47,14 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Answer
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\Answer
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Answer
      */
     protected $answer;
 
     /**
      * Resultquestion
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion
      */
     protected $resultquestion;
 
@@ -147,7 +147,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the answer
      *
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer
      */
     public function getAnswer()
     {
@@ -157,10 +157,10 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the answer
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer
      * @return void
      */
-    public function setAnswer(\Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer)
+    public function setAnswer(\WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer)
     {
         $this->answer = $answer;
 
@@ -168,7 +168,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         // if we add for each radiobutton a hidden field for the value col, we have more than one entry in DB
         // so this is only solveable if we add ONE hidden field for ALL radiobuttons.
         // if you can fix this with JavaScript then you can remove this part.
-        if ($this->getAnswer()->getType() === 'Kennziffer\\KeQuestionnaire\\Domain\\Model\\AnswerType\\Radiobutton') {
+        if ($this->getAnswer()->getType() === 'WapplerSystems\\WsQuestionnaire\\Domain\\Model\\AnswerType\\Radiobutton') {
             $this->setValue($this->getAnswer()->getUid());
         }
     }
@@ -176,7 +176,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the resultquestion
      *
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion $resultquestion
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion $resultquestion
      */
     public function getResultquestion()
     {
@@ -186,10 +186,10 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the resultquestion
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion $resultquestion
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion $resultquestion
      * @return void
      */
-    public function setResultquestion(\Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion $resultquestion)
+    public function setResultquestion(\WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion $resultquestion)
     {
         $this->resultquestion = $resultquestion;
     }
@@ -249,7 +249,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                 $answers = $this->getResultquestion()->getQuestion()->getAnswers();
                 $correctAnswersUids = [];
                 foreach ($answers as $answer) {
-                    /** @var $answer \Kennziffer\KeQuestionnaire\Domain\Model\Answer */
+                    /** @var $answer \WapplerSystems\WsQuestionnaire\Domain\Model\Answer */
                     if ($answer->getIsCorrectAnswer()) {
                         $correctAnswersUids[] = (int)$answer->getUid();
                     }
@@ -257,11 +257,11 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                 array_unique($correctAnswersUids);
                 sort($correctAnswersUids);
 
-                /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer> $resultAnswers */
+                /** @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer> $resultAnswers */
                 $resultAnswers = $this->getResultquestion()->getAnswers();
                 $resultAnswerUids = [];
                 foreach ($resultAnswers as $resultAnswer) {
-                    /** @var $resultAnswer \Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer */
+                    /** @var $resultAnswer \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer */
                     if ($resultAnswer->getValue()) {
                         $resultAnswerUids[] = (int)$resultAnswer->getValue();
                     }

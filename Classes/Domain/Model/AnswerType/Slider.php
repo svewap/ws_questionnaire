@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType;
 
 /***************************************************************
  *  Copyright notice
@@ -30,11 +30,11 @@ namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Slider extends \Kennziffer\KeQuestionnaire\Domain\Model\Answer
+class Slider extends \WapplerSystems\WsQuestionnaire\Domain\Model\Answer
 {
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\ViewHelpers;
 /**
  * create the temporary js file with given code
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -77,7 +77,7 @@ class JavaScriptViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
             //get the stored jsKey
             $jsKey = $GLOBALS['TSFE']->fe_user->getKey('ses', 'keq_jskey');
             //get the file
-            $pathName = 'typo3temp/ke_questionnaire';
+            $pathName = 'typo3temp/ws_questionnaire';
             $fileName = $pathName . '/' . $jsKey . '.js';
 
             if (!file_exists(PATH_site . $pathName)) {
@@ -115,7 +115,7 @@ class JavaScriptViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
             chmod(PATH_site . $fileName, 0777);
 
             //add it to the headerData
-            $GLOBALS['TSFE']->additionalFooterData['ke_questionnaire_tempjs'] = '<script type="text/javascript" src="' .
+            $GLOBALS['TSFE']->additionalFooterData['ws_questionnaire_tempjs'] = '<script type="text/javascript" src="' .
                 $fileName . "?" . filemtime(PATH_site . $fileName) . '"></script>';
         }
     }

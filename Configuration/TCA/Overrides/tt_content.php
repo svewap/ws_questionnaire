@@ -1,24 +1,24 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-$_EXTKEY = "ke_questionnaire" ;
+$_EXTKEY = 'ws_questionnaire';
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Kennziffer.'.$_EXTKEY,
+    'WapplerSystems.'.$_EXTKEY,
     'Questionnaire',
-    'KeQ Inserts a questionnaire'
+    'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_be.xlf:default_title'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Kennziffer.'.$_EXTKEY,
+    'WapplerSystems.'.$_EXTKEY,
     'QList',
-    'KeQ List of questionnaires'
+    'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_be.xlf:list_title'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-    'Kennziffer.'.$_EXTKEY,
+    'WapplerSystems.'.$_EXTKEY,
     'View',
-    'KeQ FeView of Participations'
+    'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_be.xlf:view_title'
 );
 
 $extensionName = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($_EXTKEY);

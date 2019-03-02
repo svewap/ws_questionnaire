@@ -3,16 +3,17 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-return [
+return  [
     'ctrl' => [
-        'title'	=> 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_dependancy',
-        'label' => 'uid',
+        'title'	=> 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_result',
+        'label' => 'finished',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
         'fe_cruser_id' => 'fe_cruser_id',
         'dividers2tabs' => TRUE,
         'versioningWS' => TRUE,
+        'versioning_followPages' => TRUE,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -23,14 +24,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'answer,',
-        'iconfile' => 'EXT:ke_questionnaire/Resources/Public/Icons/dependancy.svg'
+        'searchFields' => 'finished,questions,auth_code,',
+        'iconfile' => 'EXT:ws_questionnaire/Resources/Public/Icons/result.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, answer',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, finished, questions, fe_user, auth_code',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, relation, answer,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, finished, questions, fe_user, auth_code,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
@@ -63,8 +64,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_kequestionnaire_domain_model_authcode',
-                'foreign_table_where' => 'AND tx_kequestionnaire_domain_model_authcode.pid=###CURRENT_PID### AND tx_kequestionnaire_domain_model_authcode.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_wsquestionnaire_domain_model_result',
+                'foreign_table_where' => 'AND tx_wsquestionnaire_domain_model_result.pid=###CURRENT_PID### AND tx_wsquestionnaire_domain_model_result.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -117,41 +118,81 @@ return [
                 ],
             ],
         ],
-        'answer' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_dependancy.answer',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'itemsProcFunc' => 'Kennziffer\\KeQuestionnaire\\Utility\\AddActivatorsToDependancy->addItems',
-                'items' => [],
-                'size' => 1,
-                'maxitems' => 1,
-                'eval' => '',
-            ],
-        ],
-        'dquestion' => [
+        'fe_cruser_id' => [
             'config' => [
                 'type' => 'passthrough',
             ],
         ],
-        'relation' => [
+        'finished' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_dependancy.relation',
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_result.finished',
             'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    ['LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_dependancy.relation.none', 'none'],
-                    ['LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_dependancy.relation.and', 'and'],
-                    ['LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_dependancy.relation.or', 'or']
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int'
+            ],
+        ],
+        'questions' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_result.questions',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_wsquestionnaire_domain_model_resultquestion',
+                'foreign_field' => 'result',
+                'maxitems'      => 9999,
+                'appearance' => [
+                    'collapseAll' => 0,
+                    'levelLinksPosition' => 'top',
+                    'showSynchronizationLink' => 1,
+                    'showPossibleLocalizationRecords' => 1,
+                    'showAllLocalizationLink' => 1
                 ],
+            ],
+        ],
+        'points' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_result.points',
+            'config' => [
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int'
+            ],
+        ],
+        'max_points' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_result.max_points',
+            'config' => [
+                'type' => 'input',
+                'size' => 4,
+                'eval' => 'int'
+            ],
+        ],
+        'fe_user' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_result.fe_user',
+            'config' => [
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'fe_users',
                 'size' => 1,
-                'maxitems' => 1,
-                'eval' => '',
-                'default' => 'none',
+                'maxitems' => 1
+            ],
+        ],
+        'auth_code' => [
+            'exclude' => 0,
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_result.auth_code',
+            'config' => [
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'tx_wsquestionnaire_domain_model_authcode',
+                'size' => 1,
+                'maxitems' => 1
+            ],
+        ],
+        'crdate' => [
+            'config' => [
+                'type' => 'passthrough',
             ],
         ],
     ],
-
 ];

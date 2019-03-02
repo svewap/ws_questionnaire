@@ -1,12 +1,12 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
-<f:alias map="{resultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
+<f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
 	<div class="keqAnswerWrap keqDDArea" id="keq{question.uid}a{answer.uid}">
 		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
 		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
 		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
 
 		<div class="keq-dd-area-container">
-			<f:image src="uploads/tx_kequestionnaire/{answer.image}" alt="areaimage" width="{answer.width}px" height="{answer.height}px" />
+			<f:image src="uploads/tx_wsquestionnaire/{answer.image}" alt="areaimage" width="{answer.width}px" height="{answer.height}px" />
 			<f:for each="{answer.coords}" as="area">
 				<div value="{area.key}" class="keq-placeholder dd-area ui-droppable {f:if(condition:'{answer.areaHighlight}',then:'dd-area-highlight',else:'')}" style="top: {area.y1}px; left: {area.x1}px; width: {area.width}px; height: {area.height}px">
 					<f:if condition="{area.title}">
@@ -16,27 +16,27 @@
 			</f:for>
 		</div>
 		<div class="keq-moveable-container" style="min-height:{f:if(condition: answer.height, then: answer.height, else: '100')}px">
-            <ke:ddImage answer="{answer}" question="{question}" as="dd">
+            <qu:ddImage answer="{answer}" question="{question}" as="dd">
                <div id="keq{question.uid}moveable{dd.counter}" class="keq-moveable moveable-image ui-draggable" answer="{dd.image.uid}" question="{question.uid}">
-					<f:alias map="{boxResultAnswer: '{ke:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: dd.image.uid)}'}">
+					<f:alias map="{boxResultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: dd.image.uid)}'}">
 						<f:form.hidden name="newResult[questions][{question.uid}][answers][{dd.image.uid}][answer]" value="{dd.image.uid}" />
 						<f:form.hidden name="newResult[questions][{question.uid}][answers][{dd.image.uid}][value]" value="{f:if(condition: boxResultAnswer.value, then: boxResultAnswer.value)}" additionalAttributes="{keqchecktype:'ddImage'}"/>
 					</f:alias>
 				   <f:if condition="{dd.image.image}">
 						<f:then>
-							<f:image src="uploads/tx_kequestionnaire/{dd.image.image}" alt="{dd.image.title}" width="{f:if(condition: dd.image.width, then: dd.image.width)}" height="{f:if(condition: dd.image.height, then: dd.image.height)}" />
+							<f:image src="uploads/tx_wsquestionnaire/{dd.image.image}" alt="{dd.image.title}" width="{f:if(condition: dd.image.width, then: dd.image.width)}" height="{f:if(condition: dd.image.height, then: dd.image.height)}" />
 						</f:then>
 						<f:else>
 							{dd.image.title}
 						</f:else>
 					</f:if>
 				</div>
-			</ke:ddImage>
+			</qu:ddImage>
 		</div>
 	</div>
 </f:alias>
-<ke:JavaScriptFile key="DDQuestions" filename="typo3conf/ext/ke_questionnaire/Resources/Public/Script/DDQuestions.js" footer="false"/>
-<ke:JavaScript>
+<qu:JavaScriptFile key="DDQuestions" filename="typo3conf/ext/ws_questionnaire/Resources/Public/Script/DDQuestions.js" footer="false"/>
+<qu:JavaScript>
 	<f:if condition="{answer.areaHighlight}">
 		<f:then>
 /*
@@ -55,9 +55,9 @@
 	jQuery( "#keq{question.uid} .keqDDArea .keq-moveable-container" ).droppable("option","tolerance","fit");
 		</f:else>
 	</f:if>
-</ke:JavaScript>
+</qu:JavaScript>
 <f:if condition="{question.isMandatory}">
-<ke:JavaScript>
+<qu:JavaScript>
 	/*
 	 * When the length of all input field values is > 0
 	 */
@@ -76,5 +76,5 @@
 		checkMandatory();
 	}
 	check_keq{question.uid}a{answer.uid}();
-</ke:JavaScript>
+</qu:JavaScript>
 </f:if>

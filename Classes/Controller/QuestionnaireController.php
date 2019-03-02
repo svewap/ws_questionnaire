@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
-use Kennziffer\KeQuestionnaire\Validation\Email;
+use WapplerSystems\WsQuestionnaire\Validation\Email;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Validation\Email;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -43,37 +43,37 @@ class QuestionnaireController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
     /**
      * questionnaireRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionnaireRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository
      */
     protected $questionnaireRepository;
 
     /**
      * authCodeRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\AuthCodeRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\AuthCodeRepository
      */
     protected $authCodeRepository;
 
     /**
      * resultRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository
      */
     protected $resultRepository;
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Utility\Mail
+     * @var \WapplerSystems\WsQuestionnaire\Utility\Mail
      */
     protected $mailSender;
 
     /**
      * injectQuestionnaireRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
      * @return void
      */
     public function injectQuestionnaireRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
     ) {
         $this->questionnaireRepository = $questionnaireRepository;
     }
@@ -81,11 +81,11 @@ class QuestionnaireController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
     /**
      * injectAuthCodeRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\AuthCodeRepository $authCodeRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\AuthCodeRepository $authCodeRepository
      * @return void
      */
     public function injectAuthCodeRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\AuthCodeRepository $authCodeRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\AuthCodeRepository $authCodeRepository
     ) {
         $this->authCodeRepository = $authCodeRepository;
     }
@@ -93,11 +93,11 @@ class QuestionnaireController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
     /**
      * injectResultRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository $resultRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository $resultRepository
      * @return void
      */
     public function injectResultRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository $resultRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository $resultRepository
     ) {
         $this->resultRepository = $resultRepository;
     }
@@ -105,9 +105,9 @@ class QuestionnaireController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
     /**
      * inject mailSender
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\Mail $mail
+     * @param \WapplerSystems\WsQuestionnaire\Utility\Mail $mail
      */
-    public function injectMail(\Kennziffer\KeQuestionnaire\Utility\Mail $mail)
+    public function injectMail(\WapplerSystems\WsQuestionnaire\Utility\Mail $mail)
     {
         $this->mailSender = $mail;
     }
@@ -149,8 +149,8 @@ class QuestionnaireController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCo
         if (class_exists($class)) {
             $objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager;
             $validator = $objectManager->get($class);
-            if ($validator instanceof \Kennziffer\KeQuestionnaire\ValidationAbstractValidation) {
-                /* @var $validator \Kennziffer\KeQuestionnaire\ValidationAbstractValidation */
+            if ($validator instanceof \WapplerSystems\WsQuestionnaire\ValidationAbstractValidation) {
+                /* @var $validator \WapplerSystems\WsQuestionnaire\ValidationAbstractValidation */
                 return $validator->isValid($value, $this);
             } else {
                 return false;

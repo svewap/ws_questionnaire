@@ -5,15 +5,15 @@ if (!defined ('TYPO3_MODE')) {
 
 return [
     'ctrl' => [
-        'title'	=> 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_resultanswer',
-        'label' => 'answer',
+        'title'	=> 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_range',
+        'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
         'fe_cruser_id' => 'fe_cruser_id',
         'dividers2tabs' => TRUE,
-        'sortby' => 'sorting',
         'versioningWS' => TRUE,
+        'versioning_followPages' => TRUE,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -24,18 +24,16 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'answer,',
-        'iconfile' => 'EXT:ke_questionnaire/Resources/Public/Icons/resultanswer.svg'
+        'searchFields' => 'text,',
+        'iconfile' => 'EXT:ws_questionnaire/Resources/Public/Icons/range.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, answer',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, text, points_from, points_until',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, answer,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, text, points_from, points_until,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
     ],
-    'palettes' => [
-        '1' => ['showitem' => ''],
-    ],
+    'palettes' => [],
     'columns' => [
         'sys_language_uid' => [
             'exclude' => true,
@@ -64,8 +62,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_kequestionnaire_domain_model_resultanswer',
-                'foreign_table_where' => 'AND tx_kequestionnaire_domain_model_resultanswer.pid=###CURRENT_PID### AND tx_kequestionnaire_domain_model_resultanswer.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_wsquestionnaire_domain_model_range',
+                'foreign_table_where' => 'AND tx_wsquestionnaire_domain_model_range.pid=###CURRENT_PID### AND tx_wsquestionnaire_domain_model_range.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -118,75 +116,48 @@ return [
                 ],
             ],
         ],
-        'fe_cruser_id' => [
-            'config' => [
-                'type' => 'passthrough',
-            ],
-        ],
-        'answer' => [
+        'title' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_resultanswer.answer',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'tx_kequestionnaire_domain_model_answer',
-                'minitems' => 1,
-                'maxitems' => 1,
-            ],
-        ],
-        'value' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_resultanswer.value',
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_range.title',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim,required',
             ],
         ],
-        'col' => [
+        'text' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_resultanswer.col',
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_range.text',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 15,
+                'eval' => 'trim' ,
+                'enableRichtext' => true
             ],
         ],
-        'clone' => [
+        'points_from' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_resultanswer.clone',
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_range.points_from',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
+                'type'	 => 'input',
+                'size'	 => '8',
+                'max'	  => '8',
+                'eval'	 => 'int',
+                'checkbox' => '0',
+                'default' => 0
+            ]
         ],
-        'clone_title' => [
+        'points_until' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_resultanswer.clone_title',
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_range.points_until',
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'additional_value' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_resultanswer.additional_value',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'resultquestion' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_db.xml:tx_kequestionnaire_domain_model_resultanswer.resultquestion',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'tx_kequestionnaire_domain_model_resultquestion',
-                'maxitems' => 1,
+                'type'	 => 'input',
+                'size'	 => '8',
+                'max'	  => '8',
+                'eval'	 => 'int',
+                'checkbox' => '0',
+                'default' => 0
             ]
         ],
     ],

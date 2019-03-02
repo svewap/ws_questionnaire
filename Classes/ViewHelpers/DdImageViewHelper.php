@@ -1,10 +1,10 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaImage;
-use Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDImage;
-use Kennziffer\KeQuestionnaire\Domain\Repository\AnswerRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaImage;
+use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDImage;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\AnswerRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -36,7 +36,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 /**
  * loads the images for the drag-and-drop images
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -57,8 +57,8 @@ class DdImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHel
     /**
      * Adds the needed Javascript-File to Additional Header Data
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Answer $answer Answer to be rendered
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question $question the images are in
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Answer $answer Answer to be rendered
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question the images are in
      * @param string $as The name of the iteration variable
      * @return string
      */
@@ -87,7 +87,7 @@ class DdImageViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHel
     /**
      * Gets the Images
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
      * @param $header
      * @return array
      */

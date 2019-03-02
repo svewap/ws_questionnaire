@@ -1,8 +1,8 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Repository;
+namespace WapplerSystems\WsQuestionnaire\Domain\Repository;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire;
 
 /***************************************************************
  *  Copyright notice
@@ -32,7 +32,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -40,7 +40,7 @@ class QuestionnaireRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 
     /**
-     * find all ke_questionnaires
+     * find all ws_questionnaires
      *
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
      */
@@ -51,7 +51,7 @@ class QuestionnaireRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         $constraint = $query->logicalAnd([
             $query->equals('ctype', 'list'),
-            $query->equals('list_type', 'kequestionnaire_questionnaire')
+            $query->equals('list_type', 'wsquestionnaire_questionnaire')
         ]);
         $query->matching($constraint);
 
@@ -59,7 +59,7 @@ class QuestionnaireRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * find ke_questionnaires for the storagePid
+     * find ws_questionnaires for the storagePid
      *
      * @param integer $storagePid
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
@@ -87,7 +87,7 @@ class QuestionnaireRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * find ke_questionnaires for uids
+     * find ws_questionnaires for uids
      *
      * @params array $uids
      * @param $uids
@@ -104,7 +104,7 @@ class QuestionnaireRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * find ke_questionnaires for uid
+     * find ws_questionnaires for uid
      *
      * @params integer $uid
      * @param $uid

@@ -28,22 +28,22 @@
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_KeQuestionnaire_Object_DataMapperTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+class Tx_WsQuestionnaire_Object_DataMapperTest extends Tx_Extbase_Tests_Unit_BaseTestCase
 {
 
     /**
-     * @var Tx_KeQuestionnaire_Object_DataMapper
+     * @var Tx_WsQuestionnaire_Object_DataMapper
      */
     protected $dataMapper;
 
 
     public function setUp()
     {
-        $this->dataMapper = $this->objectManager->get('Tx_KeQuestionnaire_Object_DataMapper');
+        $this->dataMapper = $this->objectManager->get('Tx_WsQuestionnaire_Object_DataMapper');
     }
 
     public function tearDown()
@@ -57,9 +57,9 @@ class Tx_KeQuestionnaire_Object_DataMapperTest extends Tx_Extbase_Tests_Unit_Bas
      */
     public function createEmptyObject()
     {
-        $object = $this->dataMapper->createEmptyObject('Tx_KeQuestionnaire_Domain_Model_Step');
+        $object = $this->dataMapper->createEmptyObject('Tx_WsQuestionnaire_Domain_Model_Step');
 
-        $this->assertInstanceOf('Tx_KeQuestionnaire_Domain_Model_Step', $object);
+        $this->assertInstanceOf('Tx_WsQuestionnaire_Domain_Model_Step', $object);
     }
 
     /**
@@ -71,20 +71,20 @@ class Tx_KeQuestionnaire_Object_DataMapperTest extends Tx_Extbase_Tests_Unit_Bas
             'type' => 'forward',
             'action' => 'mail',
             'controller' => 'Mailing',
-            'extension' => 'KeQuestionnaire'
+            'extension' => 'WsQuestionnaire'
         ];
-        $step = $this->dataMapper->createEmptyObject('Tx_KeQuestionnaire_Domain_Model_Step');
+        $step = $this->dataMapper->createEmptyObject('Tx_WsQuestionnaire_Domain_Model_Step');
         $object = $this->dataMapper->mapProperties($step, $row);
-        /* @var $object Tx_KeQuestionnaire_Domain_Model_Step */
+        /* @var $object Tx_WsQuestionnaire_Domain_Model_Step */
         $this->assertEquals('forward', $object->getType());
         $this->assertEquals('mail', $object->getAction());
         $this->assertEquals('Mailing', $object->getController());
-        $this->assertEquals('KeQuestionnaire', $object->getExtension());
+        $this->assertEquals('WsQuestionnaire', $object->getExtension());
     }
 
     /**
      * @test
-     * @expectedException Tx_KeQuestionnaire_Exception
+     * @expectedException Tx_WsQuestionnaire_Exception
      */
     public function mapPropertiesMissingAction()
     {
@@ -92,17 +92,17 @@ class Tx_KeQuestionnaire_Object_DataMapperTest extends Tx_Extbase_Tests_Unit_Bas
             'type' => 'forward',
             'action' => '',
             'controller' => 'Mailing',
-            'extension' => 'KeQuestionnaire'
+            'extension' => 'WsQuestionnaire'
         ];
-        $step = $this->dataMapper->createEmptyObject('Tx_KeQuestionnaire_Domain_Model_Step');
+        $step = $this->dataMapper->createEmptyObject('Tx_WsQuestionnaire_Domain_Model_Step');
         $object = $this->dataMapper->mapProperties($step, $row);
-        /* @var $object Tx_KeQuestionnaire_Domain_Model_Step */
+        /* @var $object Tx_WsQuestionnaire_Domain_Model_Step */
         $exception = $this->getExpectedException();
     }
 
     /**
      * @test
-     * @expectedException Tx_KeQuestionnaire_Exception
+     * @expectedException Tx_WsQuestionnaire_Exception
      */
     public function mapPropertiesMissingController()
     {
@@ -110,17 +110,17 @@ class Tx_KeQuestionnaire_Object_DataMapperTest extends Tx_Extbase_Tests_Unit_Bas
             'type' => 'forward',
             'action' => 'mail',
             'controller' => '',
-            'extension' => 'KeQuestionnaire'
+            'extension' => 'WsQuestionnaire'
         ];
-        $step = $this->dataMapper->createEmptyObject('Tx_KeQuestionnaire_Domain_Model_Step');
+        $step = $this->dataMapper->createEmptyObject('Tx_WsQuestionnaire_Domain_Model_Step');
         $object = $this->dataMapper->mapProperties($step, $row);
-        /* @var $object Tx_KeQuestionnaire_Domain_Model_Step */
+        /* @var $object Tx_WsQuestionnaire_Domain_Model_Step */
         $exception = $this->getExpectedException();
     }
 
     /**
      * @test
-     * @expectedException Tx_KeQuestionnaire_Exception
+     * @expectedException Tx_WsQuestionnaire_Exception
      */
     public function mapPropertiesMissingExtension()
     {
@@ -130,9 +130,9 @@ class Tx_KeQuestionnaire_Object_DataMapperTest extends Tx_Extbase_Tests_Unit_Bas
             'controller' => 'Mailing',
             'extension' => ''
         ];
-        $step = $this->dataMapper->createEmptyObject('Tx_KeQuestionnaire_Domain_Model_Step');
+        $step = $this->dataMapper->createEmptyObject('Tx_WsQuestionnaire_Domain_Model_Step');
         $object = $this->dataMapper->mapProperties($step, $row);
-        /* @var $object Tx_KeQuestionnaire_Domain_Model_Step */
+        /* @var $object Tx_WsQuestionnaire_Domain_Model_Step */
         $exception = $this->getExpectedException();
     }
 

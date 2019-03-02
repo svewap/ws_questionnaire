@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\ViewHelpers;
 /**
  * add a javascript file to footer or header data
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -58,9 +58,9 @@ class JavaScriptFileViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abstract
     public function render($key = '', $filename, $footer = true)
     {
         if ($footer) {
-            $GLOBALS['TSFE']->additionalFooterData['ke_questionnaire_' . $key] = '<script type="text/javascript" src="' . $filename . "?" . filemtime(PATH_site . $filename) . '"></script>';
+            $GLOBALS['TSFE']->additionalFooterData['ws_questionnaire_' . $key] = '<script type="text/javascript" src="' . $filename . "?" . filemtime(PATH_site . $filename) . '"></script>';
         } else {
-            $GLOBALS['TSFE']->additionalHeaderData['ke_questionnaire_' . $key] = '<script type="text/javascript" src="' . $filename . "?" . filemtime(PATH_site . $filename) . '"></script>';
+            $GLOBALS['TSFE']->additionalHeaderData['ws_questionnaire_' . $key] = '<script type="text/javascript" src="' . $filename . "?" . filemtime(PATH_site . $filename) . '"></script>';
         }
     }
 }

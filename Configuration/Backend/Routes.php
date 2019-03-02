@@ -1,6 +1,6 @@
 <?php
 /**
- * Definitions for routes provided by EXT:ke_questionnaire
+ * Definitions for routes provided by EXT:ws_questionnaire
  * Contains all "regular" routes for entry points
  */
 return [
@@ -8,6 +8,6 @@ return [
     // Register backend_layout wizard
     'wizard_imageAreaSelect' => [
         'path' => '/wizard/imageAreaSelect',
-        'target' => Kennziffer\KeQuestionnaire\Controller\Wizard\ImageAreaSelectController::class . '::mainAction'
+        'target' => WapplerSystems\WsQuestionnaire\Controller\Wizard\ImageAreaSelectController::class . '::mainAction'
     ] 
 ];

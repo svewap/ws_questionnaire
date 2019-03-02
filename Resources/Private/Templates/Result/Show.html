@@ -1,4 +1,4 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:layout name="Default" />
 
 This Template is responsible for creating a table of domain objects.
@@ -20,7 +20,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
             <f:for each="{questionnaire.questions}" as="question">
                 <f:if condition="{question.template}">
                     <f:then>
-                        <ke:renderPartial partial="{question.template}" arguments="{question: question, newResult: result}" />
+                        <qu:renderPartial partial="{question.template}" arguments="{question: question, newResult: result}" />
                     </f:then>
                     <f:else>
                         <f:render partial="Question/{question.shortType}" arguments="{question: question, newResult: result}" />
@@ -30,7 +30,7 @@ Otherwise your changes will be overwritten the next time you save the extension 
         </f:if>
 	</div>
     
-<ke:JavaScript>
+<qu:JavaScript>
 	disableElements($('#keqViewResult').children());
 
     function disableElements(el) {
@@ -39,5 +39,5 @@ Otherwise your changes will be overwritten the next time you save the extension 
             disableElements(el[i].children);
         }
     }
-</ke:JavaScript>
+</qu:JavaScript>
 </f:section>

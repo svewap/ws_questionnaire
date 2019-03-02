@@ -1,10 +1,10 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group;
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultAnswerRepository;
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultQuestionRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultAnswerRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultQuestionRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -38,7 +38,7 @@ use TYPO3\CMS\Extbase\Reflection\ObjectAccess;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -69,7 +69,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Questions
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion>
      * @cascade remove
      */
     protected $questions;
@@ -98,7 +98,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * AuthCode
      * @lazy
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\AuthCode
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode
      */
     protected $authCode;
 
@@ -253,7 +253,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             }
             //Work on Values for MatrixRows
             //For each Column there must be an answer if there is a MatrixPos given
-            if ($answer->getAnswer() && ($answer->getAnswer()->getType() === 'Kennziffer\\KeQuestionnaire\\Domain\\Model\\AnswerType\\MatrixRow' && $answer->getMatrixPos())) {
+            if ($answer->getAnswer() && ($answer->getAnswer()->getType() === 'WapplerSystems\\WsQuestionnaire\\Domain\\Model\\AnswerType\\MatrixRow' && $answer->getMatrixPos())) {
                 foreach ($answer->getMatrixPos() as $pos_id => $pos) {
                     if ($pos['value']) {
                         $newAnswer = $this->duplicateAnswer($answer);
@@ -283,7 +283,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
             //Work on cloned rows
             //For each Column there must be an answer if there is a Clone given
-            if ($answer->getAnswer() && ($answer->getAnswer()->getType() === 'Kennziffer\\KeQuestionnaire\\Domain\\Model\\AnswerType\\MatrixRow' && $answer->getCloned())) {
+            if ($answer->getAnswer() && ($answer->getAnswer()->getType() === 'WapplerSystems\\WsQuestionnaire\\Domain\\Model\\AnswerType\\MatrixRow' && $answer->getCloned())) {
                 $cloned = $answer->getCloned();
                 $i = 0;
                 foreach ($cloned['title'] as $id => $title) {
@@ -385,7 +385,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the questions
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion> $questions
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion> $questions
      */
     public function getQuestions()
     {
@@ -395,10 +395,10 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Returns the questions
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Question $question
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
      * @return bool|ResultQuestion
      */
-    public function getResultQuestionForQuestion(\Kennziffer\KeQuestionnaire\Domain\Model\Question $question)
+    public function getResultQuestionForQuestion(\WapplerSystems\WsQuestionnaire\Domain\Model\Question $question)
     {
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         /** @var ResultQuestionRepository $rep */
@@ -513,7 +513,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Sets the questions
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\ResultQuestion> $questions
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion> $questions
      * @return void
      */
     public function setQuestions(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $questions)
@@ -587,10 +587,10 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Setter for authCode
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\AuthCode $authCode authCode
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode $authCode authCode
      * @return void
      */
-    public function setAuthCode(\Kennziffer\KeQuestionnaire\Domain\Model\AuthCode $authCode)
+    public function setAuthCode(\WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode $authCode)
     {
         $this->authCode = $authCode;
     }
@@ -598,7 +598,7 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Getter for authCode
      *
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\AuthCode authCode
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode authCode
      */
     public function getAuthCode()
     {

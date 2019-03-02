@@ -1,9 +1,9 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model\AnswerType;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType;
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Answer;
-use Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Answer;
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
 
 /***************************************************************
  *  Copyright notice
@@ -33,7 +33,7 @@ use Kennziffer\KeQuestionnaire\Domain\Model\ResultAnswer;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -202,10 +202,10 @@ class DDAreaImage extends Answer
      * check of all pics are in the correct area
      *
      * @param array $resultAnswers
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Question $question
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
      * @return boolean
      */
-    public function imagesCorrectPlaced($resultAnswers, \Kennziffer\KeQuestionnaire\Domain\Model\Question $question)
+    public function imagesCorrectPlaced($resultAnswers, \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question)
     {
         /** @var ResultAnswer $answer */
         foreach ($resultAnswers as $answer) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -27,16 +27,16 @@ namespace Kennziffer\KeQuestionnaire\Domain\Model;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group;
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Html;
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PageBreak;
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question;
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Text;
-use Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Typo3Content;
-use Kennziffer\KeQuestionnaire\Domain\Repository\AuthCodeRepository;
-use Kennziffer\KeQuestionnaire\Domain\Repository\QuestionnaireRepository;
-use Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository;
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Html;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Text;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Typo3Content;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\AuthCodeRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
@@ -48,7 +48,7 @@ use TYPO3\CMS\Extbase\Service\FlexFormService;
  * This Model is not connected to DB
  * It contains all questions and can deliver some additional informations
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -171,7 +171,7 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * compareResult
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\Result
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Result
      */
     protected $compareResult;
 
@@ -711,7 +711,7 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Gets the compare Result of the questionnaire
      * this is no actual result but a construct with all the correct / compare answers given in the questions/answers of the questionnaire-storage
      *
-     * @return \Kennziffer\KeQuestionnaire\Domain\Model\Result
+     * @return \WapplerSystems\WsQuestionnaire\Domain\Model\Result
      */
     public function getCompareResult()
     {

@@ -7,11 +7,11 @@
 			loadJQuery="true"
 			includeCssFiles="{0: '{f:uri.resource(path:\'Css/Backend.css\')}'}"> 
 		<f:flashMessages />
-		<h3><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:header" /> "{plugin.header}"</h3>
+		<h3><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:header" /> "{plugin.header}"</h3>
 		<hr />
 		<f:render partial="Backend/AuthCodesMenu" arguments="{plugin:plugin}"/>
 		<hr />
-		<b><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:codes.create" /></b><br />
+		<b><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:codes.create" /></b><br />
 		<f:render partial="Backend/CreateAuthCodes" arguments="{plugin:plugin}"/>
 	</f:be.container>
 </f:section>

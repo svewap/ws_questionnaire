@@ -1,5 +1,5 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
-<f:alias map="{resultCol: '{ke:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, clone: clone)}'}">
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
+<f:alias map="{resultCol: '{qu:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, clone: clone)}'}">
     <div class="keqAnswerWrap keqAnswerSingleInput">
         <f:form.hidden name="answerErrors[]" id="keqAnswerErrorc{colum.uid}r{row.uid}" value="0" />
         <f:if condition="{type} == 'cloned'">
@@ -22,7 +22,7 @@
 </f:alias>
 <!-- Javascript to check the Validationtypes for the InputField-->
 <f:if condition="{column.validationType}">
-	<ke:JavaScript>
+	<qu:JavaScript>
 	/*
 	 * Checks the Answer for the type of the chosen validation
 	 */
@@ -34,7 +34,7 @@
 		jQuery.ajax({
 			type: "GET",
 			url: window.location.pathname,
-			data: 'type=2667&tx_kequestionnaire_questionnaire[type]=AnswerValidation&tx_kequestionnaire_questionnaire[arguments][answerUid]='+c_id+'&tx_kequestionnaire_questionnaire[arguments][value]='+val,
+			data: 'type=2667&tx_wsquestionnaire_questionnaire[type]=AnswerValidation&tx_wsquestionnaire_questionnaire[arguments][answerUid]='+c_id+'&tx_wsquestionnaire_questionnaire[arguments][value]='+val,
 			async: false,
 			success: function(data){
 				xdata = jQuery.parseJSON(jQuery.trim(data));
@@ -48,5 +48,5 @@
 			}
 		});
 	});
-	</ke:JavaScript>
+	</qu:JavaScript>
 </f:if>

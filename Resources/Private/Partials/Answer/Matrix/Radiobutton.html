@@ -1,5 +1,5 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
-<f:alias map="{resultRow: '{ke:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, matrixType: matrixType, radio: 1, clone: clone)}'}">
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
+<f:alias map="{resultRow: '{qu:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, matrixType: matrixType, radio: 1, clone: clone)}'}">
 	<f:if condition="{type} == 'cloned'">
 		<f:then>
 			<f:form.radio id="keq{question.uid}c{column.uid}r{row.uid}clone{clone}" name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][value]{f:if(condition: '{additional}', then: '[{additional}]', else: '')}[{clone}]" value="{column.uid}" checked="{f:if(condition: '{resultRow.value} == {column.uid}', then: 'true', else: 'false')}" />
@@ -32,7 +32,7 @@
 		</f:else>
 	</f:if>
 </f:alias>
-<ke:JavaScript>
+<qu:JavaScript>
 /*
  * Check Input fields on change
  */
@@ -42,4 +42,4 @@
 		var idy = 'keq{question.uid}r{row.uid}';
 		checkMatrixRadioValues(idy);
 	});
-</ke:JavaScript>
+</qu:JavaScript>

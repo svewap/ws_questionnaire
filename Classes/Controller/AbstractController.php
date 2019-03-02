@@ -1,12 +1,12 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Controller;
+namespace WapplerSystems\WsQuestionnaire\Controller;
 
 
-use Kennziffer\KeQuestionnaire\Domain\Model\Step;
-use Kennziffer\KeQuestionnaire\Domain\Repository\QuestionnaireRepository;
-use Kennziffer\KeQuestionnaire\Object\DataMapper;
-use Kennziffer\KeQuestionnaire\View\TemplateView;
+use WapplerSystems\WsQuestionnaire\Domain\Model\Step;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository;
+use WapplerSystems\WsQuestionnaire\Object\DataMapper;
+use WapplerSystems\WsQuestionnaire\View\TemplateView;
 
 /***************************************************************
  *  Copyright notice
@@ -36,7 +36,7 @@ use Kennziffer\KeQuestionnaire\View\TemplateView;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -46,40 +46,40 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * resultRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository
      */
     protected $resultRepository;
 
     /**
      * questionRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository
      */
     protected $questionRepository;
 
     /**
      * questionnaireRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionnaireRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository
      */
     protected $questionnaireRepository;
 
     /**
      * authCodeRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\AuthCodeRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\AuthCodeRepository
      */
     var $authCodeRepository;
 
     /**
      * questionnaire
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire
      */
     protected $questionnaire;
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\ExtConf
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\ExtConf
      */
     protected $extConf;
 
@@ -89,7 +89,7 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     protected $signalSlotDispatcher;
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Utility\Localization
+     * @var \WapplerSystems\WsQuestionnaire\Utility\Localization
      */
     protected $localization;
 
@@ -102,11 +102,11 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * injectResultRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository $resultRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository $resultRepository
      * @return void
      */
     public function injectResultRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository $resultRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository $resultRepository
     ) {
         $this->resultRepository = $resultRepository;
     }
@@ -114,11 +114,11 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * injectQuestionRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
      * @return void
      */
     public function injectQuestionRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
     ) {
         $this->questionRepository = $questionRepository;
     }
@@ -126,11 +126,11 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * injectAuthCodeRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\AuthCodeRepository $authCodeRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\AuthCodeRepository $authCodeRepository
      * @return void
      */
     public function injectAuthCodeRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\AuthCodeRepository $authCodeRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\AuthCodeRepository $authCodeRepository
     ) {
         $this->authCodeRepository = $authCodeRepository;
     }
@@ -138,10 +138,10 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * injectQuestionnaire
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire $questionnaire
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire $questionnaire
      * @return void
      */
-    public function injectQuestionnaire(\Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire $questionnaire)
+    public function injectQuestionnaire(\WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire $questionnaire)
     {
         $this->questionnaire = $questionnaire;
     }
@@ -149,11 +149,11 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * injectQuestionnaireRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
      * @return void
      */
     public function injectQuestionnaireRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
     ) {
         $this->questionnaireRepository = $questionnaireRepository;
     }
@@ -161,10 +161,10 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * inject extConf
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\ExtConf $extConf
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\ExtConf $extConf
      * @return void
      */
-    public function injectExtConf(\Kennziffer\KeQuestionnaire\Domain\Model\ExtConf $extConf)
+    public function injectExtConf(\WapplerSystems\WsQuestionnaire\Domain\Model\ExtConf $extConf)
     {
         $this->extConf = $extConf;
     }
@@ -183,9 +183,9 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     /**
      * inject localization
      *
-     * @param \Kennziffer\KeQuestionnaire\Utility\Localization $localization
+     * @param \WapplerSystems\WsQuestionnaire\Utility\Localization $localization
      */
-    public function injectLocalization(\Kennziffer\KeQuestionnaire\Utility\Localization $localization)
+    public function injectLocalization(\WapplerSystems\WsQuestionnaire\Utility\Localization $localization)
     {
         $this->localization = $localization;
     }
@@ -241,7 +241,7 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         // initialize steps
         if ($this->steps && $this->steps->count() === 0) {
             if (is_array($this->settings['steps']) && count($this->settings['steps'])) {
-                /* @var $dataMapper \Kennziffer\KeQuestionnaire\Object\DataMapper */
+                /* @var $dataMapper \WapplerSystems\WsQuestionnaire\Object\DataMapper */
                 $dataMapper = $this->objectManager->get(DataMapper::class);
                 $steps = $dataMapper->map(Step::class, $this->settings['steps']);
                 foreach ($steps as $step) {
@@ -311,16 +311,16 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * calls the next step as defined in TS (plugin.kequestionnaire.steps)
+     * calls the next step as defined in TS (plugin.wsquestionnaire.steps)
      * Sample:
      * - open questionnaire
      * - logging
      * - mailing
      * - Evaluation
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
      */
-    protected function nextStep(\Kennziffer\KeQuestionnaire\Domain\Model\Result $result)
+    protected function nextStep(\WapplerSystems\WsQuestionnaire\Domain\Model\Result $result)
     {
         // get current environment vars
         $action = $this->request->getControllerActionName();
@@ -328,7 +328,7 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $extension = $this->request->getControllerExtensionName();
 
         // search for current step in $this->steps
-        /* @var $step \Kennziffer\KeQuestionnaire\Domain\Model\Step */
+        /* @var $step \WapplerSystems\WsQuestionnaire\Domain\Model\Step */
         foreach ($this->steps as $key => $step) {
             if ($step->getAction() === $action && $step->getController() === $controller && $step->getExtension() === $extension) {
                 $this->steps->next();

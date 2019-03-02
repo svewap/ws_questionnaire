@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\ViewHelpers;
 /**
  * creates the cloze terms for the drag-and-drop display
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -52,14 +52,14 @@ class DdClozeTermViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
     /**
      * Adds the needed Javascript-File to Additional Header Data
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTextDD $answer Answer to be rendered
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTextDD $answer Answer to be rendered
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
      * @param string $as The name of the iteration variable
      * @return string
      */
     public function render(
-        \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTextDD $answer,
-        \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question $question,
+        \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTextDD $answer,
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question,
         $as
     ) {
         $terms = $this->getClozeTerms($question);
@@ -95,7 +95,7 @@ class DdClozeTermViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
     /**
      * Gets the Terms to be be replaced
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question $question the terms are in
      * @return array
      */
     public function getClozeTerms($question)
@@ -103,7 +103,7 @@ class DdClozeTermViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
         $terms = [];
 
         foreach ($question->getAnswers() as $answer) {
-            if ($answer instanceof \Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTerm) {
+            if ($answer instanceof \WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTerm) {
                 $terms[$answer->getTitle()][$answer->getClozePosition()] = $answer;
             }
         }

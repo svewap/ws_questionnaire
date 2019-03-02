@@ -13,7 +13,7 @@ $desc=array (
 );
 $up=-63;
 $ut=44;
-$ttffile='D:/Programmieren/xampp_183/htdocs/rebake_62/typo3conf/ext/ke_questionnaire/Classes/Lib/Mpdf/ttfonts/DejaVuSerifCondensed-BoldItalic.ttf';
+$ttffile='D:/Programmieren/xampp_183/htdocs/rebake_62/typo3conf/ext/ws_questionnaire/Classes/Lib/Mpdf/ttfonts/DejaVuSerifCondensed-BoldItalic.ttf';
 $TTCfontID='0';
 $originalsize=294584;
 $sip=false;

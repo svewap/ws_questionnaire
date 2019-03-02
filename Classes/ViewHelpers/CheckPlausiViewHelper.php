@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\ViewHelpers;
 /**
  * check the plausibility conditions and create the javascript
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -49,19 +49,19 @@ class CheckPlausiViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
     protected $escapeOutput = false;
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\ViewHelpers\JavaScriptViewHelper
+     * @var \WapplerSystems\WsQuestionnaire\ViewHelpers\JavaScriptViewHelper
      */
 
     public $jsViewhelper;
 
     /**
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Question $question
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
      * @return string
      */
     public function render(
-        \Kennziffer\KeQuestionnaire\Domain\Model\Question $question,
-        \Kennziffer\KeQuestionnaire\Domain\Model\Result $result
+        \WapplerSystems\WsQuestionnaire\Domain\Model\Question $question,
+        \WapplerSystems\WsQuestionnaire\Domain\Model\Result $result
     ) {
         $output = $this->renderChildren();
 
@@ -71,9 +71,9 @@ class CheckPlausiViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractVie
 
         $depJs = [];
         $if = 'if (';
-        foreach ($question->getDependancies() as $id => $dependancy) {
-            $depJs[$id] = 'jQuery("#keq' . $dependancy->getQuestion()->getUid() . '").on( "change", function() {' . "\n";
-            $if .= $dependancy->getRelationJs(count($depJs));
+        foreach ($question->getDependancies() as $id => $dependency) {
+            $depJs[$id] = 'jQuery("#keq' . $dependency->getQuestion()->getUid() . '").on( "change", function() {' . "\n";
+            $if .= $dependency->getRelationJs(count($depJs));
         }
 
         $js_inside = '){' . "\n";

@@ -1,36 +1,36 @@
-< INCLUDE_TYPOSCRIPT: source="FILE: EXT:ke_questionnaire/Configuration/TypoScript/ajax.typoscript" >
+< INCLUDE_TYPOSCRIPT: source="FILE: EXT:ws_questionnaire/Configuration/TypoScript/ajax.typoscript" >
 page.includeCSS {
-	ke-questionnaire = EXT:ke_questionnaire/Resources/Public/Css/KeQuestionnaire.css
+	ws-questionnaire = EXT:ws_questionnaire/Resources/Public/CSS/styles.css
 }
 
 
 page.includeJSFooter {
-	#jQueryTools = EXT:ke_questionnaire/Resources/Public/Script/jquery.tools.custom.min.js
-	questionnaire = EXT:ke_questionnaire/Resources/Public/Script/Questionnaire.js
-	#flotr2 = EXT:ke_questionnaire/Resources/Public/Script/Flotr2.min.js
+	#jQueryTools = EXT:ws_questionnaire/Resources/Public/Script/jquery.tools.custom.min.js
+	questionnaire = EXT:ws_questionnaire/Resources/Public/Script/Questionnaire.js
+	#flotr2 = EXT:ws_questionnaire/Resources/Public/Script/Flotr2.min.js
 }
 
-plugin.tx_kequestionnaire {
+plugin.tx_wsquestionnaire {
 
 	view {
 
 		templateRootPaths {
-			0 = EXT:ke_questionnaire/Resources/Private/Templates/
-			1 = {$plugin.tx_kequestionnaire.view.templateRootPath}
+			0 = EXT:ws_questionnaire/Resources/Private/Templates/
+			1 = {$plugin.tx_wsquestionnaire.view.templateRootPath}
 		}
 
 		partialRootPaths {
-			0 = EXT:ke_questionnaire/Resources/Private/Partials/
-			1 = {$plugin.tx_kequestionnaire.view.partialRootPath}
+			0 = EXT:ws_questionnaire/Resources/Private/Partials/
+			1 = {$plugin.tx_wsquestionnaire.view.partialRootPath}
 		}
 
 		layoutRootPaths {
-			0 = EXT:ke_questionnaire/Resources/Private/Layouts/
-			1 = {$plugin.tx_kequestionnaire.view.layoutRootPath}
+			0 = EXT:ws_questionnaire/Resources/Private/Layouts/
+			1 = {$plugin.tx_wsquestionnaire.view.layoutRootPath}
 		}
 	}
 	persistence {
-		storagePid = {$plugin.tx_kequestionnaire.persistence.storagePid}
+		storagePid = {$plugin.tx_wsquestionnaire.persistence.storagePid}
 	}
 	settings {
 		question {
@@ -76,28 +76,28 @@ plugin.tx_kequestionnaire {
 				type = forward
 				action = create
 				controller = Result
-				extension = KeQuestionnaire
+				extension = WsQuestionnaire
 				vendorName = Kennziffer
 			}
 			2 {
 				type = forward
 				action = mail
 				controller = Mailing
-				extension = KeQuestionnaire
+				extension = WsQuestionnaire
 				vendorName = Kennziffer
 			}
 			3 {
 				type = redirect
 				action = show
 				controller = Evaluation
-				extension = KeQuestionnaire
+				extension = WsQuestionnaire
 				vendorName = Kennziffer
 			}
 			#3 {
 			#	type = redirect
 			#	action = showText
 			#	controller = PointRange
-			#	extension = KeQuestionnaire
+			#	extension = WsQuestionnaire
 			#}
 		}
 		authCodes {
@@ -124,10 +124,10 @@ plugin.tx_kequestionnaire {
 			}
 		}
 		chart {
-			class = Tx_KeQuestionnaire_Evaluation_GoogleChart
-			#class = Tx_KeQuestionnaire_Evaluation_Flotr2Chart
-			renderChart = {$plugin.tx_kequestionnaire.settings.chart.renderChart}
-			chartType = {$plugin.tx_kequestionnaire.settings.chart.chartType}
+			class = Tx_WsQuestionnaire_Evaluation_GoogleChart
+			#class = Tx_WsQuestionnaire_Evaluation_Flotr2Chart
+			renderChart = {$plugin.tx_wsquestionnaire.settings.chart.renderChart}
+			chartType = {$plugin.tx_wsquestionnaire.settings.chart.chartType}
 			jsVariables {
 				title = My own chart
 				height = 300
@@ -199,244 +199,244 @@ plugin.tx_kequestionnaire {
 	}
 }
 
-module.tx_kequestionnaire < plugin.tx_kequestionnaire
+module.tx_wsquestionnaire < plugin.tx_wsquestionnaire
 
 config.tx_extbase.persistence {
 		classes {
 			# Questiontypes
-			Kennziffer\KeQuestionnaire\Domain\Model\Question {
+			WapplerSystems\WsQuestionnaire\Domain\Model\Question {
 				subclasses {
-					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question
-					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PageBreak = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PageBreak
-                    Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\ConditionalJump = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\ConditionalJump
-                    Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PlausiCheck = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PlausiCheck
-					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group
-					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Html = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Html
-					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Text = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Text
-					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Typo3Content = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Typo3Content
-					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScript = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScript
-					Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScriptPath = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScriptPath
+					WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question
+					WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak
+                    WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\ConditionalJump = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\ConditionalJump
+                    WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PlausiCheck = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PlausiCheck
+					WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group
+					WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Html = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Html
+					WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Text = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Text
+					WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Typo3Content = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Typo3Content
+					WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScript = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScript
+					WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScriptPath = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScriptPath
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question {
+			WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_question
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Question
+					tableName = tx_wsquestionnaire_domain_model_question
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PageBreak {
+			WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_question
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PageBreak
+					tableName = tx_wsquestionnaire_domain_model_question
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak
 				}
 			}
-            Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\ConditionalJump {
+            WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\ConditionalJump {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_question
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\ConditionalJump
+					tableName = tx_wsquestionnaire_domain_model_question
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\ConditionalJump
 				}
 			}
-            Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PlausiCheck {
+            WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PlausiCheck {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_question
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\PlausiCheck
+					tableName = tx_wsquestionnaire_domain_model_question
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PlausiCheck
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group {
+			WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_question
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Group
+					tableName = tx_wsquestionnaire_domain_model_question
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Html {
+			WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Html {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_question
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Html
+					tableName = tx_wsquestionnaire_domain_model_question
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Html
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Text {
+			WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Text {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_question
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Text
+					tableName = tx_wsquestionnaire_domain_model_question
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Text
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Typo3Content {
+			WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Typo3Content {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_question
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\Typo3Content
+					tableName = tx_wsquestionnaire_domain_model_question
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Typo3Content
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScript {
+			WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScript {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_question
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScript
+					tableName = tx_wsquestionnaire_domain_model_question
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScript
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScriptPath {
+			WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScriptPath {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_question
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\QuestionType\TypoScriptPath
+					tableName = tx_wsquestionnaire_domain_model_question
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScriptPath
 				}
 			}
 			# Answertypes
-			Kennziffer\KeQuestionnaire\Domain\Model\Answer {
+			WapplerSystems\WsQuestionnaire\Domain\Model\Answer {
 				subclasses {
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Radiobutton = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Radiobutton
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Checkbox = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Checkbox
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleInput = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleInput
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MultiInput = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MultiInput
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleSelect = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleSelect
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeText = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeText
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTextDD = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTextDD
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTerm = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTerm
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaImage = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaImage
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSequence = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSequence
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDImage = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDImage
-                    Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingTerm = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingTerm
-                    Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput
-                    Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder
-                    Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingSelect = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingSelect
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixHeader = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixHeader
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixRow = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixRow
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Slider = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Slider
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SemanticDifferential = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SemanticDifferential
-					Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DataPrivacy = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DataPrivacy
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Radiobutton = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Radiobutton
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Checkbox = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Checkbox
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SingleInput = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SingleInput
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MultiInput = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MultiInput
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SingleSelect = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SingleSelect
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeText = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeText
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTextDD = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTextDD
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTerm = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTerm
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaImage = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaImage
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaSequence = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaSequence
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDImage = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDImage
+                    WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingTerm = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingTerm
+                    WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingInput = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingInput
+                    WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingOrder = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingOrder
+                    WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingSelect = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingSelect
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixHeader = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixHeader
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixRow = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixRow
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Slider = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Slider
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SemanticDifferential = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SemanticDifferential
+					WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DataPrivacy = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DataPrivacy
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\AbstractAnswerType {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\AbstractAnswerType {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
+					tableName = tx_wsquestionnaire_domain_model_answer
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Radiobutton {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Radiobutton {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Radiobutton
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Radiobutton
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Checkbox {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Checkbox {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Checkbox
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Checkbox
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleInput {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SingleInput {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleInput
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SingleInput
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MultiInput {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MultiInput {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MultiInput
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MultiInput
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleSelect {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SingleSelect {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SingleSelect
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SingleSelect
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeText {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeText {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeText
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeText
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTextDD {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTextDD {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTextDD
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTextDD
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTerm {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTerm {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\ClozeTerm
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\ClozeTerm
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaImage {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaImage {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaImage
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaImage
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDImage {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDImage {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDImage
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDImage
 				}
 			}
-            Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingTerm {
+            WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingTerm {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingTerm
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingTerm
 				}
 			}
-            Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput {
+            WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingInput {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingInput
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingInput
 				}
 			}
-            Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingSelect {
+            WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingSelect {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingSelect
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingSelect
 				}
 			}
-            Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder {
+            WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingOrder {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\RankingOrder
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\RankingOrder
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSequence {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaSequence {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSequence
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaSequence
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DDAreaSimpleScale
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixHeader {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixHeader {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixHeader
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixHeader
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixRow {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixRow {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\MatrixRow
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixRow
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Slider {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Slider {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\Slider
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Slider
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SemanticDifferential {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SemanticDifferential {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\SemanticDifferential
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\SemanticDifferential
 				}
 			}
-			Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DataPrivacy {
+			WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DataPrivacy {
 				mapping {
-					tableName = tx_kequestionnaire_domain_model_answer
-					recordType = Kennziffer\KeQuestionnaire\Domain\Model\AnswerType\DataPrivacy
+					tableName = tx_wsquestionnaire_domain_model_answer
+					recordType = WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\DataPrivacy
 				}
 			}
             
-			Kennziffer\KeQuestionnaire\Domain\Model\Questionnaire {
+			WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire {
                 mapping {
                     tableName = tt_content
                     columns {

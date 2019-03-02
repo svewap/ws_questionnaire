@@ -1,5 +1,5 @@
-{namespace ke=Kennziffer\KeQuestionnaire\ViewHelpers}
-<ke:checkDependancies question="{question}" result="{newResult}">
+{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
+<qu:checkDependancies question="{question}" result="{newResult}">
     <div class="keqQuestion" id="keq{question.uid}">
         <f:form.hidden property="questions.{question.uid}.question" value="{question.uid}" />
         <f:form.hidden name="answerErrors[]" id="keqAnswerErrorQ{question.uid}" value="{f:if(condition:'{question.minAnswers}',then:1,else:0)}" />
@@ -13,7 +13,7 @@
                 </f:if>			
                 <f:if condition="{answer.template}">
                     <f:then>
-                        <ke:renderPartial partial="{answer.template}" arguments="{question: question, answer: answer, newResult: newResult}" />
+                        <qu:renderPartial partial="{answer.template}" arguments="{question: question, answer: answer, newResult: newResult}" />
                     </f:then>
                     <f:else>
 						<f:render partial="Answer/{answer.shortType}" arguments="{question: question, answer: answer, newResult: newResult}" />
@@ -26,9 +26,9 @@
         </div>
         <div class="clearer">&nbsp;</div>
     </div>
-</ke:checkDependancies>
+</qu:checkDependancies>
 <!-- Check for Max and Min Answers -->
-<ke:JavaScript>
+<qu:JavaScript>
 	<f:if condition="{question.maxAnswers}">
 /*
  * When an answer in this question is changed, check for max answers
@@ -109,4 +109,4 @@
 };
 check_keqmin{question.uid}();
 	</f:if>	
-</ke:JavaScript>
+</qu:JavaScript>

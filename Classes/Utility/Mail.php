@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Utility;
+namespace WapplerSystems\WsQuestionnaire\Utility;
 
 use TYPO3\CMS\Core\Mail\MailMessage;
 
@@ -32,7 +32,7 @@ use TYPO3\CMS\Core\Mail\MailMessage;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -47,7 +47,7 @@ class Mail
     protected $message = null;
 
     /**
-     * @var \Kennziffer\KeQuestionnaire\Domain\Model\ExtConf
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Model\ExtConf
      */
     protected $extConf;
 
@@ -66,9 +66,9 @@ class Mail
     /**
      * inject extConf
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Model\ExtConf $extConf
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\ExtConf $extConf
      */
-    public function injectExtConf(\Kennziffer\KeQuestionnaire\Domain\Model\ExtConf $extConf)
+    public function injectExtConf(\WapplerSystems\WsQuestionnaire\Domain\Model\ExtConf $extConf)
     {
         $this->extConf = $extConf;
     }
@@ -85,19 +85,17 @@ class Mail
             // if body is not try to get attached children like HTML parts
             if (count($this->message->getChildren())) {
                 return $this->message->getChildren();
-            } else {
-                return '';
             }
-        } else {
-            return $this->message->getBody();
+            return '';
         }
+        return $this->message->getBody();
     }
 
     /**
      * Sets the body
      *
      * @param string $body
-     * @return \Kennziffer\KeQuestionnaire\Utility\Mail
+     * @return \WapplerSystems\WsQuestionnaire\Utility\Mail
      */
     public function setBody($body)
     {
@@ -109,7 +107,7 @@ class Mail
      * Sets the html
      *
      * @param string $html
-     * @return \Kennziffer\KeQuestionnaire\Utility\Mail
+     * @return \WapplerSystems\WsQuestionnaire\Utility\Mail
      */
     public function setHtml($html)
     {
@@ -131,7 +129,7 @@ class Mail
      * Sets the subject
      *
      * @param string $subject
-     * @return \Kennziffer\KeQuestionnaire\Utility\Mail
+     * @return \WapplerSystems\WsQuestionnaire\Utility\Mail
      */
     public function setSubject($subject)
     {
@@ -154,7 +152,7 @@ class Mail
      *
      * @param string $from The from email address
      * @param string $name The from name
-     * @return \Kennziffer\KeQuestionnaire\Utility\Mail
+     * @return \WapplerSystems\WsQuestionnaire\Utility\Mail
      */
     public function setFrom($from, $name = null)
     {
@@ -177,7 +175,7 @@ class Mail
      * By using this method the key should be the mail address
      *
      * @param array $receivers
-     * @return \Kennziffer\KeQuestionnaire\Utility\Mail
+     * @return \WapplerSystems\WsQuestionnaire\Utility\Mail
      */
     public function setReceivers($receivers)
     {
@@ -190,7 +188,7 @@ class Mail
      *
      * @param string $receiver The receivers email address
      * @param string $name The receivers name
-     * @return \Kennziffer\KeQuestionnaire\Utility\Mail
+     * @return \WapplerSystems\WsQuestionnaire\Utility\Mail
      */
     public function addReceiver($receiver, $name = null)
     {
@@ -202,7 +200,7 @@ class Mail
      * send mail
      *
      * @return integer amount of valid receivers
-     * @throws \Kennziffer\KeQuestionnaire\Exception
+     * @throws \WapplerSystems\WsQuestionnaire\Exception
      */
     public function sendMail()
     {
@@ -219,7 +217,7 @@ class Mail
      * validate message
      *
      * @return boolean
-     * @throws \Kennziffer\KeQuestionnaire\Exception
+     * @throws \WapplerSystems\WsQuestionnaire\Exception
      */
     protected function validateMessage()
     {
@@ -235,7 +233,7 @@ class Mail
                 // second: try to get an alternative mail address and sender name from INSTALL_TOOL
                 if (empty($GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress'])) {
                     // third: no email address found. EXIT
-                    throw new \Kennziffer\KeQuestionnaire\Exception('mailNoFrom', 1349702098);
+                    throw new \WapplerSystems\WsQuestionnaire\Exception('mailNoFrom', 1349702098);
                 } else {
                     if (empty($GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromName'])) {
                         $this->setFrom($GLOBALS['TYPO3_CONF_VARS']['MAIL']['defaultMailFromAddress']);
@@ -247,13 +245,13 @@ class Mail
             }
         }
         if (count($this->getReceivers()) === 0) {
-            throw new \Kennziffer\KeQuestionnaire\Exception('mailNoReceivers', 1349702831);
+            throw new \WapplerSystems\WsQuestionnaire\Exception('mailNoReceivers', 1349702831);
         }
         if (!$this->getSubject()) {
-            throw new \Kennziffer\KeQuestionnaire\Exception('mailNoSubject', 1349702835);
+            throw new \WapplerSystems\WsQuestionnaire\Exception('mailNoSubject', 1349702835);
         }
         if (!$this->getBody()) {
-            throw new \Kennziffer\KeQuestionnaire\Exception('mailNoBody', 1349702840);
+            throw new \WapplerSystems\WsQuestionnaire\Exception('mailNoBody', 1349702840);
         }
         return true;
     }

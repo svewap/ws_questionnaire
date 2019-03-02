@@ -28,22 +28,22 @@
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class Tx_KeQuestionnaire_Validation_KeywordsTest extends Tx_Extbase_Tests_Unit_BaseTestCase
+class Tx_WsQuestionnaire_Validation_KeywordsTest extends Tx_Extbase_Tests_Unit_BaseTestCase
 {
 
     /**
-     * @var Tx_KeQuestionnaire_Validation_Keywords
+     * @var Tx_WsQuestionnaire_Validation_Keywords
      */
     protected $validator;
 
 
     public function setUp()
     {
-        $this->validator = new Tx_KeQuestionnaire_Validation_Keywords();
+        $this->validator = new Tx_WsQuestionnaire_Validation_Keywords();
         $this->validator->injectObjectManager(new \TYPO3\CMS\Extbase\Object\ObjectManager());
     }
 
@@ -58,7 +58,7 @@ class Tx_KeQuestionnaire_Validation_KeywordsTest extends Tx_Extbase_Tests_Unit_B
      */
     public function validateKeywords()
     {
-        $model = new Tx_KeQuestionnaire_Domain_Model_AnswerType_SingleInput();
+        $model = new Tx_WsQuestionnaire_Domain_Model_AnswerType_SingleInput();
         $model->setValidationText('hello, you');
         $model->setValidationKeysAmount(2);
 

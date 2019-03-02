@@ -1,18 +1,18 @@
-<link rel="stylesheet" type="text/css" href="{baseUri}../typo3conf/ext/ke_questionnaire/Resources/Public/Css/imgareaselect-animated.css" media="all">
+<link rel="stylesheet" type="text/css" href="{baseUri}../typo3conf/ext/ws_questionnaire/Resources/Public/Css/imgareaselect-animated.css" media="all">
 
-<script src="{baseUri}../typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery-1.11.3.min.js" type="text/javascript"></script>
-<script src="{baseUri}../typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
-<script src="{baseUri}../typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery-migrate-1.2.1.js" type="text/javascript"></script>
-<script src="{baseUri}../typo3conf/ext/ke_questionnaire/Resources/Public/Script/jquery.imgareaselect.min.js" type="text/javascript"></script>
+<script src="{baseUri}../typo3conf/ext/ws_questionnaire/Resources/Public/Script/jquery-1.11.3.min.js" type="text/javascript"></script>
+<script src="{baseUri}../typo3conf/ext/ws_questionnaire/Resources/Public/Script/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+<script src="{baseUri}../typo3conf/ext/ws_questionnaire/Resources/Public/Script/jquery-migrate-1.2.1.js" type="text/javascript"></script>
+<script src="{baseUri}../typo3conf/ext/ws_questionnaire/Resources/Public/Script/jquery.imgareaselect.min.js" type="text/javascript"></script>
 
-<img id="imageAreaSource" src="{baseUri}../uploads/tx_kequestionnaire/{answer.image}" alt="image" {f:if(condition:'{answer.width}',then:'width="{answer.width}px"')} {f:if(condition:'{answer.height}',then:'height="{answer.height}px"')} />
+<img id="imageAreaSource" src="{baseUri}../uploads/tx_wsquestionnaire/{answer.image}" alt="image" {f:if(condition:'{answer.width}',then:'width="{answer.width}px"')} {f:if(condition:'{answer.height}',then:'height="{answer.height}px"')} />
 <input type="hidden" name="x1" value="" />
 <input type="hidden" name="y1" value="" />
 <input type="hidden" name="x2" value="" />
 <input type="hidden" name="y2" value="" />
 <div>
-	<button id="setArea"><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:wizard.setArea" /></button>
-	<button id="closeWizard" onclick="javascipt:window.close();"><f:translate key="LLL:EXT:ke_questionnaire/Resources/Private/Language/locallang.xml:wizard.closeWizard" /></button>
+	<button id="setArea"><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:wizard.setArea" /></button>
+	<button id="closeWizard" onclick="javascipt:window.close();"><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:wizard.closeWizard" /></button>
 </div>
 
 <script type="text/javascript">

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Ajax;
+namespace WapplerSystems\WsQuestionnaire\Ajax;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Ajax;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -40,18 +40,18 @@ class Validation extends AbstractAjax
     /**
      * questionRepository
      *
-     * @var \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository
+     * @var \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository
      */
     protected $questionRepository;
 
     /**
      * injectQuestionRepository
      *
-     * @param \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
+     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
      * @return void
      */
     public function injectQuestionRepository(
-        \Kennziffer\KeQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
+        \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionRepository $questionRepository
     ) {
         $this->questionRepository = $questionRepository;
     }
@@ -64,7 +64,7 @@ class Validation extends AbstractAjax
      */
     public function processAjaxRequest(array $arguments)
     {
-        /* @var $question \Kennziffer\KeQuestionnaire\Domain\Model\Question */
+        /* @var $question \WapplerSystems\WsQuestionnaire\Domain\Model\Question */
         $question = $this->questionRepository->findByUid($arguments['questionUid']);
         if ($question === null) {
             return '';

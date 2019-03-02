@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Utility;
+namespace WapplerSystems\WsQuestionnaire\Utility;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Utility;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -109,10 +109,10 @@ class Localization
         }
 
         // build path
-        $path = 'LLL:EXT:ke_questionnaire/' . $this->locallangPath . $this->locallangFile;
+        $path = 'LLL:EXT:ws_questionnaire/' . $this->locallangPath . $this->locallangFile;
         $key = $path . ':' . $key;
 
         // get translation
-        return \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'keQuestionnaire', $arguments);
+        return \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate($key, 'wsQuestionnaire', $arguments);
     }
 }

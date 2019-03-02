@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Utility;
+namespace WapplerSystems\WsQuestionnaire\Utility;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Utility;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -42,7 +42,7 @@ class PremiumInfo
     public function showInfo()
     {
         return '<i>' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('premiuminfo.standard',
-                'ke_questionnaire') . '</i>';
+                'ws_questionnaire') . '</i>';
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\Domain\Model;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -103,7 +103,7 @@ class ExtConf implements \TYPO3\CMS\Core\SingletonInterface
      */
     public function __construct()
     {
-        $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ke_questionnaire']);
+        $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ws_questionnaire']);
         if (is_array($extConf)) {
             foreach ($extConf as $key => $value) {
                 $methodName = 'set' . ucfirst($key);
@@ -112,10 +112,10 @@ class ExtConf implements \TYPO3\CMS\Core\SingletonInterface
                 }
             }
         } else {
-            throw new \Kennziffer\KeQuestionnaire\Exception('saveExtConf', 1349685793);
+            throw new \WapplerSystems\WsQuestionnaire\Exception('saveExtConf', 1349685793);
         }
-        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('ke_questionnaire_premium')) {
-            $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ke_questionnaire_premium']);
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('ws_questionnaire_premium')) {
+            $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ws_questionnaire_premium']);
             if (is_array($extConf)) {
                 $this->premium = $extConf;
             }

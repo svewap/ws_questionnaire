@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\ViewHelpers;
+namespace WapplerSystems\WsQuestionnaire\ViewHelpers;
 
 /***************************************************************
  *  Copyright notice
@@ -30,7 +30,7 @@ namespace Kennziffer\KeQuestionnaire\ViewHelpers;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -49,13 +49,13 @@ class PremiumLoadedViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractV
 
 
     /**
-     * Check if the ke_questionnaire_premium is loaded
+     * Check if the ws_questionnaire_premium is loaded
      *
      * @return boolean
      */
     public function render()
     {
-        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('ke_questionnaire_premium')) {
+        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('ws_questionnaire_premium')) {
             return true;
         }
         return null;

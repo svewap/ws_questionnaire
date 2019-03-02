@@ -1,9 +1,9 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Domain\Model;
+namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
-use Kennziffer\KeQuestionnaire\Domain\Repository\AuthCodeRepository;
-use Kennziffer\KeQuestionnaire\Domain\Repository\ResultRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\AuthCodeRepository;
+use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
@@ -35,7 +35,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -59,7 +59,7 @@ class AuthCode extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Participations
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Kennziffer\KeQuestionnaire\Domain\Model\Result>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Result>
      * @lazy
      */
     protected $participations;

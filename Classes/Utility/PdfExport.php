@@ -1,6 +1,6 @@
 <?php
 
-namespace Kennziffer\KeQuestionnaire\Utility;
+namespace WapplerSystems\WsQuestionnaire\Utility;
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -30,12 +30,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-require_once ExtensionManagementUtility::extPath('ke_questionnaire') . 'Resources/Private/PHP/Mpdf/mpdf.php';
+require_once ExtensionManagementUtility::extPath('ws_questionnaire') . 'Resources/Private/PHP/Mpdf/mpdf.php';
 
 /**
  *
  *
- * @package ke_questionnaire
+ * @package ws_questionnaire
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
@@ -47,7 +47,7 @@ class PdfExport
      * @param string $html
      * @param string $filename
      */
-    public function createPdfFromHTML($html, $filename = "ke_questionnaire.pdf")
+    public function createPdfFromHTML($html, $filename = "ws_questionnaire.pdf")
     {
         $this->createAndCheckTmpFile();
 
@@ -63,9 +63,9 @@ class PdfExport
      */
     protected function createAndCheckTmpFile()
     {
-        $this->tmpFileAndPath = PATH_site . 'typo3temp/ke_questionnaire/pdf/TEST';
-        if (!is_dir(PATH_site . 'typo3temp/ke_questionnaire/pdf')) {
-            @mkdir(PATH_site . 'typo3temp/ke_questionnaire/pdf');
+        $this->tmpFileAndPath = PATH_site . 'typo3temp/ws_questionnaire/pdf/TEST';
+        if (!is_dir(PATH_site . 'typo3temp/ws_questionnaire/pdf')) {
+            @mkdir(PATH_site . 'typo3temp/ws_questionnaire/pdf');
         }
         //create htaccess file
         $htaccess = '
@@ -77,9 +77,9 @@ Allow from 127.0.0.1
 	Order Allow,Deny
 	Allow from all
 </FilesMatch>';
-        $htaccessFileAndPath = PATH_site . 'typo3temp/ke_questionnaire/.htaccess';
+        $htaccessFileAndPath = PATH_site . 'typo3temp/ws_questionnaire/.htaccess';
         GeneralUtility::writeFileToTypo3tempDir($htaccessFileAndPath, $htaccess);
-        $htaccessFileAndPath = PATH_site . 'typo3temp/ke_questionnaire/pdf/.htaccess';
+        $htaccessFileAndPath = PATH_site . 'typo3temp/ws_questionnaire/pdf/.htaccess';
         GeneralUtility::writeFileToTypo3tempDir($htaccessFileAndPath, $htaccess);
     }
 }
