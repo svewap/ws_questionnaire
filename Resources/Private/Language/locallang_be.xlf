@@ -4,13 +4,13 @@
 		<header/>
 		<body>
 			<trans-unit id="default_title" xml:space="preserve">
-				<source>Inserts a questionnaire</source>
+				<source>Questionnaire - Inserts a questionnaire</source>
 			</trans-unit>
 			<trans-unit id="list_title" xml:space="preserve">
-				<source>List of questionnaires</source>
+				<source>Questionnaire - List of questionnaires</source>
 			</trans-unit>
 			<trans-unit id="view_title" xml:space="preserve">
-				<source>FeView of Participations</source>
+				<source>Questionnaire - FeView of Participations</source>
 			</trans-unit>
 		</body>
 	</file>

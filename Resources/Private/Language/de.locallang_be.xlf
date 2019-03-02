@@ -4,13 +4,13 @@
 		<header/>
 		<body>
 			<trans-unit id="default_title" xml:space="preserve">
-				<target>Fügt eine Umfrage ein</target>
+				<target>Fragebogen - Fügt einen Fragebogen ein</target>
 			</trans-unit>
 			<trans-unit id="list_title" xml:space="preserve">
-				<target>Liste von Umfragen</target>
+				<target>Fragebogen - Liste von Fragebogen</target>
 			</trans-unit>
 			<trans-unit id="view_title" xml:space="preserve">
-				<target>Anzeige von Teilnehmern</target>
+				<target>Fragebogen - Anzeige von Teilnehmern</target>
 			</trans-unit>
 		</body>
 	</file>
