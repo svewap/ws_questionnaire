@@ -91,8 +91,8 @@ if (TYPO3_MODE === 'BE') {
         [],
         [
             'access' => 'user,group',  # Konfiguration
-            'icon' => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
-            'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_mod.xml',
+            'icon' => 'EXT:ws_questionnaire/Resources/Public/Icons/module-questionnaire.svg',
+            'labels' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod.xml',
         ]
     );
 
@@ -108,7 +108,7 @@ if (TYPO3_MODE === 'BE') {
         ],
         [
             'access' => 'user,group',
-            'icon' => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
+            'icon' => 'EXT:ws_questionnaire/Resources/Public/Icons/module-questionnaire.svg',
             'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_mod_authcode.xml'
         ]
     );
@@ -122,7 +122,7 @@ if (TYPO3_MODE === 'BE') {
         ['Export' => 'index,csv,csvRb,downloadCsv,downloadCsvRb,pdf,downloadPdf,csvInterval,csvRbInterval,csvCheckInterval,downloadCsvInterval'],
         [
             'access' => 'user,group',
-            'icon' => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
+            'icon' => 'EXT:ws_questionnaire/Resources/Public/Icons/module-questionnaire.svg',
             'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_mod_export.xml',
         ]
     );
@@ -136,7 +136,7 @@ if (TYPO3_MODE === 'BE') {
         ['Analyse' => 'index,questions,general'],
         [
             'access' => 'user,group',
-            'icon' => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
+            'icon' => 'EXT:ws_questionnaire/Resources/Public/Icons/module-questionnaire.svg',
             'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_mod_analyse.xml',
         ]
     );
