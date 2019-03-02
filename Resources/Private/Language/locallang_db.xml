@@ -37,7 +37,7 @@
 			<label index="tx_wsquestionnaire_domain_model_question.max_answers">Maximum number of answers to be given in this question</label>
 			<label index="tx_wsquestionnaire_domain_model_question.min_answers">Minimum number of answers needed for this question</label>
 			<label index="tx_wsquestionnaire_domain_model_question.content_id">TYPO3 ContentElement</label>
-            <label index="tx_wsquestionnaire_domain_model_question.dependancies">Dependancies</label>
+            <label index="tx_wsquestionnaire_domain_model_question.dependencies">Dependencies</label>
             <label index="tx_wsquestionnaire_domain_model_question.to_page">Redirect-page</label>
             <label index="tx_wsquestionnaire_domain_model_question.direct_jump">Jump as soon as the condition is reached</label>
             <label index="tx_wsquestionnaire_domain_model_question.javascript">Javascript to be executed, instead or before the jump</label>
@@ -193,7 +193,7 @@
 			<label index="tx_wsquestionnaire_domain_model_question.max_answers">Maximum der zu gebenden Antworten in dieser Frage</label>
 			<label index="tx_wsquestionnaire_domain_model_question.min_answers">Minimum der benötigten Antworten in dieser Frage</label>
 			<label index="tx_wsquestionnaire_domain_model_question.content_id">TYPO3 Content-Element</label>
-            <label index="tx_wsquestionnaire_domain_model_question.dependancies">Abhängigkeiten</label>
+            <label index="tx_wsquestionnaire_domain_model_question.dependencies">Abhängigkeiten</label>
             <label index="tx_wsquestionnaire_domain_model_question.to_page">Zielseite, zu der gesprungen werden soll</label>
             <label index="tx_wsquestionnaire_domain_model_question.direct_jump">Seitenwechsel sobald die Bedingung erfüllt ist</label>
             <label index="tx_wsquestionnaire_domain_model_question.javascript">Auszuführendes Javascript / anstelle des Seitenwechsels oder direkt davor</label>

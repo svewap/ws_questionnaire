@@ -45,7 +45,7 @@ class ConditionalJump extends Question
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\WapplerSystems\WsQuestionnaire\Domain\Model\Dependency>
      * @lazy
      */
-    protected $dependancies;
+    protected $dependencies;
 
     /**
      * toPage

@@ -53,8 +53,8 @@
 			<trans-unit id="tx_wsquestionnaire_domain_model_question.conent_id" xml:space="preserve">
 				<source>TYPO3 ContentElement</source>
 			</trans-unit>
-			<trans-unit id="tx_wsquestionnaire_domain_model_question.dependancies" xml:space="preserve">
-				<source>Dependancies</source>
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.dependencies" xml:space="preserve">
+				<source>Dependencies</source>
 			</trans-unit>
 
 			<trans-unit id="tx_wsquestionnaire_domain_model_answer" xml:space="preserve">

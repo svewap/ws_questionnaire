@@ -136,7 +136,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @lazy
      * @cascade remove
      */
-    protected $dependancies;
+    protected $dependencies;
 
     /**
      * Css
@@ -174,7 +174,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
          * You may modify the constructor of this class instead
          */
         $this->answers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->dependancies = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->dependencies = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -521,7 +521,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function addDependency(\WapplerSystems\WsQuestionnaire\Domain\Model\Dependency $dependency)
     {
-        $this->dependancies->attach($dependency);
+        $this->dependencies->attach($dependency);
     }
 
     /**
@@ -532,17 +532,17 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function removeDependency(\WapplerSystems\WsQuestionnaire\Domain\Model\Dependency $dependencyToRemove)
     {
-        $this->dependancies->detach($dependencyToRemove);
+        $this->dependencies->detach($dependencyToRemove);
     }
 
     /**
-     * Returns the dependancies
+     * Returns the dependencies
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage $dependancies
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage $dependencies
      */
-    public function getDependancies()
+    public function getDependencies()
     {
-        return $this->dependancies;
+        return $this->dependencies;
     }
 
     /**
@@ -551,9 +551,9 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $dependancies
      * @return void
      */
-    public function setDependancies(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $dependancies)
+    public function setDependencies(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $dependencies)
     {
-        $this->dependancies = $dependancies;
+        $this->dependencies = $dependencies;
     }
 
     /**

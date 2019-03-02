@@ -1,4 +1,4 @@
-< INCLUDE_TYPOSCRIPT: source="FILE: EXT:ws_questionnaire/Configuration/TypoScript/ajax.typoscript" >
+< INCLUDE_TYPOSCRIPT: source="FILE: EXT:ws_questionnaire/Configuration/TypoScript/Ajax/ajax.typoscript" >
 page.includeCSS {
 	ws-questionnaire = EXT:ws_questionnaire/Resources/Public/CSS/styles.css
 }

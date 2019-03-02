@@ -15,7 +15,6 @@ if (!defined('TYPO3_MODE')) {
         'Ajax' => 'test',
         'Export' => 'downloadPdf',
     ],
-    // non-cacheable actions
     [
         'Result' => 'new,create',
         'Mailing' => '',
@@ -35,7 +34,6 @@ if (!defined('TYPO3_MODE')) {
         'Questionnaire' => 'list',
         'Export' => 'downloadPdf',
     ],
-    // non-cacheable actions
     [
         'Questionnaire' => 'list',
         'Export' => 'downloadPdf',
@@ -48,7 +46,6 @@ if (!defined('TYPO3_MODE')) {
     [
         'Result' => 'show',
     ],
-    // non-cacheable actions
     [
         'Result' => 'show',
     ]

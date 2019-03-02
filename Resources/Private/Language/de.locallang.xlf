@@ -52,7 +52,7 @@
 			<trans-unit id="tx_wsquestionnaire_domain_model_question.conent_id" xml:space="preserve">
 				<target>Typo3 ContentElement</target>
 			</trans-unit>
-			<trans-unit id="tx_wsquestionnaire_domain_model_question.dependancies" xml:space="preserve">
+			<trans-unit id="tx_wsquestionnaire_domain_model_question.dependencies" xml:space="preserve">
 				<target>Abhängigkeiten</target>
 			</trans-unit>
 
