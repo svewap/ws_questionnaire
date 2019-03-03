@@ -32,16 +32,16 @@ return [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, show_title, text, help_text, image, image_position, is_mandatory, must_be_correct, answers, dependencies, to_page, direct_jump, javascript, only_js',
     ],
     'types' => [
-        'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, show_title, text;;4;richtext[], image;;3, is_mandatory;;2,template,--div--;LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.answers,answers,random_answers,column_count,max_answers,min_answers,--div--;LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.dependencies,dependencies,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
-        'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title'],
-        'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Html' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text'],
-        'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Text' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
-        'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Typo3Content' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, content_id'],
-        'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScript' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text'],
-        'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScriptPath' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text'],
-        'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
-        'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\ConditionalJump' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, dependencies, to_page, direct_jump, javascript, only_js,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
-        'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PlausiCheck' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text, dependencies,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, show_title, text;;4;richtext[], image;;3, is_mandatory;;2,template,--div--;LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.answers,answers,random_answers,column_count,max_answers,min_answers,--div--;LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.dependencies,dependencies,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Html::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Text::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Typo3Content::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, content_id'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScript::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScriptPath::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\ConditionalJump::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, dependencies, to_page, direct_jump, javascript, only_js,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PlausiCheck::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text, dependencies,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
@@ -135,16 +135,36 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
                 'items' => [
-                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.Question', 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question'],
-                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.PageBreak', 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak'],
-                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.ConditionalJump', 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\ConditionalJump'],
-                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.PlausiCheck', 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PlausiCheck'],
-                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.Group', 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group'],
-                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.Html', 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Html'],
-                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.Text', 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Text'],
-                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.Typo3Content', 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Typo3Content'],
-                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.TypoScript', 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScript'],
-                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.TypoScriptPath', 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScriptPath'],
+                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.Question',
+                        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question::class
+                    ],
+                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.PageBreak',
+                        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak::class
+                    ],
+                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.ConditionalJump',
+                        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\ConditionalJump::class
+                    ],
+                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.PlausiCheck',
+                        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PlausiCheck::class
+                    ],
+                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.Group',
+                        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Group::class
+                    ],
+                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.Html',
+                        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Html::class
+                    ],
+                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.Text',
+                        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Text::class
+                    ],
+                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.Typo3Content',
+                        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Typo3Content::class
+                    ],
+                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.TypoScript',
+                        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScript::class
+                    ],
+                    ['LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.type.I.TypoScriptPath',
+                        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\TypoScriptPath::class
+                    ],
                 ],
                 'size' => 1,
                 'maxitems' => 1,
