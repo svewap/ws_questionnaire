@@ -48,6 +48,9 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\AbstractController
 {
 
+
+    protected $user = null;
+
     /**
      * injectQuestionnaireRepository
      *
@@ -209,8 +212,8 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
      * Creates a new questionnaire
      *
      * @param Result $newResult A fresh Questionnaire object
-     * @param integer $currentPage check, validate and save the results of this page
-     * @param integer $requestedPage after checking the questions of currentPage redirect to this page
+     * @param int $currentPage check, validate and save the results of this page
+     * @param int $requestedPage after checking the questions of currentPage redirect to this page
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
@@ -222,15 +225,15 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
      */
     public function createAction(
         Result $newResult,
-        $currentPage,
-        $requestedPage
+        $currentPage = 0,
+        $requestedPage = 0
     ) {
         //requestedPage => next Page to be shown
         $this->questionnaire->setRequestedPage($requestedPage);
         //currentPage => current Page, just send to this action
         $this->questionnaire->setPage($currentPage);
         //get all questions for this questionnaire
-        $this->questionnaire->setQuestions($this->questionRepository->findAll());
+        $this->questionnaire->setQuestions($this->questionRepository->findAllForPid($GLOBALS['TSFE']->id));
         if ($this->user) {
             $newResult->setFeUser($this->user);
         }
@@ -258,7 +261,7 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
         $this->resultRepository->clearRATable();
 
         // check for last page
-        if ($currentPage == $requestedPage) {
+        if ($currentPage === $requestedPage) {
             //if there is a redirect page, redirect
             //else forward to endAction
             if ($this->settings['redirectFinished']) {
@@ -266,37 +269,16 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
                 $link = $this->uriBuilder->build();
                 $this->redirectToUri($link);
             } else {
-                /* Problems with forward and RealUrl
                  $this->forward('end', NULL, NULL, array(
                     'result' => $newResult
-                ));*/
-
-                // JVE - Jörg velletti Nov 2016 Changed hardCoded Template
-                $TemplateRootPaths = $this->view->getTemplateRootPaths();
-                foreach ($TemplateRootPaths as $templatePath) {
-                    $tempTemplatePathAndFilename = $templatePath . '/Result/End.html';
-                    if (is_file($tempTemplatePathAndFilename)) {
-                        $templatePathAndFilename = $tempTemplatePathAndFilename;
-                    }
-                }
-
-                $this->view->setTemplatePathAndFilename($templatePathAndFilename);
-                // JVE - Jörg velletti Nov 2016 Changed hardCoded Template
-
-                $this->view->assign('result', $newResult);
-                $this->view->assign('questionnaire', $this->questionnaire);
-                $temp = false;
-                $this->signalSlotDispatcher->dispatch(__CLASS__, 'endAction', [$newResult, $this, &$temp]);
-                if ($temp) {
-                    $this->redirectToUri($temp);
-                }
+                ));
             }
             //if not last page, set all stuff for questionnaire-page
         } else {
             //set the next page
             $this->questionnaire->setPage($requestedPage);
             //get questions
-            $questions = $this->questionRepository->findAll();
+            $questions = $this->questionRepository->findAllForPid($GLOBALS['TSFE']->id);
             $this->questionnaire->setQuestions($questions);
 
             if (is_object($this->signalResult)) {

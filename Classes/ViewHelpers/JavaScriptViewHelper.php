@@ -77,7 +77,7 @@ class JavaScriptViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractView
             //get the stored jsKey
             $jsKey = $GLOBALS['TSFE']->fe_user->getKey('ses', 'keq_jskey');
             //get the file
-            $pathName = 'typo3temp/ws_questionnaire';
+            $pathName = 'typo3temp/var/ws_questionnaire';
             $fileName = $pathName . '/' . $jsKey . '.js';
 
             if (!file_exists(PATH_site . $pathName)) {

@@ -8,7 +8,7 @@
 </f:if>
 
 <f:form action="create" controller="Result" objectName="newResult" object="{newResult}" method="post"
-		class="keq_questionnaire_form" noCacheHash="true">
+		class="keq_questionnaire_form">
 	<f:if condition="{settings.additionalParameters}">
 		<f:form.hidden property="addParameter" value="{newResult.addParameter}"/>
 	</f:if>
