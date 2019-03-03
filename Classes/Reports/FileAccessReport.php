@@ -64,7 +64,6 @@ class FileAccessReport implements StatusProviderInterface
     public function getStatus()
     {
         $statusArray = [];
-        $failState = '';
 
         $this->init();
         $failState = $this->checkStatus();
@@ -92,7 +91,7 @@ class FileAccessReport implements StatusProviderInterface
      */
     protected function init()
     {
-        $this->tmpFileAndPath = PATH_site . 'typo3temp/ws_questionnaire/pdf/TEST';
+        $this->tmpFileAndPath = PATH_site . 'typo3temp/var/ws_questionnaire/pdf/TEST';
         $this->siteUrl = GeneralUtility::getIndpEnv('TYPO3_SITE_URL');
 
         $this->staticStateResponseData = [
@@ -146,21 +145,39 @@ class FileAccessReport implements StatusProviderInterface
      */
     protected function createAndCheckTmpFile()
     {
-        if (!is_dir(PATH_site . 'typo3temp/ws_questionnaire/pdf')) {
-            @mkdir(PATH_site . 'typo3temp/ws_questionnaire/pdf');
+        if (!is_dir(PATH_site . 'typo3temp/var/ws_questionnaire/pdf')) {
+            GeneralUtility::mkdir_deep(PATH_site . 'typo3temp/var/ws_questionnaire/pdf');
         }
         //create htaccess file
         $htaccess = '
-Order Deny,Allow
-Deny from all
-Allow from 127.0.0.1
+# Apache < 2.3
+<IfModule !mod_authz_core.c>
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+</IfModule>
+
+# Apache ≥ 2.3
+<IfModule mod_authz_core.c>
+	Require host 127.0.0.1
+</IfModule>
 
 <FilesMatch ".*\.(css|js)$">
-	Order Allow,Deny
-	Allow from all
+
+    # Apache < 2.3
+    <IfModule !mod_authz_core.c>
+        Order Allow,Deny
+        Allow from all
+    </IfModule>
+    
+    # Apache ≥ 2.3
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+
 </FilesMatch>';
-        $htaccessFileAndPath = PATH_site . 'typo3temp/ws_questionnaire/.htaccess';
-        //$htaccessFileAndPath = PATH_site . 'typo3temp/ws_questionnaire/pdf/.htaccess';
+        $htaccessFileAndPath = PATH_site . 'typo3temp/var/ws_questionnaire/.htaccess';
+        //$htaccessFileAndPath = PATH_site . 'typo3temp/var/ws_questionnaire/pdf/.htaccess';
         $writeHtaccess = GeneralUtility::writeFileToTypo3tempDir($htaccessFileAndPath, $htaccess);
         if ($writeHtaccess !== null) {
             return 'writeFail';
@@ -180,14 +197,16 @@ Allow from 127.0.0.1
      *
      * @return string
      */
-    protected function checkTmpFileReadable()
+    protected function checkTmpFileReadable(): string
     {
         $responseHeaders = [];
 
         //try to read test file
-        $readTestFile = GeneralUtility::getUrl($this->siteUrl . 'typo3temp/ws_questionnaire/pdf/TEST', 1, false,
+        $readTestFile = GeneralUtility::getUrl($this->siteUrl . 'typo3temp/var/ws_questionnaire/pdf/TEST', 1, false,
             $responseHeaders);
         @unlink($this->tmpFileAndPath);
+
+        if ($responseHeaders['error'] === 403) return '';
 
         //if testfile is readable
         if ($responseHeaders['error'] !== 0 && $responseHeaders['error'] !== 22) {
