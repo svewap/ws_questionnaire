@@ -63,10 +63,10 @@ class AutoSave extends AbstractAjax
      */
     public function processAjaxRequest(array $arguments)
     {
-        $this->info = [];
+        $info = [];
         $this->signalSlotDispatcher->dispatch(__CLASS__, 'ajaxAutoSave',
             [$this->convertAjaxFormArray($arguments), $this]);
-        $json = $this->convertValueToJson($this->info['resultUid']);
+        $json = $this->convertValueToJson($info['resultUid']);
         return trim($json);
     }
 }

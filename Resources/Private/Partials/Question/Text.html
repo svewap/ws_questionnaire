@@ -1,8 +1,8 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
-<qu:checkDependancies question="{question}" result="{newResult}">
+<qu:checkDependencies question="{question}" result="{newResult}">
 	<f:render partial="Question/QuestionTitleOnly" arguments="{question: question}" />
 	<div class="keqTextElement">
 		<f:form.hidden property="questions.{question.uid}.question" value="{question.uid}" />
 		<f:format.html>{question.text}</f:format.html>
 	</div>
-</qu:checkDependancies>
+</qu:checkDependencies>

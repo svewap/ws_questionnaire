@@ -2,6 +2,8 @@
 
 namespace WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType;
 
+use WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -61,21 +63,21 @@ class SemanticDifferential extends \WapplerSystems\WsQuestionnaire\Domain\Model\
     /**
      * stepPercentage
      *
-     * @var int
+     * @var float
      */
     protected $stepPercentage;
 
     /**
      * PointsStart
      *
-     * @var string
+     * @var float
      */
     protected $pointsStart;
 
     /**
      * PointsIncrease
      *
-     * @var string
+     * @var float
      */
     protected $pointsIncrease;
 
@@ -171,22 +173,18 @@ class SemanticDifferential extends \WapplerSystems\WsQuestionnaire\Domain\Model\
     /**
      * Returns the steps percentage
      *
-     * @return int percentage
+     * @return float percentage
      */
     public function getStepPercentage()
     {
-        $percentage = 0;
-
         $stepCount = count($this->getSteps());
-        $percentage = (100 / $stepCount) - 2.5;
-
-        return $percentage;
+        return (100 / $stepCount) - 2.5;
     }
 
     /**
      * Returns the pointsStart
      *
-     * @return string $pointsStart
+     * @return float $pointsStart
      */
     public function getPointsStart()
     {
@@ -196,7 +194,7 @@ class SemanticDifferential extends \WapplerSystems\WsQuestionnaire\Domain\Model\
     /**
      * Sets the pointsStart
      *
-     * @param string $pointsStart
+     * @param float $pointsStart
      * @return void
      */
     public function setPointsStart($pointsStart)
@@ -207,7 +205,7 @@ class SemanticDifferential extends \WapplerSystems\WsQuestionnaire\Domain\Model\
     /**
      * Returns the pointsIncrease
      *
-     * @return string $pointsIncrease
+     * @return float $pointsIncrease
      */
     public function getPointsIncrease()
     {
@@ -217,7 +215,7 @@ class SemanticDifferential extends \WapplerSystems\WsQuestionnaire\Domain\Model\
     /**
      * Sets the pointsIncrease
      *
-     * @param string $pointsIncrease
+     * @param float $pointsIncrease
      * @return void
      */
     public function setPointsIncrease($pointsIncrease)
@@ -228,10 +226,10 @@ class SemanticDifferential extends \WapplerSystems\WsQuestionnaire\Domain\Model\
     /**
      * Returns the points
      *
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $resultAnswer
-     * @return string $points
+     * @param ResultAnswer $resultAnswer
+     * @return float $points
      */
-    public function getPoints(\WapplerSystems\WsQuestionnaire\Domain\Model\ResultAnswer $resultAnswer = null)
+    public function getPoints(ResultAnswer $resultAnswer = null)
     {
         $points = 0;
         if ($this->getPointsIncrease() > 0) {
@@ -240,7 +238,7 @@ class SemanticDifferential extends \WapplerSystems\WsQuestionnaire\Domain\Model\
             $counter = 0;
             foreach ($steps as $step) {
                 $counter++;
-                if ($step == $resultAnswer->getValue()) {
+                if ($step === $resultAnswer->getValue()) {
                     if ($counter > 1) {
                         $points = $this->getPointsStart() + (($counter - 1) * $this->getPointsIncrease());
                     } else {
@@ -255,12 +253,12 @@ class SemanticDifferential extends \WapplerSystems\WsQuestionnaire\Domain\Model\
     /**
      * Returns the points
      *
-     * @return string $points
+     * @return float $points
      */
     public function getMaxPoints()
     {
         $stepcount = count($this->getSteps());
-        $max = $this->getPointsStart() + ($this->getPointsIncrease() * ($stepcount - 1));
+        return $this->getPointsStart() + ($this->getPointsIncrease() * ($stepcount - 1));
     }
 
 }

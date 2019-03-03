@@ -2,9 +2,11 @@
 
 namespace WapplerSystems\WsQuestionnaire\View;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Mvc\Web\Request;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Fluid\Core\Rendering\RenderingContextInterface;
 
 /***************************************************************
  *  Copyright notice
@@ -73,40 +75,37 @@ class Chart extends \TYPO3\CMS\Fluid\View\AbstractTemplateView
     /**
      * Constructor
      *
-     * @param tslib_cObj $contentObject The current cObject. If NULL a new instance will be created
      */
-    public function __construct(tslib_cObj $contentObject = null)
+    public function __construct(RenderingContextInterface $context = null)
     {
-        if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('extbase')) {
-            return 'In the current version you still need to have Extbase installed in order to use the Fluid Standalone view!';
-        }
-        $this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ObjectManager::class);
 
-        $configurationManager = $this->objectManager->get(ConfigurationManagerInterface::class);
-        if ($contentObject === null) {
-            $contentObject = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tslib_cObj');
-        }
-        $configurationManager->setContentObject($contentObject);
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
-        $this->templateParser = $this->objectManager->get('Tx_Fluid_Core_Parser_TemplateParser');
-        $this->setRenderingContext($this->objectManager->get('Tx_Fluid_Core_Rendering_RenderingContext'));
+        /** @var ConfigurationManagerInterface $configurationManager */
+        $configurationManager = $objectManager->get(ConfigurationManagerInterface::class);
+        $configurationManager->setContentObject($context);
 
-        $request = $this->objectManager->get('Tx_Extbase_MVC_Web_Request');
-        $request->setRequestURI(\TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'));
-        $request->setBaseURI(\TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_SITE_URL'));
+        $this->templateParser = $objectManager->get('Tx_Fluid_Core_Parser_TemplateParser');
+        $this->setRenderingContext($objectManager->get('Tx_Fluid_Core_Rendering_RenderingContext'));
 
-        $uriBuilder = $this->objectManager->get('Tx_Extbase_MVC_Web_Routing_UriBuilder');
+        $request = $objectManager->get('Tx_Extbase_MVC_Web_Request');
+        $request->setRequestURI(GeneralUtility::getIndpEnv('TYPO3_REQUEST_URL'));
+        $request->setBaseURI(GeneralUtility::getIndpEnv('TYPO3_SITE_URL'));
+
+        $uriBuilder = $objectManager->get('Tx_Extbase_MVC_Web_Routing_UriBuilder');
         $uriBuilder->setRequest($request);
 
-        $controllerContext = $this->objectManager->get('Tx_Extbase_MVC_Controller_ControllerContext');
+        $controllerContext = $objectManager->get('Tx_Extbase_MVC_Controller_ControllerContext');
         $controllerContext->setRequest($request);
         $controllerContext->setUriBuilder($uriBuilder);
-        $flashMessageContainer = $this->objectManager->get('Tx_Extbase_MVC_Controller_FlashMessages'); // singleton
+        $flashMessageContainer = $objectManager->get('Tx_Extbase_MVC_Controller_FlashMessages'); // singleton
         $controllerContext->setFlashMessageContainer($flashMessageContainer);
         $this->setControllerContext($controllerContext);
 
-        $this->templateCompiler = $this->objectManager->get('Tx_Fluid_Core_Compiler_TemplateCompiler'); // singleton
+        $this->templateCompiler = $objectManager->get('Tx_Fluid_Core_Compiler_TemplateCompiler'); // singleton
         $this->templateCompiler->setTemplateCache($GLOBALS['typo3CacheManager']->getCache('fluid_template'));
+
+        parent::__construct($context);
     }
 
     /**
@@ -270,12 +269,11 @@ class Chart extends \TYPO3\CMS\Fluid\View\AbstractTemplateView
                 '.' . $templatePathAndFilenameInfo['extension']);
             $prefix = sprintf('template_file_%s', $templateFilenameWithoutExtension);
             return $this->createIdentifierForFile($templatePathAndFilename, $prefix);
-        } else {
-            $templateSource = $this->getTemplateSource();
-            $prefix = 'template_source';
-            $templateIdentifier = sprintf('Standalone_%s_%s', $prefix, sha1($templateSource));
-            return $templateIdentifier;
         }
+        $templateSource = $this->getTemplateSource();
+        $prefix = 'template_source';
+        $templateIdentifier = sprintf('Standalone_%s_%s', $prefix, sha1($templateSource));
+        return $templateIdentifier;
     }
 
     /**
@@ -356,8 +354,8 @@ class Chart extends \TYPO3\CMS\Fluid\View\AbstractTemplateView
                 1288092521);
         }
         $possibleLayoutPaths = [];
-        $possibleLayoutPaths[] = \TYPO3\CMS\Core\Utility\GeneralUtility::fixWindowsFilePath($layoutRootPath . '/' . $layoutName . '.' . $this->getRequest()->getFormat());
-        $possibleLayoutPaths[] = \TYPO3\CMS\Core\Utility\GeneralUtility::fixWindowsFilePath($layoutRootPath . '/' . $layoutName);
+        $possibleLayoutPaths[] = GeneralUtility::fixWindowsFilePath($layoutRootPath . '/' . $layoutName . '.' . $this->getRequest()->getFormat());
+        $possibleLayoutPaths[] = GeneralUtility::fixWindowsFilePath($layoutRootPath . '/' . $layoutName);
         foreach ($possibleLayoutPaths as $layoutPathAndFilename) {
             if (file_exists($layoutPathAndFilename)) {
                 return $layoutPathAndFilename;
@@ -415,8 +413,8 @@ class Chart extends \TYPO3\CMS\Fluid\View\AbstractTemplateView
                 1288094648);
         }
         $possiblePartialPaths = [];
-        $possiblePartialPaths[] = \TYPO3\CMS\Core\Utility\GeneralUtility::fixWindowsFilePath($partialRootPath . '/' . $partialName . '.' . $this->getRequest()->getFormat());
-        $possiblePartialPaths[] = \TYPO3\CMS\Core\Utility\GeneralUtility::fixWindowsFilePath($partialRootPath . '/' . $partialName);
+        $possiblePartialPaths[] = GeneralUtility::fixWindowsFilePath($partialRootPath . '/' . $partialName . '.' . $this->getRequest()->getFormat());
+        $possiblePartialPaths[] = GeneralUtility::fixWindowsFilePath($partialRootPath . '/' . $partialName);
         foreach ($possiblePartialPaths as $partialPathAndFilename) {
             if (file_exists($partialPathAndFilename)) {
                 return $partialPathAndFilename;

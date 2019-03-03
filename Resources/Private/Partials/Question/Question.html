@@ -1,5 +1,5 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
-<qu:checkDependancies question="{question}" result="{newResult}">
+<qu:checkDependencies question="{question}" result="{newResult}">
     <div class="keqQuestion" id="keq{question.uid}">
         <f:form.hidden property="questions.{question.uid}.question" value="{question.uid}" />
         <f:form.hidden name="answerErrors[]" id="keqAnswerErrorQ{question.uid}" value="{f:if(condition:'{question.minAnswers}',then:1,else:0)}" />
@@ -26,7 +26,7 @@
         </div>
         <div class="clearer">&nbsp;</div>
     </div>
-</qu:checkDependancies>
+</qu:checkDependencies>
 <!-- Check for Max and Min Answers -->
 <qu:JavaScript>
 	<f:if condition="{question.maxAnswers}">

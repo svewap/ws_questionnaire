@@ -4,45 +4,6 @@
 		<langDisable>1</langDisable>
 	</meta>
 	<sheets>
-		<basics>
-			<ROOT>
-				<TCEforms>
-					<sheetTitle>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:sheet.basics</sheetTitle>
-					<cshFile>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_csh_flexforms.xml</cshFile>
-				</TCEforms>
-				<type>array</type>
-				<el>
-					<view.partialRootPath>
-						<TCEforms>
-							<exclude>1</exclude>
-							<label>LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_flexforms.xml:settings.templates</label>
-							<config>
-								<type>input</type>
-								<wizards type="array">
-									<_PADDING>2</_PADDING>
-									<link type="array">
-										<type>popup</type>
-										<title>Link</title>
-										<icon>link_popup.gif</icon>
-										<module>
-											<name>wizard_element_browser</name>
-											<urlParameters>
-												<mode>wizard</mode>
-											</urlParameters>
-										</module>
-										<params type="array">
-											<blindLinkOptions>file,page,url,mail,spec</blindLinkOptions>
-											<allowedExtensions></allowedExtensions>
-										</params>
-										<JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
-									</link>
-								</wizards>
-							</config>
-						</TCEforms>
-					</view.partialRootPath>
-				</el>
-			</ROOT>
-		</basics>
 		<access>
 			<ROOT>
 				<TCEforms>

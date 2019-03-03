@@ -2,6 +2,7 @@
 
 namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use WapplerSystems\WsQuestionnaire\Domain\Repository\AuthCodeRepository;
 use WapplerSystems\WsQuestionnaire\Domain\Repository\ResultRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -153,8 +154,9 @@ class AuthCode extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function generateAuthCode($length = 10, $pid)
     {
         //get the existent authcodes so no duplicates are created
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $ac_rep = $this->objectManager->get(AuthCodeRepository::class);
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        /** @var AuthCodeRepository $ac_rep */
+        $ac_rep = $objectManager->get(AuthCodeRepository::class);
         // Generate authcode
         $loop = 1;
         while ($loop) {
@@ -192,9 +194,10 @@ class AuthCode extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getAndLoadParticipations()
     {
-        if (count($this->participations) == 0) {
-            $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-            $rep = $this->objectManager->get(ResultRepository::class);
+        if (count($this->participations) === 0) {
+            $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+            /** @var ResultRepository $rep */
+            $rep = $objectManager->get(ResultRepository::class);
             $this->participations = $rep->findForAuthCode($this);
         }
         return $this->participations;
@@ -216,7 +219,7 @@ class AuthCode extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \TYPO3\CMS\Extbase\Domain\Model\FrontendUser feUser
      */
-    public function getFeUser()
+    public function getFeUser() : FrontendUser
     {
         return $this->feUser;
     }

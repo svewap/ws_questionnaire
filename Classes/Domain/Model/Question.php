@@ -2,8 +2,6 @@
 
 namespace WapplerSystems\WsQuestionnaire\Domain\Model;
 
-use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
-
 /***************************************************************
  *  Copyright notice
  *
@@ -620,7 +618,7 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param Result $result
      * @return boolean
      */
-    public function fullfillsDependencies(Result $result)
+    public function fullfillsDependencies(Result $result): bool
     {
         if ($this->isDependent()) {
             $full = false;

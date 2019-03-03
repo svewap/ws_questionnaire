@@ -2,6 +2,7 @@
 
 namespace WapplerSystems\WsQuestionnaire\Utility;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Checkbox;
 use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\MatrixHeader;
 use WapplerSystems\WsQuestionnaire\Domain\Model\AnswerType\Radiobutton;
@@ -76,7 +77,7 @@ class TCAAnswerType
         //if more than one answer is found => more depth than question->answer
         //get the base element
         if (count($uids) > 1) {
-            $this->objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ObjectManager::class);
+            $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
             $rep = $this->objectManager->get(AnswerRepository::class);
             //baseElement for is the last element before the newly added
             $baseElement = $rep->findByUid($uids[count($uids) - 2]);

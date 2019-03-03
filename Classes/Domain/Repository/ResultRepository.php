@@ -2,6 +2,8 @@
 
 namespace WapplerSystems\WsQuestionnaire\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -38,7 +40,7 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     public function initializeObject()
     {
-        /** @var $defaultQuerySettings Tx_Extbase_Persistence_Typo3QuerySettings */
+        /** @var $defaultQuerySettings Typo3QuerySettings */
         //$defaultQuerySettings = $this->objectManager->get('Tx_Extbase_Persistence_Typo3QuerySettings');
         // go for $defaultQuerySettings = $this->createQuery()->getQuerySettings(); if you want to make use of the TS persistence.storagePid with defaultQuerySettings(), see #51529 for details
         $defaultQuerySettings = $this->createQuery()->getQuerySettings();
@@ -254,7 +256,7 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @return int
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function countFinishedForPid($pid)
+    public function countFinishedForPid($pid): int
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);

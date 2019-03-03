@@ -45,7 +45,7 @@ class AnswerValidation extends AbstractAjax
     protected $answerRepository;
 
     /**
-     * lokalization
+     * localization
      *
      * @var \WapplerSystems\WsQuestionnaire\Utility\Localization
      */

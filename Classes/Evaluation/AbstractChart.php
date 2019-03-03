@@ -175,10 +175,10 @@ class AbstractChart implements RenderChartInterface
     /**
      * injectView
      *
-     * @param \WapplerSystems\WsQuestionnaire\Evaluation\View\Chart $view
+     * @param \WapplerSystems\WsQuestionnaire\View\Chart $view
      * @return void
      */
-    public function injectView(\WapplerSystems\WsQuestionnaire\Evaluation\View\Chart $view)
+    public function injectView(\WapplerSystems\WsQuestionnaire\View\Chart $view)
     {
         $this->view = $view;
     }

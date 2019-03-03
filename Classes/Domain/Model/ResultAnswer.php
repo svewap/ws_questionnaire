@@ -486,9 +486,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                     return $this->getAnswer()->getPoints();
                 }
                 break;
-            default:
-                return $this->getAnswer()->getPoints();
-                break;
         }
+        return $this->getAnswer()->getPoints();
     }
 }
