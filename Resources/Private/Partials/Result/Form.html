@@ -30,9 +30,14 @@
 				<f:for each="{questions}" as="question">
 					<f:render partial="Question/Question" section="Render" arguments="{question: question, newResult: newResult}"/>
 				</f:for>
+				<f:if condition="{questions -> f:count()} == 0">
+					<div class="alert alert-info"><f:translate key="msg.no_questions" /></div>
+				</f:if>
 			</div>
 
-			<f:render partial="Submit" arguments="{questionnaire: questionnaire}"/>
+			<f:if condition="{questions -> f:count()} > 0">
+				<f:render partial="Submit" arguments="{questionnaire: questionnaire}"/>
+			</f:if>
 
 		</f:form>
 

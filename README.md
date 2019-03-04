@@ -15,6 +15,10 @@ This is a derivative of ke_questionnaire for TYPO3 8 and 9
 
 ## TODO-List:
 - Writing an importer for ke_questionnaire
+- Bugfixing
+- Testing
+- Translating
+- ...
 
 
 

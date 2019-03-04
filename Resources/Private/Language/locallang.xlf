@@ -353,6 +353,9 @@
 			<trans-unit id="loading">
 				<source>Loading</source>
 			</trans-unit>
+			<trans-unit id="msg.no_questions">
+				<source>No questions available. Did you set the starting point?</source>
+			</trans-unit>
 
 		</body>
 	</file>

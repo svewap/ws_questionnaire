@@ -358,6 +358,11 @@
 				<target>Lade</target>
 			</trans-unit>
 
+			<trans-unit id="msg.no_questions">
+				<source>No questions available. Did you set the starting point?</source>
+				<target>Keine Fragen verfügbar. Haben Sie die Datensatzsammlung angegeben?</target>
+			</trans-unit>
+
 		</body>
 	</file>
 </xliff>
