@@ -207,8 +207,10 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getQuestionsByPage($page = 1): ObjectStorage
     {
         if (isset($this->questionsByPage[$page])) {
+            if ($this->questionsByPage[$page] === null) return new ObjectStorage();
             return $this->questionsByPage[$page];
         }
+        if ($this->questionsByPage[1] === null) return new ObjectStorage();
         return $this->questionsByPage[1];
     }
 
