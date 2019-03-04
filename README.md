@@ -18,6 +18,8 @@ This is a derivative of ke_questionnaire for TYPO3 8 and 9
 - Bugfixing
 - Testing
 - Translating
+- TYPO3 9 compatibility check
+- Writing Test Units
 - ...
 
 
