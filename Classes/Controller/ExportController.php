@@ -280,7 +280,7 @@ class ExportController extends BackendController
     public function csvCheckIntervalAction($pluginUid, $interval)
     {
         session_start();
-        if (!isset($_SESSION['progval']) || $_SESSION['progval'] == 0) {
+        if (!isset($_SESSION['progval']) || (int)$_SESSION['progval'] === 0) {
             $_SESSION['progval'] = 0;
         }
         session_write_close();
@@ -351,7 +351,7 @@ class ExportController extends BackendController
             $interval = (int)$this->request->getArgument('interval');
             $fileName = $pathName . '/' . $csvTempFile;
             //when the progval is 0 => create datafile
-            if ($_SESSION['progval'] == 0) {
+            if ((int)$_SESSION['progval'] === 0) {
                 if (!file_exists(PATH_site . $pathName)) {
                     mkdir(PATH_site . $pathName, 0777);
                     chmod(PATH_site . $pathName, 0777);
@@ -367,7 +367,7 @@ class ExportController extends BackendController
             //Load the interval batch
             $correctInterval = $interval;
             if (($correctInterval + $counter) > $resultCount) {
-                $correctInterval = $resultCount - $_SESSION['progval'];
+                $correctInterval = $resultCount - (int)$_SESSION['progval'];
             }
             if ($this->request->getArgument('finished') === 'finished') {
                 $this->csvExport->setResults($this->resultRepository->findFinishedForPidInterval($this->storagePid,
