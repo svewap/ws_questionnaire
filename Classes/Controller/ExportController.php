@@ -414,6 +414,7 @@ class ExportController extends BackendController
                 $this->csvExport->setResults($this->resultRepository->findAllForPid($this->storagePid));
             }
             //create first rows and first cols and fill in the content
+            $csvContent = '';
             $csvContent = $this->csvExport->finishRbIntervalExport($this->plugin, $csvContent);
             //write this content
             //clear the file
@@ -603,58 +604,58 @@ class ExportController extends BackendController
         if ($this->request->hasArgument('averagePoints')) {
             $this->csvExport->setAveragePoints($this->request->getArgument('averagePoints'));
         } else {
-            $this->csvExport->setAveragePoints($this->plugin->ffdata['settings']['csv']['averagePoints']);
+            $this->csvExport->setAveragePoints($this->plugin['ffdata']['settings']['csv']['averagePoints']);
         }
         if ($this->request->hasArgument('averagePointsAll')) {
             $this->csvExport->setAveragePointsAll($this->request->getArgument('averagePointsAll'));
         } else {
-            $this->csvExport->setAveragePointsAll($this->plugin->ffdata['settings']['csv']['averagePointsAll']);
+            $this->csvExport->setAveragePointsAll($this->plugin['ffdata']['settings']['csv']['averagePointsAll']);
         }
         if ($this->request->hasArgument('additionalParameter')) {
             $this->csvExport->setAdditionalParameter($this->request->getArgument('additionalParameter'));
         } else {
-            $this->csvExport->setAdditionalParameter($this->plugin->ffdata['settings']['csv']['additionalParameter']);
+            $this->csvExport->setAdditionalParameter($this->plugin['ffdata']['settings']['csv']['additionalParameter']);
         }
 
         if ($this->request->hasArgument('separator')) {
             $this->csvExport->setSeparator($this->request->getArgument('separator'));
         } else {
-            $this->csvExport->setSeparator($this->plugin->ffdata['settings']['csv']['separator']);
+            $this->csvExport->setSeparator($this->plugin['ffdata']['settings']['csv']['separator']);
         }
         if ($this->request->hasArgument('text')) {
             $this->csvExport->setText($this->request->getArgument('text'));
         } else {
-            $this->csvExport->setText($this->plugin->ffdata['settings']['csv']['text']);
+            $this->csvExport->setText($this->plugin['ffdata']['settings']['csv']['text']);
         }
         if ($this->request->hasArgument('singleMarker')) {
             $this->csvExport->setSingleMarker($this->request->getArgument('singleMarker'));
         } else {
-            $this->csvExport->setSingleMarker($this->plugin->ffdata['settings']['csv']['singleMarker']);
+            $this->csvExport->setSingleMarker($this->plugin['ffdata']['settings']['csv']['singleMarker']);
         }
         if ($this->request->hasArgument('showQText')) {
             $this->csvExport->setShowQText($this->request->getArgument('showQText'));
         } else {
-            $this->csvExport->setShowQText($this->plugin->ffdata['settings']['csv']['showQText']);
+            $this->csvExport->setShowQText($this->plugin['ffdata']['settings']['csv']['showQText']);
         }
         if ($this->request->hasArgument('showAText')) {
             $this->csvExport->setShowAText($this->request->getArgument('showAText'));
         } else {
-            $this->csvExport->setShowAText($this->plugin->ffdata['settings']['csv']['showAText']);
+            $this->csvExport->setShowAText($this->plugin['ffdata']['settings']['csv']['showAText']);
         }
         if ($this->request->hasArgument('encoding')) {
             $this->csvExport->setEncoding($this->request->getArgument('encoding'));
         } else {
-            $this->csvExport->setEncoding($this->plugin->ffdata['settings']['csv']['encoding']);
+            $this->csvExport->setEncoding($this->plugin['ffdata']['settings']['csv']['encoding']);
         }
         if ($this->request->hasArgument('totalPoints')) {
             $this->csvExport->setTotalPoints($this->request->getArgument('totalPoints'));
         } else {
-            $this->csvExport->setTotalPoints($this->plugin->ffdata['settings']['csv']['totalPoints']);
+            $this->csvExport->setTotalPoints($this->plugin['ffdata']['settings']['csv']['totalPoints']);
         }
         if ($this->request->hasArgument('questionPoints')) {
             $this->csvExport->setQuestionPoints($this->request->getArgument('questionPoints'));
         } else {
-            $this->csvExport->setQuestionPoints($this->plugin->ffdata['settings']['csv']['questionPoints']);
+            $this->csvExport->setQuestionPoints($this->plugin['ffdata']['settings']['csv']['questionPoints']);
         }
     }
 

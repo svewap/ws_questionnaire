@@ -127,7 +127,7 @@ class CsvExport
      * New Line for csv
      * @var string
      */
-    var $newline = "\n";
+    private $newline = "\n";
 
     /**
      * @var \TYPO3\CMS\Extbase\SignalSlot\Dispatcher
