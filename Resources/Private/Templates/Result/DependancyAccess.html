@@ -1,10 +1,14 @@
-<f:layout name="Default" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+	<f:layout name="Default" />
 
-<f:section name="main">
-	<f:flashMessages />
-	<f:if condition="{settings.dependency.points">
-		<f:then><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:dependencyAccess.infoPoints" /></f:then>
-		<f:else><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:dependencyAccess.info" /></f:else>
-	</f:if>
-    <f:link.page pageUid="{questionnaire.pid}">{questionnaire.header}</f:link.page>
-</f:section>
+	<f:section name="main">
+		<f:flashMessages />
+		<f:if condition="{settings.dependency.points">
+			<f:then><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:dependencyAccess.infoPoints" /></f:then>
+			<f:else><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:dependencyAccess.info" /></f:else>
+		</f:if>
+		<f:link.page pageUid="{questionnaire.pid}">{questionnaire.header}</f:link.page>
+	</f:section>
+</div>

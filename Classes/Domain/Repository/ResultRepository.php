@@ -2,7 +2,10 @@
 
 namespace WapplerSystems\WsQuestionnaire\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode;
 
 /***************************************************************
  *  Copyright notice
@@ -53,7 +56,7 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all finished results
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface All finished results
+     * @return QueryResultInterface All finished results
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function findFinishedResults()
@@ -68,8 +71,8 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all results for pid
      *
-     * @param integer $pid
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @param int $pid
+     * @return array|QueryResultInterface
      */
     public function findAllForPid($pid)
     {
@@ -82,10 +85,10 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all results for pid
      *
-     * @param integer $pid
-     * @param integer $interval
-     * @param integer $position
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @param int $pid
+     * @param int $interval
+     * @param int $position
+     * @return array|QueryResultInterface
      */
     public function findAllForPidInterval($pid, $interval, $position)
     {
@@ -106,8 +109,8 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all results for pid
      *
-     * @param integer $pid
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @param int $pid
+     * @return array|QueryResultInterface
      */
     public function findAllForPidRaw($pid)
     {
@@ -121,10 +124,10 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all results for pid
      *
-     * @param integer $pid
-     * @param integer $interval
-     * @param integer $position
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @param int $pid
+     * @param int $interval
+     * @param int $position
+     * @return array|QueryResultInterface
      */
     public function findAllForPidIntervalRaw($pid, $interval, $position)
     {
@@ -145,7 +148,7 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all results for pid
      *
-     * @param integer $pid
+     * @param int $pid
      * @return int
      */
     public function countAllForPid($pid)
@@ -156,14 +159,15 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $query->count();
     }
 
+
     /**
      * find all finished results for pid
      *
-     * @param integer $pid
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface All finished results
+     * @param int $pid
+     * @return QueryResultInterface All finished results
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function findFinishedForPid($pid)
+    public function findFinishedForPid($pid): QueryResultInterface
     {
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -177,8 +181,8 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all finished results for pid
      *
-     * @param integer $pid
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface All finished results
+     * @param int $pid
+     * @return QueryResultInterface All finished results
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function findFinishedForPidRaw($pid)
@@ -196,10 +200,10 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all finished results for pid
      *
-     * @param integer $pid
-     * @param integer $interval
-     * @param integer $position
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface All finished results
+     * @param int $pid
+     * @param int $interval
+     * @param int $position
+     * @return QueryResultInterface All finished results
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function findFinishedForPidInterval($pid, $interval, $position)
@@ -224,10 +228,10 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all finished results for pid
      *
-     * @param integer $pid
-     * @param integer $interval
-     * @param integer $position
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface All finished results
+     * @param int $pid
+     * @param int $interval
+     * @param int $position
+     * @return QueryResultInterface All finished results
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function findFinishedForPidIntervalRaw($pid, $interval, $position)
@@ -252,7 +256,7 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all finished results for pid
      *
-     * @param integer $pid
+     * @param int $pid
      * @return int
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
@@ -271,7 +275,7 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all finished results for pid
      *
-     * @param integer $pid
+     * @param int $pid
      * @return int
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
@@ -293,9 +297,9 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * find all finished results for pid
      *
-     * @param integer $user_id
-     * @param integer $pid
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface All finished results
+     * @param int $userId
+     * @param int $pid
+     * @return QueryResultInterface All finished results
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function findByFeUserAndPid($userId, $pid)
@@ -314,11 +318,49 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $query->matching($constraint)->execute();
     }
 
+
+    /**
+     * @param AuthCode $authCode
+     * @return array|QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function findByAuthCode(AuthCode $authCode) {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+
+        $constraint = $query->logicalAnd([
+            $query->greaterThan('finished', 0),
+        ]);
+        $constraint = $query->logicalAnd([
+            $query->equals('auth_code', $authCode),
+            $constraint
+        ]);
+        return $query->matching($constraint)->execute();
+    }
+
+
+    /**
+     * @param FrontendUser $user
+     * @return array|QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     */
+    public function findByFeUser(FrontendUser $user) {
+
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+
+        $constraint = $query->logicalAnd([
+            $query->equals('fe_user', $user),
+            $query->greaterThan('finished', 0)
+        ]);
+        return $query->matching($constraint)->execute();
+    }
+
     /**
      * find all results for pid
      *
      * @param \WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode $authCode
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return array|QueryResultInterface
      */
     public function findForAuthCode(\WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode $authCode)
     {
@@ -328,10 +370,6 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $query->execute();
     }
 
-    /**
-     *
-     * @return integer
-     */
     public function clearRATable()
     {
         $GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_wsquestionnaire_domain_model_resultanswer', 'resultquestion = 0');
@@ -339,8 +377,8 @@ class ResultRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
     /**
      *
-     * @param integer $resultId
-     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @param int $resultId
+     * @return array|QueryResultInterface
      */
     public function collectRAnswersForCSVRBExport($resultId)
     {

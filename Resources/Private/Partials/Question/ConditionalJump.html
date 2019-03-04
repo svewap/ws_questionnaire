@@ -1,8 +1,0 @@
-{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
-<f:form.hidden class="{question.uid}_originalRequestedPage" name="originalRequestedPage" value="" />
-<qu:JavaScript>
-    jQuery('.{question.uid}_originalRequestedPage').val(jQuery('.requestedPage').val());
-</qu:JavaScript>
-<qu:conditionalJump question="{question}" result="{newResult}">
-    {question.javascript}
-</qu:conditionalJump>

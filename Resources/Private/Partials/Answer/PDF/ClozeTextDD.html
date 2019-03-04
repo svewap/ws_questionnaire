@@ -1,7 +1,7 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
-	<div class="keqAnswerWrap keqAnswerClozeTextDD">
-		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+	<div class="wsqAnswerWrap wsqAnswerClozeTextDD">
+		<div class="answerInfo" id="wsq{question.uid}a{answer.uid}info"></div>
 		<qu:clozeText answer="{answer}" question="{question}" as="boxAnswer">
 			<f:alias map="{boxResultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: boxAnswer.uid)}'}">
 				<f:form.hidden name="newResult[questions][{question.uid}][answers][{boxAnswer.uid}][answer]" value="{boxAnswer.uid}" />
@@ -9,9 +9,9 @@
 			</f:alias>
 		</qu:clozeText>
 		<br /><br />
-		<div class="keq-moveable-container">
+		<div class="wsq-moveable-container">
 			<qu:ddClozeTerm answer="{answer}" question="{question}" as="term">
-                <div class="keq-cloze-term">{term.text}</div>
+                <div class="wsq-cloze-term">{term.text}</div>
 			</qu:ddClozeTerm>
 		</div>
 	</div>

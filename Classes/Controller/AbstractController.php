@@ -3,6 +3,8 @@
 namespace WapplerSystems\WsQuestionnaire\Controller;
 
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use WapplerSystems\WsQuestionnaire\Domain\Model\Step;
 use WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository;
 use WapplerSystems\WsQuestionnaire\Object\DataMapper;
@@ -135,16 +137,6 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         $this->authCodeRepository = $authCodeRepository;
     }
 
-    /**
-     * injectQuestionnaire
-     *
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire $questionnaire
-     * @return void
-     */
-    public function injectQuestionnaire(\WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire $questionnaire)
-    {
-        $this->questionnaire = $questionnaire;
-    }
 
     /**
      * injectQuestionnaireRepository
@@ -217,13 +209,13 @@ class AbstractController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     {
         parent::setViewConfiguration($view);
         // Template Path Override
-        $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+        $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 
         //check if there is a different Path in the base configuration
         if (isset($extbaseFrameworkConfiguration['view']['basePartialRootPath'])
             && $extbaseFrameworkConfiguration['view']['basePartialRootPath'] !== ''
             && method_exists($view, 'setBasePartialRootPath')) {
-            $view->setBasePartialRootPath(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['basePartialRootPath']));
+            $view->setBasePartialRootPath(GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['basePartialRootPath']));
         }
     }
 

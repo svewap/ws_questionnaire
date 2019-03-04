@@ -40,6 +40,19 @@ class QuestionnaireRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 
     /**
+     * Returns a query for objects of this repository
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
+     * @api
+     */
+    public function createQuery()
+    {
+        $query = parent::createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        return $query;
+    }
+
+    /**
      * find all ws_questionnaires
      *
      * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
@@ -47,8 +60,6 @@ class QuestionnaireRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function findAll()
     {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(false);
-
         $constraint = $query->logicalAnd([
             $query->equals('ctype', 'list'),
             $query->equals('list_type', 'wsquestionnaire_questionnaire')
@@ -68,8 +79,6 @@ class QuestionnaireRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function findByStoragePid($storagePid)
     {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(false);
-
         $constraint = $query->logicalOr([
             $query->equals('pages', $storagePid),
             $query->logicalOr([
@@ -110,11 +119,9 @@ class QuestionnaireRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param $uid
      * @return Questionnaire
      */
-    public function findForUid($uid)
+    public function findForUid($uid) : Questionnaire
     {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(false);
-
         $constraint = $query->equals('uid', $uid);
 
         $query->matching($constraint);

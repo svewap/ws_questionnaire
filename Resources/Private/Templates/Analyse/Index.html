@@ -1,37 +1,41 @@
-<f:layout name="Backend" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+	<f:layout name="Backend" />
 
-<f:section name="main">
-	<f:be.container
-			pageTitle="Ke Questionnaire Backend Modules"
-			enableClickMenu="false"
-			loadExtJs="true"
-			loadExtJsTheme="false"
-			enableExtJsDebug="false"
-			includeCssFiles="{0: '{f:uri.resource(path:\'CSS/Backend.css\')}'}">
-		<f:flashMessages />
-		
-		<h2><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:list.header" /></h2>
-		<div class="module_list">
-			<h4><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:list.types" /></h4>
-			<ul>
+	<f:section name="main">
+		<f:be.container
+				pageTitle="WS Questionnaire Backend Modules"
+				enableClickMenu="false"
+				loadExtJs="true"
+				loadExtJsTheme="false"
+				enableExtJsDebug="false"
+				includeCssFiles="{0: '{f:uri.resource(path:\'CSS/Backend.css\')}'}">
+			<f:flashMessages />
+
+			<h2><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:list.header" /></h2>
+			<div class="module_list">
+				<h4><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:list.types" /></h4>
+				<ul>
+					<li>
+						<h5><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:questions.title" /></h5>
+						<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:questions.description" />
+					</li>
+					<li>
+						<h5><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:general.title" /></h5>
+						<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:general.description" />
+					</li>
+				</ul>
+			</div>
+			<h4><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:index_list_header" /></h4>
+			<ul class="wsq_list">
+			<f:for each="{questionnaires}" as="questionnaire">
 				<li>
-					<h5><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:questions.title" /></h5>
-					<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:questions.description" />
+					<f:link.action action="general" controller="Analyse" arguments="{pluginUid:questionnaire.uid}">{questionnaire.header}&nbsp;
+					(<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:count" />{questionnaire.countFinishedResults}/{questionnaire.countResults})</f:link.action>
 				</li>
-				<li>
-					<h5><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:general.title" /></h5>
-					<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:general.description" />
-				</li>
+			</f:for>
 			</ul>
-		</div>
-		<h4><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:index_list_header" /></h4>
-		<ul class="keq_list">
-		<f:for each="{questionnaires}" as="questionnaire">
-			<li>
-				<f:link.action action="general" controller="Analyse" arguments="{pluginUid:questionnaire.uid}">{questionnaire.header}&nbsp;
-				(<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_analyse.xml:count" />{questionnaire.countFinishedResults}/{questionnaire.countResults})</f:link.action>
-			</li>
-		</f:for>
-		</ul>
-	</f:be.container>
-</f:section>
+		</f:be.container>
+	</f:section>
+</div>

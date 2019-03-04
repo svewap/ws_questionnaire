@@ -40,6 +40,20 @@ class AuthCodeRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 
     /**
+     * Returns a query for objects of this repository
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryInterface
+     * @api
+     */
+    public function createQuery()
+    {
+        $query = parent::createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        return $query;
+    }
+
+
+    /**
      * find authcodes for a pid
      *
      * @param integer $pid
@@ -48,7 +62,6 @@ class AuthCodeRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function findAllForPid($pid)
     {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(false);
         $query->matching($query->equals('pid', $pid));
         return $query->execute();
     }
@@ -63,10 +76,19 @@ class AuthCodeRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function findByAuthCodeForPid($code, $pid)
     {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(false);
         $pid_cond = $query->equals('pid', $pid);
         $code_cond = $query->equals('auth_code', $code);
         $query->matching($query->logicalAnd([$pid_cond, $code_cond]));
+        return $query->execute();
+    }
+
+    /**
+     * @param $code
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByAuthCode($code) {
+        $query = $this->createQuery();
+        $query->matching($query->equals('auth_code', $code));
         return $query->execute();
     }
 
@@ -79,7 +101,6 @@ class AuthCodeRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     public function countAllForPid($pid)
     {
         $query = $this->createQuery();
-        $query->getQuerySettings()->setRespectStoragePage(false);
         $query->matching($query->equals('pid', $pid));
         return $query->count();
     }

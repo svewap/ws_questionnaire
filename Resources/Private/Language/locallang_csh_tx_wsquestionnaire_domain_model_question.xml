@@ -22,11 +22,11 @@
 			<label index="help_text.alttitle">Helptext</label>
 			<label index="help_text.description">If you enter some text here, a help-icon appears in the frontend, which via mouseover opens a hover box with the given text.</label>
 			
-			<label index="image.alttitle">Image</label>
-			<label index="image.description">You can select an additional picture for this element.</label>
+			<label index="media.alttitle">Media</label>
+			<label index="media.description">You can select an additional picture for this element.</label>
 			
-			<label index="image_position.alttitle">Image-position</label>
-			<label index="image_position.description">Position of the image in relation to title and/or text.</label>
+			<label index="media_position.alttitle">Media position</label>
+			<label index="media_position.description">Position of the media in relation to title and/or text.</label>
 			
 			<label index="is_mandatory.alttitle">Mandatory question?</label>
 			<label index="is_mandatory.description">The user won't be able to continue the questionnaire, unless an answer is given.</label>
@@ -53,11 +53,11 @@
 			<label index="help_text.alttitle">Hilfetext</label>
 			<label index="help_text.description">Wenn hier etwas hinterlegt ist, wird das Hilfe-Icon hinter der Frage im Frontend dargestellt. Der Hilfetext erscheint bei MouseOver.</label>
 			
-			<label index="image.alttitle">Bild</label>
-			<label index="image.description">Der Frage kann ein Bild zugewiesen werden.</label>
+			<label index="media.alttitle">Medien</label>
+			<label index="media.description">Der Frage kann ein Medien-Element zugewiesen werden.</label>
 			
-			<label index="image_position.alttitle">Bild-Position</label>
-			<label index="image_position.description">Die Positionen des Bildes im Bezug zum Fragetext.</label>
+			<label index="media_position.alttitle">Bild-Position</label>
+			<label index="media_position.description">Die Positionen des Medien-Elements im Bezug zum Fragetext.</label>
 			
 			<label index="is_mandatory.alttitle">Pflichtfrage?</label>
 			<label index="is_mandatory.description">Wenn diese Option gewählt ist, kann der Nutzer den Fragebogen nicht absenden oder auf die

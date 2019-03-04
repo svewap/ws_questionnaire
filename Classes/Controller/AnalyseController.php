@@ -2,6 +2,8 @@
 
 namespace WapplerSystems\WsQuestionnaire\Controller;
 
+use WapplerSystems\WsQuestionnaire\Domain\Model\Questionnaire;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -91,15 +93,17 @@ class AnalyseController extends BackendController
             $this->plugin = $plugin;
         }
 
+        /** @var Questionnaire $questionnaire */
         $questionnaire = $this->questionnaireRepository->findByUid($this->plugin['uid']);
-        $questions = $this->questionRepository->findAllForPid($questionnaire->getStoragePid());
+        $questionnaire->loadQuestions();
+
         // if a question is selected, create the analysis for this question
         // else select the first keq-element of type question for analysis
         if ($this->request->hasArgument('question')) {
             $q_id = $this->request->getArgument('question');
             $question = $this->questionRepository->findByUidFree($q_id);
         } else {
-            foreach ($questions as $q) {
+            foreach ($questionnaire->getQuestions() as $q) {
                 if ($question == null) {
                     if ($q->getShortType() === 'Question') {
                         $question = $q;
@@ -107,8 +111,6 @@ class AnalyseController extends BackendController
                 }
             }
         }
-        //fill the questions in the questionnaire
-        $questionnaire->setQuestions($questions);
         //get the results for this questionnaire
         $results = $this->resultRepository->findAllForPid($questionnaire->getStoragePid());
         //if there is a question create a cart

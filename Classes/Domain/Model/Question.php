@@ -93,18 +93,19 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $helpText;
 
     /**
-     * Image
+     * Fal media items
      *
-     * @var string
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @lazy
      */
-    protected $image;
+    protected $media;
 
     /**
-     * Image position
+     * Media position
      *
      * @var string
      */
-    protected $imagePosition;
+    protected $mediaPosition;
 
     /**
      * Is mandatory
@@ -366,47 +367,6 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->helpText = $helpText;
     }
 
-    /**
-     * Returns the image
-     *
-     * @return string $image
-     */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * Sets the image
-     *
-     * @param string $image
-     * @return void
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-    }
-
-    /**
-     * Returns the imagePosition
-     *
-     * @return string $imagePosition
-     */
-    public function getImagePosition()
-    {
-        return $this->imagePosition;
-    }
-
-    /**
-     * Sets the imagePosition
-     *
-     * @param string $imagePosition
-     * @return void
-     */
-    public function setImagePosition($imagePosition)
-    {
-        $this->imagePosition = $imagePosition;
-    }
 
     /**
      * Returns the isMandatory
@@ -657,4 +617,38 @@ class Question extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         }
         return true;
     }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     */
+    public function getMedia(): \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $media
+     */
+    public function setMedia(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $media)
+    {
+        $this->media = $media;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMediaPosition(): string
+    {
+        return $this->mediaPosition;
+    }
+
+    /**
+     * @param string $mediaPosition
+     */
+    public function setMediaPosition(string $mediaPosition)
+    {
+        $this->mediaPosition = $mediaPosition;
+    }
+
+
 }

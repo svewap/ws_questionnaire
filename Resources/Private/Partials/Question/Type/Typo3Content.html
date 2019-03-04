@@ -1,0 +1,11 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+
+    <f:section name="Content">
+
+            <f:render partial="Question/TitleOnly" arguments="{question: question}" />
+            <qu:ContentElement uid="{question.contentId}" />
+
+    </f:section>
+</div>

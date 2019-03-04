@@ -219,7 +219,7 @@
     text-decoration: none;
 }
 
-.keq-be-50-list li{
+.wsq-be-50-list li{
 	width: 50%;
 	float: left;
 	height: 1.7em;
@@ -311,6 +311,6 @@
     display: block;
 }
 
-.keq-be-50-list input[type="checkbox"]{
+.wsq-be-50-list input[type="checkbox"]{
     margin: 4px 4px 0 0;
 }

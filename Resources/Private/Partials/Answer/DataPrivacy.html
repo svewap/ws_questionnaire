@@ -1,9 +1,9 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
 	<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
-	<div class="keqAnswerWrap keqAnswerCheckbox">	
-		<f:form.checkbox id="keq{question.uid}a{answer.uid}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{answer.uid}" checked="" />
-		<label for="keq{question.uid}a{answer.uid}" class="radio_checkbox">&nbsp;</label>
+	<div class="wsqAnswerWrap wsqAnswerCheckbox">
+		<f:form.checkbox id="wsq{question.uid}a{answer.uid}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{answer.uid}" checked="" />
+		<label for="wsq{question.uid}a{answer.uid}" class="radio_checkbox">&nbsp;</label>
 		<f:format.html>{answer.text}</f:format.html>
 	</div>
 </f:alias>
@@ -12,9 +12,9 @@
 /*
  * This question is always mandatory
  */
-jQuery( "#keq{question.uid}a{answer.uid}" ).on( "click", function() {
-	if ( jQuery("#keq{question.uid}a{answer.uid}:checked").length > 0) jQuery("#keqMandatory{question.uid}").val(0);
-	else jQuery("#keqMandatory{question.uid}").val(1);
+jQuery( "#wsq{question.uid}a{answer.uid}" ).on( "click", function() {
+	if ( jQuery("#wsq{question.uid}a{answer.uid}:checked").length > 0) jQuery("#wsqMandatory{question.uid}").val(0);
+	else jQuery("#wsqMandatory{question.uid}").val(1);
 	checkMandatory();
 });
 </qu:JavaScript>

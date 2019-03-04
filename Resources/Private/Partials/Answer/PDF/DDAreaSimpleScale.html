@@ -1,11 +1,11 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
-	<div class="keqAnswerWrap keqDDAreaSimpleScale keqDDArea">
+	<div class="wsqAnswerWrap wsqDDAreaSimpleScale wsqDDArea">
 		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
-		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
-		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+		<f:form.hidden name="answerErrors[]" id="wsqAnswerError{answer.uid}" value="0" />
+		<div class="answerInfo" id="wsq{question.uid}a{answer.uid}info"></div>
 
-		<div class="keq-dd-area-container">
+		<div class="wsq-dd-area-container">
 			<f:if condition="{answer.image}">
 				<f:then></f:then>
 				<f:else>
@@ -13,9 +13,9 @@
 				</f:else>
 			</f:if>
 		</div>
-		<div class="keq-moveable-container" style="min-height:{f:if(condition: answer.height, then: answer.height, else: '100')}px">
+		<div class="wsq-moveable-container" style="min-height:{f:if(condition: answer.height, then: answer.height, else: '100')}px">
 			<qu:ddImage answer="{answer}" question="{question}" as="dd">
-				<div id="keq{question.uid}moveable{dd.counter}" class="keq-moveable moveable-image ui-draggable" answer="{dd.image.uid}" question="{question.uid}">
+				<div id="wsq{question.uid}moveable{dd.counter}" class="wsq-moveable moveable-image ui-draggable" answer="{dd.image.uid}" question="{question.uid}">
 					<f:alias map="{boxResultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: dd.image.uid)}'}">
 						<f:form.hidden name="newResult[questions][{question.uid}][answers][{dd.image.uid}][answer]" value="{dd.image.uid}" />
 						<f:form.hidden name="newResult[questions][{question.uid}][answers][{dd.image.uid}][value]" value="{f:if(condition: boxResultAnswer.value, then: boxResultAnswer.value)}" />
@@ -32,9 +32,9 @@
 	/*
 	 * If the option is checked the hoverClass is defined
 	 */
-		jQuery( "#keq{question.uid} .keq-moveable" ).xdraggable("option","containment","#keq{question.uid}");
-		jQuery( "#keq{question.uid} .keqDDArea .keq-placeholder" ).droppable("option","hoverClass","dd-area-highlight-hover");
-		jQuery( "#keq{question.uid} .keqDDArea .keq-moveable-container" ).droppable("option","hoverClass","dd-area-highlight-hover");
+		jQuery( "#wsq{question.uid} .wsq-moveable" ).xdraggable("option","containment","#wsq{question.uid}");
+		jQuery( "#wsq{question.uid} .wsqDDArea .wsq-placeholder" ).droppable("option","hoverClass","dd-area-highlight-hover");
+		jQuery( "#wsq{question.uid} .wsqDDArea .wsq-moveable-container" ).droppable("option","hoverClass","dd-area-highlight-hover");
 		</qu:JavaScript>
 	</f:then>
 	<f:else>
@@ -42,9 +42,9 @@
 	/*
 	 * Else the images need to fit in the areas totally
 	 */
-		jQuery( "#keq{question.uid} .keq-moveable" ).xdraggable("option","containment","#keq{question.uid}");
-		jQuery( "#keq{question.uid} .keqDDArea .keq-placeholder" ).droppable("option","tolerance","fit");
-		jQuery( "#keq{question.uid} .keqDDArea .keq-moveable-container" ).droppable("option","tolerance","fit");
+		jQuery( "#wsq{question.uid} .wsq-moveable" ).xdraggable("option","containment","#wsq{question.uid}");
+		jQuery( "#wsq{question.uid} .wsqDDArea .wsq-placeholder" ).droppable("option","tolerance","fit");
+		jQuery( "#wsq{question.uid} .wsqDDArea .wsq-moveable-container" ).droppable("option","tolerance","fit");
 		</qu:JavaScript>
 	</f:else>
 </f:if>

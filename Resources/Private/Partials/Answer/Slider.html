@@ -1,14 +1,14 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
-	<div class="keqAnswerWrap keqAnswerSlider">
+	<div class="wsqAnswerWrap wsqAnswerSlider">
 		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
-		<f:form.hidden class="keqSilderValueHelperClass" id="keqValue{question.uid}a{answer.uid}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{f:if(condition: resultAnswer.value, then: resultAnswer.value, else: answer.minValue)}" />
-		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
-		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
-		<f:if condition="{answer.leftLabel"><div class="keqSilderLeftLabel">{answer.leftLabel}</div></f:if>
-		<div class="keqSlider" id="keq{question.uid}a{answer.uid}Slider" style="width:{f:if(condition: answer.width, then: answer.width, else: '400px')}"></div>
-		<f:if condition="{answer.RightLabel"><div class="keqSilderRightLabel">{answer.rightLabel}</div></f:if>
-		<div class="keqSilderValueShow"><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:slider.selectedValue" />: <span id="keqShowValue{question.uid}a{answer.uid}">{f:if(condition: resultAnswer.value, then: resultAnswer.value, else: answer.minValue)}</span></div>
+		<f:form.hidden class="wsqSilderValueHelperClass" id="wsqValue{question.uid}a{answer.uid}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{f:if(condition: resultAnswer.value, then: resultAnswer.value, else: answer.minValue)}" />
+		<f:form.hidden name="answerErrors[]" id="wsqAnswerError{answer.uid}" value="0" />
+		<div class="answerInfo" id="wsq{question.uid}a{answer.uid}info"></div>
+		<f:if condition="{answer.leftLabel"><div class="wsqSilderLeftLabel">{answer.leftLabel}</div></f:if>
+		<div class="wsqSlider" id="wsq{question.uid}a{answer.uid}Slider" style="width:{f:if(condition: answer.width, then: answer.width, else: '400px')}"></div>
+		<f:if condition="{answer.RightLabel"><div class="wsqSilderRightLabel">{answer.rightLabel}</div></f:if>
+		<div class="wsqSilderValueShow"><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:slider.selectedValue" />: <span id="wsqShowValue{question.uid}a{answer.uid}">{f:if(condition: resultAnswer.value, then: resultAnswer.value, else: answer.minValue)}</span></div>
 	</div>
 <qu:JavaScript>
 /*
@@ -20,16 +20,16 @@
 	 var q_id = '{question.uid}';
 	 var a_id = '{answer.uid}';
 	 var value = {f:if(condition: resultAnswer.value, then: resultAnswer.value, else: answer.minValue)};
-	 jQuery("#keq{question.uid}a{answer.uid}Slider").slider({
+	 jQuery("#wsq{question.uid}a{answer.uid}Slider").slider({
 		 value: value,
 		 min: min,
 		 max: max,
 		 step: step,
 		 slide: function( event, ui ){
-			 jQuery(this).siblings('.keqSilderValueShow').children('span').html(ui.value);
+			 jQuery(this).siblings('.wsqSilderValueShow').children('span').html(ui.value);
 		 },
 		 stop: function ( event, ui ){
-			 jQuery(this).siblings('.keqSilderValueHelperClass').val(ui.value).trigger('change');
+			 jQuery(this).siblings('.wsqSilderValueHelperClass').val(ui.value).trigger('change');
 		 }
 	 });
 </qu:JavaScript>
@@ -39,11 +39,11 @@
 	/*
 	 * Slider are always answered
 	 */
-	check_keq{question.uid}a{answer.uid} = function() {
+	check_wsq{question.uid}a{answer.uid} = function() {
 		/*<![CDATA[*//*]]>*/
-                jQuery("#keqMandatory{question.uid}").val(0);	
+                jQuery("#wsqMandatory{question.uid}").val(0);
                 checkMandatory();
 	}
-	check_keq{question.uid}a{answer.uid}();
+	check_wsq{question.uid}a{answer.uid}();
 </qu:JavaScript>
 </f:if>

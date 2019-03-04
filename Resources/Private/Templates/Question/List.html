@@ -1,18 +1,22 @@
-<f:layout name="Default" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+	<f:layout name="Default" />
 
-<f:section name="main">
-	<f:flashMessages />
-	<f:form action="{action}" controller="Result" objectName="{newResult}" object="{newResult}" method="post">
-		<f:for each="{questions}" as="question">
-			<div class="keqQuestion">{question.title}</div>
-			<div class="keqAnswerBox">
-				<f:for each="{question.answers}" as="answer">
-					<dl class="keqAnswer">
-						<dt><f:form.radio property="value" value="{answer.uid}" /></dt>
-						<dd>{answer.title}</dd>
-					</dl>
-				</f:for>
-			</div>
-		</f:for>
-	</f:form>
-</f:section>
+	<f:section name="main">
+		<f:flashMessages />
+		<f:form action="{action}" controller="Result" objectName="{newResult}" object="{newResult}" method="post">
+			<f:for each="{questions}" as="question">
+				<div class="wsqQuestion">{question.title}</div>
+				<div class="wsqAnswerBox">
+					<f:for each="{question.answers}" as="answer">
+						<dl class="wsqAnswer">
+							<dt><f:form.radio property="value" value="{answer.uid}" /></dt>
+							<dd>{answer.title}</dd>
+						</dl>
+					</f:for>
+				</div>
+			</f:for>
+		</f:form>
+	</f:section>
+</div>

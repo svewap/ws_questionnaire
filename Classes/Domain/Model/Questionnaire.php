@@ -63,12 +63,10 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $questions;
 
     /**
-     * QuestionsByPage  JVE: Nov. 2016:
-     * Jörg velletti changed TYPE from 'protected' to 'public' to be able to overwrite in serviceSlot!!!
      *
      * @var array
      */
-    public $questionsByPage;
+    protected $questionsByPage;
 
     /**
      * page
@@ -96,64 +94,67 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      */
     protected $uid;
+
     /**
      * pid
      * @var int
      */
     protected $pid;
+
     /**
      * sorting
      * @var int
      */
     protected $sorting;
+
     /**
      * header
      * @var string
-     *
      */
     protected $header;
+
     /**
      * headerLink
      * @var string
-     *
      */
     protected $headerLink;
+
     /**
      * bodytext
      * @var string
-     *
      */
     protected $bodytext;
+
     /**
      * image
      * @var string
-     *
      */
     protected $image;
+
     /**
      * imageLink
      * @var string
-     *
      */
     protected $imageLink;
+
     /**
      * colPos
      * @var int
-     *
      */
     protected $colPos;
+
     /**
      * piFlexForm
      * @var string
-     *
      */
     protected $piFlexForm;
+
     /**
      * pages
      * @var string
-     *
      */
     protected $pages;
+
     /**
      * storagePid
      * @var int
@@ -162,24 +163,16 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $storagePid;
 
     /**
-     * QuestionsForPage
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage
-     */
-    protected $questionsForPage;
-
-    /**
      * compareResult
      *
      * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Result
      */
     protected $compareResult;
 
-
     /**
      * @var int
      */
-    private $crdate;
+    protected $crdate;
 
     /**
      * @return int
@@ -197,7 +190,6 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->crdate = $crdate;
     }
 
-
     /**
      * each model needs an constructor:
      * http://wiki.typo3.org/Exception/v4/1297759968
@@ -210,15 +202,14 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * get all questions for a given page
      *
      * @param int $page
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     * @return ObjectStorage
      */
-    public function getQuestionsForPage($page)
+    public function getQuestionsByPage($page = 1): ObjectStorage
     {
         if (isset($this->questionsByPage[$page])) {
             return $this->questionsByPage[$page];
         }
-        return $this->questionsForPage;
-
+        return $this->questionsByPage[1];
     }
 
     /**
@@ -226,7 +217,7 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $countPages
      */
-    public function getCountPages()
+    public function getCountPages() : int
     {
         return count($this->questionsByPage);
     }
@@ -237,7 +228,7 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return int $countResults
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function getCountResults()
+    public function getCountResults() : int
     {
         return $this->countResults(false);
     }
@@ -248,9 +239,9 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return int $countFinishedResults
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function getCountFinishedResults()
+    public function getCountFinishedResults() : int
     {
-        return $this->countResults(true);
+        return $this->countResults();
     }
 
     /**
@@ -258,7 +249,7 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $countAuthCodes
      */
-    public function getCountAuthCodes()
+    public function getCountAuthCodes() : int
     {
         return $this->countAuthCodes();
     }
@@ -268,14 +259,13 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $nextPage
      */
-    public function getNextPage()
+    public function getNextPage() : int
     {
         $nextPage = ($this->page + 1);
         if ($nextPage > count($this->questionsByPage)) {
             return $this->page;
-        } else {
-            return ($this->page + 1);
         }
+        return ($this->page + 1);
     }
 
     /**
@@ -283,13 +273,12 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return int $prevPage
      */
-    public function getPrevPage()
+    public function getPrevPage() : int
     {
         if ($this->page === 1) {
             return 1;
-        } else {
-            return ($this->page - 1);
         }
+        return ($this->page - 1);
     }
 
     /**
@@ -297,7 +286,7 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return boolean $isFirstPage
      */
-    public function getIsFirstPage()
+    public function getIsFirstPage() : bool
     {
         return ((int)$this->page === 1);
     }
@@ -307,7 +296,7 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return boolean $isLastPage
      */
-    public function getIsLastPage()
+    public function getIsLastPage() : bool
     {
         return (count($this->questionsByPage) <= $this->page);
     }
@@ -317,7 +306,7 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return boolean $isFinishedPage
      */
-    public function getIsFinished()
+    public function getIsFinished() : bool
     {
         return $this->requestedPage === $this->page;
     }
@@ -329,11 +318,8 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getQuestions()
     {
-        if (count($this->questions) === 0) {
-            $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-            /** @var QuestionRepository $rep */
-            $rep = $objectManager->get(QuestionRepository::class);
-            $this->setQuestions($rep->findAllForPid($this->getStoragePid()));
+        if ($this->questions === null) {
+            $this->loadQuestions();
         }
         return $this->questions;
     }
@@ -343,15 +329,15 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage $questions
      */
-    public function getSelectQuestions()
+    public function getSelectQuestions(): ObjectStorage
     {
+        /** @var ObjectStorage $qStorage */
         $qStorage = GeneralUtility::makeInstance(ObjectStorage::class);
         foreach ($this->getQuestions() as $question) {
             if ($question instanceof Question) {
                 $qStorage->attach($question);
             }
         }
-
         return $qStorage;
     }
 
@@ -360,7 +346,7 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage $questions
      */
-    public function getNavigationQuestions()
+    public function getNavigationQuestions(): ObjectStorage
     {
         /** @var ObjectStorage $qStorage */
         $qStorage = GeneralUtility::makeInstance(ObjectStorage::class);
@@ -392,21 +378,28 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the questions
      * add seperates all questions by page
      *
-     * @param QueryResultInterface $questions
      * @return void
      */
-    public function setQuestions(QueryResultInterface $questions)
+    public function loadQuestions()
     {
-        $questions = $this->checkNumbering($questions);
-        $this->questions = $questions;
+
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        /** @var QuestionRepository $rep */
+        $rep = $objectManager->get(QuestionRepository::class);
+        $this->questions = $rep->findAllForPid($this->getStoragePid());
+
+        //DebugUtility::debug($this->questions);
+
+        $this->checkNumbering($this->questions);
         $this->questionsByPage = [];
 
-        if ($questions->count()) {
+        if ($this->questions->count() > 0) {
             $page = 1;
+            /** @var ObjectStorage $pageStorage */
             $pageStorage = GeneralUtility::makeInstance(ObjectStorage::class);
 
             // seperate all questions for each page
-            foreach ($questions as $question) {
+            foreach ($this->questions as $question) {
                 if ($question instanceof PageBreak) {
                     $pageStorage = GeneralUtility::makeInstance(ObjectStorage::class);
                     $page++;
@@ -527,7 +520,7 @@ class Questionnaire extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @return int
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function countResults($finished = true)
+    public function countResults($finished = true): int
     {
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         /** @var Typo3QuerySettings $querySettings */

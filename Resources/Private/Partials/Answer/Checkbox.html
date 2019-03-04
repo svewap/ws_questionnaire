@@ -1,15 +1,16 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
 	<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
-	<div class="keqAnswerWrap keqAnswerCheckbox">	
-		<f:form.checkbox id="keq{question.uid}a{answer.uid}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{answer.uid}" checked="{f:if(condition: '{resultAnswer.value}=={answer.uid}', then: 'true', else: 'false')}" />
-		<label for="keq{question.uid}a{answer.uid}" class="radio_checkbox">&nbsp;</label>
-		<f:if condition="{answer.text}">
-			<f:then><f:format.html>{answer.text}</f:format.html></f:then>
-			<f:else>{answer.title}</f:else>
-		</f:if>
+	<div class="wsqAnswerWrap wsqAnswerCheckbox form-check">
+		<f:form.checkbox class="form-check-input" id="wsq{question.uid}a{answer.uid}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{answer.uid}" checked="{f:if(condition: '{resultAnswer.value}=={answer.uid}', then: 'true', else: 'false')}" />
+		<label for="wsq{question.uid}a{answer.uid}" class="form-check-label">&nbsp;
+			<f:if condition="{answer.text}">
+				<f:then><f:format.html>{answer.text}</f:format.html></f:then>
+				<f:else>{answer.title}</f:else>
+			</f:if>
+		</label>
 		<f:if condition="{answer.showTextfield}">
-			<f:form.textfield name="newResult[questions][{question.uid}][answers][{answer.uid}][additionalValue]" disabled="{f:if(condition: '{resultAnswer.value}=={answer.uid}', then: '', else: 'disabled')}" value="{f:if(condition: resultAnswer.additionalValue, then: resultAnswer.additionalValue, else: '')}"/>
+			<f:form.textfield class="form-control" name="newResult[questions][{question.uid}][answers][{answer.uid}][additionalValue]" disabled="{f:if(condition: '{resultAnswer.value}=={answer.uid}', then: '', else: 'disabled')}" value="{f:if(condition: resultAnswer.additionalValue, then: resultAnswer.additionalValue, else: '')}"/>
 		</f:if>
 	</div>
 </f:alias>
@@ -19,22 +20,22 @@
 /*
  * As soon as a Radio Button on clicked mandatory is fullfilled
  */
-jQuery( "#keq{question.uid}a{answer.uid}" ).on( "click", function() {
-	check_keq{question.uid}a{answer.uid}();
+jQuery( "#wsq{question.uid}a{answer.uid}" ).on( "click", function() {
+	check_wsq{question.uid}a{answer.uid}();
 });
-check_keq{question.uid}a{answer.uid} = function() {
-	if ( jQuery("#keq{question.uid} input[type=checkbox]:checked").length > 0) jQuery("#keqMandatory{question.uid}").val(0);
-	else jQuery("#keqMandatory{question.uid}").val(1);		
+check_wsq{question.uid}a{answer.uid} = function() {
+	if ( jQuery("#wsq{question.uid} input[type=checkbox]:checked").length > 0) jQuery("#wsqMandatory{question.uid}").val(0);
+	else jQuery("#wsqMandatory{question.uid}").val(1);
 	checkMandatory();
 }
-check_keq{question.uid}a{answer.uid}();
+check_wsq{question.uid}a{answer.uid}();
 	</f:if>
 	<f:if condition="{answer.showTextfield}">
 /*
  * Check Input fields on change
  */
 
-jQuery( "#keq{question.uid}a{answer.uid}" ).on( "change", function() {
+jQuery( "#wsq{question.uid}a{answer.uid}" ).on( "change", function() {
 
 	if (jQuery(this).prop('checked')){
 		jQuery(this).parent().children('input:text').removeAttr('disabled');

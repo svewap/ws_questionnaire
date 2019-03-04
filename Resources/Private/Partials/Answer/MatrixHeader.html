@@ -1,10 +1,10 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
-	<div class="keqAnswerWrap keqMatrix">
+	<div class="wsqAnswerWrap wsqMatrix">
 		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
-		<f:form.hidden name="answerErrors[]" id="keqAnswerError{question.uid}a{answer.uid}" value="{f:if(condition:'{answer.minAnswers}',then:1,else:0)}" />
-		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
-        <table class="keq-matrix" id="keq{question.uid}a{answer.uid}">
+		<f:form.hidden name="answerErrors[]" id="wsqAnswerError{question.uid}a{answer.uid}" value="{f:if(condition:'{answer.minAnswers}',then:1,else:0)}" />
+		<div class="answerInfo" id="wsq{question.uid}a{answer.uid}info"></div>
+        <table class="wsq-matrix" id="wsq{question.uid}a{answer.uid}">
 		<thead>
 			<tr>
 				<th>&nbsp;</th>
@@ -15,7 +15,7 @@
 		</thead>
 		<tbody>
 			<qu:MatrixRow answer="{answer}" question="{question}" as="row">
-				<tr id="keq{question.uid}r{row.uid}">
+				<tr id="wsq{question.uid}r{row.uid}">
 					<f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][value]" value="" />
 					<td>{row.title}</td>					
 					<f:for each="{answer.cols}" as="column">
@@ -45,7 +45,7 @@
                             </tr>
                         </f:for>
                     </f:alias>
-                    <tr class="keqClonableRow">
+                    <tr class="wsqClonableRow">
                         <td>
                             <f:form.textfield name="newResult[questions][{question.uid}][answers][{cloneableRow.uid}][cloned][title][1000]" value="" />
                         </td>
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <f:image class="keqMatrixAddClone" src="EXT:ws_questionnaire/Resources/Public/Images/add.png" alt="add" title="add" />
+                            <f:image class="wsqMatrixAddClone" src="EXT:ws_questionnaire/Resources/Public/Images/add.png" alt="add" title="add" />
                         </td>
                     </tr>
                 </f:alias>
@@ -72,8 +72,8 @@
 /*
  * When an answer in this matrix is changed, check for max answers
  */
- jQuery( "#keq{question.uid}a{answer.uid} input" ).on( "click", function() {
-	 var idy = 'keq{question.uid}a{answer.uid}'; 
+ jQuery( "#wsq{question.uid}a{answer.uid} input" ).on( "click", function() {
+	 var idy = 'wsq{question.uid}a{answer.uid}';
 	 var max = {answer.maxAnswers};
 
 	 var counter = 0;
@@ -103,12 +103,12 @@
 /*
  * When an answer in this question is changed, check for max answers
  */
- jQuery( "#keq{question.uid} input" ).on( "click", function() {
+ jQuery( "#wsq{question.uid} input" ).on( "click", function() {
 	 var idy = '{question.uid}a{answer.uid}'; 
 	 var min = {answer.minAnswers};
 
 	 var counter = 0;
-	 jQuery.each(jQuery( "#keq"+idy+" input" ),function(index, value){
+	 jQuery.each(jQuery( "#wsq"+idy+" input" ),function(index, value){
 		 switch (jQuery(value).prop('type')){
 			case "checkbox": 
 					if (jQuery(value).prop('checked')) counter ++;
@@ -121,16 +121,16 @@
 	 if (counter < min) {
 		 switch (jQuery(this).prop('type')){
 			case "checkbox": 
-					jQuery("#keqAnswerError"+idy).val(1);
-					jQuery('#keq'+idy+"info").html('TO-BE-TRANSLATED: you must at least give: '+min+' answers');
+					jQuery("#wsqAnswerError"+idy).val(1);
+					jQuery('#wsq'+idy+"info").html('TO-BE-TRANSLATED: you must at least give: '+min+' answers');
 					checkAnswerErrors();
 				break;
 			default:
 				break;
 		 }
 	 } else {
-		 jQuery("#keqAnswerError"+idy).val(0);
-		 jQuery('#keq'+idy+"info").html('');
+		 jQuery("#wsqAnswerError"+idy).val(0);
+		 jQuery('#wsq'+idy+"info").html('');
 		 checkAnswerErrors();
 	 }
  });
@@ -141,12 +141,12 @@
 	/*
 	 * When the length of all input field values is > 0
 	 */
-	jQuery( "#keq{question.uid}a{answer.uid} input:not([type=hidden])" ).on( "change", function() {
-		check_keq{question.uid}a{answer.uid}();
+	jQuery( "#wsq{question.uid}a{answer.uid} input:not([type=hidden])" ).on( "change", function() {
+		check_wsq{question.uid}a{answer.uid}();
 	});
-	check_keq{question.uid}a{answer.uid} = function() {
+	check_wsq{question.uid}a{answer.uid} = function() {
 		var length = 0;
-		jQuery("#keq{question.uid}a{answer.uid} input:not([type=hidden])").each(function(){
+		jQuery("#wsq{question.uid}a{answer.uid} input:not([type=hidden])").each(function(){
 			var type= jQuery(this).attr('type');
 			if (type == 'radio' || type == 'checkbox'){
 				if (jQuery(this).is(':checked')) length ++;
@@ -154,10 +154,10 @@
 				length += jQuery(this).val().length;
 			}
 		});
-		if (length > 0) jQuery("#keqMandatory{question.uid}").val(0);
-		else jQuery("#keqMandatory{question.uid}").val(1);		
+		if (length > 0) jQuery("#wsqMandatory{question.uid}").val(0);
+		else jQuery("#wsqMandatory{question.uid}").val(1);
 		checkMandatory();
 	}
-	check_keq{question.uid}a{answer.uid}();
+	check_wsq{question.uid}a{answer.uid}();
 </qu:JavaScript>
 </f:if>

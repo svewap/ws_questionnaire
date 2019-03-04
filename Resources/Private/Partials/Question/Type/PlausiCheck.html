@@ -1,0 +1,14 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+
+    <f:section name="Content">
+
+        <qu:checkPlausi question="{question}" result="{newResult}">
+            <div class="wsqPlausiCheck" id="wsq{question.uid}">
+                <f:format.html>{question.text}</f:format.html>
+            </div>
+        </qu:checkPlausi>
+
+    </f:section>
+</div>

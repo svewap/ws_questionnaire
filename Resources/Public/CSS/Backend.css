@@ -81,7 +81,7 @@ body {
 	width: 100px;
 }
 
-.tx-ws-questionnaire .keqLineAnalysis li{
+.tx-ws-questionnaire .wsqLineAnalysis li{
 	padding: 2px;
 	border: 1px solid #ddd;
 }
@@ -102,10 +102,10 @@ body {
 	font-weight: bold;
 }
 
-.tx-ws-questionnaire .keq_authCodes_exportlink {
+.tx-ws-questionnaire .wsq_authCodes_exportlink {
 	float: right;
 }
 
-.tx-ws-questionnaire ul.keq_list {
+.tx-ws-questionnaire ul.wsq_list {
 	list-style-image:url("../../../ext_icon.gif");
 }

@@ -1,11 +1,11 @@
-#keqViewResult .keq-dd-area-container .keq-placeholder{
+#wsqViewResult .wsq-dd-area-container .wsq-placeholder{
 	background-color: #ddd;
 	border: 1px solid black;
 	float: left;
 	margin-right: 20px;
 }
 
-#keqViewResult .keq-cloze-term{
+#wsqViewResult .wsq-cloze-term{
 	padding: 2px;
 	border: 1px solid black;
 	margin-right: 20px;
@@ -22,19 +22,19 @@ div.csc-textpic .csc-textpic-imagewrap figure, div.csc-textpic figure.csc-textpi
     margin: 0;
 }
 
-#keqViewResult .keqPdfAvatarImageParts .items div{
+#wsqViewResult .wsqPdfAvatarImageParts .items div{
 	float: left;
 	width: auto;
 }
 
-#keqViewResult .keqPdfAvatarImageParts {
+#wsqViewResult .wsqPdfAvatarImageParts {
 	clear: right;
 }
 
-#keqViewResult .keqPdfAvatarImageParts {
+#wsqViewResult .wsqPdfAvatarImageParts {
 	clear: right;
 }
 
-#keqViewResult .compareQuestion {
+#wsqViewResult .compareQuestion {
 	border: 1px solid #ff0000;
 }

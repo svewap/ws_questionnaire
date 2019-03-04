@@ -1,16 +1,20 @@
-<f:layout name="PDF" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+	<f:layout name="PDF" />
 
-<f:section name="main">
-<div id="keqViewResult">
-	<f:for each="{questionnaire.questions}" as="question">
-		<f:render partial="Question/PDF/{question.shortType}" arguments="{question: question, newResult: result}" />		
-		<f:if condition="{compare}">
-			<f:if condition="{question.shortType} == 'Question'">
-				<div class="compareQuestion">
-					<f:render partial="Question/PDF/{question.shortType}" arguments="{question: question, newResult: compare}" />		
-				</div>
+	<f:section name="main">
+	<div id="wsqViewResult">
+		<f:for each="{questionnaire.questions}" as="question">
+			<f:render partial="Question/PDF/{question.shortType}" arguments="{question: question, newResult: result}" />
+			<f:if condition="{compare}">
+				<f:if condition="{question.shortType} == 'Question'">
+					<div class="compareQuestion">
+						<f:render partial="Question/PDF/{question.shortType}" arguments="{question: question, newResult: compare}" />
+					</div>
+				</f:if>
 			</f:if>
-		</f:if>
-	</f:for>
+		</f:for>
+	</div>
+	</f:section>
 </div>
-</f:section>

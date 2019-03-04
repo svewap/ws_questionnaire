@@ -13,7 +13,7 @@ return [
         'dividers2tabs' => TRUE,
         'sortby' => 'sorting',
         'type' => 'type',
-        'thumbnail' => 'image',
+        'thumbnail' => 'media',
         'versioningWS' => TRUE,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
@@ -25,14 +25,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'title,show_title,text,help_text,image,image_position,is_mandatory,must_be_correct,answers,',
+        'searchFields' => 'title,show_title,text,help_text,is_mandatory,must_be_correct,answers,',
         'iconfile' => 'EXT:ws_questionnaire/Resources/Public/Icons/question.svg'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, show_title, text, help_text, image, image_position, is_mandatory, must_be_correct, answers, dependencies, to_page, direct_jump, javascript, only_js',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, show_title, text, help_text, media, media_position, is_mandatory, must_be_correct, answers, dependencies, to_page, direct_jump, javascript, only_js',
     ],
     'types' => [
-        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, show_title, text;;4;richtext[], image;;3, is_mandatory;;2,template,--div--;LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.answers,answers,random_answers,column_count,max_answers,min_answers,--div--;LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.dependencies,dependencies,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, show_title, text;;4;richtext[], media;;3, is_mandatory;;2,--div--;LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.answers,answers,random_answers,column_count,max_answers,min_answers,--div--;LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.dependencies,dependencies,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
         \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title'],
         \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Html::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text'],
         \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Text::class => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, text,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime, endtime'],
@@ -235,20 +235,68 @@ return [
                 'eval' => 'trim'
             ],
         ],
-        'image' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.image',
-            'config' => [
-                'type' => 'group',
-                'internal_type' => 'file',
-                'uploadfolder' => 'uploads/tx_wsquestionnaire',
-                'show_thumbs' => 1,
-                'size' => 5,
-                'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
-                'disallowed' => '',
-            ],
+        'media' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.media',
+            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'media',
+                [
+                    'behaviour' => [
+                        'allowLanguageSynchronization' => true,
+                    ],
+                    'appearance' => [
+                        'createNewRelationLinkTitle' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.media.add',
+                        'showPossibleLocalizationRecords' => true,
+                        'showRemovedLocalizationRecords' => true,
+                        'showAllLocalizationLink' => true,
+                        'showSynchronizationLink' => true
+                    ],
+                    'foreign_match_fields' => [
+                        'fieldname' => 'media',
+                        'tablenames' => 'tx_wsquestionnaire_domain_model_question',
+                        'table_local' => 'sys_file',
+                    ],
+                    // custom configuration for displaying fields in the overlay/reference table
+                    // to use the newsPalette and imageoverlayPalette instead of the basicoverlayPalette
+                    'overrideChildTca' => [
+                        'types' => [
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_UNKNOWN => [
+                                'showitem' => '
+                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                    --palette--;;filePalette'
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => [
+                                'showitem' => '
+                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                    --palette--;;filePalette'
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                                'showitem' => '
+                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                    --palette--;;filePalette'
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => [
+                                'showitem' => '
+                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                    --palette--;;filePalette'
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => [
+                                'showitem' => '
+                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                    --palette--;;filePalette'
+                            ],
+                            \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => [
+                                'showitem' => '
+                                    --palette--;LLL:EXT:lang/Resources/Private/Language/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+                                    --palette--;;filePalette'
+                            ]
+                        ],
+                    ],
+                ],
+                $GLOBALS['TYPO3_CONF_VARS']['SYS']['mediafile_ext']
+            )
         ],
-        'image_position' => [
+        'media_position' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.image_position',
             'config' => [
@@ -416,16 +464,6 @@ return [
                 'cols' => 40,
                 'rows' => 15,
                 'eval' => 'trim'
-            ],
-        ],
-        'template' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_db.xml:tx_wsquestionnaire_domain_model_question.template',
-            'config' => [
-                'type' => 'group',
-                'internal_type' => 'file',
-                'size' => 1,
-                'maxitems' => 1
             ],
         ],
     ],

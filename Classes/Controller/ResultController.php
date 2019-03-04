@@ -2,6 +2,11 @@
 
 namespace WapplerSystems\WsQuestionnaire\Controller;
 
+use TYPO3\CMS\Core\Utility\DebugUtility;
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
+use WapplerSystems\WsQuestionnaire\Domain\Model\AuthCode;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak;
+use WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question;
 use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
 use WapplerSystems\WsQuestionnaire\Domain\Model\ResultQuestion;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
@@ -45,23 +50,29 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\AbstractController
+class ResultController extends AbstractController
 {
 
-
-    protected $user = null;
+    /**
+     * @var FrontendUser
+     */
+    protected $user;
 
     /**
-     * injectQuestionnaireRepository
-     *
-     * @param \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
-     * @return void
+     * @var AuthCode
      */
-    public function injectQuestionnaireRepository(
-        \WapplerSystems\WsQuestionnaire\Domain\Repository\QuestionnaireRepository $questionnaireRepository
-    ) {
-        $this->questionnaireRepository = $questionnaireRepository;
-    }
+    protected $authCode;
+
+    /**
+     * @var Result
+     */
+    protected $signalResult;
+
+    /**
+     * @var Result
+     */
+    protected $temp_result;
+
 
     /**
      * initializes the actions
@@ -69,9 +80,8 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
     public function initializeAction()
     {
         parent::initializeAction();
-        $this->questionnaire->settings = $this->settings;
 
-        //check a logged in user
+        // check a logged in user
         $userRepository = $this->objectManager->get(FrontendUserRepository::class);
         /** @var Typo3QuerySettings $querySettings */
         $querySettings = $this->objectManager->get(Typo3QuerySettings::class);
@@ -82,15 +92,23 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
             $this->user = $userRepository->findByUid($GLOBALS['TSFE']->fe_user->user['uid']);
         }
 
-        //check jsKey for the created js-file
+        // check jsKey for the created js-file
         $jsKey = substr($GLOBALS['TSFE']->fe_user->id, 0, 10) . '_keqjs';
         $GLOBALS['TSFE']->fe_user->setKey('ses', 'keq_jskey', $jsKey);
-        //maybe better to erase the js file every time
-        $pathname = 'typo3temp/ws_questionnaire';
+        // maybe better to erase the js file every time
+        $pathname = 'typo3temp/var/ws_questionnaire';
         $filename = $pathname . '/' . $jsKey . '.js';
         if (file_exists(PATH_site . $filename)) {
-            unlink($filename);
+            @unlink($filename);
         }
+    }
+
+    private function loadQuestionnaire() {
+
+        $contentObject = $this->configurationManager->getContentObject();
+        $this->questionnaire = $this->questionnaireRepository->findByUid((int)$contentObject->data['uid']);
+        $this->questionnaire->settings = $this->settings;
+        $this->questionnaire->loadQuestions();
     }
 
     /**
@@ -99,7 +117,12 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
      * @param Result $newResult A fresh new result object
      * @param int $requestedPage after checking the questions of currentPage redirect to this page
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentNameException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotException
      * @throws \TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException
      * @ignorevalidaton $newResult
@@ -113,7 +136,10 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
         if ($this->user) {
             $newResult->setFeUser($this->user);
         }
-        //check for the Access-Type
+
+        $this->loadQuestionnaire();
+
+        // check for the Access-Type
         switch ($this->settings['accessType']) {
             case 'feUser':
                 $this->checkFeUser();
@@ -123,25 +149,23 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
                 $newResult->setAuthCode($this->authCode);
                 break;
         }
-        //check questionnaire-dependency
+        // check questionnaire-dependency
         $this->checkDependency();
-        //check for restart
+        // check for restart
         $newResult = $this->checkRestart($newResult);
-        //check if the max participations are reached
+        // check if the max participations are reached
         $this->checkMaxParticipations();
 
-        //get the correct requested start-page
+        // get the correct requested start-page
         if ($requestedPage === 0 && !$this->settings['description']) {
             $requestedPage = 1;
         }
 
-        //set the requested page
+        // set the requested page
         $this->questionnaire->setPage($requestedPage);
-        //get the questions and add them to the questionnaire
-        $questions = $this->questionRepository->findAllForPid($GLOBALS['TSFE']->id);
-        $this->questionnaire->setQuestions($questions);
+        // get the questions and add them to the questionnaire
 
-        //SignalSlot for newAction
+        // SignalSlot for newAction
         $this->signalResult = $newResult;
         $this->signalSlotDispatcher->dispatch(__CLASS__, 'newAction', [$this]);
         $newResult = $this->signalResult;
@@ -159,7 +183,7 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
         }
 
 
-        $this->view->assign('questions', $this->questionnaire->getQuestionsForPage($requestedPage));
+        $this->view->assign('questions', $this->questionnaire->getQuestionsByPage($requestedPage));
         $this->view->assign('questionnaire', $this->questionnaire);
         $this->view->assign('newResult', $newResult);
     }
@@ -215,6 +239,8 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
      * @param int $currentPage check, validate and save the results of this page
      * @param int $requestedPage after checking the questions of currentPage redirect to this page
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentNameException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
@@ -228,12 +254,14 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
         $currentPage = 0,
         $requestedPage = 0
     ) {
+
+        $this->loadQuestionnaire();
+
         //requestedPage => next Page to be shown
         $this->questionnaire->setRequestedPage($requestedPage);
         //currentPage => current Page, just send to this action
         $this->questionnaire->setPage($currentPage);
-        //get all questions for this questionnaire
-        $this->questionnaire->setQuestions($this->questionRepository->findAllForPid($GLOBALS['TSFE']->id));
+
         if ($this->user) {
             $newResult->setFeUser($this->user);
         }
@@ -269,17 +297,14 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
                 $link = $this->uriBuilder->build();
                 $this->redirectToUri($link);
             } else {
-                 $this->forward('end', NULL, NULL, array(
+                 $this->forward('end', NULL, NULL, [
                     'result' => $newResult
-                ));
+                 ]);
             }
             //if not last page, set all stuff for questionnaire-page
         } else {
             //set the next page
             $this->questionnaire->setPage($requestedPage);
-            //get questions
-            $questions = $this->questionRepository->findAllForPid($GLOBALS['TSFE']->id);
-            $this->questionnaire->setQuestions($questions);
 
             if (is_object($this->signalResult)) {
                 if ($this->signalResult->getCrdate() === 0) {
@@ -298,7 +323,7 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
 
             $this->signalSlotDispatcher->dispatch(__CLASS__, 'createAction', [$this]);
 
-            $this->view->assign('questions', $this->questionnaire->getQuestionsForPage($requestedPage));
+            $this->view->assign('questions', $this->questionnaire->getQuestionsByPage($requestedPage));
             $this->view->assign('questionnaire', $this->questionnaire);
             $this->view->assign('newResult', $newResult);
         }
@@ -500,7 +525,7 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
 
         /** @var ResultQuestion $fQuestion */
         foreach ($formQuestions as $fQuestion) {
-            if ($fQuestion->getQuestion() && $fQuestion->getQuestion()->getType() === 'WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\Question') {
+            if ($fQuestion->getQuestion() && $fQuestion->getQuestion()->getType() === Question::class) {
                 $dbResult->addOrUpdateQuestion($fQuestion);
             }
         }
@@ -552,6 +577,12 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
 
     /**
      * checks the logged in autchode
+     * @return bool
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentNameException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
     public function checkAuthCode()
     {
@@ -574,7 +605,6 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
             }
         } elseif ($this->request->hasArgument('code')) {
             $codes = $this->authCodeRepository->findByAuthCode($this->request->getArgument('code'));
-            //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($codes[0], 'code');	exit;
             if ($codes[0]) {
                 $this->authCode = $codes[0];
                 if (!$this->authCode->getFirstactive()) {
@@ -605,6 +635,7 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
      *
      * @return void
      * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     public function checkMaxParticipations()
     {
@@ -614,7 +645,7 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
             } elseif ($this->settings['accessType'] === 'feUser') {
                 $counted = $this->resultRepository->findByFeUser($this->user)->count();
             } elseif ($this->settings['accessType'] === 'authCode') {
-                $counted = $this->resultRepository->findByAuthCode($this->authCode->getUid())->count();
+                $counted = $this->resultRepository->findByAuthCode($this->authCode)->count();
             }
             if ($counted >= $this->settings['participations']['max']) {
                 $this->forward('maxParticipations');
@@ -637,12 +668,14 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
      *
      * @param Result $result
      * @return Result
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
     private function checkRestart(Result $result)
     {
         if ($this->settings['accessType'] !== 'free' && $this->settings['restart']) {
             //fetch the last participation of the user
             if ($result->getFeUser()) {
+                /** @var Result[] $parts */
                 $parts = $this->resultRepository->findByFeUser($result->getFeUser())->toArray();
                 if (count($parts) > 0) {
                     $last = $parts[count($parts) - 1];
@@ -677,13 +710,14 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
      */
     public function endAction(Result $result = null)
     {
-        if (!$result) {
+        if ($result === null) {
             $result = $this->resultRepository->findByUid($this->request->getArgument('result'));
         }
-        $questionnaire = $this->questionnaireRepository->findByStoragePid($result->getPid());
+
+        $this->loadQuestionnaire();
 
         $this->view->assign('result', $result);
-        $this->view->assign('questionnaire', $questionnaire);
+        $this->view->assign('questionnaire', $this->questionnaire);
         $this->signalSlotDispatcher->dispatch(__CLASS__, 'endAction', [$result, $this]);
     }
 
@@ -700,7 +734,7 @@ class ResultController extends \WapplerSystems\WsQuestionnaire\Controller\Abstra
             $pages = [];
             // seperate all questions for each page
             foreach ($questions as $question) {
-                if ($question instanceof \WapplerSystems\WsQuestionnaire\Domain\Model\QuestionType\PageBreak) {
+                if ($question instanceof PageBreak) {
                     $page++;
                     continue;
                 }

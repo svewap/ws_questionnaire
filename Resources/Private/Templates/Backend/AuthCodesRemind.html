@@ -1,18 +1,22 @@
-<f:layout name="Backend" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+	<f:layout name="Backend" />
 
-<f:section name="main">
-	<f:be.container
-			pageTitle="Ke Questionnaire Backend Modules"
-			enableClickMenu="false"
-			loadJQuery="true"
-			includeCssFiles="{0: '{f:uri.resource(path:\'CSS/Backend.css\')}'}">
-		<f:flashMessages />
-		<h3><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:header" /> "{plugin.header}"</h3>
-		<hr />
-		<f:render partial="Backend/AuthCodesMenu" arguments="{plugin:plugin}"/>
-		<hr />
-		<b><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:mail.remind" /></b><br />
-		<f:render partial="Backend/SendReminderMails" arguments="{plugin:plugin,preview:preview,authCodes:authCodes}"/>
-		<hr />
-	</f:be.container>
-</f:section>
+	<f:section name="main">
+		<f:be.container
+				pageTitle="WS Questionnaire Backend Modules"
+				enableClickMenu="false"
+				loadJQuery="true"
+				includeCssFiles="{0: '{f:uri.resource(path:\'CSS/Backend.css\')}'}">
+			<f:flashMessages />
+			<h3><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:header" /> "{plugin.header}"</h3>
+			<hr />
+			<f:render partial="Backend/AuthCodesMenu" arguments="{plugin:plugin}"/>
+			<hr />
+			<b><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_authcode.xml:mail.remind" /></b><br />
+			<f:render partial="Backend/SendReminderMails" arguments="{plugin:plugin,preview:preview,authCodes:authCodes}"/>
+			<hr />
+		</f:be.container>
+	</f:section>
+</div>

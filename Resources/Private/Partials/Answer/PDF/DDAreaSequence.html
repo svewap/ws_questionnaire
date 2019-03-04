@@ -1,14 +1,14 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
-	<div class="keqAnswerWrap keqDDAreaSequence keqDDArea">
-		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+	<div class="wsqAnswerWrap wsqDDAreaSequence wsqDDArea">
+		<div class="answerInfo" id="wsq{question.uid}a{answer.uid}info"></div>
 
-		<div class="keq-dd-area-container">
+		<div class="wsq-dd-area-container">
 			<qu:ddImage answer="{answer}" question="{question}" as="area">
-				<div value="{area.counter}" class="keq-placeholder" style="width: {f:if(condition: area.image.height, then: area.image.height, else: '100')}px; height: {f:if(condition: area.image.height, then: area.image.height, else: '100')}px">&nbsp;</div>
+				<div value="{area.counter}" class="wsq-placeholder" style="width: {f:if(condition: area.image.height, then: area.image.height, else: '100')}px; height: {f:if(condition: area.image.height, then: area.image.height, else: '100')}px">&nbsp;</div>
 			</qu:ddImage>
 		</div>
-		<div class="keq-moveable-container" style="min-height:{f:if(condition: answer.height, then: answer.height, else: '100')}px">
+		<div class="wsq-moveable-container" style="min-height:{f:if(condition: answer.height, then: answer.height, else: '100')}px">
 			<qu:ddImage answer="{answer}" question="{question}" as="dd">
 				<f:if condition="{dd.image.image}">
 					<f:then>

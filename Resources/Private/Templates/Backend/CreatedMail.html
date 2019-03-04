@@ -1,7 +1,11 @@
-<f:layout name="Backend" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+	<f:layout name="Backend" />
 
-<f:section name="main">
-	<f:format.html>{text.before}</f:format.html>
-	{authCode.authCode}
-	<f:format.html>{text.after}</f:format.html>	
-</f:section>
+	<f:section name="main">
+		<f:format.html>{text.before}</f:format.html>
+		{authCode.authCode}
+		<f:format.html>{text.after}</f:format.html>
+	</f:section>
+</div>

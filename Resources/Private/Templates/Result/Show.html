@@ -1,32 +1,35 @@
-{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
-<f:layout name="Default" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+    <f:layout name="Default" />
 
-<f:section name="main">
-	<f:flashMessages />
-    <div id="keqViewResult">
-        <div class="disableLayer"></div>
-        <f:if condition="{result}">
-            <f:for each="{questionnaire.questions}" as="question">
-                <f:if condition="{question.template}">
-                    <f:then>
-                        <qu:renderPartial partial="{question.template}" arguments="{question: question, newResult: result}" />
-                    </f:then>
-                    <f:else>
-                        <f:render partial="Question/{question.shortType}" arguments="{question: question, newResult: result}" />
-                    </f:else>
-                </f:if>			
-            </f:for>
-        </f:if>
-	</div>
-    
-<qu:JavaScript>
-	disableElements($('#keqViewResult').children());
+    <f:section name="main">
+        <f:flashMessages />
+        <div id="wsqViewResult">
+            <div class="disableLayer"></div>
+            <f:if condition="{result}">
+                <f:for each="{questionnaire.questions}" as="question">
+                    <f:if condition="{question.template}">
+                        <f:then>
+                            <qu:renderPartial partial="{question.template}" arguments="{question: question, newResult: result}" />
+                        </f:then>
+                        <f:else>
+                            <f:render partial="Question/{question.shortType}" arguments="{question: question, newResult: result}" />
+                        </f:else>
+                    </f:if>
+                </f:for>
+            </f:if>
+        </div>
 
-    function disableElements(el) {
-        for (var i = 0; i < el.length; i++) {
-            el[i].disabled = true;
-            disableElements(el[i].children);
-        }
-    }
-</qu:JavaScript>
-</f:section>
+        <qu:JavaScript>
+            disableElements($('#wsqViewResult').children());
+
+            function disableElements(el) {
+                for (var i = 0; i < el.length; i++) {
+                    el[i].disabled = true;
+                    disableElements(el[i].children);
+                }
+            }
+        </qu:JavaScript>
+    </f:section>
+</div>

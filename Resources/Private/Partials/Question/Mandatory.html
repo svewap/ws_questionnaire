@@ -1,0 +1,23 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+
+	<f:section name="Render">
+
+		<div class="keqMandatory" id="keqMandatory{question.uid}show">
+			<f:if condition="{question.isMandatory}">
+				<f:then>
+					<f:form.hidden name="questionMandatory[]" id="keqMandatory{question.uid}" value="1" />
+				</f:then>
+				<f:else>
+					<f:form.hidden name="questionMandatory[]" id="keqMandatory{question.uid}" value="0" />
+				</f:else>
+			</f:if>
+			<f:if condition="{question.mustBeCorrect}">
+				<f:then>{f:translate(key: 'mustBeCorrect')}</f:then>
+			</f:if>
+		</div>
+
+	</f:section>
+
+</div>

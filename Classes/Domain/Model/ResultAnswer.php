@@ -48,6 +48,7 @@ class ResultAnswer extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Answer
      *
      * @var \WapplerSystems\WsQuestionnaire\Domain\Model\Answer
+     * @lazy
      */
     protected $answer;
 

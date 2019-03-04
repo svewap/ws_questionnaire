@@ -1,9 +1,9 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
-<div class="keqRangeWrap">
-	<div class="keqRangeTitle">{range.title}</div>
-	<div class="keqRangeContent">
+<div class="wsqRangeWrap">
+	<div class="wsqRangeTitle">{range.title}</div>
+	<div class="wsqRangeContent">
 		<f:if condition="{range.assessmentgroup}">
-			<div class="keqRangeTitle">{range.assessmentgroup.title}</div>
+			<div class="wsqRangeTitle">{range.assessmentgroup.title}</div>
 			<f:format.html>{range.assessmentgroup.text}</f:format.html>
 		</f:if>
 		<f:if condition="{range.text}">

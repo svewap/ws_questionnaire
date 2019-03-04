@@ -1,0 +1,16 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+
+    <f:section name="Content">
+
+        <f:form.hidden class="{question.uid}_originalRequestedPage" name="originalRequestedPage" value="" />
+        <qu:JavaScript>
+            jQuery('.{question.uid}_originalRequestedPage').val(jQuery('.requestedPage').val());
+        </qu:JavaScript>
+        <qu:conditionalJump question="{question}" result="{newResult}">
+            {question.javascript}
+        </qu:conditionalJump>
+
+    </f:section>
+</div>

@@ -1,21 +1,21 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
-	<div class="keqAnswerWrap keqAnswerClozeTextDD" id="keq{question.uid}a{answer.uid}">
+	<div class="wsqAnswerWrap wsqAnswerClozeTextDD" id="wsq{question.uid}a{answer.uid}">
 		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
-		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
-		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+		<f:form.hidden name="answerErrors[]" id="wsqAnswerError{answer.uid}" value="0" />
+		<div class="answerInfo" id="wsq{question.uid}a{answer.uid}info"></div>
 		<qu:clozeText answer="{answer}" question="{question}" as="boxAnswer">
-            <span id="keq{question.uid}placeholder{boxAnswer.uid}parent">
+            <span id="wsq{question.uid}placeholder{boxAnswer.uid}parent">
             <f:alias map="{boxResultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: boxAnswer.uid)}'}">
                 <f:form.hidden name="newResult[questions][{question.uid}][answers][{boxAnswer.uid}][answer]" value="{boxAnswer.uid}" />
 				<f:form.hidden name="newResult[questions][{question.uid}][answers][{boxAnswer.uid}][value]" value="{f:if(condition: boxResultAnswer.value, then: boxResultAnswer.value)}" />
-				<span id="keq{question.uid}placeholder{boxAnswer.uid}" class="keq-placeholder cloze-text ui-droppable" answer="{boxAnswer.uid}" question="{question.uid}"></span>
+				<span id="wsq{question.uid}placeholder{boxAnswer.uid}" class="wsq-placeholder cloze-text ui-droppable" answer="{boxAnswer.uid}" question="{question.uid}"></span>
 			</f:alias>
             </span>
 		</qu:clozeText>
-		<div class="keq-moveable-container">
+		<div class="wsq-moveable-container">
 			<qu:ddClozeTerm answer="{answer}" question="{question}" as="term">
-                <div id="keq{question.uid}moveable{term.counter}" class="keq-moveable moveable-text ui-draggable">{term.text}</div>
+                <div id="wsq{question.uid}moveable{term.counter}" class="wsq-moveable moveable-text ui-draggable">{term.text}</div>
 			</qu:ddClozeTerm>
 		</div>
 	</div>
@@ -26,20 +26,20 @@
 	/*
 	 * When the length of all input field values is > 0
 	 */
-	jQuery( "#keq{question.uid}a{answer.uid} input[type=hidden]" ).on( "change", function() {
-		check_keq{question.uid}a{answer.uid}();
+	jQuery( "#wsq{question.uid}a{answer.uid} input[type=hidden]" ).on( "change", function() {
+		check_wsq{question.uid}a{answer.uid}();
 	});
-	check_keq{question.uid}a{answer.uid} = function() {
+	check_wsq{question.uid}a{answer.uid} = function() {
 		var length = 0;
-		jQuery("#keq{question.uid}a{answer.uid} input[type=hidden]").each(function(){
+		jQuery("#wsq{question.uid}a{answer.uid} input[type=hidden]").each(function(){
 			if (!jQuery.isNumeric(jQuery(this).val())) {
 				length += jQuery(this).val().length;
 			}
 		});
-		if (length > 0) jQuery("#keqMandatory{question.uid}").val(0);
-		else jQuery("#keqMandatory{question.uid}").val(1);		
+		if (length > 0) jQuery("#wsqMandatory{question.uid}").val(0);
+		else jQuery("#wsqMandatory{question.uid}").val(1);
 		checkMandatory();
 	}
-	check_keq{question.uid}a{answer.uid}();
+	check_wsq{question.uid}a{answer.uid}();
 </qu:JavaScript>
 </f:if>

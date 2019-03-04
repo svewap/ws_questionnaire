@@ -1,15 +1,15 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
-	<div class="keqAnswerWrap keqRankingOrder keqRanking">
+	<div class="wsqAnswerWrap wsqRankingOrder wsqRanking">
 		<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
-		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
-		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+		<f:form.hidden name="answerErrors[]" id="wsqAnswerError{answer.uid}" value="0" />
+		<div class="answerInfo" id="wsq{question.uid}a{answer.uid}info"></div>
         <ul id="sortable_{answer.uid}">
     	<qu:rankingTerm answer="{answer}" question="{question}" as="term" result="{newResult}">
-            <li id="keq{question.uid}ranking{term.order}" class="ui-state-default keqRankingTerm" answer="{term.uid}" question="{question.uid}">
+            <li id="wsq{question.uid}ranking{term.order}" class="ui-state-default wsqRankingTerm" answer="{term.uid}" question="{question.uid}">
                 <f:alias map="{boxResultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: term.uid)}'}">
                     <f:form.hidden name="newResult[questions][{question.uid}][answers][{term.uid}][answer]" value="{term.uid}" />
-                    <f:form.hidden class="keqRangeTermValue" name="newResult[questions][{question.uid}][answers][{term.uid}][value]" value="{f:if(condition: boxResultAnswer.value, then: boxResultAnswer.value, else: term.order)}" />
+                    <f:form.hidden class="wsqRangeTermValue" name="newResult[questions][{question.uid}][answers][{term.uid}][value]" value="{f:if(condition: boxResultAnswer.value, then: boxResultAnswer.value, else: term.order)}" />
                 </f:alias>
                 <f:if condition="{term.image}">
                     <f:then>
@@ -27,10 +27,10 @@
 jQuery(function() {
 	var sortable_id = "#sortable_{answer.uid}";
 	jQuery( sortable_id ).sortable({
-		placeholder: "keqRankingOrderPlaceholder",
+		placeholder: "wsqRankingOrderPlaceholder",
 		stop: function (event, ui){
 			jQuery.each(jQuery(this).children(), function (index,value){
-				jQuery(this).children('.keqRangeTermValue').val(jQuery(this).index()+1).trigger('change');
+				jQuery(this).children('.wsqRangeTermValue').val(jQuery(this).index()+1).trigger('change');
 			});                    
 		}
 	});
@@ -43,11 +43,11 @@ jQuery(function() {
 	/*
 	 * Rankings are always answered
 	 */
-	check_keq{question.uid}a{answer.uid} = function() {
+	check_wsq{question.uid}a{answer.uid} = function() {
 		/*<![CDATA[*//*]]>*/
-                jQuery("#keqMandatory{question.uid}").val(0);		
+                jQuery("#wsqMandatory{question.uid}").val(0);
                 checkMandatory();
 	}
-	check_keq{question.uid}a{answer.uid}();
+	check_wsq{question.uid}a{answer.uid}();
 </qu:JavaScript>
 </f:if>

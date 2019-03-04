@@ -1,64 +1,50 @@
-<f:layout name="Default" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+     xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+    <f:layout name="Default" />
 
-This Template is responsible for creating a table of domain objects.
+    <f:section name="main">
+        <f:flashMessages />
 
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        List.html: keep
+        <ul>
+        <f:for each="{questionnaires}" as="questionnaire">
+            <li class="">
 
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+                <f:link.page class="{f:if(condition:'{settings.showParticipated} == true && {questionnaire.userResults -> f:count()} > 0',then:'font-bold')}" pageUid="{questionnaire.pid}">{questionnaire.header}</f:link.page><br />
 
-<f:section name="main">
-	<f:flashMessages />
-    <ul>
-    <f:for each="{questionnaires}" as="questionnaire">
-        <li>
-            <f:if condition="{settings.showParticipated}">
-                <f:if condition="{questionnaire.userResults}">
-                    <b>
-                </f:if>
-            </f:if>
-            <f:link.page pageUid="{questionnaire.pid}">{questionnaire.header}</f:link.page><br />
-            <f:if condition="{settings.showParticipated}">
-                <f:if condition="{questionnaire.userResults}">
-                    </b>
-                </f:if>
-            </f:if>
-            <f:if condition="{settings.showParticipations}">
-            <ul>
-                <f:for each="{questionnaire.userResults}" as="result">
-                    <li>
-                        <f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:qList.resultFrom" />
-                        <f:if condition="{settings.singleView}">
-                            <f:then>
-                                <f:link.action action="show" controller="Result" pluginName="View" pageUid="{settings.singleView}" arguments="{result:result}">
+                <f:if condition="{settings.showParticipations}">
+                <ul>
+                    <f:for each="{questionnaire.userResults}" as="result">
+                        <li>
+                            <f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:qList.resultFrom" />
+                            <f:if condition="{settings.singleView}">
+                                <f:then>
+                                    <f:link.action action="show" controller="Result" pluginName="View" pageUid="{settings.singleView}" arguments="{result:result}">
+                                        <f:format.date format="d.m.y">{result.finished}</f:format.date>
+                                    </f:link.action>
+                                </f:then>
+                                <f:else>
                                     <f:format.date format="d.m.y">{result.finished}</f:format.date>
-                                </f:link.action>
-                            </f:then>
-                            <f:else>
-                                <f:format.date format="d.m.y">{result.finished}</f:format.date>
-                            </f:else>
-                        </f:if>
-                        <f:if condition="{settings.PDFdownload}">
-                                <div class="keq_fePDFdownload">
-                                        <f:translate key="PDFdownload.info" />
-                                        <ul>
-                                                <f:for each="{PDFdownload}" as="download">
-                                                        <li>
-                                                                <f:link.action target="_blank" action="downloadPdf" controller="Export" arguments="{questionnaire:questionnaire.uid,pdfType:download,selectedResult:result.uid}"><f:translate key="PDFdownload.{download}" /></f:link.action>
-                                                        </li>
-                                                </f:for>
-                                        </ul>
-                                </div>
-                        </f:if>
-                    </li>
-                </f:for>
-            </ul>
-            </f:if>
-        </li>
-    </f:for>
-    </ul>
-</f:section>
+                                </f:else>
+                            </f:if>
+                            <f:if condition="{settings.PDFdownload}">
+                                    <div class="wsq_fePDFdownload">
+                                            <f:translate key="PDFdownload.info" />
+                                            <ul>
+                                                    <f:for each="{PDFdownload}" as="download">
+                                                            <li>
+                                                                    <f:link.action target="_blank" action="downloadPdf" controller="Export" arguments="{questionnaire:questionnaire.uid,pdfType:download,selectedResult:result.uid}"><f:translate key="PDFdownload.{download}" /></f:link.action>
+                                                            </li>
+                                                    </f:for>
+                                            </ul>
+                                    </div>
+                            </f:if>
+                        </li>
+                    </f:for>
+                </ul>
+                </f:if>
+            </li>
+        </f:for>
+        </ul>
+    </f:section>
+</div>

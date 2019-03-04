@@ -1,11 +1,11 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
 	<f:form.hidden name="newResult[questions][{question.uid}][answers][{answer.uid}][answer]" value="{answer.uid}" />
-	<dl class="keqAnswer input">
-		<f:form.hidden name="answerErrors[]" id="keqAnswerError{answer.uid}" value="0" />
-		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
+	<dl class="wsqAnswer input">
+		<f:form.hidden name="answerErrors[]" id="wsqAnswerError{answer.uid}" value="0" />
+		<div class="answerInfo" id="wsq{question.uid}a{answer.uid}info"></div>
 		<f:if condition="{answer.preText}"><dt>{answer.preText}&nbsp;</dt></f:if>
-		<dt><f:form.textarea id="keq{question.uid}a{answer.uid}" rows="{f:if(condition: answer.height, then: answer.height, else: '10')}" cols="{f:if(condition: answer.width, then: answer.width, else: '30')}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{f:if(condition: resultAnswer.value, then: resultAnswer.value, else: answer.inText)}" /></dt>
+		<dt><f:form.textarea id="wsq{question.uid}a{answer.uid}" rows="{f:if(condition: answer.height, then: answer.height, else: '10')}" cols="{f:if(condition: answer.width, then: answer.width, else: '30')}" name="newResult[questions][{question.uid}][answers][{answer.uid}][value]" value="{f:if(condition: resultAnswer.value, then: resultAnswer.value, else: answer.inText)}" /></dt>
 		<f:if condition="{answer.postText}"><dt>&nbsp;{answer.postText}</dt></f:if>
 	</dl>
 </f:alias>
@@ -13,7 +13,7 @@
 	/*
 	 * Checks the Answer for the inside Text and replaces it with zero if focused
 	 */
-	jQuery("#keq{question.uid}a{answer.uid}").focus( function() {
+	jQuery("#wsq{question.uid}a{answer.uid}").focus( function() {
 		if(this.value=='{answer.inText}') this.value='';
 	});
 </qu:JavaScript>
@@ -22,19 +22,19 @@
 	/*
 	 * As soon as a Radio Button on clicked mandatory is fullfilled
 	 */
-	jQuery( "#keq{question.uid}a{answer.uid}" ).on( "blur", function() {
-		check_keq{question.uid}a{answer.uid}();
+	jQuery( "#wsq{question.uid}a{answer.uid}" ).on( "blur", function() {
+		check_wsq{question.uid}a{answer.uid}();
 	});
-	check_keq{question.uid}a{answer.uid} = function() {
+	check_wsq{question.uid}a{answer.uid} = function() {
 		var length = 0;
-		jQuery("#keq{question.uid} textarea").each(function(){
+		jQuery("#wsq{question.uid} textarea").each(function(){
 			length += jQuery(this).val().length;
 		});
-		if (length > 0) jQuery("#keqMandatory{question.uid}").val(0);
-		else jQuery("#keqMandatory{question.uid}").val(1);		
+		if (length > 0) jQuery("#wsqMandatory{question.uid}").val(0);
+		else jQuery("#wsqMandatory{question.uid}").val(1);
 		checkMandatory();
 	}
-	check_keq{question.uid}a{answer.uid}();
+	check_wsq{question.uid}a{answer.uid}();
 </qu:JavaScript>
 </f:if>
 <!-- Javascript to check the Validationtypes for the InputField-->
@@ -43,7 +43,7 @@
 	/*
 	 * Checks the Answer for the type of the chosen validation
 	 */
-	jQuery("#keq{question.uid}a{answer.uid}").blur( function() {
+	jQuery("#wsq{question.uid}a{answer.uid}").blur( function() {
 		var a_id = {answer.uid};
 		var val = jQuery(this).val();
 		var this_id = jQuery(this).attr('id');
@@ -54,7 +54,7 @@
 			async: false,
 			success: function(data){
 				xdata = jQuery.parseJSON(jQuery.trim(data));
-				jQuery("#keqAnswerError"+a_id).val(xdata.error);
+				jQuery("#wsqAnswerError"+a_id).val(xdata.error);
 				jQuery("#"+this_id+"info").html(xdata.info);
 
 				checkAnswerErrors();

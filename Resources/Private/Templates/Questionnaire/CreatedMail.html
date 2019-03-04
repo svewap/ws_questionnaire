@@ -1,10 +1,14 @@
-<f:layout name="Backend" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+	<f:layout name="Backend" />
 
-<f:section name="main">
-	<f:format.html>{text.before}</f:format.html>
-	{authCode.authCode}
-	<f:format.html>{text.after}</f:format.html>
-	<f:link.action action="new" controller="Result" pluginName="Questionnaire" pageUid="{plugin.pid}" target="_blank" extensionName="WsQuestionnaire" absolute="TRUE" arguments="{code:authCode.authCode}">
-		<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_authCode.xml:mail.directLink" />
-	</f:link.action>
-</f:section>
+	<f:section name="main">
+		<f:format.html>{text.before}</f:format.html>
+		{authCode.authCode}
+		<f:format.html>{text.after}</f:format.html>
+		<f:link.action action="new" controller="Result" pluginName="Questionnaire" pageUid="{plugin.pid}" target="_blank" extensionName="WsQuestionnaire" absolute="TRUE" arguments="{code:authCode.authCode}">
+			<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang_mod_authCode.xml:mail.directLink" />
+		</f:link.action>
+	</f:section>
+</div>

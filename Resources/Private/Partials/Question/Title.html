@@ -1,0 +1,12 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+
+	<f:section name="Render">
+
+		<f:if condition="{question.showTitle}"><h5 class="keqQuestionTitleline">{question.title} <f:if condition="{question.isMandatory}"><span class="mandatory">*</span></f:if> </h5></f:if>
+		<f:format.html>{question.text}</f:format.html>
+		<f:if condition="{question.helpText}"><f:render partial="Question/HelpText" arguments="{helpText:question.helpText}" /></f:if>
+
+	</f:section>
+</div>

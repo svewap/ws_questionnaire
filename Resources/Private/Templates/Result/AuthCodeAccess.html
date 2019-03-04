@@ -1,10 +1,15 @@
-<f:layout name="Default" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+	<f:layout name="Default" />
 
-<f:section name="main">
-	<f:flashMessages />
-	<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:authCodeAccess.info" /><br />
-	<f:form action="new" controller="Result" method="post">
-		<f:form.textfield name="code"></f:form.textfield>
-		<f:form.submit value="{f:translate(key: 'authCodeAccess.submit')}" />
-	</f:form>
-</f:section>
+	<f:section name="main">
+		<f:flashMessages />
+		<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:authCodeAccess.info" /><br />
+		<f:form action="new" controller="Result" method="post">
+			<f:form.textfield name="code" />
+			<f:form.submit value="{f:translate(key: 'authCodeAccess.submit')}" />
+		</f:form>
+	</f:section>
+
+</div>

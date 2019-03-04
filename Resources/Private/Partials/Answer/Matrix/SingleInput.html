@@ -1,7 +1,7 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultCol: '{qu:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, clone: clone)}'}">
-    <div class="keqAnswerWrap keqAnswerSingleInput">
-        <f:form.hidden name="answerErrors[]" id="keqAnswerErrorc{colum.uid}r{row.uid}" value="0" />
+    <div class="wsqAnswerWrap wsqAnswerSingleInput">
+        <f:form.hidden name="answerErrors[]" id="wsqAnswerErrorc{colum.uid}r{row.uid}" value="0" />
         <f:if condition="{type} == 'cloned'">
             <f:then>
                 <f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][{column.uid}][text][{clone}]" value="1" />
@@ -12,9 +12,9 @@
             <f:else>
                 <f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][answer]" value="{row.uid}" />                
                 <f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][text]" value="1" />
-                <div class="answerInfo" id="keq{question.uid}c{colum.uid}r{row.uid}info"></div>
+                <div class="answerInfo" id="wsq{question.uid}c{colum.uid}r{row.uid}info"></div>
                 <f:if condition="{column.preText}"><label>{column.preText}</label></f:if>
-                <div><f:form.textfield id="keq{question.uid}c{colum.uid}r{row.uid}" name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][value]" value="{f:if(condition: resultCol.value, then: resultCol.value, else: answer.inText)}" size="{f:if(condition: column.width, then: column.width, else: '30')}" maxlength="{f:if(condition: column.maxChars, then: column.maxChars, else: '255')}" /></div>
+                <div><f:form.textfield id="wsq{question.uid}c{colum.uid}r{row.uid}" name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][value]" value="{f:if(condition: resultCol.value, then: resultCol.value, else: answer.inText)}" size="{f:if(condition: column.width, then: column.width, else: '30')}" maxlength="{f:if(condition: column.maxChars, then: column.maxChars, else: '255')}" /></div>
                 <f:if condition="{column.postText}"><div class="postText">{column.postText}</div></f:if>
             </f:else>
         </f:if>
@@ -26,7 +26,7 @@
 	/*
 	 * Checks the Answer for the type of the chosen validation
 	 */
-	jQuery("#keq{question.uid}c{colum.uid}r{row.uid}").blur( function() {
+	jQuery("#wsq{question.uid}c{colum.uid}r{row.uid}").blur( function() {
 		var c_id = {column.uid};
 		var r_id = {row.uid};
 		var val = jQuery(this).val();
@@ -38,7 +38,7 @@
 			async: false,
 			success: function(data){
 				xdata = jQuery.parseJSON(jQuery.trim(data));
-				jQuery("#keqAnswerErrorc"+c_id+"r"+r_id).val(xdata.error);
+				jQuery("#wsqAnswerErrorc"+c_id+"r"+r_id).val(xdata.error);
 				jQuery("#"+this_id+"info").html(xdata.info);
 
 				checkAnswerErrors();

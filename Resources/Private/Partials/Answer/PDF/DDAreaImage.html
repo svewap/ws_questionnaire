@@ -1,13 +1,13 @@
 {namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
 <f:alias map="{resultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: answer.uid)}'}">
-	<div class="keqAnswerWrap keqDDArea">
-		<div class="answerInfo" id="keq{question.uid}a{answer.uid}info"></div>
-		<div class="keq-dd-area-container">
+	<div class="wsqAnswerWrap wsqDDArea">
+		<div class="answerInfo" id="wsq{question.uid}a{answer.uid}info"></div>
+		<div class="wsq-dd-area-container">
 			<qu:ddAreaExport answer="{answer}" question="{question}" result="{newResult}" as="exportImage">
 				<f:image src="typo3temp/ws_questionnaire/{exportImage}" alt="test" />
 			</qu:ddAreaExport>
 		</div>
-		<div class="keq-moveable-container" style="min-height:{f:if(condition: answer.height, then: answer.height, else: '100')}px">
+		<div class="wsq-moveable-container" style="min-height:{f:if(condition: answer.height, then: answer.height, else: '100')}px">
             <qu:ddImage answer="{answer}" question="{question}" as="dd">
 				<f:alias map="{boxResultAnswer: '{qu:getResultAnswer(result: newResult, questionUid: question.uid, answerUid: dd.image.uid)}'}">
 					<f:if condition="{boxResultAnswer.value}">

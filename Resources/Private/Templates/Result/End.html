@@ -1,54 +1,55 @@
-{namespace qu=WapplerSystems\WsQuestionnaire\ViewHelpers}
-<f:layout name="Default" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+	<f:layout name="Default" />
 
-<f:section name="main">
-	<f:flashMessages />
-	<div id="keq_loadingDiv">Lädt!</div>
-	<f:if condition="{settings.endText}">
-		<f:then>
-			<f:format.html>{settings.endText}</f:format.html>
-		</f:then>
-		<f:else>
-			<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:endText.standard" />
-		</f:else>
-	</f:if>
-	<f:if condition="{settings.hidePoints} == 0">
-		<f:if condition="{result.maxPoints} > 0">
-			<f:render partial="Result/Points" arguments="{result:result, settings: settings, average:average, assessmentGroups:assessmentGroups}" />
-			<qu:Range questionnaire="{questionnaire}" result="{result}" as="range">
-				<f:render partial="Result/Range" arguments="{range:range}" />
-			</qu:Range>
+	<f:section name="main">
+		<f:flashMessages />
+
+		<div id="wsq_loadingDiv"><f:translate key="loading" /></div>
+		<f:if condition="{settings.endText}">
+			<f:then>
+				<f:format.html>{settings.endText}</f:format.html>
+			</f:then>
+			<f:else>
+				<f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:endText.standard" />
+			</f:else>
 		</f:if>
-	</f:if>
-	<f:if condition="{settings.PDFdownload}">
-		<div class="keq_fePDFdownload">
-			<f:translate key="PDFdownload.info" />
-			<ul>
-				<f:for each="{PDFdownload}" as="download">
-					<li>
-						<f:link.action target="_blank" action="downloadPdf" controller="Export" arguments="{questionnaire:questionnaire.uid,pdfType:download,selectedResult:result.uid}"><f:translate key="PDFdownload.{download}" /></f:link.action>
-					</li>
-				</f:for>
-			</ul>
-		</div>
-	</f:if>
-	<f:if condition="{settings.showCorrectQuotaPie}">
-		<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'jqPlot/jquery.jqplot.css',extensionName:'ws_questionnaire')}">
-		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/jquery.jqplot.min.js',extensionName:'ws_questionnaire')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.canvasTextRenderer.min.js',extensionName:'ws_questionnaire')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.pieRenderer.min.js',extensionName:'ws_questionnaire')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.categoryAxisRenderer.min.js',extensionName:'ws_questionnaire')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.pointLabels.min.js',extensionName:'ws_questionnaire')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.cursor.min.js',extensionName:'ws_questionnaire')}"></script>
-		<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.highlighter.min.js',extensionName:'ws_questionnaire')}"></script>
-	
-		<br /><br />
-		<div class="quotaChartHeader"><f:translate key="quotaPie.title" /></div>
-		<div id="chart_quotaPie" style="height:300px; width:500px;"></div>
-		<qu:JavaScript alwaysreplace="quotaPie">
-			//quotaPie_start
-			{quotaPie}
-			//quotaPie_end
-		</qu:JavaScript>
-	</f:if>
-</f:section>
+		<f:if condition="{settings.hidePoints} == 0">
+			<f:if condition="{result.maxPoints} > 0">
+				<f:render partial="Result/Points" arguments="{result:result, settings: settings, average:average, assessmentGroups:assessmentGroups}" />
+				<qu:Range questionnaire="{questionnaire}" result="{result}" as="range">
+					<f:render partial="Result/Range" arguments="{range:range}" />
+				</qu:Range>
+			</f:if>
+		</f:if>
+		<f:if condition="{settings.PDFdownload}">
+			<div class="wsq_fePDFdownload">
+				<f:translate key="PDFdownload.info" />
+				<ul>
+					<f:for each="{PDFdownload}" as="download">
+						<li>
+							<f:link.action target="_blank" action="downloadPdf" controller="Export" arguments="{questionnaire:questionnaire.uid,pdfType:download,selectedResult:result.uid}"><f:translate key="PDFdownload.{download}" /></f:link.action>
+						</li>
+					</f:for>
+				</ul>
+			</div>
+		</f:if>
+		<f:if condition="{settings.showCorrectQuotaPie}">
+			<link rel="stylesheet" type="text/css" href="{f:uri.resource(path:'jqPlot/jquery.jqplot.css',extensionName:'ws_questionnaire')}">
+			<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/jquery.jqplot.min.js',extensionName:'ws_questionnaire')}"></script>
+			<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.canvasTextRenderer.min.js',extensionName:'ws_questionnaire')}"></script>
+			<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.pieRenderer.min.js',extensionName:'ws_questionnaire')}"></script>
+			<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.categoryAxisRenderer.min.js',extensionName:'ws_questionnaire')}"></script>
+			<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.pointLabels.min.js',extensionName:'ws_questionnaire')}"></script>
+			<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.cursor.min.js',extensionName:'ws_questionnaire')}"></script>
+			<script type="text/javascript" src="{f:uri.resource(path:'jqPlot/plugins/jqplot.highlighter.min.js',extensionName:'ws_questionnaire')}"></script>
+
+			<br /><br />
+			<div class="quotaChartHeader"><f:translate key="quotaPie.title" /></div>
+			<div id="chart_quotaPie" style="height:300px; width:500px;"></div>
+
+		</f:if>
+	</f:section>
+
+</div>

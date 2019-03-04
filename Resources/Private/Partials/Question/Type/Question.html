@@ -1,0 +1,113 @@
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+
+	<f:section name="Content">
+
+		<qu:checkDependencies question="{question}" result="{newResult}">
+
+			<f:form.hidden property="questions.{question.uid}.question" value="{question.uid}" />
+			<f:form.hidden name="answerErrors[]" id="wsqAnswerErrorQ{question.uid}" value="{f:if(condition:'{question.minAnswers}',then:1,else:0)}" />
+			<f:render partial="Question/Title" section="Render" arguments="{question: question}" />
+
+			<div class="answerInfo" id="wsq{question.uid}info"></div>
+
+			<div class="ws-questionnaire__answer-box">
+				<f:render partial="Question/Mandatory" section="Render" arguments="{question: question}" />
+
+				<f:for each="{question.answers}" as="answer">
+
+					<f:render partial="Answer/{answer.shortType}" arguments="{question:question, answer:answer, newResult:newResult, width:question.columnPercent}" />
+
+				</f:for>
+			</div>
+
+
+			<!-- Check for Max and Min Answers -->
+			<qu:JavaScript>
+				<f:if condition="{question.maxAnswers}">
+			/*
+			 * When an answer in this question is changed, check for max answers
+			 */
+			jQuery( "#wsq{question.uid} input" ).on("click", function() {
+				check_wsqmax{question.uid}(this);
+			});
+			check_wsqmax{question.uid} = function(answer) {
+				var idy = 'wsq{question.uid}';
+				var max = {question.maxAnswers};
+
+				var counter = 0;
+				jQuery.each(jQuery( "#"+idy+" input" ),function(index, value){
+					 switch (jQuery(value).prop('type')){
+						case "checkbox":
+						case "radio":
+								if (jQuery(value).prop('checked')) counter ++;
+							break;
+						default:
+							break;
+					 }
+				});
+
+				if (counter > max) {
+						switch (jQuery(answer).prop('type')){
+							   case "checkbox":
+							   case "radio":
+								jQuery(answer).removeAttr('checked');
+								jQuery('#'+idy+"info").html('<f:translate key="maxAnswers" /> '+max);
+							break;
+							default:
+									   break;
+						}
+				}
+			 };
+			 check_wsqmax{question.uid}();
+				</f:if>
+				<f:if condition="{question.minAnswers}">
+			/*
+			 * When an answer in this question is changed, check for max answers
+			 */
+			 jQuery( "#wsq{question.uid} input" ).on( "click", function() {
+				check_wsqmin{question.uid}();
+			 });
+
+			 check_wsqmin{question.uid}  = function() {
+				var idy = '{question.uid}';
+				 var min = {question.minAnswers};
+
+				 var counter = 0;
+				 jQuery.each(jQuery( "#wsq"+idy+" input" ),function(index, value){
+					 switch (jQuery(value).prop('type')){
+						case "checkbox":
+						case "radio":
+								if (jQuery(value).prop('checked')) counter ++;
+							break;
+						default:
+							break;
+					 }
+				 });
+
+				 if (counter < min) {
+					 switch (jQuery(this).prop('type')){
+						case "checkbox":
+						case "radio":
+								jQuery("#wsqAnswerErrorQ"+idy).val(1);
+								jQuery('#wsq'+idy+"info").html('<f:translate key="minAnswers" /> '+min);
+								checkAnswerErrors();
+							break;
+						default:
+							break;
+					 }
+				 } else {
+					 jQuery("#wsqAnswerErrorQ"+idy).val(0);
+					 jQuery('#wsq'+idy+"info").html('');
+					 checkAnswerErrors();
+				 }
+			};
+			check_wsqmin{question.uid}();
+				</f:if>
+			</qu:JavaScript>
+
+		</qu:checkDependencies>
+
+	</f:section>
+</div>

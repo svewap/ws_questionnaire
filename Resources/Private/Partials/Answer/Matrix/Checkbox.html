@@ -2,8 +2,8 @@
 <f:alias map="{resultRow: '{qu:getResultAnswerMatrix(result: newResult, questionUid: question.uid, rowUid: row.uid, columnUid: column.uid, clone: clone)}'}">
 	<f:if condition="{type} == 'cloned'">
 		<f:then>
-			<f:form.checkbox id="keq{question.uid}c{column.uid}r{row.uid}clone{clone}" name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][{column.uid}][value][{clone}]" value="{column.uid}" checked="{f:if(condition: '{resultRow.value} == {column.uid}', then: 'true', else: 'false')}" />
-			<label for="keq{question.uid}c{column.uid}r{row.uid}clone{clone}" class="radio_checkbox">&nbsp;</label>
+			<f:form.checkbox id="wsq{question.uid}c{column.uid}r{row.uid}clone{clone}" name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][{column.uid}][value][{clone}]" value="{column.uid}" checked="{f:if(condition: '{resultRow.value} == {column.uid}', then: 'true', else: 'false')}" />
+			<label for="wsq{question.uid}c{column.uid}r{row.uid}clone{clone}" class="radio_checkbox">&nbsp;</label>
 			<f:if condition="{column.showTextfield}">
 				<f:then>
 					<f:form.textfield name="newResult[questions][{question.uid}][answers][{row.uid}][cloned][{column.uid}][additionalValue][{clone}]" disabled="disabled" value="{f:if(condition: resultRow.additionalValue, then: resultRow.additionalValue, else: '')}"/>
@@ -17,8 +17,8 @@
 		</f:then>
 		<f:else>
 			<f:form.hidden name="newResult[questions][{question.uid}][answers][{row.uid}][answer]" value="{row.uid}" />
-			<f:form.checkbox id="keq{question.uid}c{column.uid}r{row.uid}" name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][value]" value="{column.uid}" checked="{f:if(condition: '{resultRow.value} == {column.uid}', then: 'true', else: 'false')}" />
-			<label for="keq{question.uid}c{column.uid}r{row.uid}" class="radio_checkbox">&nbsp;</label>			
+			<f:form.checkbox id="wsq{question.uid}c{column.uid}r{row.uid}" name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][value]" value="{column.uid}" checked="{f:if(condition: '{resultRow.value} == {column.uid}', then: 'true', else: 'false')}" />
+			<label for="wsq{question.uid}c{column.uid}r{row.uid}" class="radio_checkbox">&nbsp;</label>
 			<f:if condition="{column.showTextfield}">
 				<f:then>
 					<f:form.textfield name="newResult[questions][{question.uid}][answers][{row.uid}][matrixPos][{column.uid}][additionalValue]" disabled="disabled" value="{f:if(condition: resultRow.additionalValue, then: resultRow.additionalValue, else: '')}"/>
@@ -33,14 +33,14 @@
 	</f:if>
 </f:alias>
 <qu:JavaScript>
-	var idy = 'keq{question.uid}c{column.uid}r{row.uid}';
+	var idy = 'wsq{question.uid}c{column.uid}r{row.uid}';
 	checkMatrixCheckboxValues(jQuery('#'+idy));
 <f:if condition="{column.showTextfield}">
 	<f:then>
 /*
  * Check Input fields on change
  */
-jQuery( "#keq{question.uid}c{column.uid}r{row.uid}" ).on( "change", function() {
+jQuery( "#wsq{question.uid}c{column.uid}r{row.uid}" ).on( "change", function() {
 	checkMatrixCheckboxValues(this);
 });
 	</f:then>
@@ -49,7 +49,7 @@ jQuery( "#keq{question.uid}c{column.uid}r{row.uid}" ).on( "change", function() {
 /*
  * Check Input fields on change
  */
-jQuery( "#keq{question.uid}c{column.uid}r{row.uid}" ).on( "change", function() {
+jQuery( "#wsq{question.uid}c{column.uid}r{row.uid}" ).on( "change", function() {
    checkMatrixCheckboxValues(this);
 });
 		</f:if>

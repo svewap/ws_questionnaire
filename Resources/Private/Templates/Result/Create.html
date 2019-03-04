@@ -1,18 +1,12 @@
-<f:layout name="Default" />
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en"
+	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
+	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
+	<f:layout name="Default" />
 
-This Template is responsible for creating a table of domain objects.
+	<f:section name="main">
+		<f:flashMessages />
+		<div id="wsq_loadingDiv"><f:translate key="loading" /></div>
+		<f:render partial="Result/Form" arguments="{questionnaire: questionnaire, newResult: newResult, questions: questions}" />
+	</f:section>
 
-If you modify this template, do not forget to change the overwrite settings
-in /Configuration/ExtensionBuilder/settings.yaml:
-  Resources:
-    Private:
-      Templates:
-        New.html: keep
-
-Otherwise your changes will be overwritten the next time you save the extension in the extension builder
-
-<f:section name="main">
-	<f:flashMessages />
-	<div id="keq_loadingDiv">Lädt!</div>
-	<f:render partial="Result/Form" arguments="{questionnaire: questionnaire, newResult: newResult, questions: questions}" />	
-</f:section>
+</div>
