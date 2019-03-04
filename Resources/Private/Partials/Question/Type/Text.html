@@ -5,7 +5,10 @@
 	<f:section name="Content">
 
 		<f:form.hidden property="questions.{question.uid}.question" value="{question.uid}" />
-		<f:format.html>{question.text}</f:format.html>
+
+		<div class="card-body">
+			<f:format.html>{question.text}</f:format.html>
+		</div>
 
 	</f:section>
 </div>

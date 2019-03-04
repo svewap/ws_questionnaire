@@ -340,7 +340,7 @@ class ResultController extends AbstractController
     public function showAction(Result $result = null)
     {
         if (!$result) {
-            $this->flashMessageContainer->add(LocalizationUtility::translate('feView.noResultError',
+            $this->addFlashMessage(LocalizationUtility::translate('feView.noResultError',
                 $this->extensionName),
                 LocalizationUtility::translate('feView.noResultErrorTitle',
                     $this->extensionName), FlashMessage::WARNING);

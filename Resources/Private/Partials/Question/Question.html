@@ -4,7 +4,7 @@
 
 	<f:section name="Render">
 
-		<div class="ws-questionnaire__element ws-questionnaire__type-{question.shortType}" id="wsq{question.uid}">
+		<div class="card mb-2 ws-questionnaire__element ws-questionnaire__type-{question.shortType}" id="wsq{question.uid}">
 
 			<f:render partial="Question/Type/{question.shortType}" section="Content" arguments="{question: question, newResult: newResult}"/>
 

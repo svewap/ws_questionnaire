@@ -2,38 +2,40 @@
 	 xmlns:f="http://typo3.org/ns/fluid/ViewHelpers"
 	 xmlns:qu="http://typo3.org/ns/WapplerSystems/WsQuestionnaire/ViewHelpers">
 
-	<f:if condition="{settings.showProgressBar}">
-		<f:render partial="Questionnaire/ProgressBar" arguments="{questionnaire: questionnaire}"/>
-	</f:if>
+	<f:section name="Render">
 
-	<f:if condition="{settings.navigationType} != 'none'">
-		<f:render partial="Questionnaire/NavigationType_{settings.navigationType}"
-				  arguments="{questionnaire: questionnaire, result: newResult}"/>
-	</f:if>
-
-	<f:form action="create" controller="Result" objectName="newResult" object="{newResult}" method="post"
-			class="ws-questionnaire__form">
-
-		<f:if condition="{settings.additionalParameters}">
-			<f:form.hidden property="addParameter" value="{newResult.addParameter}"/>
+		<f:if condition="{settings.showProgressBar}">
+			<f:render partial="Questionnaire/ProgressBar" arguments="{questionnaire: questionnaire}"/>
 		</f:if>
 
-		<f:form.hidden class="currentPage" name="currentPage" value="{questionnaire.page}"/>
-		<f:form.hidden class="requestedPage" name="requestedPage" value="{questionnaire.nextPage}"/>
-		<f:if condition="{settings.accessType} == 'authCode'">
-			<f:form.hidden name="authCode" value="{newResult.authCode.uid}"/>
+		<f:if condition="{settings.navigationType} != 'none'">
+			<f:render partial="Questionnaire/NavigationType_{settings.navigationType}"
+					  arguments="{questionnaire: questionnaire, result: newResult}"/>
 		</f:if>
 
-		<div class="list-group mb-3">
-			<f:for each="{questions}" as="question">
-				<div class="list-group-item">
+		<f:form action="create" controller="Result" objectName="newResult" object="{newResult}" method="post"
+				class="ws-questionnaire__form">
+
+			<f:if condition="{settings.additionalParameters}">
+				<f:form.hidden property="addParameter" value="{newResult.addParameter}"/>
+			</f:if>
+
+			<f:form.hidden class="currentPage" name="currentPage" value="{questionnaire.page}"/>
+			<f:form.hidden class="requestedPage" name="requestedPage" value="{questionnaire.nextPage}"/>
+			<f:if condition="{settings.accessType} == 'authCode'">
+				<f:form.hidden name="authCode" value="{newResult.authCode.uid}"/>
+			</f:if>
+
+			<div class="mb-3">
+				<f:for each="{questions}" as="question">
 					<f:render partial="Question/Question" section="Render" arguments="{question: question, newResult: newResult}"/>
-				</div>
-			</f:for>
-		</div>
+				</f:for>
+			</div>
 
-		<f:render partial="Submit" arguments="{questionnaire: questionnaire}"/>
+			<f:render partial="Submit" arguments="{questionnaire: questionnaire}"/>
 
-	</f:form>
+		</f:form>
+
+	</f:section>
 
 </div>

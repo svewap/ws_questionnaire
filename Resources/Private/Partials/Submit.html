@@ -1,15 +1,19 @@
-<div class="wsqButtons">
-	<f:if condition="{questionnaire.isFirstPage}">
-		<f:else>
-			<f:form.submit class="btn prev" value="{f:translate(key: 'prevPage')}" />
-		</f:else>
-	</f:if>
-	<f:if condition="{questionnaire.isLastPage}">
-		<f:then>
-			<f:form.submit class="btn btn-primary next" value="{f:if(condition: settings.neverFinish, then: '{f:translate(key:\'saveWsq\')}', else: '{f:translate(key: \'submitWsq\')}')}" />
-		</f:then>
-		<f:else>
-			<f:form.submit class="btn btn-primary next" value="{f:translate(key: 'nextPage')}" />
-		</f:else>
-	</f:if>	
-</div>
+<ul class="nav justify-content-between">
+	<li>
+		<f:if condition="{questionnaire.isFirstPage}">
+			<f:else>
+				<f:form.submit class="btn prev" value="{f:translate(key: 'prevPage')}" />
+			</f:else>
+		</f:if>
+	</li>
+	<li>
+		<f:if condition="{questionnaire.isLastPage}">
+			<f:then>
+				<f:form.submit class="btn btn-primary next" value="{f:if(condition: settings.neverFinish, then: '{f:translate(key:\'saveWsq\')}', else: '{f:translate(key: \'submitWsq\')}')}" />
+			</f:then>
+			<f:else>
+				<f:form.submit class="btn btn-primary next" value="{f:translate(key: 'nextPage')}" />
+			</f:else>
+		</f:if>
+	</li>
+</ul>
