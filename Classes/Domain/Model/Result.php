@@ -673,7 +673,6 @@ class Result extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
                     //calculate for each answer
                     foreach ($resultQuestion->getAnswers() as $resultAnswer) {
                         if ($resultAnswer->getAnswer()) {
-                            $calcPoints = 0;
                             $calcPoints = $resultAnswer->getPoints();
                             $pointsForResult += $calcPoints;
                             $pointsForQuestion += $calcPoints;

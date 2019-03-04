@@ -2,7 +2,10 @@
 
 namespace WapplerSystems\WsQuestionnaire\Controller;
 
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use WapplerSystems\WsQuestionnaire\Domain\Model\Result;
+use WapplerSystems\WsQuestionnaire\Utility\CsvExport;
 
 /***************************************************************
  *  Copyright notice
@@ -135,14 +138,14 @@ class ExportController extends BackendController
      */
     public function csvIntervalAction($pluginUid, $interval)
     {
-        //standard path for interval-file
-        $pathName = 'typo3temp/ws_questionnaire';
-        //initialize the export data
+
+        $pathName = 'typo3temp/var/ws_questionnaire';
+
         $this->iniCsvExport();
         //get the questionnaire-data from tt_content element
         $this->questionnaire = $this->questionnaireRepository->findByUid($this->plugin['uid']);
         //check if only finished participations should be exported and get the results
-        if ($this->request->getArgument('finished') == 'finished') {
+        if ($this->request->getArgument('finished') === 'finished') {
             $resultCount = $this->questionnaire->countResults(true);
         } else {
             $resultCount = $this->questionnaire->countResults(false);
@@ -153,13 +156,12 @@ class ExportController extends BackendController
             /* Increase counter stored in session variable */
             session_start();
             $csvTempFile = $_SESSION['fileName'];
-            $interval = $this->request->getArgument('interval');
+            $interval = (int)$this->request->getArgument('interval');
             $fileName = $pathName . '/' . $csvTempFile;
             //when the progval is 0 => create datafile
-            if ($_SESSION['progval'] == 0) {
+            if ((int)$_SESSION['progval'] === 0) {
                 if (!file_exists(PATH_site . $pathName)) {
-                    mkdir(PATH_site . $pathName, 0777);
-                    chmod(PATH_site . $pathName, 0777);
+                    GeneralUtility::mkdir(PATH_site . $pathName);
                 }
             } else {
                 //else open file and add data
@@ -170,20 +172,20 @@ class ExportController extends BackendController
                 }
             }
             //Load the interval batch
-            $correct_interval = $interval;
-            if (($correct_interval + $counter) > $resultCount) {
-                $correct_interval = $resultCount - $_SESSION['progval'];
+            $correctInterval = $interval;
+            if (($correctInterval + $counter) > $resultCount) {
+                $correctInterval = $resultCount - $_SESSION['progval'];
             }
-            if ($this->request->getArgument('finished') == 'finished') {
+            if ($this->request->getArgument('finished') === 'finished') {
                 $this->csvExport->setResults($this->resultRepository->findFinishedForPidInterval($this->storagePid,
-                    $correct_interval, $_SESSION['progval']));
+                    $correctInterval, $_SESSION['progval']));
                 $this->csvExport->setResultsRaw($this->resultRepository->findFinishedForPidIntervalRaw($this->storagePid,
-                    $correct_interval, $_SESSION['progval']));
+                    $correctInterval, $_SESSION['progval']));
             } else {
                 $this->csvExport->setResults($this->resultRepository->findAllForPidInterval($this->storagePid,
-                    $correct_interval, $_SESSION['progval']));
+                    $correctInterval, $_SESSION['progval']));
                 $this->csvExport->setResultsRaw($this->resultRepository->findAllForPidIntervalRaw($this->storagePid,
-                    $correct_interval, $_SESSION['progval']));
+                    $correctInterval, $_SESSION['progval']));
             }
             $csvContent = $this->csvExport->processQbIntervalExport($this->plugin, $oldContent);
             //clear the file
@@ -193,12 +195,12 @@ class ExportController extends BackendController
             fclose($csvFile);
             chmod(PATH_site . $fileName, 0777);
 
-            if ($correct_interval != $interval) {
+            if ($correctInterval !== $interval) {
                 $_SESSION['progval'] = $resultCount;
                 $counter = $resultCount + 1;
             } else {
                 $_SESSION['progval'] = $counter;
-                $counter += $correct_interval;
+                $counter += $correctInterval;
             }
             session_write_close();
             sleep(1);
@@ -215,7 +217,7 @@ class ExportController extends BackendController
             //load all results for uids
 
 
-            if ($this->request->getArgument('finished') == 'finished') {
+            if ($this->request->getArgument('finished') === 'finished') {
                 $this->csvExport->setResults($this->resultRepository->findFinishedForPid($this->storagePid));
             } else {
                 $this->csvExport->setResults($this->resultRepository->findAllForPid($this->storagePid));
@@ -248,24 +250,24 @@ class ExportController extends BackendController
      */
     public function downloadCsvIntervalAction($fileName)
     {
-        $csvdata = file_get_contents(PATH_site . $fileName);
+        $csvData = file_get_contents(PATH_site . $fileName);
         unlink(PATH_site . $fileName);
-        $encoding = "utf-8";
-        if ($encoding != mb_detect_encoding($csvdata)) {
-            $csvdata = mb_convert_encoding($csvdata, $encoding, mb_detect_encoding($csvdata));
+        $encoding = 'utf-8';
+        if ($encoding !== mb_detect_encoding($csvData)) {
+            $csvData = mb_convert_encoding($csvData, $encoding, mb_detect_encoding($csvData));
         }
 
-        if (strtolower($encoding) == "utf-8") {
-            $csvdata = pack("CCC", 0xef, 0xbb, 0xbf) . $csvdata;
-            header("content-type: application/csv-tab-delimited-table; Charset=utf-8");
+        if (strtolower($encoding) === 'utf-8') {
+            $csvData = pack('CCC', 0xef, 0xbb, 0xbf) . $csvData;
+            header('content-type: application/csv-tab-delimited-table; Charset=utf-8');
         } else {
-            header("content-type: application/csv-tab-delimited-table;");
+            header('content-type: application/csv-tab-delimited-table;');
         }
 
-        header("content-length: " . strlen($csvdata));
-        header("content-disposition: attachment; filename=\"csv_export.csv\"");
+        header('content-length: ' . strlen($csvData));
+        header('content-disposition: attachment; filename="csv_export.csv"');
 
-        print $csvdata;
+        print $csvData;
         exit;
     }
 
@@ -329,13 +331,13 @@ class ExportController extends BackendController
     public function csvRbIntervalAction($pluginUid, $interval)
     {
         //standard path for interval-file
-        $pathName = 'typo3temp/ws_questionnaire';
+        $pathName = 'typo3temp/var/ws_questionnaire';
         //initialize the export data
         $this->iniCsvExport();
         //get the questionnaire-data from tt_content element
         $this->questionnaire = $this->questionnaireRepository->findByUid($this->plugin['uid']);
         //check if only finished participations should be exported and get the results
-        if ($this->request->getArgument('finished') == 'finished') {
+        if ($this->request->getArgument('finished') === 'finished') {
             $resultCount = $this->questionnaire->countResults(true);
         } else {
             $resultCount = $this->questionnaire->countResults(false);
@@ -363,20 +365,20 @@ class ExportController extends BackendController
                 }
             }
             //Load the interval batch
-            $correct_interval = $interval;
-            if (($correct_interval + $counter) > $resultCount) {
-                $correct_interval = $resultCount - $_SESSION['progval'];
+            $correctInterval = $interval;
+            if (($correctInterval + $counter) > $resultCount) {
+                $correctInterval = $resultCount - $_SESSION['progval'];
             }
-            if ($this->request->getArgument('finished') == 'finished') {
+            if ($this->request->getArgument('finished') === 'finished') {
                 $this->csvExport->setResults($this->resultRepository->findFinishedForPidInterval($this->storagePid,
-                    $correct_interval, $_SESSION['progval']));
+                    $correctInterval, $_SESSION['progval']));
                 $this->csvExport->setResultsRaw($this->resultRepository->findFinishedForPidIntervalRaw($this->storagePid,
-                    $correct_interval, $_SESSION['progval']));
+                    $correctInterval, $_SESSION['progval']));
             } else {
                 $this->csvExport->setResults($this->resultRepository->findAllForPidInterval($this->storagePid,
-                    $correct_interval, $_SESSION['progval']));
+                    $correctInterval, $_SESSION['progval']));
                 $this->csvExport->setResultsRaw($this->resultRepository->findAllForPidIntervalRaw($this->storagePid,
-                    $correct_interval, $_SESSION['progval']));
+                    $correctInterval, $_SESSION['progval']));
             }
             $csvContent = $this->csvExport->processRbIntervalExport($this->plugin, $oldContent);
             //clear the file
@@ -386,12 +388,12 @@ class ExportController extends BackendController
             fclose($csvFile);
             chmod(PATH_site . $fileName, 0777);
 
-            if ($correct_interval != $interval) {
+            if ($correctInterval !== $interval) {
                 $_SESSION['progval'] = $resultCount;
                 $counter = $resultCount + 1;
             } else {
                 $_SESSION['progval'] = $counter;
-                $counter += $correct_interval;
+                $counter += $correctInterval;
             }
             session_write_close();
             sleep(1);
@@ -406,7 +408,7 @@ class ExportController extends BackendController
         if (file_exists(PATH_site . $fileName)) {
             $oldContent = file_get_contents(PATH_site . $fileName);
             //load all results for uids
-            if ($this->request->getArgument('finished') == 'finished') {
+            if ($this->request->getArgument('finished') === 'finished') {
                 $this->csvExport->setResults($this->resultRepository->findFinishedForPid($this->storagePid));
             } else {
                 $this->csvExport->setResults($this->resultRepository->findAllForPid($this->storagePid));
@@ -473,31 +475,31 @@ class ExportController extends BackendController
         }
 
         $this->iniCsvExport();
-        //load the results
-        if ($this->request->getArgument('finished') == 'finished') {
+
+        if ($this->request->getArgument('finished') === 'finished') {
             $this->csvExport->setResultsRaw($this->resultRepository->findFinishedForPidRaw($this->storagePid));
             $this->csvExport->setResults($this->resultRepository->findFinishedForPid($this->storagePid));
         } else {
             $this->csvExport->setResultsRaw($this->resultRepository->findAllForPidRaw($this->storagePid));
             $this->csvExport->setResults($this->resultRepository->findAllForPid($this->storagePid));
         }
-        //create the csvdata
-        $csvdata .= $this->csvExport->createQuestionBased($this->plugin);
+        $csvData = $this->csvExport->createQuestionBased($this->plugin);
 
-        if ($encoding != mb_detect_encoding($csvdata)) {
-            $csvdata = mb_convert_encoding($csvdata, $encoding, mb_detect_encoding($csvdata));
+        $encoding = $this->csvExport->getEncoding();
+        if ($encoding !== mb_detect_encoding($csvData)) {
+            $csvData = mb_convert_encoding($csvData, $encoding, mb_detect_encoding($csvData));
         }
-        if (strtolower($encoding) == "utf-8") {
-            $csvdata = pack("CCC", 0xef, 0xbb, 0xbf) . $csvdata;
-            header("content-type: application/csv-tab-delimited-table; Charset=utf-8");
+        if (strtolower($encoding) === 'utf-8') {
+            $csvData = pack('CCC', 0xef, 0xbb, 0xbf) . $csvData;
+            header('content-type: application/csv-tab-delimited-table; Charset=utf-8');
         } else {
-            header("content-type: application/csv-tab-delimited-table;");
+            header('content-type: application/csv-tab-delimited-table;');
         }
 
-        header("content-length: " . strlen($csvdata));
-        header("content-disposition: attachment; filename=\"csv_export.csv\"");
+        header('content-length: ' . strlen($csvData));
+        header('content-disposition: attachment; filename="csv_export.csv"');
 
-        print $csvdata;
+        print $csvData;
         exit;
     }
 
@@ -521,29 +523,29 @@ class ExportController extends BackendController
 
         $this->iniCsvExport();
         //load the results
-        if ($this->request->getArgument('finished') == 'finished') {
+        if ($this->request->getArgument('finished') === 'finished') {
             $this->csvExport->setResultsRaw($this->resultRepository->findFinishedForPidRaw($this->storagePid));
             $this->csvExport->setResults($this->resultRepository->findFinishedForPid($this->storagePid));
         } else {
             $this->csvExport->setResultsRaw($this->resultRepository->findAllForPidRaw($this->storagePid));
             $this->csvExport->setResults($this->resultRepository->findAllForPid($this->storagePid));
         }
-        //create the csvdata
-        $csvdata .= $this->csvExport->createResultBased($this->plugin);
+        $csvData = $this->csvExport->createResultBased($this->plugin);
 
-        if ($encoding != mb_detect_encoding($csvdata)) {
-            $csvdata = mb_convert_encoding($csvdata, $encoding, mb_detect_encoding($csvdata));
+        $encoding = $this->csvExport->getEncoding();
+        if ($encoding !== mb_detect_encoding($csvData)) {
+            $csvData = mb_convert_encoding($csvData, $encoding, mb_detect_encoding($csvData));
         }
-        if (strtolower($encoding) == "utf-8") {
-            $csvdata = pack("CCC", 0xef, 0xbb, 0xbf) . $csvdata;
-            header("content-type: application/csv-tab-delimited-table; Charset=utf-8");
+        if (strtolower($encoding) === 'utf-8') {
+            $csvData = pack('CCC', 0xef, 0xbb, 0xbf) . $csvData;
+            header('content-type: application/csv-tab-delimited-table; Charset=utf-8');
         } else {
-            header("content-type: application/csv-tab-delimited-table;");
+            header('content-type: application/csv-tab-delimited-table;');
         }
-        header("content-length: " . strlen($csvdata));
-        header("content-disposition: attachment; filename=\"csv_export.csv\"");
+        header('content-length: ' . strlen($csvData));
+        header('content-disposition: attachment; filename="csv_export.csv"');
 
-        print $csvdata;
+        print $csvData;
         exit;
     }
 
@@ -565,26 +567,29 @@ class ExportController extends BackendController
             $this->plugin = $plugin;
         }
 
-        //load the AuthCodes
+        $this->iniCsvExport();
+
         $authCodes = $this->authCodeRepository->findAllForPid($this->storagePid)->toArray();
-        //create the csvdata
+
         $this->csvExport->extConf = $this->extConf;
-        $csvdata .= $this->csvExport->createAuthCodes($authCodes);
+        $csvData = '';
+        $csvData .= $this->csvExport->createAuthCodes($authCodes);
 
-        if ($encoding != mb_detect_encoding($csvdata)) {
-            $csvdata = mb_convert_encoding($csvdata, $encoding, mb_detect_encoding($csvdata));
+        $encoding = $this->csvExport->getEncoding();
+        if ($encoding !== mb_detect_encoding($csvData)) {
+            $csvData = mb_convert_encoding($csvData, $encoding, mb_detect_encoding($csvData));
         }
-        if (strtolower($encoding) == "utf-8") {
-            $csvdata = pack("CCC", 0xef, 0xbb, 0xbf) . $csvdata;
-            header("content-type: application/csv-tab-delimited-table; Charset=utf-8");
+        if (strtolower($encoding) === 'utf-8') {
+            $csvData = pack('CCC', 0xef, 0xbb, 0xbf) . $csvData;
+            header('content-type: application/csv-tab-delimited-table; Charset=utf-8');
         } else {
-            header("content-type: application/csv-tab-delimited-table;");
+            header('content-type: application/csv-tab-delimited-table;');
         }
 
-        header("content-length: " . strlen($csvdata));
-        header("content-disposition: attachment; filename=\"csv_export.csv\"");
+        header('content-length: ' . strlen($csvData));
+        header('content-disposition: attachment; filename="csv_export.csv"');
 
-        print $csvdata;
+        print $csvData;
         exit;
     }
 
@@ -593,27 +598,24 @@ class ExportController extends BackendController
      */
     private function iniCsvExport()
     {
-        $csvdata = '';
+        $this->csvExport = $this->objectManager->get(CsvExport::class);
 
-        if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('ws_questionnaire_premium')) {
-            $this->csvExport = $this->objectManager->get('WapplerSystems\WsQuestionnairePremium\Utility\CsvExport');
-
-            if ($this->request->hasArgument('averagePoints')) {
-                $this->csvExport->setAveragePoints($this->request->getArgument('averagePoints'));
-            } else {
-                $this->csvExport->setAveragePoints($this->plugin->ffdata['settings']['csv']['averagePoints']);
-            }
-            if ($this->request->hasArgument('averagePointsAll')) {
-                $this->csvExport->setAveragePointsAll($this->request->getArgument('averagePointsAll'));
-            } else {
-                $this->csvExport->setAveragePointsAll($this->plugin->ffdata['settings']['csv']['averagePointsAll']);
-            }
-            if ($this->request->hasArgument('additionalParameter')) {
-                $this->csvExport->setAdditionalParameter($this->request->getArgument('additionalParameter'));
-            } else {
-                $this->csvExport->setAdditionalParameter($this->plugin->ffdata['settings']['csv']['additionalParameter']);
-            }
+        if ($this->request->hasArgument('averagePoints')) {
+            $this->csvExport->setAveragePoints($this->request->getArgument('averagePoints'));
+        } else {
+            $this->csvExport->setAveragePoints($this->plugin->ffdata['settings']['csv']['averagePoints']);
         }
+        if ($this->request->hasArgument('averagePointsAll')) {
+            $this->csvExport->setAveragePointsAll($this->request->getArgument('averagePointsAll'));
+        } else {
+            $this->csvExport->setAveragePointsAll($this->plugin->ffdata['settings']['csv']['averagePointsAll']);
+        }
+        if ($this->request->hasArgument('additionalParameter')) {
+            $this->csvExport->setAdditionalParameter($this->request->getArgument('additionalParameter'));
+        } else {
+            $this->csvExport->setAdditionalParameter($this->plugin->ffdata['settings']['csv']['additionalParameter']);
+        }
+
         if ($this->request->hasArgument('separator')) {
             $this->csvExport->setSeparator($this->request->getArgument('separator'));
         } else {
@@ -640,9 +642,9 @@ class ExportController extends BackendController
             $this->csvExport->setShowAText($this->plugin->ffdata['settings']['csv']['showAText']);
         }
         if ($this->request->hasArgument('encoding')) {
-            $encoding = $this->request->getArgument('encoding');
+            $this->csvExport->setEncoding($this->request->getArgument('encoding'));
         } else {
-            $encoding = $this->plugin->ffdata['settings']['csv']['encoding'];
+            $this->csvExport->setEncoding($this->plugin->ffdata['settings']['csv']['encoding']);
         }
         if ($this->request->hasArgument('totalPoints')) {
             $this->csvExport->setTotalPoints($this->request->getArgument('totalPoints'));
@@ -712,7 +714,7 @@ class ExportController extends BackendController
         $requestedPage = 0;
 
         if ($this->request->hasArgument('questionnaire')) {
-            $this->plugin = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tt_content',
+            $this->plugin = BackendUtility::getRecord('tt_content',
                 $this->request->getArgument('questionnaire'));
         }
 
@@ -736,8 +738,8 @@ class ExportController extends BackendController
         }
 
         //load the css-data for the pdf
-        $css_filename = PATH_site . 'typo3conf/ext/' . $this->request->getControllerExtensionKey() . '/Resources/Public/Css/WsQuestionnaire.css';
-        $css_filename2 = PATH_site . 'typo3conf/ext/' . $this->request->getControllerExtensionKey() . '/Resources/Public/Css/PDF.css';
+        $css_filename = PATH_site . 'typo3conf/ext/ws_questionnaire/Resources/Public/CSS/styles.css';
+        $css_filename2 = PATH_site . 'typo3conf/ext/ws_questionnaire/Resources/Public/CSS/PDF.css';
         $css = '<style>' . file_get_contents($css_filename) . "\n" . file_get_contents($css_filename2) . '</style>';
         //render the pdf-html-data
         $content = $this->view->render();
@@ -749,24 +751,8 @@ class ExportController extends BackendController
         $base = str_replace("/mod.php", '', $base);
         $content = str_replace('<img src="fileadmin/', '<img src="http://' . $base . '/fileadmin/', $content);
         //create the pdf
-        //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($content, 'pdf');
         $this->pdfExport->createPdfFromHTML($css . '<br>' . $content);
     }
 
-    /**
-     * get the Questions for the questionnaire
-     *
-     * @param array $plugin
-     * @ignorevalidaton $plugin
-     * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
-     */
-    private function getQuestions($plugin)
-    {
-        $pids = explode(',', $plugin['pages']);
-        $storagePid = $pids[0];
 
-        $questions = $this->questionRepository->findAllForPid($storagePid);
-
-        return $questions;
-    }
 }

@@ -134,6 +134,11 @@ class CsvExport
      */
     protected $signalSlotDispatcher;
 
+    /**
+     * @var string
+     */
+    protected $encoding = '';
+
 
     /**
      * injectQuestionRepository
@@ -358,6 +363,23 @@ class CsvExport
     }
 
     /**
+     * @return string
+     */
+    public function getEncoding(): string
+    {
+        return $this->encoding;
+    }
+
+    /**
+     * @param string $encoding
+     */
+    public function setEncoding(string $encoding)
+    {
+        $this->encoding = $encoding;
+    }
+
+
+    /**
      * create the CSV string
      *
      * @param array $plugin
@@ -427,9 +449,7 @@ class CsvExport
      */
     protected function createQBHeader($plugin)
     {
-        $header = '';
-
-        $header .= $this->text . $plugin['header'] . $this->text;
+        $header = $this->text . $plugin['header'] . $this->text;
         $header .= $this->newline . $this->newline;
 
         $header .= 'Question ID' . $this->getSeparator();
@@ -754,10 +774,10 @@ class CsvExport
      * start the interval Export
      *
      * @param $plugin
-     * @param array $oldContent
+     * @param string $oldContent
      * @return string
      */
-    public function processQbIntervalExport($plugin, $oldContent)
+    public function processQbIntervalExport($plugin, $oldContent) : string
     {
         $oldArray = [];
         if ($oldContent) {
@@ -893,17 +913,17 @@ class CsvExport
                     $addChar = $char;
                 }
             } else {
-                if ($char == $enclosureChar) {
+                if ($char === $enclosureChar) {
                     $isEnclosured = true;
                 } else {
 
-                    if ($char == $separatorChar) {
+                    if ($char === $separatorChar) {
 
                         $array[$rowIndex][$columnIndex] = $fieldValue;
                         $fieldValue = '';
 
                         $columnIndex++;
-                    } elseif ($char == $newlineChar) {
+                    } elseif ($char === $newlineChar) {
                         echo $char;
                         $array[$rowIndex][$columnIndex] = $fieldValue;
                         $fieldValue = '';
