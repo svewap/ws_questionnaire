@@ -348,7 +348,7 @@ class ExportController extends BackendController
             /* Increase counter stored in session variable */
             session_start();
             $csvTempFile = $_SESSION['fileName'];
-            $interval = $this->request->getArgument('interval');
+            $interval = (int)$this->request->getArgument('interval');
             $fileName = $pathName . '/' . $csvTempFile;
             //when the progval is 0 => create datafile
             if ($_SESSION['progval'] == 0) {
