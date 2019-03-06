@@ -22,7 +22,7 @@
 </f:alias>
 <qu:JavaScriptFile key="DDCloze" filename="typo3conf/ext/ws_questionnaire/Resources/Public/Script/DDQuestions.js"/>
 <f:if condition="{question.isMandatory}">
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 	/*
 	 * When the length of all input field values is > 0
 	 */
@@ -41,5 +41,5 @@
 		checkMandatory();
 	}
 	check_wsq{question.uid}a{answer.uid}();
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>
 </f:if>

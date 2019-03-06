@@ -28,23 +28,23 @@
 </f:alias>
 <f:if condition="{answer.areaHighlight}">
 	<f:then>
-		<qu:JavaScript>
+		<qu:pageRenderer.addJsFooterInlineCode>
 	/*
 	 * If the option is checked the hoverClass is defined
 	 */
 		jQuery( "#wsq{question.uid} .wsq-moveable" ).xdraggable("option","containment","#wsq{question.uid}");
 		jQuery( "#wsq{question.uid} .wsqDDArea .wsq-placeholder" ).droppable("option","hoverClass","dd-area-highlight-hover");
 		jQuery( "#wsq{question.uid} .wsqDDArea .wsq-moveable-container" ).droppable("option","hoverClass","dd-area-highlight-hover");
-		</qu:JavaScript>
+		</qu:pageRenderer.addJsFooterInlineCode>
 	</f:then>
 	<f:else>
-		<qu:JavaScript>
+		<qu:pageRenderer.addJsFooterInlineCode>
 	/*
 	 * Else the images need to fit in the areas totally
 	 */
 		jQuery( "#wsq{question.uid} .wsq-moveable" ).xdraggable("option","containment","#wsq{question.uid}");
 		jQuery( "#wsq{question.uid} .wsqDDArea .wsq-placeholder" ).droppable("option","tolerance","fit");
 		jQuery( "#wsq{question.uid} .wsqDDArea .wsq-moveable-container" ).droppable("option","tolerance","fit");
-		</qu:JavaScript>
+		</qu:pageRenderer.addJsFooterInlineCode>
 	</f:else>
 </f:if>

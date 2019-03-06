@@ -21,7 +21,7 @@
             </f:if>
         </div>
 
-        <qu:JavaScript>
+        <qu:pageRenderer.addJsFooterInlineCode>
             disableElements($('#wsqViewResult').children());
 
             function disableElements(el) {
@@ -30,6 +30,6 @@
                     disableElements(el[i].children);
                 }
             }
-        </qu:JavaScript>
+        </qu:pageRenderer.addJsFooterInlineCode>
     </f:section>
 </div>

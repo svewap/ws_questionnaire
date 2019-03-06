@@ -67,20 +67,20 @@
 	</div>    
 </f:alias>
 <!-- Check for Max and Min Answers -->
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 <f:if condition="{answer.maxAnswers}">
 /*
  * When an answer in this matrix is changed, check for max answers
  */
- jQuery( "#wsq{question.uid}a{answer.uid} input" ).on( "click", function() {
+ jQuery('#wsq{question.uid}a{answer.uid} input').on('click', function() {
 	 var idy = 'wsq{question.uid}a{answer.uid}';
 	 var max = {answer.maxAnswers};
 
 	 var counter = 0;
-	 jQuery.each(jQuery( "#"+idy+" input" ),function(index, value){
+	 jQuery.each(jQuery('#"+idy+" input'),function(index, value){
 		 switch (jQuery(value).prop('type')){
-			case "checkbox": 
-					if (jQuery(value).prop('checked')) counter ++;
+			case 'checkbox':
+	 			if (jQuery(value).prop('checked')) counter ++;
 				break;
 			default:
 				break;
@@ -103,7 +103,7 @@
 /*
  * When an answer in this question is changed, check for max answers
  */
- jQuery( "#wsq{question.uid} input" ).on( "click", function() {
+ jQuery( "#wsq{question.uid} input" ).on('click', function() {
 	 var idy = '{question.uid}a{answer.uid}'; 
 	 var min = {answer.minAnswers};
 
@@ -135,9 +135,9 @@
 	 }
  });
 </f:if>
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>
 <f:if condition="{question.isMandatory}">
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 	/*
 	 * When the length of all input field values is > 0
 	 */
@@ -159,5 +159,5 @@
 		checkMandatory();
 	}
 	check_wsq{question.uid}a{answer.uid}();
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>
 </f:if>

@@ -24,7 +24,7 @@
 
 
 			<!-- Check for Max and Min Answers -->
-			<qu:JavaScript>
+			<qu:pageRenderer.addJsFooterInlineCode>
 				<f:if condition="{question.maxAnswers}">
 			/*
 			 * When an answer in this question is changed, check for max answers
@@ -66,7 +66,7 @@
 			/*
 			 * When an answer in this question is changed, check for max answers
 			 */
-			 jQuery( "#wsq{question.uid} input" ).on( "click", function() {
+			 jQuery( "#wsq{question.uid} input" ).on('click', function() {
 				check_wsqmin{question.uid}();
 			 });
 
@@ -105,7 +105,7 @@
 			};
 			check_wsqmin{question.uid}();
 				</f:if>
-			</qu:JavaScript>
+			</qu:pageRenderer.addJsFooterInlineCode>
 
 		</qu:checkDependencies>
 

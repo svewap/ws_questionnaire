@@ -22,7 +22,7 @@
 </f:alias>
 <!-- Javascript to check the Validationtypes for the InputField-->
 <f:if condition="{column.validationType}">
-	<qu:JavaScript>
+	<qu:pageRenderer.addJsFooterInlineCode>
 	/*
 	 * Checks the Answer for the type of the chosen validation
 	 */
@@ -48,5 +48,5 @@
 			}
 		});
 	});
-	</qu:JavaScript>
+	</qu:pageRenderer.addJsFooterInlineCode>
 </f:if>

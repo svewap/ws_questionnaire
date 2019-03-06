@@ -23,15 +23,14 @@
 	</div>
 </f:alias>
 <f:if condition="{question.isMandatory}">
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 	/*
 	 * Rankings are always answered
 	 */
 	check_wsq{question.uid}a{answer.uid} = function() {
-		/*<![CDATA[*//*]]>*/
-                jQuery("#wsqMandatory{question.uid}").val(0);
-                checkMandatory();
+		jQuery("#wsqMandatory{question.uid}").val(0);
+		checkMandatory();
 	}
 	check_wsq{question.uid}a{answer.uid}();
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>
 </f:if>

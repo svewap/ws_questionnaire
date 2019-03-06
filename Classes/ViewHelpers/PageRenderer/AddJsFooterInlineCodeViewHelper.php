@@ -34,7 +34,7 @@ class AddJsFooterInlineCodeViewHelper extends AbstractTagBasedViewHelper
      */
     public function initializeArguments()
     {
-        $this->registerArgument('name', 'string', 'Name argument - see PageRenderer documentation', true);
+        $this->registerArgument('name', 'string', 'Name argument - see PageRenderer documentation', false);
         $this->registerArgument('compress', 'boolean', 'Compress argument - see PageRenderer documentation', false,
             true);
         $this->registerArgument('forceOnTop', 'boolean', 'ForceOnTop argument - see PageRenderer documentation', false,
@@ -89,17 +89,18 @@ class AddJsFooterInlineCodeViewHelper extends AbstractTagBasedViewHelper
     {
         $block = $this->renderChildren();
 
+        $name = $this->arguments['name'] ?? md5($block);
 
         if ($this->isCached()) {
             $this->pageRenderer->addJsFooterInlineCode(
-                $this->arguments['name'],
+                $name,
                 $block,
                 $this->arguments['compress'],
                 $this->arguments['forceOnTop']
             );
         } else {
             // additionalFooterData not possible in USER_INT
-            $GLOBALS['TSFE']->additionalFooterData[md5($this->arguments['name'])] = GeneralUtility::wrapJS($block);
+            $GLOBALS['TSFE']->additionalFooterData[$name] = GeneralUtility::wrapJS($block);
         }
     }
 

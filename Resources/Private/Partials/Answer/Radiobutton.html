@@ -14,17 +14,17 @@
 	</div>
 </f:alias>
 <!-- Javascript to check mandatory in RadioButton -->
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 <f:if condition="{question.isMandatory}">
 /*
  * As soon as a Radio Button on clicked mandatory is fullfilled
  */
-jQuery( "#wsq{question.uid}a{answer.uid}" ).on( "click", function() {
+jQuery('#wsq{question.uid}a{answer.uid}').on('click', function() {
     check_wsq{question.uid}a{answer.uid}();
 });
 check_wsq{question.uid}a{answer.uid} = function() {
-	if ( jQuery("#wsq{question.uid} input[type=radio]:checked").length > 0) jQuery("#wsqMandatory{question.uid}").val(0);
-	else jQuery("#wsqMandatory{question.uid}").val(1);
+	if (jQuery('#wsq{question.uid} input[type=radio]:checked').length > 0) jQuery('#wsqMandatory{question.uid}').val(0);
+	else jQuery('#wsqMandatory{question.uid}').val(1);
 	checkMandatory();
 }
 check_wsq{question.uid}a{answer.uid}();
@@ -32,8 +32,8 @@ check_wsq{question.uid}a{answer.uid}();
 /*
  * Check Input fields on change
  */
-jQuery( "#wsq{question.uid} input:radio" ).on( "change", function() {
-	jQuery.each(jQuery( "#wsq{question.uid} input:radio" ), function(){
+jQuery('#wsq{question.uid} input:radio').on('change', function() {
+	jQuery.each(jQuery('#wsq{question.uid} input:radio'), function(){
 		if (jQuery(this).prop('checked')){
 			jQuery(this).parent().children('input:text').removeAttr('disabled');
 		} else {
@@ -42,4 +42,4 @@ jQuery( "#wsq{question.uid} input:radio" ).on( "change", function() {
 		}
 	});
 });
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>

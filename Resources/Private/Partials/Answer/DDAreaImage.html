@@ -36,7 +36,7 @@
 	</div>
 </f:alias>
 <qu:JavaScriptFile key="DDQuestions" filename="typo3conf/ext/ws_questionnaire/Resources/Public/Script/DDQuestions.js" footer="false"/>
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 	<f:if condition="{answer.areaHighlight}">
 		<f:then>
 /*
@@ -55,9 +55,9 @@
 	jQuery( "#wsq{question.uid} .wsqDDArea .wsq-moveable-container" ).droppable("option","tolerance","fit");
 		</f:else>
 	</f:if>
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>
 <f:if condition="{question.isMandatory}">
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 	/*
 	 * When the length of all input field values is > 0
 	 */
@@ -76,5 +76,5 @@
 		checkMandatory();
 	}
 	check_wsq{question.uid}a{answer.uid}();
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>
 </f:if>

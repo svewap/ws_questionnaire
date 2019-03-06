@@ -32,7 +32,7 @@
 		</f:else>
 	</f:if>
 </f:alias>
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 	var idy = 'wsq{question.uid}c{column.uid}r{row.uid}';
 	checkMatrixCheckboxValues(jQuery('#'+idy));
 <f:if condition="{column.showTextfield}">
@@ -55,4 +55,4 @@ jQuery( "#wsq{question.uid}c{column.uid}r{row.uid}" ).on( "change", function() {
 		</f:if>
 	</f:else>
 </f:if>
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>

@@ -23,7 +23,7 @@
         </qu:rankingTerm>
         </ul>
 	</div>
-    <qu:JavaScript>
+    <qu:pageRenderer.addJsFooterInlineCode>
 jQuery(function() {
 	var sortable_id = "#sortable_{answer.uid}";
 	jQuery( sortable_id ).sortable({
@@ -36,18 +36,17 @@ jQuery(function() {
 	});
 	jQuery( "#sortable" ).disableSelection();
 });
-    </qu:JavaScript>
+    </qu:pageRenderer.addJsFooterInlineCode>
 </f:alias>
 <f:if condition="{question.isMandatory}">
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 	/*
 	 * Rankings are always answered
 	 */
 	check_wsq{question.uid}a{answer.uid} = function() {
-		/*<![CDATA[*//*]]>*/
-                jQuery("#wsqMandatory{question.uid}").val(0);
-                checkMandatory();
+		jQuery('#wsqMandatory{question.uid}').val(0);
+		checkMandatory();
 	}
 	check_wsq{question.uid}a{answer.uid}();
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>
 </f:if>

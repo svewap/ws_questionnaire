@@ -8,13 +8,13 @@
 	</div>
 </f:alias>
 <!-- Javascript to check mandatory in Checkbox -->
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 /*
  * This question is always mandatory
  */
-jQuery( "#wsq{question.uid}a{answer.uid}" ).on( "click", function() {
-	if ( jQuery("#wsq{question.uid}a{answer.uid}:checked").length > 0) jQuery("#wsqMandatory{question.uid}").val(0);
+jQuery('#wsq{question.uid}a{answer.uid}').on('click', function() {
+	if (jQuery("#wsq{question.uid}a{answer.uid}:checked").length > 0) jQuery("#wsqMandatory{question.uid}").val(0);
 	else jQuery("#wsqMandatory{question.uid}").val(1);
 	checkMandatory();
 });
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>

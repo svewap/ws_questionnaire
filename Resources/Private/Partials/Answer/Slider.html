@@ -10,7 +10,7 @@
 		<f:if condition="{answer.RightLabel"><div class="wsqSilderRightLabel">{answer.rightLabel}</div></f:if>
 		<div class="wsqSilderValueShow"><f:translate key="LLL:EXT:ws_questionnaire/Resources/Private/Language/locallang.xml:slider.selectedValue" />: <span id="wsqShowValue{question.uid}a{answer.uid}">{f:if(condition: resultAnswer.value, then: resultAnswer.value, else: answer.minValue)}</span></div>
 	</div>
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 /*
  * Activate the slider
  */
@@ -32,10 +32,10 @@
 			 jQuery(this).siblings('.wsqSilderValueHelperClass').val(ui.value).trigger('change');
 		 }
 	 });
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>
 </f:alias>
 <f:if condition="{question.isMandatory}">
-<qu:JavaScript>
+<qu:pageRenderer.addJsFooterInlineCode>
 	/*
 	 * Slider are always answered
 	 */
@@ -45,5 +45,5 @@
                 checkMandatory();
 	}
 	check_wsq{question.uid}a{answer.uid}();
-</qu:JavaScript>
+</qu:pageRenderer.addJsFooterInlineCode>
 </f:if>
